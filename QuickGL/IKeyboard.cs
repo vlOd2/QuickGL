@@ -20,18 +20,22 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-namespace QuickGLNS.Internal
+namespace QuickGLNS
 {
-    public class Mouse : IDisposable
+    public interface IKeyboard : IDisposable
     {
-        public void Create(nint window)
-        {
-            
-        }
+        public int EventKey { get; }
+        public int EventChar { get; }
+        public int EventState { get; }
         
-        public void Dispose()
-        {
-            
-        }
+        void Init(nint window);
+
+        void Poll();
+
+        bool Next();
+
+        bool GetState(int key);
+
+        QGLString GetName(int key);
     }
 }

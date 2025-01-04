@@ -20,18 +20,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-namespace QuickGLNS.Internal
+namespace QuickGLNS
 {
-    public class Mouse : IDisposable
+    public interface IMouse
     {
-        public void Create(nint window)
-        {
-            
-        }
         
-        public void Dispose()
-        {
-            
-        }
     }
 }

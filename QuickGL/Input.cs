@@ -20,9 +20,75 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+using QuickGLNS.Internal;
+
 namespace QuickGLNS
 {
+    /// <summary>
+    /// Easy to use, optional, input wrapper for GLFW
+    /// </summary>
     public static class Input
     {
+        private static Dictionary<nint, Mouse> mouse;
+        private static Dictionary<nint, Keyboard> keyboard;
+
+        private static void EnsureCreated(nint window)
+        {
+            if (mouse.ContainsKey(window) && keyboard.ContainsKey(window))
+                return;
+            throw new ArgumentException("Window does not have an input system");
+        }
+        
+        /// <summary>
+        /// Initializes the input system for the given window
+        /// </summary>
+        /// <param name="window">the window</param>
+        /// <exception cref="ArgumentException">if an input system is already assigned</exception>
+        public static void Create(nint window)
+        {
+            if (mouse.ContainsKey(window) && keyboard.ContainsKey(window))
+                throw new ArgumentException("Window already has an input system");
+            keyboard[window] = new Keyboard();
+            keyboard[window].Init(window);
+        }
+
+        /// <summary>
+        /// Gets the first available keyboard<br/>
+        /// Useful if you have only a single window
+        /// </summary>
+        /// <returns>the keyboard</returns>
+        /// <exception cref="InvalidOperationException">if there are no keyboards available</exception>
+        public static IKeyboard GetFirstKeyboard()
+        {
+            if (keyboard.Count == 0)
+                throw new InvalidOperationException("No keyboards have been created");
+            return keyboard.First().Value;
+        }
+        
+        /// <summary>
+        /// Gets the keyboard associated with the given window
+        /// </summary>
+        /// <param name="window">the window</param>
+        /// <returns>the keyboard</returns>
+        /// <exception cref="ArgumentException">if an input system is not assigned</exception>
+        public static IKeyboard GetKeyboard(nint window)
+        {
+            EnsureCreated(window);
+            return keyboard[window];
+        }
+        
+        /// <summary>
+        /// Destroys the input system allocated for the given window
+        /// </summary>
+        /// <param name="window">the window</param>
+        public static void Destroy(nint window)
+        {
+            if (mouse.ContainsKey(window))
+                mouse[window].Dispose();
+            if (keyboard.ContainsKey(window))
+                keyboard[window].Dispose();
+            mouse.Remove(window);
+            keyboard.Remove(window);
+        }
     }
 }

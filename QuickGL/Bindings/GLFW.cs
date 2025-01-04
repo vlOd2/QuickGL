@@ -23,7 +23,7 @@
 using System.Runtime.InteropServices;
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-01-04 22:18:32.705860
+// Bindings generated at 2025-01-04 23:05:39.353198
 namespace QuickGLNS.Bindings
 {
     #region Callbacks
@@ -158,6 +158,7 @@ namespace QuickGLNS.Bindings
         public const int GLFW_HAT_RIGHT = 0x2;
         public const int GLFW_HAT_DOWN = 0x4;
         public const int GLFW_HAT_LEFT = 0x8;
+        public const int GLFW_KEY_UNKNOWN = -0x1;
         public const int GLFW_KEY_SPACE = 0x20;
         public const int GLFW_KEY_APOSTROPHE = 0x27;
         public const int GLFW_KEY_COMMA = 0x2C;
@@ -456,6 +457,7 @@ namespace QuickGLNS.Bindings
         public const int GLFW_PLATFORM_WAYLAND = 0x60003;
         public const int GLFW_PLATFORM_X11 = 0x60004;
         public const int GLFW_PLATFORM_NULL = 0x60005;
+        public const int GLFW_DONT_CARE = -0x1;
         #endregion
         
         #region Functions
