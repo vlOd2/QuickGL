@@ -1,3 +1,6 @@
+# ⚠ Not yet ready for production
+This project is not yet done and lacks some pretty important features and QoL improvements
+
 # QuickGL
 Straightforward OpenGL and GLFW bindings for C# targeting .NET 8<br>
 It's main goal is to keep the experience as similar to C/C++ as possible<br>
@@ -18,7 +21,7 @@ QuickGL includes some utilities to try and speed up your development times<br>
 These include:
 - Easy to use native string interop (QGLString)
 - Methods to convert stack allocated spans to pointers (QuickGL::ToPtr)
-- Easy to use, optional, input wrapper for GLFW (Input)
+- ~~Easy to use, optional, input wrapper for GLFW (Input)~~ (not yet implemented)
 
 # Bindings
 The bindings used by QuickGL are automatically generated based on the official GLFW header and OpenGL registry<br>
