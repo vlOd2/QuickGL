@@ -29,8 +29,8 @@ namespace QuickGLNS
     /// </summary>
     public static class Input
     {
-        private static Dictionary<nint, Mouse> mouse;
-        private static Dictionary<nint, Keyboard> keyboard;
+        private static Dictionary<nint, IMouse> mouse = [];
+        private static Dictionary<nint, IKeyboard> keyboard = [];
 
         private static void EnsureCreated(nint window)
         {
@@ -48,6 +48,8 @@ namespace QuickGLNS
         {
             if (mouse.ContainsKey(window) && keyboard.ContainsKey(window))
                 throw new ArgumentException("Window already has an input system");
+            mouse[window] = new Mouse();
+            mouse[window].Init(window);
             keyboard[window] = new Keyboard();
             keyboard[window].Init(window);
         }
@@ -75,6 +77,18 @@ namespace QuickGLNS
         {
             EnsureCreated(window);
             return keyboard[window];
+        }
+
+        /// <summary>
+        /// Polls the input devices for the given window
+        /// </summary>
+        /// <param name="window">the window</param>
+        /// <exception cref="ArgumentException">if an input system is not assigned</exception>
+        public static void Poll(nint window)
+        {
+            EnsureCreated(window);
+            mouse[window].Poll();
+            keyboard[window].Poll();
         }
         
         /// <summary>

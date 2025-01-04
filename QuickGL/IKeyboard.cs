@@ -22,20 +22,54 @@
 
 namespace QuickGLNS
 {
+    /// <summary>
+    /// Simple event-queue based keyboard for GLFW
+    /// </summary>
     public interface IKeyboard : IDisposable
     {
+        /// <summary>
+        /// The key of the current event<br/>
+        /// Undefined if the current event is a character event<br/>
+        /// See <see cref="EventState"/> and <see cref="KeyState"/>
+        /// to check for a character event
+        /// </summary>
         public int EventKey { get; }
-        public int EventChar { get; }
-        public int EventState { get; }
-        
+        /// <summary>
+        /// The character of the current event<br/>
+        /// Undefined if the current event is not a character event<br/>
+        /// See <see cref="EventState"/> and <see cref="KeyState"/>
+        /// to check for a character event
+        /// </summary>
+        public char EventChar { get; }
+        /// <summary>
+        /// The key state of the current event
+        /// </summary>
+        public KeyState EventState { get; }
+
         void Init(nint window);
 
         void Poll();
 
+        /// <summary>
+        /// De-queues the next event<br/>
+        /// NOTE: Accessing any event information 
+        /// when this returns false is undefined
+        /// </summary>
+        /// <returns>if an event was de-queued</returns>
         bool Next();
 
+        /// <summary>
+        /// Checks if a key is pressed
+        /// </summary>
+        /// <param name="key">the key</param>
+        /// <returns>true if the key is pressed, false if otherwise</returns>
         bool GetState(int key);
 
+        /// <summary>
+        /// Gets the friendly name of a key
+        /// </summary>
+        /// <param name="key">the key</param>
+        /// <returns>the friendly name or null</returns>
         QGLString GetName(int key);
     }
 }

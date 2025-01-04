@@ -20,7 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-using System.Text;
 using QuickGLNS.Bindings;
 using static QuickGLNS.Bindings.GLFW;
 
@@ -33,30 +32,19 @@ namespace QuickGLNS.Internal
         private GLFWcharfun charCallback;
         private Dictionary<int, bool> keys = [];
         private Queue<KeyEvent> events = [];
+        private object eventLock = new();
         private KeyEvent pendingEvent;
         private KeyEvent currentEvent;
         public int EventKey => currentEvent.Key;
-        public int EventChar => currentEvent.Character;
-        public int EventState => (int)currentEvent.State;
-        
-        private enum KeyState
-        {
-            INVALID,
-            RELEASED,
-            PRESSED,
-            REPEATED
-        }
+        public char EventChar => currentEvent.Character;
+        public KeyState EventState => currentEvent.State;
         
         private struct KeyEvent
         {
             public int Key;
             public char Character;
             public KeyState State;
-            
-            public KeyEvent()
-            {
-                State = KeyState.INVALID;
-            }
+            public bool Valid;
         }
         
         public void Init(nint window)
@@ -66,27 +54,7 @@ namespace QuickGLNS.Internal
             glfwSetCharCallback(window, charCallback = CharCallback);
             for (int i = GLFW_KEY_SPACE; i <= GLFW_KEY_MENU; i++) keys[i] = false;
         }
-
-        private void KeyCallback(nint _, int key, int scancode, int action, int mods)
-        {
-            bool prevState = keys.ContainsKey(key) && keys[key];
-            bool state = action == GLFW_PRESS || action == GLFW_REPEAT;
-
-            KeyState keyState;
-            if (state && !prevState)
-                keyState = KeyState.PRESSED;
-            else if (!state && prevState)
-                keyState = KeyState.REPEATED;
-            else
-                keyState = KeyState.RELEASED;
-
-            pendingEvent = new()
-            {
-                Key = key,
-                State = keyState
-            };
-        }
-
+        
         private static char ConvertCodepoint(uint code)
         {
             char c = '\0';
@@ -102,35 +70,78 @@ namespace QuickGLNS.Internal
 
             return c;
         }
+
+        private void KeyCallback(nint _, int key, int scancode, int action, int mods)
+        {
+            lock (eventLock)
+            {
+                bool prevState = keys.ContainsKey(key) && keys[key];
+                bool state = action == GLFW_PRESS || action == GLFW_REPEAT;
+
+                KeyState keyState;
+                if (state && !prevState)
+                    keyState = KeyState.PRESSED;
+                else if (!state && prevState)
+                    keyState = KeyState.RELEASED;
+                else
+                    keyState = KeyState.REPEATED;
+                keys[key] = state;
+                
+                pendingEvent = new()
+                {
+                    Key = key,
+                    State = keyState,
+                    Valid = true
+                };
+            }
+        }
         
         private void CharCallback(nint _, uint code)
         {
-            if (pendingEvent.State == KeyState.INVALID)
-                return;
-            pendingEvent.Character = ConvertCodepoint(code);
+            lock (eventLock)
+            {
+                pendingEvent = new()
+                {
+                    Key = -1,
+                    Character = ConvertCodepoint(code),
+                    State = KeyState.CHARACTER,
+                    Valid = true
+                };
+            }
         }
 
         public void Poll()
         {
-            if (pendingEvent.State == KeyState.INVALID)
-                return;
-            events.Enqueue(pendingEvent);
-            pendingEvent = new();
+            lock (eventLock)
+            {
+                if (!pendingEvent.Valid)
+                    return;
+                events.Enqueue(pendingEvent);
+                pendingEvent = new();   
+            }
         }
 
+        private bool IsCharOnlyEvent(KeyEvent e) => e.Key < 0 && e.Character != '\0';
+        
+        private bool IsValidEvent(KeyEvent e) => e.Valid && (IsCharOnlyEvent(e) || currentEvent.Key > 0);
+        
         public bool Next()
         {
-            if (events.Count == 0)
+            lock (eventLock)
             {
-                currentEvent = new();
-                return false;
+                if (events.Count == 0)
+                {
+                    currentEvent = new();
+                    return false;
+                }
+                while (events.Count > 0 && !IsValidEvent(currentEvent = events.Dequeue()));
+                if (events.Count == 0 && !IsValidEvent(currentEvent))
+                    return false;
+                return true;   
             }
-            currentEvent = events.Dequeue();
-            return true;
         }
 
-        public bool GetState(int key) 
-            => keys.ContainsKey(key) && keys[key];
+        public bool GetState(int key) => keys.ContainsKey(key) && keys[key];
 
         public QGLString GetName(int key)
         {

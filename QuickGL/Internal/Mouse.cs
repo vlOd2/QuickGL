@@ -22,16 +22,18 @@
 
 namespace QuickGLNS.Internal
 {
-    public class Mouse : IDisposable
+    public class Mouse : IMouse
     {
-        public void Create(nint window)
+        public void Init(nint window)
         {
-            
+        }
+
+        public void Poll()
+        {
         }
         
         public void Dispose()
         {
-            
         }
     }
 }

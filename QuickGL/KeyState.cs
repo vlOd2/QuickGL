@@ -22,10 +22,27 @@
 
 namespace QuickGLNS
 {
-    public interface IMouse : IDisposable
+    /// <summary>
+    /// The key state of a Keyboard event
+    /// </summary>
+    public enum KeyState
     {
-        void Init(nint window);
-
-        void Poll();
+        /// <summary>
+        /// If the key is invalid and the event contains character data
+        /// </summary>
+        CHARACTER = -1,
+        /// <summary>
+        /// If the key has been released
+        /// </summary>
+        RELEASED = 0,
+        /// <summary>
+        /// If the key has been pressed
+        /// </summary>
+        PRESSED = 1,
+        /// <summary>
+        /// If the key is being repeated<br/>
+        /// NOTE: The repeat rate is defined by the user's preferences
+        /// </summary>
+        REPEATED = 2
     }
 }

@@ -105,6 +105,7 @@ namespace ExampleGameNS
 
             glfwMakeContextCurrent(window);
             QuickGL.LoadGL();
+            Input.Create(window);
         }
         
         public void Run()
@@ -134,21 +135,30 @@ namespace ExampleGameNS
             
             while (glfwWindowShouldClose(window) == GLFW_FALSE)
             {
+                IKeyboard keyboard = Input.GetKeyboard(window);
+                while (keyboard.Next())
+                {
+                    Console.WriteLine($"{keyboard.EventKey} {keyboard.EventChar} {keyboard.EventState}");
+                }
+                
                 glClear(GL_COLOR_BUFFER_BIT);
                 glUseProgram(program);
                 glBindVertexArray(vao);
                 glDrawArrays(GL_TRIANGLES, 0, vertices.Length / 3);
+                
                 glfwPollEvents();
+                Input.Poll(window);
                 glfwSwapBuffers(window);
                 
                 // Force GC to be aggresive
                 // This would cause a non-referenced callback
                 // to become null, resulting in a crash
-                GC.AddMemoryPressure(uint.MaxValue);
-                GC.Collect();
-                GC.RemoveMemoryPressure(uint.MaxValue);
+                // GC.AddMemoryPressure(uint.MaxValue);
+                // GC.Collect();
+                // GC.RemoveMemoryPressure(uint.MaxValue);
             }
 
+            Input.Destroy(window);
             glfwDestroyWindow(window);
             glfwTerminate();
             sizeCallback = null;
