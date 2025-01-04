@@ -22,7 +22,7 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-01-04 01:08:51.558334
+// Bindings generated at 2025-01-04 19:06:28.381053
 namespace QuickGLNS.Bindings
 {
     [GLFeature]
@@ -212,13 +212,13 @@ namespace QuickGLNS.Bindings
         [QGLNativeAPI("glFramebufferParameteri")] public static delegate* unmanaged<uint, uint, int, void> glFramebufferParameteri;
         [QGLNativeAPI("glGetFramebufferParameteriv")] public static delegate* unmanaged<uint, uint, int*, void> glGetFramebufferParameteriv;
         [QGLNativeAPI("glGetProgramInterfaceiv")] public static delegate* unmanaged<uint, uint, uint, int*, void> glGetProgramInterfaceiv;
-        [QGLNativeAPI("glGetProgramResourceIndex")] public static delegate* unmanaged<uint, uint, char*, uint> glGetProgramResourceIndex;
-        [QGLNativeAPI("glGetProgramResourceName")] public static delegate* unmanaged<uint, uint, uint, int, int*, char*, void> glGetProgramResourceName;
+        [QGLNativeAPI("glGetProgramResourceIndex")] public static delegate* unmanaged<uint, uint, byte*, uint> glGetProgramResourceIndex;
+        [QGLNativeAPI("glGetProgramResourceName")] public static delegate* unmanaged<uint, uint, uint, int, int*, byte*, void> glGetProgramResourceName;
         [QGLNativeAPI("glGetProgramResourceiv")] public static delegate* unmanaged<uint, uint, uint, int, uint*, int, int*, int*, void> glGetProgramResourceiv;
-        [QGLNativeAPI("glGetProgramResourceLocation")] public static delegate* unmanaged<uint, uint, char*, int> glGetProgramResourceLocation;
+        [QGLNativeAPI("glGetProgramResourceLocation")] public static delegate* unmanaged<uint, uint, byte*, int> glGetProgramResourceLocation;
         [QGLNativeAPI("glUseProgramStages")] public static delegate* unmanaged<uint, uint, uint, void> glUseProgramStages;
         [QGLNativeAPI("glActiveShaderProgram")] public static delegate* unmanaged<uint, uint, void> glActiveShaderProgram;
-        [QGLNativeAPI("glCreateShaderProgramv")] public static delegate* unmanaged<uint, int, char**, uint> glCreateShaderProgramv;
+        [QGLNativeAPI("glCreateShaderProgramv")] public static delegate* unmanaged<uint, int, byte**, uint> glCreateShaderProgramv;
         [QGLNativeAPI("glBindProgramPipeline")] public static delegate* unmanaged<uint, void> glBindProgramPipeline;
         [QGLNativeAPI("glDeleteProgramPipelines")] public static delegate* unmanaged<int, uint*, void> glDeleteProgramPipelines;
         [QGLNativeAPI("glGenProgramPipelines")] public static delegate* unmanaged<int, uint*, void> glGenProgramPipelines;
@@ -258,7 +258,7 @@ namespace QuickGLNS.Bindings
         [QGLNativeAPI("glProgramUniformMatrix3x4fv")] public static delegate* unmanaged<uint, int, int, bool, float*, void> glProgramUniformMatrix3x4fv;
         [QGLNativeAPI("glProgramUniformMatrix4x3fv")] public static delegate* unmanaged<uint, int, int, bool, float*, void> glProgramUniformMatrix4x3fv;
         [QGLNativeAPI("glValidateProgramPipeline")] public static delegate* unmanaged<uint, void> glValidateProgramPipeline;
-        [QGLNativeAPI("glGetProgramPipelineInfoLog")] public static delegate* unmanaged<uint, int, int*, char*, void> glGetProgramPipelineInfoLog;
+        [QGLNativeAPI("glGetProgramPipelineInfoLog")] public static delegate* unmanaged<uint, int, int*, byte*, void> glGetProgramPipelineInfoLog;
         [QGLNativeAPI("glBindImageTexture")] public static delegate* unmanaged<uint, uint, int, bool, int, uint, uint, void> glBindImageTexture;
         [QGLNativeAPI("glGetBooleani_v")] public static delegate* unmanaged<uint, uint, bool*, void> glGetBooleani_v;
         [QGLNativeAPI("glMemoryBarrier")] public static delegate* unmanaged<uint, void> glMemoryBarrier;

@@ -20,11 +20,89 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+using System.Runtime.InteropServices;
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-01-04 01:08:50.698267
+// Bindings generated at 2025-01-04 22:18:32.705860
 namespace QuickGLNS.Bindings
 {
+    #region Callbacks
+    [UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public unsafe delegate void GLFWglproc();
+    
+    [UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public unsafe delegate void GLFWvkproc();
+    
+    [UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public unsafe delegate void* GLFWallocatefun(nuint size, void* user);
+    
+    [UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public unsafe delegate void* GLFWreallocatefun(void* block, nuint size, void* user);
+    
+    [UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public unsafe delegate void GLFWdeallocatefun(void* block, void* user);
+    
+    [UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public unsafe delegate void GLFWerrorfun(int error_code, byte* description);
+    
+    [UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public unsafe delegate void GLFWwindowposfun(nint window, int xpos, int ypos);
+    
+    [UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public unsafe delegate void GLFWwindowsizefun(nint window, int width, int height);
+    
+    [UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public unsafe delegate void GLFWwindowclosefun(nint window);
+    
+    [UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public unsafe delegate void GLFWwindowrefreshfun(nint window);
+    
+    [UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public unsafe delegate void GLFWwindowfocusfun(nint window, int focused);
+    
+    [UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public unsafe delegate void GLFWwindowiconifyfun(nint window, int iconified);
+    
+    [UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public unsafe delegate void GLFWwindowmaximizefun(nint window, int maximized);
+    
+    [UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public unsafe delegate void GLFWframebuffersizefun(nint window, int width, int height);
+    
+    [UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public unsafe delegate void GLFWwindowcontentscalefun(nint window, float xscale, float yscale);
+    
+    [UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public unsafe delegate void GLFWmousebuttonfun(nint window, int button, int action, int mods);
+    
+    [UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public unsafe delegate void GLFWcursorposfun(nint window, double xpos, double ypos);
+    
+    [UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public unsafe delegate void GLFWcursorenterfun(nint window, int entered);
+    
+    [UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public unsafe delegate void GLFWscrollfun(nint window, double xoffset, double yoffset);
+    
+    [UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public unsafe delegate void GLFWkeyfun(nint window, int key, int scancode, int action, int mods);
+    
+    [UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public unsafe delegate void GLFWcharfun(nint window, uint codepoint);
+    
+    [UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public unsafe delegate void GLFWcharmodsfun(nint window, uint codepoint, int mods);
+    
+    [UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public unsafe delegate void GLFWdropfun(nint window, int path_count, byte** paths);
+    
+    [UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public unsafe delegate void GLFWmonitorfun(nint monitor, int @event);
+    
+    [UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public unsafe delegate void GLFWjoystickfun(int jid, int @event);
+    #endregion
+    
     public unsafe struct GLFWvidmode
     {
         public int width;
@@ -58,9 +136,9 @@ namespace QuickGLNS.Bindings
     
     public unsafe struct GLFWallocator
     {
-        public delegate* unmanaged<nuint, void*, void*> allocate;
-        public delegate* unmanaged<void*, nuint, void*, void*> reallocate;
-        public delegate* unmanaged<void*, void*, void> deallocate;
+        public nint allocate;
+        public nint reallocate;
+        public nint deallocate;
         public void* user;
     }
     
@@ -382,125 +460,244 @@ namespace QuickGLNS.Bindings
         
         #region Functions
         [QGLNativeAPI("glfwInit")] public static delegate* unmanaged<int> glfwInit;
+        
         [QGLNativeAPI("glfwTerminate")] public static delegate* unmanaged<void> glfwTerminate;
+        
         [QGLNativeAPI("glfwInitHint")] public static delegate* unmanaged<int, int, void> glfwInitHint;
+        
         [QGLNativeAPI("glfwInitAllocator")] public static delegate* unmanaged<GLFWallocator*, void> glfwInitAllocator;
+        
         [QGLNativeAPI("glfwGetVersion")] public static delegate* unmanaged<int*, int*, int*, void> glfwGetVersion;
-        [QGLNativeAPI("glfwGetVersionString")] public static delegate* unmanaged<char*> glfwGetVersionString;
-        [QGLNativeAPI("glfwGetError")] public static delegate* unmanaged<char**, int> glfwGetError;
-        [QGLNativeAPI("glfwSetErrorCallback")] public static delegate* unmanaged<delegate* unmanaged<int, char*, void>, delegate* unmanaged<int, char*, void>> glfwSetErrorCallback;
+        
+        [QGLNativeAPI("glfwGetVersionString")] public static delegate* unmanaged<byte*> glfwGetVersionString;
+        
+        [QGLNativeAPI("glfwGetError")] public static delegate* unmanaged<byte**, int> glfwGetError;
+        
+        [QGLNativeAPI("glfwSetErrorCallback")] public static delegate* unmanaged<GLFWerrorfun, nint> glfwSetErrorCallback;
+        
         [QGLNativeAPI("glfwGetPlatform")] public static delegate* unmanaged<int> glfwGetPlatform;
+        
         [QGLNativeAPI("glfwPlatformSupported")] public static delegate* unmanaged<int, int> glfwPlatformSupported;
+        
         [QGLNativeAPI("glfwGetMonitors")] public static delegate* unmanaged<int*, nint> glfwGetMonitors;
+        
         [QGLNativeAPI("glfwGetPrimaryMonitor")] public static delegate* unmanaged<nint> glfwGetPrimaryMonitor;
+        
         [QGLNativeAPI("glfwGetMonitorPos")] public static delegate* unmanaged<nint, int*, int*, void> glfwGetMonitorPos;
+        
         [QGLNativeAPI("glfwGetMonitorWorkarea")] public static delegate* unmanaged<nint, int*, int*, int*, int*, void> glfwGetMonitorWorkarea;
+        
         [QGLNativeAPI("glfwGetMonitorPhysicalSize")] public static delegate* unmanaged<nint, int*, int*, void> glfwGetMonitorPhysicalSize;
+        
         [QGLNativeAPI("glfwGetMonitorContentScale")] public static delegate* unmanaged<nint, float*, float*, void> glfwGetMonitorContentScale;
-        [QGLNativeAPI("glfwGetMonitorName")] public static delegate* unmanaged<nint, char*> glfwGetMonitorName;
+        
+        [QGLNativeAPI("glfwGetMonitorName")] public static delegate* unmanaged<nint, byte*> glfwGetMonitorName;
+        
         [QGLNativeAPI("glfwSetMonitorUserPointer")] public static delegate* unmanaged<nint, void*, void> glfwSetMonitorUserPointer;
+        
         [QGLNativeAPI("glfwGetMonitorUserPointer")] public static delegate* unmanaged<nint, void*> glfwGetMonitorUserPointer;
-        [QGLNativeAPI("glfwSetMonitorCallback")] public static delegate* unmanaged<delegate* unmanaged<nint, int, void>, delegate* unmanaged<nint, int, void>> glfwSetMonitorCallback;
+        
+        [QGLNativeAPI("glfwSetMonitorCallback")] public static delegate* unmanaged<GLFWmonitorfun, nint> glfwSetMonitorCallback;
+        
         [QGLNativeAPI("glfwGetVideoModes")] public static delegate* unmanaged<nint, int*, GLFWvidmode*> glfwGetVideoModes;
+        
         [QGLNativeAPI("glfwGetVideoMode")] public static delegate* unmanaged<nint, GLFWvidmode*> glfwGetVideoMode;
+        
         [QGLNativeAPI("glfwSetGamma")] public static delegate* unmanaged<nint, float, void> glfwSetGamma;
+        
         [QGLNativeAPI("glfwGetGammaRamp")] public static delegate* unmanaged<nint, GLFWgammaramp*> glfwGetGammaRamp;
+        
         [QGLNativeAPI("glfwSetGammaRamp")] public static delegate* unmanaged<nint, GLFWgammaramp*, void> glfwSetGammaRamp;
+        
         [QGLNativeAPI("glfwDefaultWindowHints")] public static delegate* unmanaged<void> glfwDefaultWindowHints;
+        
         [QGLNativeAPI("glfwWindowHint")] public static delegate* unmanaged<int, int, void> glfwWindowHint;
-        [QGLNativeAPI("glfwWindowHintString")] public static delegate* unmanaged<int, char*, void> glfwWindowHintString;
-        [QGLNativeAPI("glfwCreateWindow")] public static delegate* unmanaged<int, int, char*, nint, nint, nint> glfwCreateWindow;
+        
+        [QGLNativeAPI("glfwWindowHintString")] public static delegate* unmanaged<int, byte*, void> glfwWindowHintString;
+        
+        [QGLNativeAPI("glfwCreateWindow")] public static delegate* unmanaged<int, int, byte*, nint, nint, nint> glfwCreateWindow;
+        
         [QGLNativeAPI("glfwDestroyWindow")] public static delegate* unmanaged<nint, void> glfwDestroyWindow;
+        
         [QGLNativeAPI("glfwWindowShouldClose")] public static delegate* unmanaged<nint, int> glfwWindowShouldClose;
+        
         [QGLNativeAPI("glfwSetWindowShouldClose")] public static delegate* unmanaged<nint, int, void> glfwSetWindowShouldClose;
-        [QGLNativeAPI("glfwGetWindowTitle")] public static delegate* unmanaged<nint, char*> glfwGetWindowTitle;
-        [QGLNativeAPI("glfwSetWindowTitle")] public static delegate* unmanaged<nint, char*, void> glfwSetWindowTitle;
+        
+        [QGLNativeAPI("glfwGetWindowTitle")] public static delegate* unmanaged<nint, byte*> glfwGetWindowTitle;
+        
+        [QGLNativeAPI("glfwSetWindowTitle")] public static delegate* unmanaged<nint, byte*, void> glfwSetWindowTitle;
+        
         [QGLNativeAPI("glfwSetWindowIcon")] public static delegate* unmanaged<nint, int, GLFWimage*, void> glfwSetWindowIcon;
+        
         [QGLNativeAPI("glfwGetWindowPos")] public static delegate* unmanaged<nint, int*, int*, void> glfwGetWindowPos;
+        
         [QGLNativeAPI("glfwSetWindowPos")] public static delegate* unmanaged<nint, int, int, void> glfwSetWindowPos;
+        
         [QGLNativeAPI("glfwGetWindowSize")] public static delegate* unmanaged<nint, int*, int*, void> glfwGetWindowSize;
+        
         [QGLNativeAPI("glfwSetWindowSizeLimits")] public static delegate* unmanaged<nint, int, int, int, int, void> glfwSetWindowSizeLimits;
+        
         [QGLNativeAPI("glfwSetWindowAspectRatio")] public static delegate* unmanaged<nint, int, int, void> glfwSetWindowAspectRatio;
+        
         [QGLNativeAPI("glfwSetWindowSize")] public static delegate* unmanaged<nint, int, int, void> glfwSetWindowSize;
+        
         [QGLNativeAPI("glfwGetFramebufferSize")] public static delegate* unmanaged<nint, int*, int*, void> glfwGetFramebufferSize;
+        
         [QGLNativeAPI("glfwGetWindowFrameSize")] public static delegate* unmanaged<nint, int*, int*, int*, int*, void> glfwGetWindowFrameSize;
+        
         [QGLNativeAPI("glfwGetWindowContentScale")] public static delegate* unmanaged<nint, float*, float*, void> glfwGetWindowContentScale;
+        
         [QGLNativeAPI("glfwGetWindowOpacity")] public static delegate* unmanaged<nint, float> glfwGetWindowOpacity;
+        
         [QGLNativeAPI("glfwSetWindowOpacity")] public static delegate* unmanaged<nint, float, void> glfwSetWindowOpacity;
+        
         [QGLNativeAPI("glfwIconifyWindow")] public static delegate* unmanaged<nint, void> glfwIconifyWindow;
+        
         [QGLNativeAPI("glfwRestoreWindow")] public static delegate* unmanaged<nint, void> glfwRestoreWindow;
+        
         [QGLNativeAPI("glfwMaximizeWindow")] public static delegate* unmanaged<nint, void> glfwMaximizeWindow;
+        
         [QGLNativeAPI("glfwShowWindow")] public static delegate* unmanaged<nint, void> glfwShowWindow;
+        
         [QGLNativeAPI("glfwHideWindow")] public static delegate* unmanaged<nint, void> glfwHideWindow;
+        
         [QGLNativeAPI("glfwFocusWindow")] public static delegate* unmanaged<nint, void> glfwFocusWindow;
+        
         [QGLNativeAPI("glfwRequestWindowAttention")] public static delegate* unmanaged<nint, void> glfwRequestWindowAttention;
+        
         [QGLNativeAPI("glfwGetWindowMonitor")] public static delegate* unmanaged<nint, nint> glfwGetWindowMonitor;
+        
         [QGLNativeAPI("glfwSetWindowMonitor")] public static delegate* unmanaged<nint, nint, int, int, int, int, int, void> glfwSetWindowMonitor;
+        
         [QGLNativeAPI("glfwGetWindowAttrib")] public static delegate* unmanaged<nint, int, int> glfwGetWindowAttrib;
+        
         [QGLNativeAPI("glfwSetWindowAttrib")] public static delegate* unmanaged<nint, int, int, void> glfwSetWindowAttrib;
+        
         [QGLNativeAPI("glfwSetWindowUserPointer")] public static delegate* unmanaged<nint, void*, void> glfwSetWindowUserPointer;
+        
         [QGLNativeAPI("glfwGetWindowUserPointer")] public static delegate* unmanaged<nint, void*> glfwGetWindowUserPointer;
-        [QGLNativeAPI("glfwSetWindowPosCallback")] public static delegate* unmanaged<nint, delegate* unmanaged<nint, int, int, void>, delegate* unmanaged<nint, int, int, void>> glfwSetWindowPosCallback;
-        [QGLNativeAPI("glfwSetWindowSizeCallback")] public static delegate* unmanaged<nint, delegate* unmanaged<nint, int, int, void>, delegate* unmanaged<nint, int, int, void>> glfwSetWindowSizeCallback;
-        [QGLNativeAPI("glfwSetWindowCloseCallback")] public static delegate* unmanaged<nint, delegate* unmanaged<nint, void>, delegate* unmanaged<nint, void>> glfwSetWindowCloseCallback;
-        [QGLNativeAPI("glfwSetWindowRefreshCallback")] public static delegate* unmanaged<nint, delegate* unmanaged<nint, void>, delegate* unmanaged<nint, void>> glfwSetWindowRefreshCallback;
-        [QGLNativeAPI("glfwSetWindowFocusCallback")] public static delegate* unmanaged<nint, delegate* unmanaged<nint, int, void>, delegate* unmanaged<nint, int, void>> glfwSetWindowFocusCallback;
-        [QGLNativeAPI("glfwSetWindowIconifyCallback")] public static delegate* unmanaged<nint, delegate* unmanaged<nint, int, void>, delegate* unmanaged<nint, int, void>> glfwSetWindowIconifyCallback;
-        [QGLNativeAPI("glfwSetWindowMaximizeCallback")] public static delegate* unmanaged<nint, delegate* unmanaged<nint, int, void>, delegate* unmanaged<nint, int, void>> glfwSetWindowMaximizeCallback;
-        [QGLNativeAPI("glfwSetFramebufferSizeCallback")] public static delegate* unmanaged<nint, delegate* unmanaged<nint, int, int, void>, delegate* unmanaged<nint, int, int, void>> glfwSetFramebufferSizeCallback;
-        [QGLNativeAPI("glfwSetWindowContentScaleCallback")] public static delegate* unmanaged<nint, delegate* unmanaged<nint, float, float, void>, delegate* unmanaged<nint, float, float, void>> glfwSetWindowContentScaleCallback;
+        
+        [QGLNativeAPI("glfwSetWindowPosCallback")] public static delegate* unmanaged<nint, GLFWwindowposfun, nint> glfwSetWindowPosCallback;
+        
+        [QGLNativeAPI("glfwSetWindowSizeCallback")] public static delegate* unmanaged<nint, GLFWwindowsizefun, nint> glfwSetWindowSizeCallback;
+        
+        [QGLNativeAPI("glfwSetWindowCloseCallback")] public static delegate* unmanaged<nint, GLFWwindowclosefun, nint> glfwSetWindowCloseCallback;
+        
+        [QGLNativeAPI("glfwSetWindowRefreshCallback")] public static delegate* unmanaged<nint, GLFWwindowrefreshfun, nint> glfwSetWindowRefreshCallback;
+        
+        [QGLNativeAPI("glfwSetWindowFocusCallback")] public static delegate* unmanaged<nint, GLFWwindowfocusfun, nint> glfwSetWindowFocusCallback;
+        
+        [QGLNativeAPI("glfwSetWindowIconifyCallback")] public static delegate* unmanaged<nint, GLFWwindowiconifyfun, nint> glfwSetWindowIconifyCallback;
+        
+        [QGLNativeAPI("glfwSetWindowMaximizeCallback")] public static delegate* unmanaged<nint, GLFWwindowmaximizefun, nint> glfwSetWindowMaximizeCallback;
+        
+        [QGLNativeAPI("glfwSetFramebufferSizeCallback")] public static delegate* unmanaged<nint, GLFWframebuffersizefun, nint> glfwSetFramebufferSizeCallback;
+        
+        [QGLNativeAPI("glfwSetWindowContentScaleCallback")] public static delegate* unmanaged<nint, GLFWwindowcontentscalefun, nint> glfwSetWindowContentScaleCallback;
+        
         [QGLNativeAPI("glfwPollEvents")] public static delegate* unmanaged<void> glfwPollEvents;
+        
         [QGLNativeAPI("glfwWaitEvents")] public static delegate* unmanaged<void> glfwWaitEvents;
+        
         [QGLNativeAPI("glfwWaitEventsTimeout")] public static delegate* unmanaged<double, void> glfwWaitEventsTimeout;
+        
         [QGLNativeAPI("glfwPostEmptyEvent")] public static delegate* unmanaged<void> glfwPostEmptyEvent;
+        
         [QGLNativeAPI("glfwGetInputMode")] public static delegate* unmanaged<nint, int, int> glfwGetInputMode;
+        
         [QGLNativeAPI("glfwSetInputMode")] public static delegate* unmanaged<nint, int, int, void> glfwSetInputMode;
+        
         [QGLNativeAPI("glfwRawMouseMotionSupported")] public static delegate* unmanaged<int> glfwRawMouseMotionSupported;
-        [QGLNativeAPI("glfwGetKeyName")] public static delegate* unmanaged<int, int, char*> glfwGetKeyName;
+        
+        [QGLNativeAPI("glfwGetKeyName")] public static delegate* unmanaged<int, int, byte*> glfwGetKeyName;
+        
         [QGLNativeAPI("glfwGetKeyScancode")] public static delegate* unmanaged<int, int> glfwGetKeyScancode;
+        
         [QGLNativeAPI("glfwGetKey")] public static delegate* unmanaged<nint, int, int> glfwGetKey;
+        
         [QGLNativeAPI("glfwGetMouseButton")] public static delegate* unmanaged<nint, int, int> glfwGetMouseButton;
+        
         [QGLNativeAPI("glfwGetCursorPos")] public static delegate* unmanaged<nint, double*, double*, void> glfwGetCursorPos;
+        
         [QGLNativeAPI("glfwSetCursorPos")] public static delegate* unmanaged<nint, double, double, void> glfwSetCursorPos;
+        
         [QGLNativeAPI("glfwCreateCursor")] public static delegate* unmanaged<GLFWimage*, int, int, nint> glfwCreateCursor;
+        
         [QGLNativeAPI("glfwCreateStandardCursor")] public static delegate* unmanaged<int, nint> glfwCreateStandardCursor;
+        
         [QGLNativeAPI("glfwDestroyCursor")] public static delegate* unmanaged<nint, void> glfwDestroyCursor;
+        
         [QGLNativeAPI("glfwSetCursor")] public static delegate* unmanaged<nint, nint, void> glfwSetCursor;
-        [QGLNativeAPI("glfwSetKeyCallback")] public static delegate* unmanaged<nint, delegate* unmanaged<nint, int, int, int, int, void>, delegate* unmanaged<nint, int, int, int, int, void>> glfwSetKeyCallback;
-        [QGLNativeAPI("glfwSetCharCallback")] public static delegate* unmanaged<nint, delegate* unmanaged<nint, uint, void>, delegate* unmanaged<nint, uint, void>> glfwSetCharCallback;
-        [QGLNativeAPI("glfwSetCharModsCallback")] public static delegate* unmanaged<nint, delegate* unmanaged<nint, uint, int, void>, delegate* unmanaged<nint, uint, int, void>> glfwSetCharModsCallback;
-        [QGLNativeAPI("glfwSetMouseButtonCallback")] public static delegate* unmanaged<nint, delegate* unmanaged<nint, int, int, int, void>, delegate* unmanaged<nint, int, int, int, void>> glfwSetMouseButtonCallback;
-        [QGLNativeAPI("glfwSetCursorPosCallback")] public static delegate* unmanaged<nint, delegate* unmanaged<nint, double, double, void>, delegate* unmanaged<nint, double, double, void>> glfwSetCursorPosCallback;
-        [QGLNativeAPI("glfwSetCursorEnterCallback")] public static delegate* unmanaged<nint, delegate* unmanaged<nint, int, void>, delegate* unmanaged<nint, int, void>> glfwSetCursorEnterCallback;
-        [QGLNativeAPI("glfwSetScrollCallback")] public static delegate* unmanaged<nint, delegate* unmanaged<nint, double, double, void>, delegate* unmanaged<nint, double, double, void>> glfwSetScrollCallback;
-        [QGLNativeAPI("glfwSetDropCallback")] public static delegate* unmanaged<nint, delegate* unmanaged<nint, int, char**, void>, delegate* unmanaged<nint, int, char**, void>> glfwSetDropCallback;
+        
+        [QGLNativeAPI("glfwSetKeyCallback")] public static delegate* unmanaged<nint, GLFWkeyfun, nint> glfwSetKeyCallback;
+        
+        [QGLNativeAPI("glfwSetCharCallback")] public static delegate* unmanaged<nint, GLFWcharfun, nint> glfwSetCharCallback;
+        
+        [QGLNativeAPI("glfwSetCharModsCallback")] public static delegate* unmanaged<nint, GLFWcharmodsfun, nint> glfwSetCharModsCallback;
+        
+        [QGLNativeAPI("glfwSetMouseButtonCallback")] public static delegate* unmanaged<nint, GLFWmousebuttonfun, nint> glfwSetMouseButtonCallback;
+        
+        [QGLNativeAPI("glfwSetCursorPosCallback")] public static delegate* unmanaged<nint, GLFWcursorposfun, nint> glfwSetCursorPosCallback;
+        
+        [QGLNativeAPI("glfwSetCursorEnterCallback")] public static delegate* unmanaged<nint, GLFWcursorenterfun, nint> glfwSetCursorEnterCallback;
+        
+        [QGLNativeAPI("glfwSetScrollCallback")] public static delegate* unmanaged<nint, GLFWscrollfun, nint> glfwSetScrollCallback;
+        
+        [QGLNativeAPI("glfwSetDropCallback")] public static delegate* unmanaged<nint, GLFWdropfun, nint> glfwSetDropCallback;
+        
         [QGLNativeAPI("glfwJoystickPresent")] public static delegate* unmanaged<int, int> glfwJoystickPresent;
+        
         [QGLNativeAPI("glfwGetJoystickAxes")] public static delegate* unmanaged<int, int*, float*> glfwGetJoystickAxes;
+        
         [QGLNativeAPI("glfwGetJoystickButtons")] public static delegate* unmanaged<int, int*, byte*> glfwGetJoystickButtons;
+        
         [QGLNativeAPI("glfwGetJoystickHats")] public static delegate* unmanaged<int, int*, byte*> glfwGetJoystickHats;
-        [QGLNativeAPI("glfwGetJoystickName")] public static delegate* unmanaged<int, char*> glfwGetJoystickName;
-        [QGLNativeAPI("glfwGetJoystickGUID")] public static delegate* unmanaged<int, char*> glfwGetJoystickGUID;
+        
+        [QGLNativeAPI("glfwGetJoystickName")] public static delegate* unmanaged<int, byte*> glfwGetJoystickName;
+        
+        [QGLNativeAPI("glfwGetJoystickGUID")] public static delegate* unmanaged<int, byte*> glfwGetJoystickGUID;
+        
         [QGLNativeAPI("glfwSetJoystickUserPointer")] public static delegate* unmanaged<int, void*, void> glfwSetJoystickUserPointer;
+        
         [QGLNativeAPI("glfwGetJoystickUserPointer")] public static delegate* unmanaged<int, void*> glfwGetJoystickUserPointer;
+        
         [QGLNativeAPI("glfwJoystickIsGamepad")] public static delegate* unmanaged<int, int> glfwJoystickIsGamepad;
-        [QGLNativeAPI("glfwSetJoystickCallback")] public static delegate* unmanaged<delegate* unmanaged<int, int, void>, delegate* unmanaged<int, int, void>> glfwSetJoystickCallback;
-        [QGLNativeAPI("glfwUpdateGamepadMappings")] public static delegate* unmanaged<char*, int> glfwUpdateGamepadMappings;
-        [QGLNativeAPI("glfwGetGamepadName")] public static delegate* unmanaged<int, char*> glfwGetGamepadName;
+        
+        [QGLNativeAPI("glfwSetJoystickCallback")] public static delegate* unmanaged<GLFWjoystickfun, nint> glfwSetJoystickCallback;
+        
+        [QGLNativeAPI("glfwUpdateGamepadMappings")] public static delegate* unmanaged<byte*, int> glfwUpdateGamepadMappings;
+        
+        [QGLNativeAPI("glfwGetGamepadName")] public static delegate* unmanaged<int, byte*> glfwGetGamepadName;
+        
         [QGLNativeAPI("glfwGetGamepadState")] public static delegate* unmanaged<int, GLFWgamepadstate*, int> glfwGetGamepadState;
-        [QGLNativeAPI("glfwSetClipboardString")] public static delegate* unmanaged<nint, char*, void> glfwSetClipboardString;
-        [QGLNativeAPI("glfwGetClipboardString")] public static delegate* unmanaged<nint, char*> glfwGetClipboardString;
+        
+        [QGLNativeAPI("glfwSetClipboardString")] public static delegate* unmanaged<nint, byte*, void> glfwSetClipboardString;
+        
+        [QGLNativeAPI("glfwGetClipboardString")] public static delegate* unmanaged<nint, byte*> glfwGetClipboardString;
+        
         [QGLNativeAPI("glfwGetTime")] public static delegate* unmanaged<double> glfwGetTime;
+        
         [QGLNativeAPI("glfwSetTime")] public static delegate* unmanaged<double, void> glfwSetTime;
+        
         [QGLNativeAPI("glfwGetTimerValue")] public static delegate* unmanaged<ulong> glfwGetTimerValue;
+        
         [QGLNativeAPI("glfwGetTimerFrequency")] public static delegate* unmanaged<ulong> glfwGetTimerFrequency;
+        
         [QGLNativeAPI("glfwMakeContextCurrent")] public static delegate* unmanaged<nint, void> glfwMakeContextCurrent;
+        
         [QGLNativeAPI("glfwGetCurrentContext")] public static delegate* unmanaged<nint> glfwGetCurrentContext;
+        
         [QGLNativeAPI("glfwSwapBuffers")] public static delegate* unmanaged<nint, void> glfwSwapBuffers;
+        
         [QGLNativeAPI("glfwSwapInterval")] public static delegate* unmanaged<int, void> glfwSwapInterval;
-        [QGLNativeAPI("glfwExtensionSupported")] public static delegate* unmanaged<char*, int> glfwExtensionSupported;
-        [QGLNativeAPI("glfwGetProcAddress")] public static delegate* unmanaged<char*, delegate* unmanaged<void>> glfwGetProcAddress;
+        
+        [QGLNativeAPI("glfwExtensionSupported")] public static delegate* unmanaged<byte*, int> glfwExtensionSupported;
+        
+        [QGLNativeAPI("glfwGetProcAddress")] public static delegate* unmanaged<byte*, nint> glfwGetProcAddress;
+        
         [QGLNativeAPI("glfwVulkanSupported")] public static delegate* unmanaged<int> glfwVulkanSupported;
-        [QGLNativeAPI("glfwGetRequiredInstanceExtensions")] public static delegate* unmanaged<uint*, char**> glfwGetRequiredInstanceExtensions;
+        
+        [QGLNativeAPI("glfwGetRequiredInstanceExtensions")] public static delegate* unmanaged<uint*, byte**> glfwGetRequiredInstanceExtensions;
         #endregion
     }
 }

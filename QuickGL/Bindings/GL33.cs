@@ -22,7 +22,7 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-01-04 01:08:51.543158
+// Bindings generated at 2025-01-04 19:06:28.372314
 namespace QuickGLNS.Bindings
 {
     [GLFeature]
@@ -48,8 +48,8 @@ namespace QuickGLNS.Bindings
         #endregion
         
         #region Commands
-        [QGLNativeAPI("glBindFragDataLocationIndexed")] public static delegate* unmanaged<uint, uint, uint, char*, void> glBindFragDataLocationIndexed;
-        [QGLNativeAPI("glGetFragDataIndex")] public static delegate* unmanaged<uint, char*, int> glGetFragDataIndex;
+        [QGLNativeAPI("glBindFragDataLocationIndexed")] public static delegate* unmanaged<uint, uint, uint, byte*, void> glBindFragDataLocationIndexed;
+        [QGLNativeAPI("glGetFragDataIndex")] public static delegate* unmanaged<uint, byte*, int> glGetFragDataIndex;
         [QGLNativeAPI("glGenSamplers")] public static delegate* unmanaged<int, uint*, void> glGenSamplers;
         [QGLNativeAPI("glDeleteSamplers")] public static delegate* unmanaged<int, uint*, void> glDeleteSamplers;
         [QGLNativeAPI("glIsSampler")] public static delegate* unmanaged<uint, bool> glIsSampler;

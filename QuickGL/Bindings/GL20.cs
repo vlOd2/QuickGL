@@ -22,7 +22,7 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-01-04 01:08:51.537106
+// Bindings generated at 2025-01-04 19:06:28.365911
 namespace QuickGLNS.Bindings
 {
     [GLFeature]
@@ -122,7 +122,7 @@ namespace QuickGLNS.Bindings
         [QGLNativeAPI("glStencilFuncSeparate")] public static delegate* unmanaged<uint, uint, int, uint, void> glStencilFuncSeparate;
         [QGLNativeAPI("glStencilMaskSeparate")] public static delegate* unmanaged<uint, uint, void> glStencilMaskSeparate;
         [QGLNativeAPI("glAttachShader")] public static delegate* unmanaged<uint, uint, void> glAttachShader;
-        [QGLNativeAPI("glBindAttribLocation")] public static delegate* unmanaged<uint, uint, char*, void> glBindAttribLocation;
+        [QGLNativeAPI("glBindAttribLocation")] public static delegate* unmanaged<uint, uint, byte*, void> glBindAttribLocation;
         [QGLNativeAPI("glCompileShader")] public static delegate* unmanaged<uint, void> glCompileShader;
         [QGLNativeAPI("glCreateProgram")] public static delegate* unmanaged<uint> glCreateProgram;
         [QGLNativeAPI("glCreateShader")] public static delegate* unmanaged<uint, uint> glCreateShader;
@@ -131,16 +131,16 @@ namespace QuickGLNS.Bindings
         [QGLNativeAPI("glDetachShader")] public static delegate* unmanaged<uint, uint, void> glDetachShader;
         [QGLNativeAPI("glDisableVertexAttribArray")] public static delegate* unmanaged<uint, void> glDisableVertexAttribArray;
         [QGLNativeAPI("glEnableVertexAttribArray")] public static delegate* unmanaged<uint, void> glEnableVertexAttribArray;
-        [QGLNativeAPI("glGetActiveAttrib")] public static delegate* unmanaged<uint, uint, int, int*, int*, uint*, char*, void> glGetActiveAttrib;
-        [QGLNativeAPI("glGetActiveUniform")] public static delegate* unmanaged<uint, uint, int, int*, int*, uint*, char*, void> glGetActiveUniform;
+        [QGLNativeAPI("glGetActiveAttrib")] public static delegate* unmanaged<uint, uint, int, int*, int*, uint*, byte*, void> glGetActiveAttrib;
+        [QGLNativeAPI("glGetActiveUniform")] public static delegate* unmanaged<uint, uint, int, int*, int*, uint*, byte*, void> glGetActiveUniform;
         [QGLNativeAPI("glGetAttachedShaders")] public static delegate* unmanaged<uint, int, int*, uint*, void> glGetAttachedShaders;
-        [QGLNativeAPI("glGetAttribLocation")] public static delegate* unmanaged<uint, char*, int> glGetAttribLocation;
+        [QGLNativeAPI("glGetAttribLocation")] public static delegate* unmanaged<uint, byte*, int> glGetAttribLocation;
         [QGLNativeAPI("glGetProgramiv")] public static delegate* unmanaged<uint, uint, int*, void> glGetProgramiv;
-        [QGLNativeAPI("glGetProgramInfoLog")] public static delegate* unmanaged<uint, int, int*, char*, void> glGetProgramInfoLog;
+        [QGLNativeAPI("glGetProgramInfoLog")] public static delegate* unmanaged<uint, int, int*, byte*, void> glGetProgramInfoLog;
         [QGLNativeAPI("glGetShaderiv")] public static delegate* unmanaged<uint, uint, int*, void> glGetShaderiv;
-        [QGLNativeAPI("glGetShaderInfoLog")] public static delegate* unmanaged<uint, int, int*, char*, void> glGetShaderInfoLog;
-        [QGLNativeAPI("glGetShaderSource")] public static delegate* unmanaged<uint, int, int*, char*, void> glGetShaderSource;
-        [QGLNativeAPI("glGetUniformLocation")] public static delegate* unmanaged<uint, char*, int> glGetUniformLocation;
+        [QGLNativeAPI("glGetShaderInfoLog")] public static delegate* unmanaged<uint, int, int*, byte*, void> glGetShaderInfoLog;
+        [QGLNativeAPI("glGetShaderSource")] public static delegate* unmanaged<uint, int, int*, byte*, void> glGetShaderSource;
+        [QGLNativeAPI("glGetUniformLocation")] public static delegate* unmanaged<uint, byte*, int> glGetUniformLocation;
         [QGLNativeAPI("glGetUniformfv")] public static delegate* unmanaged<uint, int, float*, void> glGetUniformfv;
         [QGLNativeAPI("glGetUniformiv")] public static delegate* unmanaged<uint, int, int*, void> glGetUniformiv;
         [QGLNativeAPI("glGetVertexAttribdv")] public static delegate* unmanaged<uint, uint, double*, void> glGetVertexAttribdv;
@@ -150,7 +150,7 @@ namespace QuickGLNS.Bindings
         [QGLNativeAPI("glIsProgram")] public static delegate* unmanaged<uint, bool> glIsProgram;
         [QGLNativeAPI("glIsShader")] public static delegate* unmanaged<uint, bool> glIsShader;
         [QGLNativeAPI("glLinkProgram")] public static delegate* unmanaged<uint, void> glLinkProgram;
-        [QGLNativeAPI("glShaderSource")] public static delegate* unmanaged<uint, int, char**, int*, void> glShaderSource;
+        [QGLNativeAPI("glShaderSource")] public static delegate* unmanaged<uint, int, byte**, int*, void> glShaderSource;
         [QGLNativeAPI("glUseProgram")] public static delegate* unmanaged<uint, void> glUseProgram;
         [QGLNativeAPI("glUniform1f")] public static delegate* unmanaged<int, float, void> glUniform1f;
         [QGLNativeAPI("glUniform2f")] public static delegate* unmanaged<int, float, float, void> glUniform2f;

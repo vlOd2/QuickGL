@@ -22,7 +22,7 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-01-04 01:08:51.541642
+// Bindings generated at 2025-01-04 19:06:28.369703
 namespace QuickGLNS.Bindings
 {
     [GLFeature]
@@ -98,12 +98,12 @@ namespace QuickGLNS.Bindings
         [QGLNativeAPI("glTexBuffer")] public static delegate* unmanaged<uint, uint, uint, void> glTexBuffer;
         [QGLNativeAPI("glPrimitiveRestartIndex")] public static delegate* unmanaged<uint, void> glPrimitiveRestartIndex;
         [QGLNativeAPI("glCopyBufferSubData")] public static delegate* unmanaged<uint, uint, nint, nint, nint, void> glCopyBufferSubData;
-        [QGLNativeAPI("glGetUniformIndices")] public static delegate* unmanaged<uint, int, char**, uint*, void> glGetUniformIndices;
+        [QGLNativeAPI("glGetUniformIndices")] public static delegate* unmanaged<uint, int, byte**, uint*, void> glGetUniformIndices;
         [QGLNativeAPI("glGetActiveUniformsiv")] public static delegate* unmanaged<uint, int, uint*, uint, int*, void> glGetActiveUniformsiv;
-        [QGLNativeAPI("glGetActiveUniformName")] public static delegate* unmanaged<uint, uint, int, int*, char*, void> glGetActiveUniformName;
-        [QGLNativeAPI("glGetUniformBlockIndex")] public static delegate* unmanaged<uint, char*, uint> glGetUniformBlockIndex;
+        [QGLNativeAPI("glGetActiveUniformName")] public static delegate* unmanaged<uint, uint, int, int*, byte*, void> glGetActiveUniformName;
+        [QGLNativeAPI("glGetUniformBlockIndex")] public static delegate* unmanaged<uint, byte*, uint> glGetUniformBlockIndex;
         [QGLNativeAPI("glGetActiveUniformBlockiv")] public static delegate* unmanaged<uint, uint, uint, int*, void> glGetActiveUniformBlockiv;
-        [QGLNativeAPI("glGetActiveUniformBlockName")] public static delegate* unmanaged<uint, uint, int, int*, char*, void> glGetActiveUniformBlockName;
+        [QGLNativeAPI("glGetActiveUniformBlockName")] public static delegate* unmanaged<uint, uint, int, int*, byte*, void> glGetActiveUniformBlockName;
         [QGLNativeAPI("glUniformBlockBinding")] public static delegate* unmanaged<uint, uint, uint, void> glUniformBlockBinding;
         [QGLNativeAPI("glBindBufferRange")] public static delegate* unmanaged<uint, uint, uint, nint, nint, void> glBindBufferRange;
         [QGLNativeAPI("glBindBufferBase")] public static delegate* unmanaged<uint, uint, uint, void> glBindBufferBase;

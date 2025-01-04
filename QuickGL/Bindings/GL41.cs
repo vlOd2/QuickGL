@@ -22,7 +22,7 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-01-04 01:08:51.545471
+// Bindings generated at 2025-01-04 19:06:28.374122
 namespace QuickGLNS.Bindings
 {
     [GLFeature]
@@ -77,7 +77,7 @@ namespace QuickGLNS.Bindings
         [QGLNativeAPI("glProgramParameteri")] public static delegate* unmanaged<uint, uint, int, void> glProgramParameteri;
         [QGLNativeAPI("glUseProgramStages")] public static delegate* unmanaged<uint, uint, uint, void> glUseProgramStages;
         [QGLNativeAPI("glActiveShaderProgram")] public static delegate* unmanaged<uint, uint, void> glActiveShaderProgram;
-        [QGLNativeAPI("glCreateShaderProgramv")] public static delegate* unmanaged<uint, int, char**, uint> glCreateShaderProgramv;
+        [QGLNativeAPI("glCreateShaderProgramv")] public static delegate* unmanaged<uint, int, byte**, uint> glCreateShaderProgramv;
         [QGLNativeAPI("glBindProgramPipeline")] public static delegate* unmanaged<uint, void> glBindProgramPipeline;
         [QGLNativeAPI("glDeleteProgramPipelines")] public static delegate* unmanaged<int, uint*, void> glDeleteProgramPipelines;
         [QGLNativeAPI("glGenProgramPipelines")] public static delegate* unmanaged<int, uint*, void> glGenProgramPipelines;
@@ -134,7 +134,7 @@ namespace QuickGLNS.Bindings
         [QGLNativeAPI("glProgramUniformMatrix3x4dv")] public static delegate* unmanaged<uint, int, int, bool, double*, void> glProgramUniformMatrix3x4dv;
         [QGLNativeAPI("glProgramUniformMatrix4x3dv")] public static delegate* unmanaged<uint, int, int, bool, double*, void> glProgramUniformMatrix4x3dv;
         [QGLNativeAPI("glValidateProgramPipeline")] public static delegate* unmanaged<uint, void> glValidateProgramPipeline;
-        [QGLNativeAPI("glGetProgramPipelineInfoLog")] public static delegate* unmanaged<uint, int, int*, char*, void> glGetProgramPipelineInfoLog;
+        [QGLNativeAPI("glGetProgramPipelineInfoLog")] public static delegate* unmanaged<uint, int, int*, byte*, void> glGetProgramPipelineInfoLog;
         [QGLNativeAPI("glVertexAttribL1d")] public static delegate* unmanaged<uint, double, void> glVertexAttribL1d;
         [QGLNativeAPI("glVertexAttribL2d")] public static delegate* unmanaged<uint, double, double, void> glVertexAttribL2d;
         [QGLNativeAPI("glVertexAttribL3d")] public static delegate* unmanaged<uint, double, double, double, void> glVertexAttribL3d;

@@ -21,32 +21,38 @@
 // SOFTWARE.
 
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace QuickGLNS
 {
     /// <summary>
-    /// Convenience class to allow for easy interop with native strings
+    /// Convenience class to allow for easy interop with native ASCII strings
     /// </summary>
     public unsafe class QGLString : IDisposable
     {
-        private bool noDispose;
         private nint data;
+        private bool notOwned;
         public int Length { get; private set; }
+        /// <summary>
+        /// Reads a managed string from the pointer
+        /// </summary>
         public string Data => Marshal.PtrToStringAnsi(data);
-        public char* RawData => (char*)data;
+        /// <summary>
+        /// The pointer behind this string
+        /// </summary>
+        public byte* RawData => (byte*)data;
 
         /// <summary>
-        /// Imports a native null terminated ASCII string
+        /// Imports a native null terminated string
         /// </summary>
         /// <param name="data">the native string</param>
-        public QGLString(char* data)
+        public QGLString(byte* data)
         {
             this.data = (nint)data;
             int idx = 0;
-            while (data[idx++] != 0x00)
-                ;
-            Length = idx;
-            noDispose = true;
+            while (data[idx++] != 0x00);
+            Length = idx - 1;
+            notOwned = true;
         }
 
         /// <summary>
@@ -56,7 +62,7 @@ namespace QuickGLNS
         public QGLString(string data)
         {
             this.data = Marshal.StringToHGlobalAnsi(data);
-            Length = data.Length + 1;
+            Length = Encoding.ASCII.GetByteCount(data);
         }
 
         /// <summary>
@@ -69,22 +75,31 @@ namespace QuickGLNS
             Length = size;
         }
 
-        public static implicit operator char*(QGLString str) => str.RawData;
+        ~QGLString()
+        {
+            Dispose(false);
+        }
+
+        public static implicit operator byte*(QGLString str) => str.RawData;
 
         public static implicit operator string(QGLString str) => str.Data;
 
-        public static implicit operator QGLString(char* data) => new QGLString(data);
+        public static implicit operator QGLString(byte* data) => new(data);
 
-        public static implicit operator QGLString(string data) => new QGLString(data);
+        public static implicit operator QGLString(string data) => new(data);
 
-        /// <summary>
-        /// Frees the native string<br/>
-        /// NOTE: This does nothing on native strings interpreted as managed strings
-        /// </summary>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (notOwned || data == nint.Zero)
+                return;
+            Marshal.FreeHGlobal(data);
+            data = IntPtr.Zero;
+        }
+
         public void Dispose()
         {
-            if (noDispose) return;
-            Marshal.FreeHGlobal(data);
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 }

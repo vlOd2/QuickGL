@@ -22,7 +22,7 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-01-04 01:08:51.544203
+// Bindings generated at 2025-01-04 19:06:28.373255
 namespace QuickGLNS.Bindings
 {
     [GLFeature]
@@ -135,11 +135,11 @@ namespace QuickGLNS.Bindings
         [QGLNativeAPI("glUniformMatrix4x2dv")] public static delegate* unmanaged<int, int, bool, double*, void> glUniformMatrix4x2dv;
         [QGLNativeAPI("glUniformMatrix4x3dv")] public static delegate* unmanaged<int, int, bool, double*, void> glUniformMatrix4x3dv;
         [QGLNativeAPI("glGetUniformdv")] public static delegate* unmanaged<uint, int, double*, void> glGetUniformdv;
-        [QGLNativeAPI("glGetSubroutineUniformLocation")] public static delegate* unmanaged<uint, uint, char*, int> glGetSubroutineUniformLocation;
-        [QGLNativeAPI("glGetSubroutineIndex")] public static delegate* unmanaged<uint, uint, char*, uint> glGetSubroutineIndex;
+        [QGLNativeAPI("glGetSubroutineUniformLocation")] public static delegate* unmanaged<uint, uint, byte*, int> glGetSubroutineUniformLocation;
+        [QGLNativeAPI("glGetSubroutineIndex")] public static delegate* unmanaged<uint, uint, byte*, uint> glGetSubroutineIndex;
         [QGLNativeAPI("glGetActiveSubroutineUniformiv")] public static delegate* unmanaged<uint, uint, uint, uint, int*, void> glGetActiveSubroutineUniformiv;
-        [QGLNativeAPI("glGetActiveSubroutineUniformName")] public static delegate* unmanaged<uint, uint, uint, int, int*, char*, void> glGetActiveSubroutineUniformName;
-        [QGLNativeAPI("glGetActiveSubroutineName")] public static delegate* unmanaged<uint, uint, uint, int, int*, char*, void> glGetActiveSubroutineName;
+        [QGLNativeAPI("glGetActiveSubroutineUniformName")] public static delegate* unmanaged<uint, uint, uint, int, int*, byte*, void> glGetActiveSubroutineUniformName;
+        [QGLNativeAPI("glGetActiveSubroutineName")] public static delegate* unmanaged<uint, uint, uint, int, int*, byte*, void> glGetActiveSubroutineName;
         [QGLNativeAPI("glUniformSubroutinesuiv")] public static delegate* unmanaged<uint, int, uint*, void> glUniformSubroutinesuiv;
         [QGLNativeAPI("glGetUniformSubroutineuiv")] public static delegate* unmanaged<uint, int, uint*, void> glGetUniformSubroutineuiv;
         [QGLNativeAPI("glGetProgramStageiv")] public static delegate* unmanaged<uint, uint, uint, int*, void> glGetProgramStageiv;

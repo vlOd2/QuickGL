@@ -22,7 +22,7 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-01-04 01:08:51.538624
+// Bindings generated at 2025-01-04 19:06:28.367384
 namespace QuickGLNS.Bindings
 {
     [GLFeature]

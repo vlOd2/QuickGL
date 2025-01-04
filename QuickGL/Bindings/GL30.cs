@@ -22,7 +22,7 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-01-04 01:08:51.540024
+// Bindings generated at 2025-01-04 19:06:28.367987
 namespace QuickGLNS.Bindings
 {
     [GLFeature]
@@ -279,8 +279,8 @@ namespace QuickGLNS.Bindings
         [QGLNativeAPI("glEndTransformFeedback")] public static delegate* unmanaged<void> glEndTransformFeedback;
         [QGLNativeAPI("glBindBufferRange")] public static delegate* unmanaged<uint, uint, uint, nint, nint, void> glBindBufferRange;
         [QGLNativeAPI("glBindBufferBase")] public static delegate* unmanaged<uint, uint, uint, void> glBindBufferBase;
-        [QGLNativeAPI("glTransformFeedbackVaryings")] public static delegate* unmanaged<uint, int, char**, uint, void> glTransformFeedbackVaryings;
-        [QGLNativeAPI("glGetTransformFeedbackVarying")] public static delegate* unmanaged<uint, uint, int, int*, int*, uint*, char*, void> glGetTransformFeedbackVarying;
+        [QGLNativeAPI("glTransformFeedbackVaryings")] public static delegate* unmanaged<uint, int, byte**, uint, void> glTransformFeedbackVaryings;
+        [QGLNativeAPI("glGetTransformFeedbackVarying")] public static delegate* unmanaged<uint, uint, int, int*, int*, uint*, byte*, void> glGetTransformFeedbackVarying;
         [QGLNativeAPI("glClampColor")] public static delegate* unmanaged<uint, uint, void> glClampColor;
         [QGLNativeAPI("glBeginConditionalRender")] public static delegate* unmanaged<uint, uint, void> glBeginConditionalRender;
         [QGLNativeAPI("glEndConditionalRender")] public static delegate* unmanaged<void> glEndConditionalRender;
@@ -308,8 +308,8 @@ namespace QuickGLNS.Bindings
         [QGLNativeAPI("glVertexAttribI4ubv")] public static delegate* unmanaged<uint, byte*, void> glVertexAttribI4ubv;
         [QGLNativeAPI("glVertexAttribI4usv")] public static delegate* unmanaged<uint, ushort*, void> glVertexAttribI4usv;
         [QGLNativeAPI("glGetUniformuiv")] public static delegate* unmanaged<uint, int, uint*, void> glGetUniformuiv;
-        [QGLNativeAPI("glBindFragDataLocation")] public static delegate* unmanaged<uint, uint, char*, void> glBindFragDataLocation;
-        [QGLNativeAPI("glGetFragDataLocation")] public static delegate* unmanaged<uint, char*, int> glGetFragDataLocation;
+        [QGLNativeAPI("glBindFragDataLocation")] public static delegate* unmanaged<uint, uint, byte*, void> glBindFragDataLocation;
+        [QGLNativeAPI("glGetFragDataLocation")] public static delegate* unmanaged<uint, byte*, int> glGetFragDataLocation;
         [QGLNativeAPI("glUniform1ui")] public static delegate* unmanaged<int, uint, void> glUniform1ui;
         [QGLNativeAPI("glUniform2ui")] public static delegate* unmanaged<int, uint, uint, void> glUniform2ui;
         [QGLNativeAPI("glUniform3ui")] public static delegate* unmanaged<int, uint, uint, uint, void> glUniform3ui;
