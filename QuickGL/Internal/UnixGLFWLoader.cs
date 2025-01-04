@@ -6,7 +6,7 @@ namespace QuickGLNS.Internal
     {
         private const int RTLD_NOW = 0x02;
         private const int RTLD_GLOBAL = 0x100;
-        private const string LIB_NAME = "/usr/local/lib/libglfw.so.3";
+        private const string LIB_NAME = "libglfw.so.3";
         private nint handle;
         
         [DllImport("libdl.so.2")]
