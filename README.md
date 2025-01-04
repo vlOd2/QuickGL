@@ -1,5 +1,5 @@
 # QuickGL
-Straightforward OpenGL and GLFW bindings for C# .NET 9
+Straightforward OpenGL and GLFW bindings for C# .NET 8
 
 # ⚖ License
 This project is licensed under the MIT license

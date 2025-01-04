@@ -26,6 +26,10 @@ namespace QuickGLNS
             }
         }
         
+        /// <summary>
+        /// Initializes QuickGL and loads GLFW functions
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         public static void Init()
         {
             SetupLoader();
@@ -41,6 +45,10 @@ namespace QuickGLNS
             }
         }
 
+        /// <summary>
+        /// Loads OpenGL functions<br/>
+        /// NOTE: You must have an active OpenGL context, see <see cref="GLFW.glfwMakeContextCurrent"/>
+        /// </summary>
         public static void LoadGL()
         {
             foreach (Type type in Assembly.GetExecutingAssembly().GetTypes())
@@ -63,6 +71,9 @@ namespace QuickGLNS
             }
         }
 
+        /// <summary>
+        /// Cleans up QuickGL and releases any OpenGL and GLFW functions
+        /// </summary>
         public static void Destroy()
         {
             foreach (Type type in Assembly.GetExecutingAssembly().GetTypes())
