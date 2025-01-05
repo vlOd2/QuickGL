@@ -20,10 +20,43 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+using System.Runtime.InteropServices;
+
 namespace QuickGLNS.Internal
 {
-    internal interface IGLFWLoader : IDisposable
+    internal class GLFWLoader
     {
-        nint GetProcAddress(string name);
+        private const string WIN_LIB_NAME = "glfw3.dll";
+        private const string UNIX_LIB_NAME = "libglfw.so.3";
+        private string libName;
+        private nint handle;
+        
+        public GLFWLoader()
+        {
+            PlatformID platform = Environment.OSVersion.Platform;
+            switch (platform)
+            {
+                case PlatformID.Win32NT:
+                    libName = WIN_LIB_NAME;
+                    break;
+                case PlatformID.Unix:
+                    libName = UNIX_LIB_NAME;
+                    break;
+                default:
+                    throw new PlatformNotSupportedException();
+            }
+            handle = NativeLibrary.Load(libName);
+            if (handle == nint.Zero)
+                throw new GLException($"Could not load {libName}");
+        }
+
+        public nint GetProcAddress(string name) => NativeLibrary.GetExport(handle, name);
+        
+        public void Dispose()
+        {
+            if (handle == nint.Zero) return;
+            NativeLibrary.Free(handle);
+            handle = nint.Zero;
+        }
     }
 }

@@ -93,7 +93,7 @@ namespace QuickGLNS
             if (notOwned || data == nint.Zero)
                 return;
             Marshal.FreeHGlobal(data);
-            data = IntPtr.Zero;
+            data = nint.Zero;
         }
 
         public void Dispose()

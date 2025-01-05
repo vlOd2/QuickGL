@@ -1,7 +1,4 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using QuickGLNS;
+﻿using QuickGLNS;
 using QuickGLNS.Bindings;
 using static QuickGLNS.Bindings.GLFW;
 using static QuickGLNS.Bindings.GL10;
@@ -18,18 +15,23 @@ namespace ExampleGameNS
             #version 330 core
         
             layout (location = 0) in vec3 vertex;
+            layout (location = 1) in vec3 color;
+            
+            out vec3 fragColor;
             
             void main() {
                 gl_Position = vec4(vertex, 1.0F);
+                fragColor = color;
             }
         """;
         private const string FRAGMENT_SHADER = """
             #version 330 core
 
+            in vec3 fragColor;
             out vec4 resultColor;
 
             void main() {
-                resultColor = vec4(1.0F, 1.0F, 0.0F, 1.0F);
+                resultColor = vec4(fragColor, 1.0F);
             }
         """;
         private nint window;
@@ -95,27 +97,39 @@ namespace ExampleGameNS
             if (glfwInit() == GLFW_FALSE) 
                 throw new Exception("Failed to initialize GLFW");
 
-            glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-            glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-            glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-            
-            window = glfwCreateWindow(640, 480, new QGLString("Game"), 0, 0);
+            // The driver usually picks the latest version
+            // glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+            // glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+            // glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+            width = 640;
+            height = 480;
+            window = glfwCreateWindow(width, height, new QGLString("QuickGL - Example Game"), 0, 0);
             if (window == 0) throw new Exception("Failed to create window");
             glfwSetWindowSizeCallback(window, sizeCallback = WindowResized);
 
             glfwMakeContextCurrent(window);
             QuickGL.LoadGL();
             Input.Create(window);
+
+            Console.WriteLine($"Vendor: {new QGLString(glGetString(GL_VENDOR)).Data}");
+            Console.WriteLine($"Version: {new QGLString(glGetString(GL_VERSION)).Data}");
+            Console.WriteLine($"Renderer: {new QGLString(glGetString(GL_RENDERER)).Data}");
+            Console.WriteLine($"QGL parsed version: {QuickGL.GLVersionMajor}.{QuickGL.GLVersionMinor}");
+            
+            if (!QuickGL.IsGLVersionAvailable(3, 0))
+                throw new Exception("Required OpenGL version is not available");
         }
         
         public void Run()
         {
             Init();
 
-            ReadOnlySpan<float> vertices = [
-                -0.5F, -0.5F, 0.0F,
-                0.5F, -0.5F, 0.0F,
-                0.0F, 0.5F, 0.0F
+            ReadOnlySpan<float> data = [
+                // Vertices         Colors
+                -0.5F, -0.5F, 0.0F, 1.0F, 0.0F, 0.0F,
+                0.5F, -0.5F, 0.0F,  0.0F, 1.0F, 0.0F,
+                0.0F, 0.5F, 0.0F,   0.0F, 0.0F, 1.0F
             ];
             
             uint vao = 0;
@@ -125,34 +139,34 @@ namespace ExampleGameNS
             glBindVertexArray(vao);
             
             glBindBuffer(GL_ARRAY_BUFFER, vbo);
-            glBufferData(GL_ARRAY_BUFFER, vertices.Length * sizeof(float), QuickGL.ToPtr(vertices), GL_STATIC_DRAW);
-            glVertexAttribPointer(0, 3, GL_FLOAT, false, 3 * sizeof(float), (void*)0);
+            glBufferData(GL_ARRAY_BUFFER, data.Length * sizeof(float), QuickGL.ToPtr(data), GL_STATIC_DRAW);
+            glVertexAttribPointer(0, 3, GL_FLOAT, false, 6 * sizeof(float), (void*)0);
             glEnableVertexAttribArray(0);
+            glVertexAttribPointer(1, 3, GL_FLOAT, false, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+            glEnableVertexAttribArray(1);
 
             uint program = LinkProgram();
-            glViewport(0, 0, 640, 480);
-            glClearColor(1.0F, 0.0F, 0.0F, 1.0F);
+            glViewport(0, 0, width, height);
+            glClearColor(0.3F, 0.5F, 0.8F, 1.0F);
             
             while (glfwWindowShouldClose(window) == GLFW_FALSE)
             {
                 IKeyboard keyboard = Input.GetKeyboard(window);
                 while (keyboard.Next())
-                {
                     Console.WriteLine($"{keyboard.EventKey} {keyboard.EventChar} {keyboard.EventState}");
-                }
                 
                 glClear(GL_COLOR_BUFFER_BIT);
                 glUseProgram(program);
                 glBindVertexArray(vao);
-                glDrawArrays(GL_TRIANGLES, 0, vertices.Length / 3);
+                glDrawArrays(GL_TRIANGLES, 0, data.Length / 6);
                 
                 glfwPollEvents();
                 Input.Poll(window);
                 glfwSwapBuffers(window);
                 
-                // Force GC to be aggresive
-                // This would cause a non-referenced callback
-                // to become null, resulting in a crash
+                // If you uncomment this, it will force the GC to be aggresive
+                // You can use this to test the callbacks as this would 
+                // cause a non-referenced callback to become null, resulting in a crash
                 // GC.AddMemoryPressure(uint.MaxValue);
                 // GC.Collect();
                 // GC.RemoveMemoryPressure(uint.MaxValue);

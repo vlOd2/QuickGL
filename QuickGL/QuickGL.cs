@@ -22,7 +22,7 @@
 
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using QuickGLNS.Bindings;
 using QuickGLNS.Internal;
 
@@ -31,31 +31,24 @@ namespace QuickGLNS
     public static unsafe class QuickGL
     {
         private const BindingFlags BINDING_FLAGS = BindingFlags.Public | BindingFlags.Static;
-        private static IGLFWLoader glfwLoader;
+        private static GLFWLoader glfwLoader;
+        private static bool initialized;
+        /// <summary>
+        /// The major version of the current OpenGL context
+        /// </summary>
+        public static int GLVersionMajor { get; private set; }
+        /// <summary>
+        /// The minor version of the current OpenGL context
+        /// </summary>
+        public static int GLVersionMinor { get; private set; }
 
-        private static void SetupLoader()
-        {
-            PlatformID platform = Environment.OSVersion.Platform;
-            switch (platform)
-            {
-                case PlatformID.Win32NT:
-                    glfwLoader = new Win32GLFWLoader();
-                    break;
-                case PlatformID.Unix:
-                    glfwLoader = new UnixGLFWLoader();
-                    break;
-                default:
-                    throw new PlatformNotSupportedException();
-            }
-        }
-        
         /// <summary>
         /// Initializes QuickGL and loads GLFW functions
         /// </summary>
-        /// <exception cref="Exception">if a GLFW method could not be found</exception>
+        /// <exception cref="GLException">if GLFW could not be loaded successfully</exception>
         public static void Init()
         {
-            SetupLoader();
+            glfwLoader = new GLFWLoader();
             
             foreach (FieldInfo field in typeof(GLFW).GetFields(BINDING_FLAGS))
             {
@@ -63,44 +56,77 @@ namespace QuickGLNS
                 if (nativeAPI == null) continue;
                 nint handle = glfwLoader.GetProcAddress(nativeAPI.Name);
                 if (handle == nint.Zero)
-                    throw new Exception($"Could not find GLFW method: {nativeAPI.Name}");
+                {
+                    Destroy();
+                    throw new GLException($"Could not find GLFW method: {nativeAPI.Name}");
+                }
                 field.SetValue(null, handle);
             }
+
+            initialized = true;
+        }
+
+        private static void ParseGLVersion()
+        {
+            nint handle = GLFW.glfwGetProcAddress(new QGLString("glGetString"));
+            if (handle == nint.Zero) 
+                throw new GLException("Could not initialize OpenGL");
+            
+            GL10.glGetString = (delegate*unmanaged<uint, byte*>)handle;
+            byte* strPtr = GL10.glGetString(GL10.GL_VERSION);
+            if (strPtr == null) 
+                throw new GLException("Invalid OpenGL context");
+            
+            Match match = Regex.Match(new QGLString(strPtr), @"(\d)\.(\d)(?:\.\d)?(?= )");
+            if (!match.Success) throw new GLException("Could not figure out OpenGL version");
+            GLVersionMajor = int.Parse(match.Groups[1].Value);
+            GLVersionMinor = int.Parse(match.Groups[2].Value);
         }
 
         /// <summary>
         /// Loads OpenGL functions<br/>
         /// NOTE: You must have an active OpenGL context, see <see cref="GLFW.glfwMakeContextCurrent"/>
-        /// <returns>the types of the loaded OpenGL bindings that you may use</returns>
         /// </summary>
-        public static List<Type> LoadGL()
+        /// <exception cref="GLException"></exception>
+        public static void LoadGL()
         {
-            List<Type> loaded = [];
+            if (!initialized)
+                throw new GLException("Not initialized");
+            if (GLFW.glfwGetCurrentContext() == 0)
+                throw new GLException("No OpenGL context found");
+            ParseGLVersion();
             
             foreach (Type type in Assembly.GetExecutingAssembly().GetTypes())
             {
                 if (type.GetCustomAttribute<GLFeature>() == null)
                     continue;
 
-                bool failed = false;
                 foreach (FieldInfo field in type.GetFields(BINDING_FLAGS))
                 {
                     QGLNativeAPI nativeAPI = field.GetCustomAttribute<QGLNativeAPI>();
                     if (nativeAPI == null) continue;
                     nint handle = GLFW.glfwGetProcAddress(new QGLString(nativeAPI.Name));
-                    if (handle == nint.Zero)
-                    {
-                        failed = true;
-                        break;
-                    }
+                    // The result could be anything even if the command doesn't exist, so this is useless
+                    // if (handle == nint.Zero) break;
                     field.SetValue(null, handle);
                 }
-
-                if (failed) continue;
-                loaded.Add(type);
             }
+        }
 
-            return loaded;
+        /// <summary>
+        /// Checks if the given OpenGL version can be used
+        /// </summary>
+        /// <param name="major">the major part of the version</param>
+        /// <param name="minor">the minor part of the version</param>
+        /// <returns>true if the version can be used, false if otherwise</returns>
+        /// <exception cref="GLException">if not initialized or no context is found</exception>
+        public static bool IsGLVersionAvailable(int major, int minor)
+        {
+            if (!initialized)
+                throw new GLException("Not initialized");
+            if (GLFW.glfwGetCurrentContext() == 0 || GLVersionMajor == 0)
+                throw new GLException("No OpenGL context found");
+            return GLVersionMajor > major || (GLVersionMajor == major && GLVersionMinor >= minor);
         }
 
         /// <summary>
@@ -130,6 +156,8 @@ namespace QuickGLNS
 
             glfwLoader.Dispose();
             glfwLoader = null;
+            GLVersionMajor = GLVersionMinor = 0;
+            initialized = false;
         }
         
         /// <summary>
