@@ -28,13 +28,12 @@ namespace QuickGLNS.Internal
     {
         private const string WIN_LIB_NAME = "glfw3.dll";
         private const string UNIX_LIB_NAME = "libglfw.so.3";
-        private string libName;
         private nint handle;
         
         public GLFWLoader()
         {
-            PlatformID platform = Environment.OSVersion.Platform;
-            switch (platform)
+            string libName;
+            switch (Environment.OSVersion.Platform)
             {
                 case PlatformID.Win32NT:
                     libName = WIN_LIB_NAME;
