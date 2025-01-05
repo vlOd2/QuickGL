@@ -1,6 +1,5 @@
 ﻿using QuickGLNS;
 using QuickGLNS.Bindings;
-using QuickGLNS.Internal;
 using static QuickGLNS.Bindings.GLFW;
 using static QuickGLNS.Bindings.GL10;
 using static QuickGLNS.Bindings.GL11;
