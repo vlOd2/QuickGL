@@ -54,7 +54,7 @@ namespace QuickGLNS.Internal
             this.window = window;
             glfwSetKeyCallback(window, keyCallback = KeyCallback);
             glfwSetCharCallback(window, charCallback = CharCallback);
-            for (int i = GLFW_KEY_SPACE; i <= GLFW_KEY_MENU; i++) keys[i] = false;
+            for (int i = GLFW_KEY_SPACE; i <= GLFW_KEY_LAST; i++) keys[i] = false;
         }
         
         private static char ConvertCodepoint(uint code)

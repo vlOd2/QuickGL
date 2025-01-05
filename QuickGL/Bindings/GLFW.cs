@@ -23,7 +23,7 @@
 using System.Runtime.InteropServices;
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-01-04 23:05:39.353198
+// Bindings generated at 2025-01-05 21:52:32.567771
 namespace QuickGLNS.Bindings
 {
     #region Callbacks
@@ -158,6 +158,10 @@ namespace QuickGLNS.Bindings
         public const int GLFW_HAT_RIGHT = 0x2;
         public const int GLFW_HAT_DOWN = 0x4;
         public const int GLFW_HAT_LEFT = 0x8;
+        public const uint GLFW_HAT_RIGHT_UP = (GLFW_HAT_RIGHT | GLFW_HAT_UP);
+        public const uint GLFW_HAT_RIGHT_DOWN = (GLFW_HAT_RIGHT | GLFW_HAT_DOWN);
+        public const uint GLFW_HAT_LEFT_UP = (GLFW_HAT_LEFT  | GLFW_HAT_UP);
+        public const uint GLFW_HAT_LEFT_DOWN = (GLFW_HAT_LEFT  | GLFW_HAT_DOWN);
         public const int GLFW_KEY_UNKNOWN = -0x1;
         public const int GLFW_KEY_SPACE = 0x20;
         public const int GLFW_KEY_APOSTROPHE = 0x27;
@@ -279,6 +283,7 @@ namespace QuickGLNS.Bindings
         public const int GLFW_KEY_RIGHT_ALT = 0x15A;
         public const int GLFW_KEY_RIGHT_SUPER = 0x15B;
         public const int GLFW_KEY_MENU = 0x15C;
+        public const uint GLFW_KEY_LAST = GLFW_KEY_MENU;
         public const int GLFW_MOD_SHIFT = 0x1;
         public const int GLFW_MOD_CONTROL = 0x2;
         public const int GLFW_MOD_ALT = 0x4;
@@ -293,6 +298,10 @@ namespace QuickGLNS.Bindings
         public const int GLFW_MOUSE_BUTTON_6 = 0x5;
         public const int GLFW_MOUSE_BUTTON_7 = 0x6;
         public const int GLFW_MOUSE_BUTTON_8 = 0x7;
+        public const uint GLFW_MOUSE_BUTTON_LAST = GLFW_MOUSE_BUTTON_8;
+        public const uint GLFW_MOUSE_BUTTON_LEFT = GLFW_MOUSE_BUTTON_1;
+        public const uint GLFW_MOUSE_BUTTON_RIGHT = GLFW_MOUSE_BUTTON_2;
+        public const uint GLFW_MOUSE_BUTTON_MIDDLE = GLFW_MOUSE_BUTTON_3;
         public const int GLFW_JOYSTICK_1 = 0x0;
         public const int GLFW_JOYSTICK_2 = 0x1;
         public const int GLFW_JOYSTICK_3 = 0x2;
@@ -309,6 +318,7 @@ namespace QuickGLNS.Bindings
         public const int GLFW_JOYSTICK_14 = 0xD;
         public const int GLFW_JOYSTICK_15 = 0xE;
         public const int GLFW_JOYSTICK_16 = 0xF;
+        public const uint GLFW_JOYSTICK_LAST = GLFW_JOYSTICK_16;
         public const int GLFW_GAMEPAD_BUTTON_A = 0x0;
         public const int GLFW_GAMEPAD_BUTTON_B = 0x1;
         public const int GLFW_GAMEPAD_BUTTON_X = 0x2;
@@ -324,12 +334,18 @@ namespace QuickGLNS.Bindings
         public const int GLFW_GAMEPAD_BUTTON_DPAD_RIGHT = 0xC;
         public const int GLFW_GAMEPAD_BUTTON_DPAD_DOWN = 0xD;
         public const int GLFW_GAMEPAD_BUTTON_DPAD_LEFT = 0xE;
+        public const uint GLFW_GAMEPAD_BUTTON_LAST = GLFW_GAMEPAD_BUTTON_DPAD_LEFT;
+        public const uint GLFW_GAMEPAD_BUTTON_CROSS = GLFW_GAMEPAD_BUTTON_A;
+        public const uint GLFW_GAMEPAD_BUTTON_CIRCLE = GLFW_GAMEPAD_BUTTON_B;
+        public const uint GLFW_GAMEPAD_BUTTON_SQUARE = GLFW_GAMEPAD_BUTTON_X;
+        public const uint GLFW_GAMEPAD_BUTTON_TRIANGLE = GLFW_GAMEPAD_BUTTON_Y;
         public const int GLFW_GAMEPAD_AXIS_LEFT_X = 0x0;
         public const int GLFW_GAMEPAD_AXIS_LEFT_Y = 0x1;
         public const int GLFW_GAMEPAD_AXIS_RIGHT_X = 0x2;
         public const int GLFW_GAMEPAD_AXIS_RIGHT_Y = 0x3;
         public const int GLFW_GAMEPAD_AXIS_LEFT_TRIGGER = 0x4;
         public const int GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER = 0x5;
+        public const uint GLFW_GAMEPAD_AXIS_LAST = GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER;
         public const int GLFW_NO_ERROR = 0x0;
         public const int GLFW_NOT_INITIALIZED = 0x10001;
         public const int GLFW_NO_CURRENT_CONTEXT = 0x10002;
@@ -383,6 +399,7 @@ namespace QuickGLNS.Bindings
         public const int GLFW_CONTEXT_ROBUSTNESS = 0x22005;
         public const int GLFW_OPENGL_FORWARD_COMPAT = 0x22006;
         public const int GLFW_CONTEXT_DEBUG = 0x22007;
+        public const uint GLFW_OPENGL_DEBUG_CONTEXT = GLFW_CONTEXT_DEBUG;
         public const int GLFW_OPENGL_PROFILE = 0x22008;
         public const int GLFW_CONTEXT_RELEASE_BEHAVIOR = 0x22009;
         public const int GLFW_CONTEXT_NO_ERROR = 0x2200;
@@ -442,6 +459,9 @@ namespace QuickGLNS.Bindings
         public const int GLFW_RESIZE_NESW_CURSOR = 0x36008;
         public const int GLFW_RESIZE_ALL_CURSOR = 0x36009;
         public const int GLFW_NOT_ALLOWED_CURSOR = 0x3600;
+        public const uint GLFW_HRESIZE_CURSOR = GLFW_RESIZE_EW_CURSOR;
+        public const uint GLFW_VRESIZE_CURSOR = GLFW_RESIZE_NS_CURSOR;
+        public const uint GLFW_HAND_CURSOR = GLFW_POINTING_HAND_CURSOR;
         public const int GLFW_CONNECTED = 0x40001;
         public const int GLFW_DISCONNECTED = 0x40002;
         public const int GLFW_JOYSTICK_HAT_BUTTONS = 0x50001;

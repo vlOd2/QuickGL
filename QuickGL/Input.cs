@@ -55,6 +55,19 @@ namespace QuickGLNS
         }
 
         /// <summary>
+        /// Gets the first available mouse<br/>
+        /// Useful if you have only a single window
+        /// </summary>
+        /// <returns>the mouse</returns>
+        /// <exception cref="InvalidOperationException">if there is no mouse available</exception>
+        public static IMouse GetFirstMouse()
+        {
+            if (mouse.Count == 0)
+                throw new InvalidOperationException("No mouse has been created");
+            return mouse.First().Value;
+        }
+        
+        /// <summary>
         /// Gets the first available keyboard<br/>
         /// Useful if you have only a single window
         /// </summary>
@@ -68,6 +81,18 @@ namespace QuickGLNS
         }
         
         /// <summary>
+        /// Gets the mouse associated with the given window
+        /// </summary>
+        /// <param name="window">the window</param>
+        /// <returns>the mouse</returns>
+        /// <exception cref="ArgumentException">if an input system is not assigned</exception>
+        public static IMouse GetMouse(nint window)
+        {
+            EnsureCreated(window);
+            return mouse[window];
+        }
+        
+        /// <summary>
         /// Gets the keyboard associated with the given window
         /// </summary>
         /// <param name="window">the window</param>
@@ -78,7 +103,7 @@ namespace QuickGLNS
             EnsureCreated(window);
             return keyboard[window];
         }
-
+        
         /// <summary>
         /// Destroys the input system allocated for the given window
         /// </summary>

@@ -20,20 +20,101 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+using QuickGLNS.Bindings;
+using static QuickGLNS.Bindings.GLFW;
+
 namespace QuickGLNS.Internal
 {
-    public class Mouse : IMouse
+    public unsafe class Mouse : IMouse
     {
-        public void Init(nint window)
+        private nint window;
+        private GLFWcursorposfun positionCallback;
+        private GLFWmousebuttonfun buttonCallback;
+        private readonly bool[] buttons = new bool[3];
+        private readonly Queue<MouseButtonEvent> events = [];
+        private readonly object eventLock = new();
+        private MouseButtonEvent currentEvent;
+        private int xo;
+        private int yo;
+        private int xd;
+        private int yd;
+        public int X => xo;
+        public int Y => yo;
+        public int DX => xd;
+        public int DY => yd;
+        public int Wheel { get; }
+        public int EventButton { get; }
+        public bool EventState { get; }
+        public bool Captured
         {
+            get => glfwGetInputMode(window, GLFW_CURSOR) == GLFW_CURSOR_DISABLED;
+            set => glfwSetInputMode(window, GLFW_CURSOR, value ? GLFW_CURSOR_DISABLED : GLFW_CURSOR_NORMAL);
         }
 
-        public void Poll()
+        private struct MouseButtonEvent
+        {
+            public int Button;
+            public bool State;
+            public bool Valid;
+        }
+
+        public void Init(nint window)
+        {
+            this.window = window;
+            if (glfwRawMouseMotionSupported() != GLFW_FALSE)
+                glfwSetInputMode(window, GLFW_RAW_MOUSE_MOTION, GLFW_TRUE);
+            glfwSetCursorPosCallback(window, positionCallback = PositionCallback);
+            glfwSetMouseButtonCallback(window, buttonCallback = ButtonCallback);
+        }
+
+        private void PositionCallback(nint _, double xpos, double ypos)
+        {
+            int x = (int)xpos;
+            int y = (int)ypos;
+            int xd = x - xo;
+            int yd = y - yo;
+            if (Captured)
+            {
+                this.xd += xd;
+                this.yd += yd;   
+            }
+            else
+            {
+                this.xd = xd;
+                this.yd = yd;   
+            }
+            xo = x;
+            yo = y;
+        }
+
+        private void ButtonCallback(nint _, int button, int action, int mods)
         {
         }
         
+        public bool Next()
+        {
+            lock (eventLock)
+            {
+                if (events.Count == 0)
+                {
+                    currentEvent = new();
+                    return false;
+                }
+                while (events.Count > 0 && !(currentEvent = events.Dequeue()).Valid);
+                if (events.Count == 0 && !currentEvent.Valid)
+                    return false;
+                return true;   
+            }
+        }
+
+        public bool GetButtonState(int id) => false;
+        
         public void Dispose()
         {
+            glfwSetCursorPosCallback(window, null);
+            glfwSetMouseButtonCallback(window, null);
+            positionCallback = null;
+            buttonCallback = null;
         }
     }
 }

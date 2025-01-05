@@ -24,8 +24,25 @@ namespace QuickGLNS
 {
     public interface IMouse : IDisposable
     {
+        int X { get; }
+        int Y { get; }
+        int DX { get; }
+        int DY { get; }
+        int Wheel { get; }
+        int EventButton { get; }
+        bool EventState { get; }
+        bool Captured { get; set; }
+        
         void Init(nint window);
 
-        void Poll();
+        /// <summary>
+        /// De-queues the next event<br/>
+        /// NOTE: Accessing any event information 
+        /// when this returns false is undefined
+        /// </summary>
+        /// <returns>if an event was de-queued</returns>
+        bool Next();
+        
+        bool GetButtonState(int id);
     }
 }
