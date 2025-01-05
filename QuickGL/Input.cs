@@ -80,18 +80,6 @@ namespace QuickGLNS
         }
 
         /// <summary>
-        /// Polls the input devices for the given window
-        /// </summary>
-        /// <param name="window">the window</param>
-        /// <exception cref="ArgumentException">if an input system is not assigned</exception>
-        public static void Poll(nint window)
-        {
-            EnsureCreated(window);
-            mouse[window].Poll();
-            keyboard[window].Poll();
-        }
-        
-        /// <summary>
         /// Destroys the input system allocated for the given window
         /// </summary>
         /// <param name="window">the window</param>

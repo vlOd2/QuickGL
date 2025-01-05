@@ -28,10 +28,6 @@ namespace QuickGLNS
     public enum KeyState
     {
         /// <summary>
-        /// If the key is invalid and the event contains character data
-        /// </summary>
-        CHARACTER = -1,
-        /// <summary>
         /// If the key has been released
         /// </summary>
         RELEASED = 0,

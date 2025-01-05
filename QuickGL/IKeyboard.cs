@@ -27,28 +27,38 @@ namespace QuickGLNS
     /// </summary>
     public interface IKeyboard : IDisposable
     {
+        #region Event properties
         /// <summary>
-        /// The key of the current event<br/>
-        /// Undefined if the current event is a character event<br/>
-        /// See <see cref="EventState"/> and <see cref="KeyState"/>
-        /// to check for a character event
+        /// The key of the current event
         /// </summary>
         public int EventKey { get; }
         /// <summary>
-        /// The character of the current event<br/>
-        /// Undefined if the current event is not a character event<br/>
-        /// See <see cref="EventState"/> and <see cref="KeyState"/>
-        /// to check for a character event
+        /// The character of the current event or null if not applicable
         /// </summary>
         public char EventChar { get; }
         /// <summary>
         /// The key state of the current event
         /// </summary>
         public KeyState EventState { get; }
-
+        /// <summary>
+        /// Does the current event indicate a key press
+        /// </summary>
+        public bool IsPressedEvent => EventState == KeyState.PRESSED || EventState == KeyState.REPEATED; 
+        #endregion
+        #region Keyboard settings
+        /// <summary>
+        /// Whether to send repeat events
+        /// </summary>
+        bool AllowRepeatEvents { get; set; }
+        /// <summary>
+        /// Whether to use fast mode or not<br/>
+        /// Fast mode does not wait for character events,
+        /// so key events are received faster at the cost of characters
+        /// </summary>
+        bool FastMode { get; set; }
+        #endregion
+        
         void Init(nint window);
-
-        void Poll();
 
         /// <summary>
         /// De-queues the next event<br/>

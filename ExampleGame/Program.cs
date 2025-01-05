@@ -1,5 +1,6 @@
 ﻿using QuickGLNS;
 using QuickGLNS.Bindings;
+using QuickGLNS.Internal;
 using static QuickGLNS.Bindings.GLFW;
 using static QuickGLNS.Bindings.GL10;
 using static QuickGLNS.Bindings.GL11;
@@ -153,7 +154,21 @@ namespace ExampleGameNS
             {
                 IKeyboard keyboard = Input.GetKeyboard(window);
                 while (keyboard.Next())
+                {
                     Console.WriteLine($"{keyboard.EventKey} {keyboard.EventChar} {keyboard.EventState}");
+                    if (!keyboard.IsPressedEvent) 
+                        continue;
+                    if (keyboard.EventKey == GLFW_KEY_R)
+                    {
+                        keyboard.AllowRepeatEvents = !keyboard.AllowRepeatEvents;
+                        Console.WriteLine($"Repeat events: {keyboard.AllowRepeatEvents}");
+                    }
+                    if (keyboard.EventKey == GLFW_KEY_F)
+                    {
+                        keyboard.FastMode = !keyboard.FastMode;
+                        Console.WriteLine($"Fast mode: {keyboard.FastMode}");
+                    }
+                }
                 
                 glClear(GL_COLOR_BUFFER_BIT);
                 glUseProgram(program);
@@ -161,7 +176,6 @@ namespace ExampleGameNS
                 glDrawArrays(GL_TRIANGLES, 0, data.Length / 6);
                 
                 glfwPollEvents();
-                Input.Poll(window);
                 glfwSwapBuffers(window);
                 
                 // If you uncomment this, it will force the GC to be aggresive

@@ -30,14 +30,16 @@ namespace QuickGLNS.Internal
         private nint window;
         private GLFWkeyfun keyCallback;
         private GLFWcharfun charCallback;
-        private Dictionary<int, bool> keys = [];
-        private Queue<KeyEvent> events = [];
-        private object eventLock = new();
+        private readonly Dictionary<int, bool> keys = [];
+        private readonly Queue<KeyEvent> events = [];
+        private readonly object eventLock = new();
         private KeyEvent pendingEvent;
         private KeyEvent currentEvent;
         public int EventKey => currentEvent.Key;
         public char EventChar => currentEvent.Character;
         public KeyState EventState => currentEvent.State;
+        public bool AllowRepeatEvents { get; set; }
+        public bool FastMode { get; set; }
         
         private struct KeyEvent
         {
@@ -77,15 +79,18 @@ namespace QuickGLNS.Internal
             {
                 bool prevState = keys.ContainsKey(key) && keys[key];
                 bool state = action == GLFW_PRESS || action == GLFW_REPEAT;
-
+                keys[key] = state;
+                
                 KeyState keyState;
                 if (state && !prevState)
                     keyState = KeyState.PRESSED;
                 else if (!state && prevState)
                     keyState = KeyState.RELEASED;
                 else
+                {
+                    if (!AllowRepeatEvents) return;
                     keyState = KeyState.REPEATED;
-                keys[key] = state;
+                }
                 
                 pendingEvent = new()
                 {
@@ -93,31 +98,24 @@ namespace QuickGLNS.Internal
                     State = keyState,
                     Valid = true
                 };
+
+                if (!FastMode && state && key <= 0x7F) 
+                    return;
+                events.Enqueue(pendingEvent);
+                pendingEvent.Valid = false;
             }
         }
         
         private void CharCallback(nint _, uint code)
         {
-            lock (eventLock)
-            {
-                pendingEvent = new()
-                {
-                    Key = -1,
-                    Character = ConvertCodepoint(code),
-                    State = KeyState.CHARACTER,
-                    Valid = true
-                };
-            }
-        }
-
-        public void Poll()
-        {
+            if (FastMode) return;
             lock (eventLock)
             {
                 if (!pendingEvent.Valid)
                     return;
+                pendingEvent.Character = ConvertCodepoint(code);
                 events.Enqueue(pendingEvent);
-                pendingEvent = new();   
+                pendingEvent.Valid = false;
             }
         }
 
