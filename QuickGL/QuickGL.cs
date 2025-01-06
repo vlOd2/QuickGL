@@ -28,6 +28,9 @@ using QuickGLNS.Internal;
 
 namespace QuickGLNS
 {
+    /// <summary>
+    /// Class to load and manage GLFW, OpenGL with additional utilities
+    /// </summary>
     public static unsafe class QuickGL
     {
         private const BindingFlags BINDING_FLAGS = BindingFlags.Public | BindingFlags.Static;

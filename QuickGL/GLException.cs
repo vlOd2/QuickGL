@@ -22,6 +22,9 @@
 
 namespace QuickGLNS
 {
+    /// <summary>
+    /// Represents an error that can occur during an OpenGL operation
+    /// </summary>
     public class GLException : Exception
     {
         public GLException(string message) : base(message)

@@ -22,6 +22,9 @@
 
 namespace QuickGLNS
 {
+    /// <summary>
+    /// Simple event-queue based mouse for GLFW
+    /// </summary>
     public interface IMouse : IDisposable
     {
         #region General properties
