@@ -30,7 +30,7 @@ namespace QuickGLNS.Internal
         private nint window;
         private GLFWcursorposfun positionCallback;
         private GLFWmousebuttonfun buttonCallback;
-        private readonly bool[] buttons = new bool[3];
+        private readonly bool[] buttons = new bool[GLFW_MOUSE_BUTTON_LAST];
         private readonly Queue<MouseButtonEvent> events = [];
         private readonly object eventLock = new();
         private MouseButtonEvent currentEvent;
@@ -40,11 +40,27 @@ namespace QuickGLNS.Internal
         private int yd;
         public int X => xo;
         public int Y => yo;
-        public int DX => xd;
-        public int DY => yd;
+        public int DX
+        {
+            get
+            {
+                int dx = xd;
+                xd = 0;
+                return dx;
+            }
+        }
+        public int DY
+        {
+            get
+            {
+                int dy = yd;
+                yd = 0;
+                return dy;
+            }
+        }
         public int Wheel { get; }
-        public int EventButton { get; }
-        public bool EventState { get; }
+        public int EventButton => currentEvent.Button;
+        public bool EventState => currentEvent.State;
         public bool Captured
         {
             get => glfwGetInputMode(window, GLFW_CURSOR) == GLFW_CURSOR_DISABLED;
@@ -89,6 +105,16 @@ namespace QuickGLNS.Internal
 
         private void ButtonCallback(nint _, int button, int action, int mods)
         {
+            lock (eventLock)
+            {
+                buttons[button] = action == GLFW_PRESS;
+                events.Enqueue(new()
+                {
+                    Button = button,
+                    State = buttons[button],
+                    Valid = true
+                });
+            }
         }
         
         public bool Next()
@@ -97,7 +123,7 @@ namespace QuickGLNS.Internal
             {
                 if (events.Count == 0)
                 {
-                    currentEvent = new();
+                    currentEvent.Valid = false;
                     return false;
                 }
                 while (events.Count > 0 && !(currentEvent = events.Dequeue()).Valid);

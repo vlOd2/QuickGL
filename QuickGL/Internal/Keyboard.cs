@@ -129,7 +129,7 @@ namespace QuickGLNS.Internal
             {
                 if (events.Count == 0)
                 {
-                    currentEvent = new();
+                    currentEvent.Valid = false;
                     return false;
                 }
                 while (events.Count > 0 && !IsValidEvent(currentEvent = events.Dequeue()));

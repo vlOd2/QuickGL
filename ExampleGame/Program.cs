@@ -1,5 +1,6 @@
 ﻿using QuickGLNS;
 using QuickGLNS.Bindings;
+using QuickGLNS.Internal;
 using static QuickGLNS.Bindings.GLFW;
 using static QuickGLNS.Bindings.GL10;
 using static QuickGLNS.Bindings.GL11;
@@ -107,7 +108,8 @@ namespace ExampleGameNS
             window = glfwCreateWindow(width, height, new QGLString("QuickGL - Example Game"), 0, 0);
             if (window == 0) throw new Exception("Failed to create window");
             glfwSetWindowSizeCallback(window, sizeCallback = WindowResized);
-
+            glfwSwapInterval(0);
+            
             glfwMakeContextCurrent(window);
             QuickGL.LoadGL();
             Input.Create(window);
@@ -151,10 +153,12 @@ namespace ExampleGameNS
             
             while (glfwWindowShouldClose(window) == GLFW_FALSE)
             {
+                IMouse mouse = Input.GetMouse(window);
                 IKeyboard keyboard = Input.GetKeyboard(window);
+                
                 while (keyboard.Next())
                 {
-                    Console.WriteLine($"{keyboard.EventKey} {keyboard.EventChar} {keyboard.EventState}");
+                    Console.WriteLine($"Keyboard: {keyboard.EventKey} {keyboard.EventChar} {keyboard.EventState}");
                     if (!keyboard.IsPressedEvent) 
                         continue;
                     if (keyboard.EventKey == GLFW_KEY_R)
@@ -168,6 +172,12 @@ namespace ExampleGameNS
                         Console.WriteLine($"Fast mode: {keyboard.FastMode}");
                     }
                 }
+
+                while (mouse.Next())
+                {
+                    Console.WriteLine($"Mouse: {mouse.EventButton} {mouse.EventState}");
+                }
+                // Console.WriteLine($"Mouse delta -> X:{mouse.DX} Y:{mouse.DY}");
                 
                 glClear(GL_COLOR_BUFFER_BIT);
                 glUseProgram(program);
