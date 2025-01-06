@@ -1,6 +1,6 @@
-﻿using QuickGLNS;
+﻿using System.Numerics;
+using QuickGLNS;
 using QuickGLNS.Bindings;
-using QuickGLNS.Internal;
 using static QuickGLNS.Bindings.GLFW;
 using static QuickGLNS.Bindings.GL10;
 using static QuickGLNS.Bindings.GL11;
@@ -18,11 +18,15 @@ namespace ExampleGameNS
             layout (location = 0) in vec3 vertex;
             layout (location = 1) in vec3 color;
             
+            uniform float time;
+            uniform mat4 projMatrix;
+            uniform mat4 viewMatrix;
+            
             out vec3 fragColor;
             
             void main() {
-                gl_Position = vec4(vertex, 1.0F);
-                fragColor = color;
+                gl_Position = projMatrix * viewMatrix * vec4(vertex, 1.0F);
+                fragColor = color * sin(time);
             }
         """;
         private const string FRAGMENT_SHADER = """
@@ -40,6 +44,11 @@ namespace ExampleGameNS
         private int height;
         // Need to keep a reference otherwise the GC will collect it
         private GLFWwindowsizefun sizeCallback;
+        private float cameraX;
+        private float cameraY;
+        private float cameraZ;
+        private float cameraYaw;
+        private float cameraPitch;
         
         private static uint CompileShader(uint type, string source)
         {
@@ -113,6 +122,7 @@ namespace ExampleGameNS
             glfwMakeContextCurrent(window);
             QuickGL.LoadGL();
             Input.Create(window);
+            Input.GetMouse(window).Captured = true;
 
             Console.WriteLine($"Vendor: {new QGLString(glGetString(GL_VENDOR)).Data}");
             Console.WriteLine($"Version: {new QGLString(glGetString(GL_VERSION)).Data}");
@@ -122,6 +132,66 @@ namespace ExampleGameNS
             if (!QuickGL.IsGLVersionAvailable(3, 0))
                 throw new Exception("Required OpenGL version is not available");
         }
+
+        private static float ToRad(float deg)
+            => deg * ((float)Math.PI / 180);
+        
+        private void MoveCamera(float xa, float za, float speed)
+        {
+            float magnitude = xa * xa + za * za;
+            if (magnitude < 0.01F) return;
+            
+            magnitude = speed / (float)Math.Sqrt(magnitude);
+            xa *= magnitude;
+            za *= magnitude;
+            
+            float sin = (float)Math.Sin(ToRad(cameraYaw));
+            float cos = (float)Math.Cos(ToRad(cameraYaw));
+            cameraX += xa * cos - za * sin;
+            cameraZ += za * cos + xa * sin;
+        }
+
+        private void RotateCamera(float yaw, float pitch, float sensitivity)
+        {
+            cameraYaw += yaw * sensitivity;
+            cameraPitch -= pitch * sensitivity;
+            cameraPitch = Math.Clamp(cameraPitch, -90.0F, 90.0F);
+        }
+
+        private void HandleInput(float deltaTime)
+        {
+            IMouse mouse = Input.GetMouse(window);
+            IKeyboard keyboard = Input.GetKeyboard(window);
+
+            float xa = 0;
+            float za = 0;
+            if (keyboard.GetState(GLFW_KEY_W))
+                za++;
+            if (keyboard.GetState(GLFW_KEY_S))
+                za--;
+            if (keyboard.GetState(GLFW_KEY_A))
+                xa++;
+            if (keyboard.GetState(GLFW_KEY_D))
+                xa--;
+
+            MoveCamera(xa, za, 5.0F * deltaTime);
+            RotateCamera(mouse.DX, mouse.DY, 15F * deltaTime);
+
+            while (keyboard.Next())
+            {
+                if (!keyboard.IsPressedEvent) continue;
+
+                switch (keyboard.EventKey)
+                {
+                    case GLFW_KEY_R:
+                        cameraX = cameraY = cameraZ = cameraYaw = cameraPitch = 0.0F;
+                        break;
+                    case GLFW_KEY_ESCAPE:
+                        mouse.Captured = !mouse.Captured;
+                        break;
+                }
+            }
+        }
         
         public void Run()
         {
@@ -129,9 +199,13 @@ namespace ExampleGameNS
 
             ReadOnlySpan<float> data = [
                 // Vertices         Colors
-                -0.5F, -0.5F, 0.0F, 1.0F, 0.0F, 0.0F,
-                0.5F, -0.5F, 0.0F,  0.0F, 1.0F, 0.0F,
-                0.0F, 0.5F, 0.0F,   0.0F, 0.0F, 1.0F
+                -0.5F, -0.5F, -2.0F, 1.0F, 0.0F, 0.0F,
+                0.5F, -0.5F, -2.0F,  0.0F, 1.0F, 0.0F,
+                0.0F, 0.5F, -2.0F,   0.0F, 0.0F, 1.0F,
+                
+                -0.5F, -0.5F, -2.0F, 1.0F, 0.0F, 0.0F,
+                0.0F, 0.5F, -2.0F,   0.0F, 0.0F, 1.0F,
+                0.5F, -0.5F, -2.0F,  0.0F, 1.0F, 0.0F
             ];
             
             uint vao = 0;
@@ -150,34 +224,30 @@ namespace ExampleGameNS
             uint program = LinkProgram();
             glViewport(0, 0, width, height);
             glClearColor(0.3F, 0.5F, 0.8F, 1.0F);
-            
+            glEnable(GL_CULL_FACE);
+
+            float deltaTime = 0.0F;
             while (glfwWindowShouldClose(window) == GLFW_FALSE)
             {
-                IMouse mouse = Input.GetMouse(window);
-                IKeyboard keyboard = Input.GetKeyboard(window);
+                double startTime = glfwGetTime();
+                HandleInput(deltaTime);
                 
-                while (keyboard.Next())
-                {
-                    Console.WriteLine($"Keyboard: {keyboard.EventKey} {keyboard.EventChar} {keyboard.EventState}");
-                    if (!keyboard.IsPressedEvent) 
-                        continue;
-                    if (keyboard.EventKey == GLFW_KEY_R)
-                    {
-                        keyboard.AllowRepeatEvents = !keyboard.AllowRepeatEvents;
-                        Console.WriteLine($"Repeat events: {keyboard.AllowRepeatEvents}");
-                    }
-                    if (keyboard.EventKey == GLFW_KEY_F)
-                    {
-                        keyboard.FastMode = !keyboard.FastMode;
-                        Console.WriteLine($"Fast mode: {keyboard.FastMode}");
-                    }
-                }
-
-                while (mouse.Next())
-                {
-                    Console.WriteLine($"Mouse: {mouse.EventButton} {mouse.EventState}");
-                }
-                // Console.WriteLine($"Mouse delta -> X:{mouse.DX} Y:{mouse.DY}");
+                Matrix4x4 proj = Matrix4x4.CreatePerspectiveFieldOfView(
+                    ToRad(70.0F), 
+                    width / (float)height,
+                    0.01F,
+                    100F);
+                Matrix4x4 view = Matrix4x4.Identity;
+                view *= Matrix4x4.CreateTranslation(cameraX, cameraY, cameraZ);
+                view *= Matrix4x4.CreateRotationY(ToRad(cameraYaw));
+                view *= Matrix4x4.CreateRotationX(ToRad(cameraPitch));
+                
+                int timeUniform = glGetUniformLocation(program, new QGLString("time"));
+                int projUniform = glGetUniformLocation(program, new QGLString("projMatrix"));
+                int viewUniform = glGetUniformLocation(program, new QGLString("viewMatrix"));
+                glUniform1f(timeUniform, (float)glfwGetTime());
+                glUniformMatrix4fv(projUniform, 1, false, &proj.M11);
+                glUniformMatrix4fv(viewUniform, 1, false, &view.M11);
                 
                 glClear(GL_COLOR_BUFFER_BIT);
                 glUseProgram(program);
@@ -186,13 +256,7 @@ namespace ExampleGameNS
                 
                 glfwPollEvents();
                 glfwSwapBuffers(window);
-                
-                // If you uncomment this, it will force the GC to be aggresive
-                // You can use this to test the callbacks as this would 
-                // cause a non-referenced callback to become null, resulting in a crash
-                // GC.AddMemoryPressure(uint.MaxValue);
-                // GC.Collect();
-                // GC.RemoveMemoryPressure(uint.MaxValue);
+                deltaTime = (float)(glfwGetTime() - startTime);
             }
 
             Input.Destroy(window);

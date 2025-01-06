@@ -21,7 +21,7 @@ QuickGL includes some utilities to try and speed up your development times<br>
 These include:
 - Easy to use native string interop (QGLString)
 - Methods to convert stack allocated spans to pointers (QuickGL::ToPtr)
-- ~~Easy to use, optional, input wrapper for GLFW (Input)~~ (not yet implemented)
+- Easy to use, optional, input wrapper for GLFW (Input)
 
 # Bindings
 The bindings used by QuickGL are automatically generated based on the official GLFW header and OpenGL registry<br>

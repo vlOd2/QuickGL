@@ -30,6 +30,7 @@ namespace QuickGLNS.Internal
         private nint window;
         private GLFWcursorposfun positionCallback;
         private GLFWmousebuttonfun buttonCallback;
+        private GLFWscrollfun scrollCallback;
         private readonly bool[] buttons = new bool[GLFW_MOUSE_BUTTON_LAST];
         private readonly Queue<MouseButtonEvent> events = [];
         private readonly object eventLock = new();
@@ -38,6 +39,7 @@ namespace QuickGLNS.Internal
         private int yo;
         private int xd;
         private int yd;
+        private int wheel;
         public int X => xo;
         public int Y => yo;
         public int DX
@@ -58,7 +60,15 @@ namespace QuickGLNS.Internal
                 return dy;
             }
         }
-        public int Wheel { get; }
+        public int Wheel
+        {
+            get
+            {
+                int w = wheel;
+                wheel = 0;
+                return w;
+            }
+        }
         public int EventButton => currentEvent.Button;
         public bool EventState => currentEvent.State;
         public bool Captured
@@ -81,6 +91,7 @@ namespace QuickGLNS.Internal
                 glfwSetInputMode(window, GLFW_RAW_MOUSE_MOTION, GLFW_TRUE);
             glfwSetCursorPosCallback(window, positionCallback = PositionCallback);
             glfwSetMouseButtonCallback(window, buttonCallback = ButtonCallback);
+            glfwSetScrollCallback(window, scrollCallback = ScrollCallback);
         }
 
         private void PositionCallback(nint _, double xpos, double ypos)
@@ -92,7 +103,7 @@ namespace QuickGLNS.Internal
             if (Captured)
             {
                 this.xd += xd;
-                this.yd += yd;   
+                this.yd -= yd;   
             }
             else
             {
@@ -117,6 +128,9 @@ namespace QuickGLNS.Internal
             }
         }
         
+        private void ScrollCallback(nint _, double xoffset, double yoffset)
+            => wheel += (int)yoffset;
+        
         public bool Next()
         {
             lock (eventLock)
@@ -133,14 +147,16 @@ namespace QuickGLNS.Internal
             }
         }
 
-        public bool GetButtonState(int id) => false;
+        public bool GetState(int button) => buttons[button];
         
         public void Dispose()
         {
             glfwSetCursorPosCallback(window, null);
             glfwSetMouseButtonCallback(window, null);
+            glfwSetScrollCallback(window, null);
             positionCallback = null;
             buttonCallback = null;
+            scrollCallback = null;
         }
     }
 }
