@@ -48,7 +48,7 @@ namespace QuickGLNS
         {
             if (!QuickGL.initialized)
                 throw new GLException("QuickGL not initialized");
-            if (QuickGL.noGLFW)
+            if (QuickGL.doNotUseGLFW)
                 throw new InvalidOperationException("QuickGL initialized without GLFW");
             if (mouse.ContainsKey(window) && keyboard.ContainsKey(window))
                 throw new ArgumentException("Window already has an input system");

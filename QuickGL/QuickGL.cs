@@ -36,8 +36,13 @@ namespace QuickGLNS
         private const BindingFlags BINDING_FLAGS = BindingFlags.NonPublic | BindingFlags.Static;
         private static GLFWLoader glfwLoader;
         internal static bool initialized;
-        internal static bool noGLFW;
-        internal static delegate* unmanaged<byte*, nint> glLoader;
+        internal static bool doNotUseGLFW;
+        internal static delegate* unmanaged<byte*, nint> nativeAPILoader;
+        #region Context properties
+        /// <summary>
+        /// Indicates if the current context is for OpenGL ES
+        /// </summary>
+        public static bool IsGLESContext { get; private set; }
         /// <summary>
         /// The major version of the current OpenGL context
         /// </summary>
@@ -46,6 +51,7 @@ namespace QuickGLNS
         /// The minor version of the current OpenGL context
         /// </summary>
         public static int GLVersionMinor { get; private set; }
+        #endregion
 
         /// <summary>
         /// Initializes QuickGL and loads GLFW functions
@@ -71,26 +77,28 @@ namespace QuickGLNS
             }
 
             initialized = true;
-            glLoader = GLFW._glfwGetProcAddress;
+            nativeAPILoader = GLFW._glfwGetProcAddress;
         }
 
         /// <summary>
         /// Initializes QuickGL without GLFW<br/>
         /// NOTE: This mode is unsupported
         /// </summary>
-        /// <param name="glLoader">the function called to load OpenGL functions from</param>
-        public static void InitNoGLFW(delegate* unmanaged<byte*, nint> glLoader)
+        /// <param name="gles">is the current context for gles</param>
+        /// <param name="loader">the function called to load OpenGL functions from</param>
+        public static void InitNoGLFW(bool gles, delegate* unmanaged<byte*, nint> loader)
         {
             if (initialized)
                 throw new GLException("Already initialized");   
             initialized = true;
-            noGLFW = true;
-            QuickGL.glLoader = glLoader;
+            doNotUseGLFW = true;
+            IsGLESContext = gles;
+            nativeAPILoader = loader;
         }
 
         private static void ParseGLVersion()
         {
-            nint handle = glLoader(new QGLString("glGetString"));
+            nint handle = nativeAPILoader(new QGLString("glGetString"));
             if (handle == nint.Zero) 
                 throw new GLException("Could not initialize OpenGL");
             
@@ -106,28 +114,36 @@ namespace QuickGLNS
         }
 
         /// <summary>
-        /// Loads OpenGL functions<br/>
-        /// NOTE: You must have an active OpenGL context, see <see cref="GLFW.glfwMakeContextCurrent"/>
+        /// Loads OpenGL/GLES functions<br/>
+        /// NOTE: You must have an active OpenGL/GLES context, see <see cref="GLFW.glfwMakeContextCurrent"/>
         /// </summary>
         /// <exception cref="GLException"></exception>
         public static void LoadGL()
         {
             if (!initialized)
                 throw new GLException("Not initialized");
-            if (!noGLFW && GLFW.glfwGetCurrentContext() == 0)
+            if (!doNotUseGLFW && GLFW.glfwGetCurrentContext() == 0)
                 throw new GLException("No OpenGL context found");
             ParseGLVersion();
+
+            if (!doNotUseGLFW)
+            {
+                nint window = GLFW.glfwGetCurrentContext();
+                int api = GLFW.glfwGetWindowAttrib(window, GLFW.GLFW_CLIENT_API);
+                IsGLESContext = api == GLFW.GLFW_OPENGL_ES_API;
+            }
             
             foreach (Type type in Assembly.GetExecutingAssembly().GetTypes())
             {
-                if (type.GetCustomAttribute<GLFeature>() == null)
+                GLFeature feature = type.GetCustomAttribute<GLFeature>();
+                if (feature == null || feature.IsGLES != IsGLESContext)
                     continue;
-
+                
                 foreach (FieldInfo field in type.GetFields(BINDING_FLAGS))
                 {
                     QGLNativeAPI nativeAPI = field.GetCustomAttribute<QGLNativeAPI>();
                     if (nativeAPI == null) continue;
-                    nint handle = glLoader(new QGLString(nativeAPI.Name));
+                    nint handle = nativeAPILoader(new QGLString(nativeAPI.Name));
                     // The result could be anything even if the command doesn't exist, so this is useless
                     // if (handle == nint.Zero) break;
                     field.SetValue(null, handle);
@@ -146,7 +162,7 @@ namespace QuickGLNS
         {
             if (!initialized)
                 throw new GLException("Not initialized");
-            if ((!noGLFW && GLFW.glfwGetCurrentContext() == 0) || GLVersionMajor == 0)
+            if ((!doNotUseGLFW && GLFW.glfwGetCurrentContext() == 0) || GLVersionMajor == 0)
                 throw new GLException("No OpenGL context found");
             return GLVersionMajor > major || (GLVersionMajor == major && GLVersionMinor >= minor);
         }
@@ -179,9 +195,9 @@ namespace QuickGLNS
             glfwLoader?.Dispose();
             glfwLoader = null;
             GLVersionMajor = GLVersionMinor = 0;
-            glLoader = null;
-            noGLFW = false;
             initialized = false;
+            doNotUseGLFW = false;
+            nativeAPILoader = null;
         }
         
         /// <summary>

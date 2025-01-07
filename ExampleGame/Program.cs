@@ -2,11 +2,13 @@
 using QuickGLNS;
 using QuickGLNS.Bindings;
 using static QuickGLNS.Bindings.GLFW;
-using static QuickGLNS.Bindings.GL10;
-using static QuickGLNS.Bindings.GL11;
-using static QuickGLNS.Bindings.GL15;
-using static QuickGLNS.Bindings.GL20;
-using static QuickGLNS.Bindings.GL30;
+// using static QuickGLNS.Bindings.GL10;
+// using static QuickGLNS.Bindings.GL11;
+// using static QuickGLNS.Bindings.GL15;
+// using static QuickGLNS.Bindings.GL20;
+// using static QuickGLNS.Bindings.GL30;
+using static QuickGLNS.Bindings.GLES20;
+using static QuickGLNS.Bindings.GLES30;
 
 namespace ExampleGameNS
 {
@@ -111,6 +113,8 @@ namespace ExampleGameNS
             // glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
             // glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
             // glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+            glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+            glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
             glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
             
             width = 640;
