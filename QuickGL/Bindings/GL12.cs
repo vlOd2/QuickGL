@@ -22,7 +22,7 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-01-04 19:06:28.363102
+// Bindings generated at 2025-01-07 19:43:59.907786
 namespace QuickGLNS.Bindings
 {
     [GLFeature]
@@ -73,10 +73,17 @@ namespace QuickGLNS.Bindings
         #endregion
         
         #region Commands
-        [QGLNativeAPI("glDrawRangeElements")] public static delegate* unmanaged<uint, uint, uint, int, uint, void*, void> glDrawRangeElements;
-        [QGLNativeAPI("glTexImage3D")] public static delegate* unmanaged<uint, int, int, int, int, int, int, uint, uint, void*, void> glTexImage3D;
-        [QGLNativeAPI("glTexSubImage3D")] public static delegate* unmanaged<uint, int, int, int, int, int, int, int, uint, uint, void*, void> glTexSubImage3D;
-        [QGLNativeAPI("glCopyTexSubImage3D")] public static delegate* unmanaged<uint, int, int, int, int, int, int, int, int, void> glCopyTexSubImage3D;
+        public static void glDrawRangeElements(uint mode, uint start, uint end, int count, uint type, void* indices) => _glDrawRangeElements(mode, start, end, count, type, indices);
+        [QGLNativeAPI("glDrawRangeElements")] internal static delegate* unmanaged<uint, uint, uint, int, uint, void*, void> _glDrawRangeElements = null;
+        
+        public static void glTexImage3D(uint target, int level, int internalformat, int width, int height, int depth, int border, uint format, uint type, void* pixels) => _glTexImage3D(target, level, internalformat, width, height, depth, border, format, type, pixels);
+        [QGLNativeAPI("glTexImage3D")] internal static delegate* unmanaged<uint, int, int, int, int, int, int, uint, uint, void*, void> _glTexImage3D = null;
+        
+        public static void glTexSubImage3D(uint target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, void* pixels) => _glTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
+        [QGLNativeAPI("glTexSubImage3D")] internal static delegate* unmanaged<uint, int, int, int, int, int, int, int, uint, uint, void*, void> _glTexSubImage3D = null;
+        
+        public static void glCopyTexSubImage3D(uint target, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height) => _glCopyTexSubImage3D(target, level, xoffset, yoffset, zoffset, x, y, width, height);
+        [QGLNativeAPI("glCopyTexSubImage3D")] internal static delegate* unmanaged<uint, int, int, int, int, int, int, int, int, void> _glCopyTexSubImage3D = null;
         #endregion
     }
 }

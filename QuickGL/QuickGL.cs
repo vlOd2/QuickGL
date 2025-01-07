@@ -33,7 +33,7 @@ namespace QuickGLNS
     /// </summary>
     public static unsafe class QuickGL
     {
-        private const BindingFlags BINDING_FLAGS = BindingFlags.Public | BindingFlags.Static;
+        private const BindingFlags BINDING_FLAGS = BindingFlags.NonPublic | BindingFlags.Static;
         private static GLFWLoader glfwLoader;
         private static bool initialized;
         /// <summary>
@@ -75,7 +75,7 @@ namespace QuickGLNS
             if (handle == nint.Zero) 
                 throw new GLException("Could not initialize OpenGL");
             
-            GL10.glGetString = (delegate*unmanaged<uint, byte*>)handle;
+            GL10._glGetString = (delegate*unmanaged<uint, byte*>)handle;
             byte* strPtr = GL10.glGetString(GL10.GL_VERSION);
             if (strPtr == null) 
                 throw new GLException("Invalid OpenGL context");

@@ -107,8 +107,8 @@ namespace QuickGLNS.Internal
             }
             else
             {
-                this.xd = xd;
-                this.yd = yd;   
+                this.xd += xd;
+                this.yd -= yd;   
             }
             xo = x;
             yo = y;

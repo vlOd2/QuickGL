@@ -22,7 +22,7 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-01-04 19:06:28.367384
+// Bindings generated at 2025-01-07 19:43:59.922890
 namespace QuickGLNS.Bindings
 {
     [GLFeature]
@@ -55,12 +55,23 @@ namespace QuickGLNS.Bindings
         #endregion
         
         #region Commands
-        [QGLNativeAPI("glUniformMatrix2x3fv")] public static delegate* unmanaged<int, int, bool, float*, void> glUniformMatrix2x3fv;
-        [QGLNativeAPI("glUniformMatrix3x2fv")] public static delegate* unmanaged<int, int, bool, float*, void> glUniformMatrix3x2fv;
-        [QGLNativeAPI("glUniformMatrix2x4fv")] public static delegate* unmanaged<int, int, bool, float*, void> glUniformMatrix2x4fv;
-        [QGLNativeAPI("glUniformMatrix4x2fv")] public static delegate* unmanaged<int, int, bool, float*, void> glUniformMatrix4x2fv;
-        [QGLNativeAPI("glUniformMatrix3x4fv")] public static delegate* unmanaged<int, int, bool, float*, void> glUniformMatrix3x4fv;
-        [QGLNativeAPI("glUniformMatrix4x3fv")] public static delegate* unmanaged<int, int, bool, float*, void> glUniformMatrix4x3fv;
+        public static void glUniformMatrix2x3fv(int location, int count, bool transpose, float* value) => _glUniformMatrix2x3fv(location, count, transpose, value);
+        [QGLNativeAPI("glUniformMatrix2x3fv")] internal static delegate* unmanaged<int, int, bool, float*, void> _glUniformMatrix2x3fv = null;
+        
+        public static void glUniformMatrix3x2fv(int location, int count, bool transpose, float* value) => _glUniformMatrix3x2fv(location, count, transpose, value);
+        [QGLNativeAPI("glUniformMatrix3x2fv")] internal static delegate* unmanaged<int, int, bool, float*, void> _glUniformMatrix3x2fv = null;
+        
+        public static void glUniformMatrix2x4fv(int location, int count, bool transpose, float* value) => _glUniformMatrix2x4fv(location, count, transpose, value);
+        [QGLNativeAPI("glUniformMatrix2x4fv")] internal static delegate* unmanaged<int, int, bool, float*, void> _glUniformMatrix2x4fv = null;
+        
+        public static void glUniformMatrix4x2fv(int location, int count, bool transpose, float* value) => _glUniformMatrix4x2fv(location, count, transpose, value);
+        [QGLNativeAPI("glUniformMatrix4x2fv")] internal static delegate* unmanaged<int, int, bool, float*, void> _glUniformMatrix4x2fv = null;
+        
+        public static void glUniformMatrix3x4fv(int location, int count, bool transpose, float* value) => _glUniformMatrix3x4fv(location, count, transpose, value);
+        [QGLNativeAPI("glUniformMatrix3x4fv")] internal static delegate* unmanaged<int, int, bool, float*, void> _glUniformMatrix3x4fv = null;
+        
+        public static void glUniformMatrix4x3fv(int location, int count, bool transpose, float* value) => _glUniformMatrix4x3fv(location, count, transpose, value);
+        [QGLNativeAPI("glUniformMatrix4x3fv")] internal static delegate* unmanaged<int, int, bool, float*, void> _glUniformMatrix4x3fv = null;
         #endregion
     }
 }

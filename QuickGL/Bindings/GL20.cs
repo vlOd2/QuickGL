@@ -22,7 +22,7 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-01-04 19:06:28.365911
+// Bindings generated at 2025-01-07 19:43:59.915915
 namespace QuickGLNS.Bindings
 {
     [GLFeature]
@@ -116,99 +116,284 @@ namespace QuickGLNS.Bindings
         #endregion
         
         #region Commands
-        [QGLNativeAPI("glBlendEquationSeparate")] public static delegate* unmanaged<uint, uint, void> glBlendEquationSeparate;
-        [QGLNativeAPI("glDrawBuffers")] public static delegate* unmanaged<int, uint*, void> glDrawBuffers;
-        [QGLNativeAPI("glStencilOpSeparate")] public static delegate* unmanaged<uint, uint, uint, uint, void> glStencilOpSeparate;
-        [QGLNativeAPI("glStencilFuncSeparate")] public static delegate* unmanaged<uint, uint, int, uint, void> glStencilFuncSeparate;
-        [QGLNativeAPI("glStencilMaskSeparate")] public static delegate* unmanaged<uint, uint, void> glStencilMaskSeparate;
-        [QGLNativeAPI("glAttachShader")] public static delegate* unmanaged<uint, uint, void> glAttachShader;
-        [QGLNativeAPI("glBindAttribLocation")] public static delegate* unmanaged<uint, uint, byte*, void> glBindAttribLocation;
-        [QGLNativeAPI("glCompileShader")] public static delegate* unmanaged<uint, void> glCompileShader;
-        [QGLNativeAPI("glCreateProgram")] public static delegate* unmanaged<uint> glCreateProgram;
-        [QGLNativeAPI("glCreateShader")] public static delegate* unmanaged<uint, uint> glCreateShader;
-        [QGLNativeAPI("glDeleteProgram")] public static delegate* unmanaged<uint, void> glDeleteProgram;
-        [QGLNativeAPI("glDeleteShader")] public static delegate* unmanaged<uint, void> glDeleteShader;
-        [QGLNativeAPI("glDetachShader")] public static delegate* unmanaged<uint, uint, void> glDetachShader;
-        [QGLNativeAPI("glDisableVertexAttribArray")] public static delegate* unmanaged<uint, void> glDisableVertexAttribArray;
-        [QGLNativeAPI("glEnableVertexAttribArray")] public static delegate* unmanaged<uint, void> glEnableVertexAttribArray;
-        [QGLNativeAPI("glGetActiveAttrib")] public static delegate* unmanaged<uint, uint, int, int*, int*, uint*, byte*, void> glGetActiveAttrib;
-        [QGLNativeAPI("glGetActiveUniform")] public static delegate* unmanaged<uint, uint, int, int*, int*, uint*, byte*, void> glGetActiveUniform;
-        [QGLNativeAPI("glGetAttachedShaders")] public static delegate* unmanaged<uint, int, int*, uint*, void> glGetAttachedShaders;
-        [QGLNativeAPI("glGetAttribLocation")] public static delegate* unmanaged<uint, byte*, int> glGetAttribLocation;
-        [QGLNativeAPI("glGetProgramiv")] public static delegate* unmanaged<uint, uint, int*, void> glGetProgramiv;
-        [QGLNativeAPI("glGetProgramInfoLog")] public static delegate* unmanaged<uint, int, int*, byte*, void> glGetProgramInfoLog;
-        [QGLNativeAPI("glGetShaderiv")] public static delegate* unmanaged<uint, uint, int*, void> glGetShaderiv;
-        [QGLNativeAPI("glGetShaderInfoLog")] public static delegate* unmanaged<uint, int, int*, byte*, void> glGetShaderInfoLog;
-        [QGLNativeAPI("glGetShaderSource")] public static delegate* unmanaged<uint, int, int*, byte*, void> glGetShaderSource;
-        [QGLNativeAPI("glGetUniformLocation")] public static delegate* unmanaged<uint, byte*, int> glGetUniformLocation;
-        [QGLNativeAPI("glGetUniformfv")] public static delegate* unmanaged<uint, int, float*, void> glGetUniformfv;
-        [QGLNativeAPI("glGetUniformiv")] public static delegate* unmanaged<uint, int, int*, void> glGetUniformiv;
-        [QGLNativeAPI("glGetVertexAttribdv")] public static delegate* unmanaged<uint, uint, double*, void> glGetVertexAttribdv;
-        [QGLNativeAPI("glGetVertexAttribfv")] public static delegate* unmanaged<uint, uint, float*, void> glGetVertexAttribfv;
-        [QGLNativeAPI("glGetVertexAttribiv")] public static delegate* unmanaged<uint, uint, int*, void> glGetVertexAttribiv;
-        [QGLNativeAPI("glGetVertexAttribPointerv")] public static delegate* unmanaged<uint, uint, void**, void> glGetVertexAttribPointerv;
-        [QGLNativeAPI("glIsProgram")] public static delegate* unmanaged<uint, bool> glIsProgram;
-        [QGLNativeAPI("glIsShader")] public static delegate* unmanaged<uint, bool> glIsShader;
-        [QGLNativeAPI("glLinkProgram")] public static delegate* unmanaged<uint, void> glLinkProgram;
-        [QGLNativeAPI("glShaderSource")] public static delegate* unmanaged<uint, int, byte**, int*, void> glShaderSource;
-        [QGLNativeAPI("glUseProgram")] public static delegate* unmanaged<uint, void> glUseProgram;
-        [QGLNativeAPI("glUniform1f")] public static delegate* unmanaged<int, float, void> glUniform1f;
-        [QGLNativeAPI("glUniform2f")] public static delegate* unmanaged<int, float, float, void> glUniform2f;
-        [QGLNativeAPI("glUniform3f")] public static delegate* unmanaged<int, float, float, float, void> glUniform3f;
-        [QGLNativeAPI("glUniform4f")] public static delegate* unmanaged<int, float, float, float, float, void> glUniform4f;
-        [QGLNativeAPI("glUniform1i")] public static delegate* unmanaged<int, int, void> glUniform1i;
-        [QGLNativeAPI("glUniform2i")] public static delegate* unmanaged<int, int, int, void> glUniform2i;
-        [QGLNativeAPI("glUniform3i")] public static delegate* unmanaged<int, int, int, int, void> glUniform3i;
-        [QGLNativeAPI("glUniform4i")] public static delegate* unmanaged<int, int, int, int, int, void> glUniform4i;
-        [QGLNativeAPI("glUniform1fv")] public static delegate* unmanaged<int, int, float*, void> glUniform1fv;
-        [QGLNativeAPI("glUniform2fv")] public static delegate* unmanaged<int, int, float*, void> glUniform2fv;
-        [QGLNativeAPI("glUniform3fv")] public static delegate* unmanaged<int, int, float*, void> glUniform3fv;
-        [QGLNativeAPI("glUniform4fv")] public static delegate* unmanaged<int, int, float*, void> glUniform4fv;
-        [QGLNativeAPI("glUniform1iv")] public static delegate* unmanaged<int, int, int*, void> glUniform1iv;
-        [QGLNativeAPI("glUniform2iv")] public static delegate* unmanaged<int, int, int*, void> glUniform2iv;
-        [QGLNativeAPI("glUniform3iv")] public static delegate* unmanaged<int, int, int*, void> glUniform3iv;
-        [QGLNativeAPI("glUniform4iv")] public static delegate* unmanaged<int, int, int*, void> glUniform4iv;
-        [QGLNativeAPI("glUniformMatrix2fv")] public static delegate* unmanaged<int, int, bool, float*, void> glUniformMatrix2fv;
-        [QGLNativeAPI("glUniformMatrix3fv")] public static delegate* unmanaged<int, int, bool, float*, void> glUniformMatrix3fv;
-        [QGLNativeAPI("glUniformMatrix4fv")] public static delegate* unmanaged<int, int, bool, float*, void> glUniformMatrix4fv;
-        [QGLNativeAPI("glValidateProgram")] public static delegate* unmanaged<uint, void> glValidateProgram;
-        [QGLNativeAPI("glVertexAttrib1d")] public static delegate* unmanaged<uint, double, void> glVertexAttrib1d;
-        [QGLNativeAPI("glVertexAttrib1dv")] public static delegate* unmanaged<uint, double*, void> glVertexAttrib1dv;
-        [QGLNativeAPI("glVertexAttrib1f")] public static delegate* unmanaged<uint, float, void> glVertexAttrib1f;
-        [QGLNativeAPI("glVertexAttrib1fv")] public static delegate* unmanaged<uint, float*, void> glVertexAttrib1fv;
-        [QGLNativeAPI("glVertexAttrib1s")] public static delegate* unmanaged<uint, short, void> glVertexAttrib1s;
-        [QGLNativeAPI("glVertexAttrib1sv")] public static delegate* unmanaged<uint, short*, void> glVertexAttrib1sv;
-        [QGLNativeAPI("glVertexAttrib2d")] public static delegate* unmanaged<uint, double, double, void> glVertexAttrib2d;
-        [QGLNativeAPI("glVertexAttrib2dv")] public static delegate* unmanaged<uint, double*, void> glVertexAttrib2dv;
-        [QGLNativeAPI("glVertexAttrib2f")] public static delegate* unmanaged<uint, float, float, void> glVertexAttrib2f;
-        [QGLNativeAPI("glVertexAttrib2fv")] public static delegate* unmanaged<uint, float*, void> glVertexAttrib2fv;
-        [QGLNativeAPI("glVertexAttrib2s")] public static delegate* unmanaged<uint, short, short, void> glVertexAttrib2s;
-        [QGLNativeAPI("glVertexAttrib2sv")] public static delegate* unmanaged<uint, short*, void> glVertexAttrib2sv;
-        [QGLNativeAPI("glVertexAttrib3d")] public static delegate* unmanaged<uint, double, double, double, void> glVertexAttrib3d;
-        [QGLNativeAPI("glVertexAttrib3dv")] public static delegate* unmanaged<uint, double*, void> glVertexAttrib3dv;
-        [QGLNativeAPI("glVertexAttrib3f")] public static delegate* unmanaged<uint, float, float, float, void> glVertexAttrib3f;
-        [QGLNativeAPI("glVertexAttrib3fv")] public static delegate* unmanaged<uint, float*, void> glVertexAttrib3fv;
-        [QGLNativeAPI("glVertexAttrib3s")] public static delegate* unmanaged<uint, short, short, short, void> glVertexAttrib3s;
-        [QGLNativeAPI("glVertexAttrib3sv")] public static delegate* unmanaged<uint, short*, void> glVertexAttrib3sv;
-        [QGLNativeAPI("glVertexAttrib4Nbv")] public static delegate* unmanaged<uint, sbyte*, void> glVertexAttrib4Nbv;
-        [QGLNativeAPI("glVertexAttrib4Niv")] public static delegate* unmanaged<uint, int*, void> glVertexAttrib4Niv;
-        [QGLNativeAPI("glVertexAttrib4Nsv")] public static delegate* unmanaged<uint, short*, void> glVertexAttrib4Nsv;
-        [QGLNativeAPI("glVertexAttrib4Nub")] public static delegate* unmanaged<uint, byte, byte, byte, byte, void> glVertexAttrib4Nub;
-        [QGLNativeAPI("glVertexAttrib4Nubv")] public static delegate* unmanaged<uint, byte*, void> glVertexAttrib4Nubv;
-        [QGLNativeAPI("glVertexAttrib4Nuiv")] public static delegate* unmanaged<uint, uint*, void> glVertexAttrib4Nuiv;
-        [QGLNativeAPI("glVertexAttrib4Nusv")] public static delegate* unmanaged<uint, ushort*, void> glVertexAttrib4Nusv;
-        [QGLNativeAPI("glVertexAttrib4bv")] public static delegate* unmanaged<uint, sbyte*, void> glVertexAttrib4bv;
-        [QGLNativeAPI("glVertexAttrib4d")] public static delegate* unmanaged<uint, double, double, double, double, void> glVertexAttrib4d;
-        [QGLNativeAPI("glVertexAttrib4dv")] public static delegate* unmanaged<uint, double*, void> glVertexAttrib4dv;
-        [QGLNativeAPI("glVertexAttrib4f")] public static delegate* unmanaged<uint, float, float, float, float, void> glVertexAttrib4f;
-        [QGLNativeAPI("glVertexAttrib4fv")] public static delegate* unmanaged<uint, float*, void> glVertexAttrib4fv;
-        [QGLNativeAPI("glVertexAttrib4iv")] public static delegate* unmanaged<uint, int*, void> glVertexAttrib4iv;
-        [QGLNativeAPI("glVertexAttrib4s")] public static delegate* unmanaged<uint, short, short, short, short, void> glVertexAttrib4s;
-        [QGLNativeAPI("glVertexAttrib4sv")] public static delegate* unmanaged<uint, short*, void> glVertexAttrib4sv;
-        [QGLNativeAPI("glVertexAttrib4ubv")] public static delegate* unmanaged<uint, byte*, void> glVertexAttrib4ubv;
-        [QGLNativeAPI("glVertexAttrib4uiv")] public static delegate* unmanaged<uint, uint*, void> glVertexAttrib4uiv;
-        [QGLNativeAPI("glVertexAttrib4usv")] public static delegate* unmanaged<uint, ushort*, void> glVertexAttrib4usv;
-        [QGLNativeAPI("glVertexAttribPointer")] public static delegate* unmanaged<uint, int, uint, bool, int, void*, void> glVertexAttribPointer;
+        public static void glBlendEquationSeparate(uint modeRGB, uint modeAlpha) => _glBlendEquationSeparate(modeRGB, modeAlpha);
+        [QGLNativeAPI("glBlendEquationSeparate")] internal static delegate* unmanaged<uint, uint, void> _glBlendEquationSeparate = null;
+        
+        public static void glDrawBuffers(int n, uint* bufs) => _glDrawBuffers(n, bufs);
+        [QGLNativeAPI("glDrawBuffers")] internal static delegate* unmanaged<int, uint*, void> _glDrawBuffers = null;
+        
+        public static void glStencilOpSeparate(uint face, uint sfail, uint dpfail, uint dppass) => _glStencilOpSeparate(face, sfail, dpfail, dppass);
+        [QGLNativeAPI("glStencilOpSeparate")] internal static delegate* unmanaged<uint, uint, uint, uint, void> _glStencilOpSeparate = null;
+        
+        public static void glStencilFuncSeparate(uint face, uint func, int @ref, uint mask) => _glStencilFuncSeparate(face, func, @ref, mask);
+        [QGLNativeAPI("glStencilFuncSeparate")] internal static delegate* unmanaged<uint, uint, int, uint, void> _glStencilFuncSeparate = null;
+        
+        public static void glStencilMaskSeparate(uint face, uint mask) => _glStencilMaskSeparate(face, mask);
+        [QGLNativeAPI("glStencilMaskSeparate")] internal static delegate* unmanaged<uint, uint, void> _glStencilMaskSeparate = null;
+        
+        public static void glAttachShader(uint program, uint shader) => _glAttachShader(program, shader);
+        [QGLNativeAPI("glAttachShader")] internal static delegate* unmanaged<uint, uint, void> _glAttachShader = null;
+        
+        public static void glBindAttribLocation(uint program, uint index, byte* name) => _glBindAttribLocation(program, index, name);
+        [QGLNativeAPI("glBindAttribLocation")] internal static delegate* unmanaged<uint, uint, byte*, void> _glBindAttribLocation = null;
+        
+        public static void glCompileShader(uint shader) => _glCompileShader(shader);
+        [QGLNativeAPI("glCompileShader")] internal static delegate* unmanaged<uint, void> _glCompileShader = null;
+        
+        public static uint glCreateProgram() => _glCreateProgram();
+        [QGLNativeAPI("glCreateProgram")] internal static delegate* unmanaged<uint> _glCreateProgram = null;
+        
+        public static uint glCreateShader(uint type) => _glCreateShader(type);
+        [QGLNativeAPI("glCreateShader")] internal static delegate* unmanaged<uint, uint> _glCreateShader = null;
+        
+        public static void glDeleteProgram(uint program) => _glDeleteProgram(program);
+        [QGLNativeAPI("glDeleteProgram")] internal static delegate* unmanaged<uint, void> _glDeleteProgram = null;
+        
+        public static void glDeleteShader(uint shader) => _glDeleteShader(shader);
+        [QGLNativeAPI("glDeleteShader")] internal static delegate* unmanaged<uint, void> _glDeleteShader = null;
+        
+        public static void glDetachShader(uint program, uint shader) => _glDetachShader(program, shader);
+        [QGLNativeAPI("glDetachShader")] internal static delegate* unmanaged<uint, uint, void> _glDetachShader = null;
+        
+        public static void glDisableVertexAttribArray(uint index) => _glDisableVertexAttribArray(index);
+        [QGLNativeAPI("glDisableVertexAttribArray")] internal static delegate* unmanaged<uint, void> _glDisableVertexAttribArray = null;
+        
+        public static void glEnableVertexAttribArray(uint index) => _glEnableVertexAttribArray(index);
+        [QGLNativeAPI("glEnableVertexAttribArray")] internal static delegate* unmanaged<uint, void> _glEnableVertexAttribArray = null;
+        
+        public static void glGetActiveAttrib(uint program, uint index, int bufSize, int* length, int* size, uint* type, byte* name) => _glGetActiveAttrib(program, index, bufSize, length, size, type, name);
+        [QGLNativeAPI("glGetActiveAttrib")] internal static delegate* unmanaged<uint, uint, int, int*, int*, uint*, byte*, void> _glGetActiveAttrib = null;
+        
+        public static void glGetActiveUniform(uint program, uint index, int bufSize, int* length, int* size, uint* type, byte* name) => _glGetActiveUniform(program, index, bufSize, length, size, type, name);
+        [QGLNativeAPI("glGetActiveUniform")] internal static delegate* unmanaged<uint, uint, int, int*, int*, uint*, byte*, void> _glGetActiveUniform = null;
+        
+        public static void glGetAttachedShaders(uint program, int maxCount, int* count, uint* shaders) => _glGetAttachedShaders(program, maxCount, count, shaders);
+        [QGLNativeAPI("glGetAttachedShaders")] internal static delegate* unmanaged<uint, int, int*, uint*, void> _glGetAttachedShaders = null;
+        
+        public static int glGetAttribLocation(uint program, byte* name) => _glGetAttribLocation(program, name);
+        [QGLNativeAPI("glGetAttribLocation")] internal static delegate* unmanaged<uint, byte*, int> _glGetAttribLocation = null;
+        
+        public static void glGetProgramiv(uint program, uint pname, int* @params) => _glGetProgramiv(program, pname, @params);
+        [QGLNativeAPI("glGetProgramiv")] internal static delegate* unmanaged<uint, uint, int*, void> _glGetProgramiv = null;
+        
+        public static void glGetProgramInfoLog(uint program, int bufSize, int* length, byte* infoLog) => _glGetProgramInfoLog(program, bufSize, length, infoLog);
+        [QGLNativeAPI("glGetProgramInfoLog")] internal static delegate* unmanaged<uint, int, int*, byte*, void> _glGetProgramInfoLog = null;
+        
+        public static void glGetShaderiv(uint shader, uint pname, int* @params) => _glGetShaderiv(shader, pname, @params);
+        [QGLNativeAPI("glGetShaderiv")] internal static delegate* unmanaged<uint, uint, int*, void> _glGetShaderiv = null;
+        
+        public static void glGetShaderInfoLog(uint shader, int bufSize, int* length, byte* infoLog) => _glGetShaderInfoLog(shader, bufSize, length, infoLog);
+        [QGLNativeAPI("glGetShaderInfoLog")] internal static delegate* unmanaged<uint, int, int*, byte*, void> _glGetShaderInfoLog = null;
+        
+        public static void glGetShaderSource(uint shader, int bufSize, int* length, byte* source) => _glGetShaderSource(shader, bufSize, length, source);
+        [QGLNativeAPI("glGetShaderSource")] internal static delegate* unmanaged<uint, int, int*, byte*, void> _glGetShaderSource = null;
+        
+        public static int glGetUniformLocation(uint program, byte* name) => _glGetUniformLocation(program, name);
+        [QGLNativeAPI("glGetUniformLocation")] internal static delegate* unmanaged<uint, byte*, int> _glGetUniformLocation = null;
+        
+        public static void glGetUniformfv(uint program, int location, float* @params) => _glGetUniformfv(program, location, @params);
+        [QGLNativeAPI("glGetUniformfv")] internal static delegate* unmanaged<uint, int, float*, void> _glGetUniformfv = null;
+        
+        public static void glGetUniformiv(uint program, int location, int* @params) => _glGetUniformiv(program, location, @params);
+        [QGLNativeAPI("glGetUniformiv")] internal static delegate* unmanaged<uint, int, int*, void> _glGetUniformiv = null;
+        
+        public static void glGetVertexAttribdv(uint index, uint pname, double* @params) => _glGetVertexAttribdv(index, pname, @params);
+        [QGLNativeAPI("glGetVertexAttribdv")] internal static delegate* unmanaged<uint, uint, double*, void> _glGetVertexAttribdv = null;
+        
+        public static void glGetVertexAttribfv(uint index, uint pname, float* @params) => _glGetVertexAttribfv(index, pname, @params);
+        [QGLNativeAPI("glGetVertexAttribfv")] internal static delegate* unmanaged<uint, uint, float*, void> _glGetVertexAttribfv = null;
+        
+        public static void glGetVertexAttribiv(uint index, uint pname, int* @params) => _glGetVertexAttribiv(index, pname, @params);
+        [QGLNativeAPI("glGetVertexAttribiv")] internal static delegate* unmanaged<uint, uint, int*, void> _glGetVertexAttribiv = null;
+        
+        public static void glGetVertexAttribPointerv(uint index, uint pname, void** pointer) => _glGetVertexAttribPointerv(index, pname, pointer);
+        [QGLNativeAPI("glGetVertexAttribPointerv")] internal static delegate* unmanaged<uint, uint, void**, void> _glGetVertexAttribPointerv = null;
+        
+        public static bool glIsProgram(uint program) => _glIsProgram(program);
+        [QGLNativeAPI("glIsProgram")] internal static delegate* unmanaged<uint, bool> _glIsProgram = null;
+        
+        public static bool glIsShader(uint shader) => _glIsShader(shader);
+        [QGLNativeAPI("glIsShader")] internal static delegate* unmanaged<uint, bool> _glIsShader = null;
+        
+        public static void glLinkProgram(uint program) => _glLinkProgram(program);
+        [QGLNativeAPI("glLinkProgram")] internal static delegate* unmanaged<uint, void> _glLinkProgram = null;
+        
+        public static void glShaderSource(uint shader, int count, byte** @string, int* length) => _glShaderSource(shader, count, @string, length);
+        [QGLNativeAPI("glShaderSource")] internal static delegate* unmanaged<uint, int, byte**, int*, void> _glShaderSource = null;
+        
+        public static void glUseProgram(uint program) => _glUseProgram(program);
+        [QGLNativeAPI("glUseProgram")] internal static delegate* unmanaged<uint, void> _glUseProgram = null;
+        
+        public static void glUniform1f(int location, float v0) => _glUniform1f(location, v0);
+        [QGLNativeAPI("glUniform1f")] internal static delegate* unmanaged<int, float, void> _glUniform1f = null;
+        
+        public static void glUniform2f(int location, float v0, float v1) => _glUniform2f(location, v0, v1);
+        [QGLNativeAPI("glUniform2f")] internal static delegate* unmanaged<int, float, float, void> _glUniform2f = null;
+        
+        public static void glUniform3f(int location, float v0, float v1, float v2) => _glUniform3f(location, v0, v1, v2);
+        [QGLNativeAPI("glUniform3f")] internal static delegate* unmanaged<int, float, float, float, void> _glUniform3f = null;
+        
+        public static void glUniform4f(int location, float v0, float v1, float v2, float v3) => _glUniform4f(location, v0, v1, v2, v3);
+        [QGLNativeAPI("glUniform4f")] internal static delegate* unmanaged<int, float, float, float, float, void> _glUniform4f = null;
+        
+        public static void glUniform1i(int location, int v0) => _glUniform1i(location, v0);
+        [QGLNativeAPI("glUniform1i")] internal static delegate* unmanaged<int, int, void> _glUniform1i = null;
+        
+        public static void glUniform2i(int location, int v0, int v1) => _glUniform2i(location, v0, v1);
+        [QGLNativeAPI("glUniform2i")] internal static delegate* unmanaged<int, int, int, void> _glUniform2i = null;
+        
+        public static void glUniform3i(int location, int v0, int v1, int v2) => _glUniform3i(location, v0, v1, v2);
+        [QGLNativeAPI("glUniform3i")] internal static delegate* unmanaged<int, int, int, int, void> _glUniform3i = null;
+        
+        public static void glUniform4i(int location, int v0, int v1, int v2, int v3) => _glUniform4i(location, v0, v1, v2, v3);
+        [QGLNativeAPI("glUniform4i")] internal static delegate* unmanaged<int, int, int, int, int, void> _glUniform4i = null;
+        
+        public static void glUniform1fv(int location, int count, float* value) => _glUniform1fv(location, count, value);
+        [QGLNativeAPI("glUniform1fv")] internal static delegate* unmanaged<int, int, float*, void> _glUniform1fv = null;
+        
+        public static void glUniform2fv(int location, int count, float* value) => _glUniform2fv(location, count, value);
+        [QGLNativeAPI("glUniform2fv")] internal static delegate* unmanaged<int, int, float*, void> _glUniform2fv = null;
+        
+        public static void glUniform3fv(int location, int count, float* value) => _glUniform3fv(location, count, value);
+        [QGLNativeAPI("glUniform3fv")] internal static delegate* unmanaged<int, int, float*, void> _glUniform3fv = null;
+        
+        public static void glUniform4fv(int location, int count, float* value) => _glUniform4fv(location, count, value);
+        [QGLNativeAPI("glUniform4fv")] internal static delegate* unmanaged<int, int, float*, void> _glUniform4fv = null;
+        
+        public static void glUniform1iv(int location, int count, int* value) => _glUniform1iv(location, count, value);
+        [QGLNativeAPI("glUniform1iv")] internal static delegate* unmanaged<int, int, int*, void> _glUniform1iv = null;
+        
+        public static void glUniform2iv(int location, int count, int* value) => _glUniform2iv(location, count, value);
+        [QGLNativeAPI("glUniform2iv")] internal static delegate* unmanaged<int, int, int*, void> _glUniform2iv = null;
+        
+        public static void glUniform3iv(int location, int count, int* value) => _glUniform3iv(location, count, value);
+        [QGLNativeAPI("glUniform3iv")] internal static delegate* unmanaged<int, int, int*, void> _glUniform3iv = null;
+        
+        public static void glUniform4iv(int location, int count, int* value) => _glUniform4iv(location, count, value);
+        [QGLNativeAPI("glUniform4iv")] internal static delegate* unmanaged<int, int, int*, void> _glUniform4iv = null;
+        
+        public static void glUniformMatrix2fv(int location, int count, bool transpose, float* value) => _glUniformMatrix2fv(location, count, transpose, value);
+        [QGLNativeAPI("glUniformMatrix2fv")] internal static delegate* unmanaged<int, int, bool, float*, void> _glUniformMatrix2fv = null;
+        
+        public static void glUniformMatrix3fv(int location, int count, bool transpose, float* value) => _glUniformMatrix3fv(location, count, transpose, value);
+        [QGLNativeAPI("glUniformMatrix3fv")] internal static delegate* unmanaged<int, int, bool, float*, void> _glUniformMatrix3fv = null;
+        
+        public static void glUniformMatrix4fv(int location, int count, bool transpose, float* value) => _glUniformMatrix4fv(location, count, transpose, value);
+        [QGLNativeAPI("glUniformMatrix4fv")] internal static delegate* unmanaged<int, int, bool, float*, void> _glUniformMatrix4fv = null;
+        
+        public static void glValidateProgram(uint program) => _glValidateProgram(program);
+        [QGLNativeAPI("glValidateProgram")] internal static delegate* unmanaged<uint, void> _glValidateProgram = null;
+        
+        public static void glVertexAttrib1d(uint index, double x) => _glVertexAttrib1d(index, x);
+        [QGLNativeAPI("glVertexAttrib1d")] internal static delegate* unmanaged<uint, double, void> _glVertexAttrib1d = null;
+        
+        public static void glVertexAttrib1dv(uint index, double* v) => _glVertexAttrib1dv(index, v);
+        [QGLNativeAPI("glVertexAttrib1dv")] internal static delegate* unmanaged<uint, double*, void> _glVertexAttrib1dv = null;
+        
+        public static void glVertexAttrib1f(uint index, float x) => _glVertexAttrib1f(index, x);
+        [QGLNativeAPI("glVertexAttrib1f")] internal static delegate* unmanaged<uint, float, void> _glVertexAttrib1f = null;
+        
+        public static void glVertexAttrib1fv(uint index, float* v) => _glVertexAttrib1fv(index, v);
+        [QGLNativeAPI("glVertexAttrib1fv")] internal static delegate* unmanaged<uint, float*, void> _glVertexAttrib1fv = null;
+        
+        public static void glVertexAttrib1s(uint index, short x) => _glVertexAttrib1s(index, x);
+        [QGLNativeAPI("glVertexAttrib1s")] internal static delegate* unmanaged<uint, short, void> _glVertexAttrib1s = null;
+        
+        public static void glVertexAttrib1sv(uint index, short* v) => _glVertexAttrib1sv(index, v);
+        [QGLNativeAPI("glVertexAttrib1sv")] internal static delegate* unmanaged<uint, short*, void> _glVertexAttrib1sv = null;
+        
+        public static void glVertexAttrib2d(uint index, double x, double y) => _glVertexAttrib2d(index, x, y);
+        [QGLNativeAPI("glVertexAttrib2d")] internal static delegate* unmanaged<uint, double, double, void> _glVertexAttrib2d = null;
+        
+        public static void glVertexAttrib2dv(uint index, double* v) => _glVertexAttrib2dv(index, v);
+        [QGLNativeAPI("glVertexAttrib2dv")] internal static delegate* unmanaged<uint, double*, void> _glVertexAttrib2dv = null;
+        
+        public static void glVertexAttrib2f(uint index, float x, float y) => _glVertexAttrib2f(index, x, y);
+        [QGLNativeAPI("glVertexAttrib2f")] internal static delegate* unmanaged<uint, float, float, void> _glVertexAttrib2f = null;
+        
+        public static void glVertexAttrib2fv(uint index, float* v) => _glVertexAttrib2fv(index, v);
+        [QGLNativeAPI("glVertexAttrib2fv")] internal static delegate* unmanaged<uint, float*, void> _glVertexAttrib2fv = null;
+        
+        public static void glVertexAttrib2s(uint index, short x, short y) => _glVertexAttrib2s(index, x, y);
+        [QGLNativeAPI("glVertexAttrib2s")] internal static delegate* unmanaged<uint, short, short, void> _glVertexAttrib2s = null;
+        
+        public static void glVertexAttrib2sv(uint index, short* v) => _glVertexAttrib2sv(index, v);
+        [QGLNativeAPI("glVertexAttrib2sv")] internal static delegate* unmanaged<uint, short*, void> _glVertexAttrib2sv = null;
+        
+        public static void glVertexAttrib3d(uint index, double x, double y, double z) => _glVertexAttrib3d(index, x, y, z);
+        [QGLNativeAPI("glVertexAttrib3d")] internal static delegate* unmanaged<uint, double, double, double, void> _glVertexAttrib3d = null;
+        
+        public static void glVertexAttrib3dv(uint index, double* v) => _glVertexAttrib3dv(index, v);
+        [QGLNativeAPI("glVertexAttrib3dv")] internal static delegate* unmanaged<uint, double*, void> _glVertexAttrib3dv = null;
+        
+        public static void glVertexAttrib3f(uint index, float x, float y, float z) => _glVertexAttrib3f(index, x, y, z);
+        [QGLNativeAPI("glVertexAttrib3f")] internal static delegate* unmanaged<uint, float, float, float, void> _glVertexAttrib3f = null;
+        
+        public static void glVertexAttrib3fv(uint index, float* v) => _glVertexAttrib3fv(index, v);
+        [QGLNativeAPI("glVertexAttrib3fv")] internal static delegate* unmanaged<uint, float*, void> _glVertexAttrib3fv = null;
+        
+        public static void glVertexAttrib3s(uint index, short x, short y, short z) => _glVertexAttrib3s(index, x, y, z);
+        [QGLNativeAPI("glVertexAttrib3s")] internal static delegate* unmanaged<uint, short, short, short, void> _glVertexAttrib3s = null;
+        
+        public static void glVertexAttrib3sv(uint index, short* v) => _glVertexAttrib3sv(index, v);
+        [QGLNativeAPI("glVertexAttrib3sv")] internal static delegate* unmanaged<uint, short*, void> _glVertexAttrib3sv = null;
+        
+        public static void glVertexAttrib4Nbv(uint index, sbyte* v) => _glVertexAttrib4Nbv(index, v);
+        [QGLNativeAPI("glVertexAttrib4Nbv")] internal static delegate* unmanaged<uint, sbyte*, void> _glVertexAttrib4Nbv = null;
+        
+        public static void glVertexAttrib4Niv(uint index, int* v) => _glVertexAttrib4Niv(index, v);
+        [QGLNativeAPI("glVertexAttrib4Niv")] internal static delegate* unmanaged<uint, int*, void> _glVertexAttrib4Niv = null;
+        
+        public static void glVertexAttrib4Nsv(uint index, short* v) => _glVertexAttrib4Nsv(index, v);
+        [QGLNativeAPI("glVertexAttrib4Nsv")] internal static delegate* unmanaged<uint, short*, void> _glVertexAttrib4Nsv = null;
+        
+        public static void glVertexAttrib4Nub(uint index, byte x, byte y, byte z, byte w) => _glVertexAttrib4Nub(index, x, y, z, w);
+        [QGLNativeAPI("glVertexAttrib4Nub")] internal static delegate* unmanaged<uint, byte, byte, byte, byte, void> _glVertexAttrib4Nub = null;
+        
+        public static void glVertexAttrib4Nubv(uint index, byte* v) => _glVertexAttrib4Nubv(index, v);
+        [QGLNativeAPI("glVertexAttrib4Nubv")] internal static delegate* unmanaged<uint, byte*, void> _glVertexAttrib4Nubv = null;
+        
+        public static void glVertexAttrib4Nuiv(uint index, uint* v) => _glVertexAttrib4Nuiv(index, v);
+        [QGLNativeAPI("glVertexAttrib4Nuiv")] internal static delegate* unmanaged<uint, uint*, void> _glVertexAttrib4Nuiv = null;
+        
+        public static void glVertexAttrib4Nusv(uint index, ushort* v) => _glVertexAttrib4Nusv(index, v);
+        [QGLNativeAPI("glVertexAttrib4Nusv")] internal static delegate* unmanaged<uint, ushort*, void> _glVertexAttrib4Nusv = null;
+        
+        public static void glVertexAttrib4bv(uint index, sbyte* v) => _glVertexAttrib4bv(index, v);
+        [QGLNativeAPI("glVertexAttrib4bv")] internal static delegate* unmanaged<uint, sbyte*, void> _glVertexAttrib4bv = null;
+        
+        public static void glVertexAttrib4d(uint index, double x, double y, double z, double w) => _glVertexAttrib4d(index, x, y, z, w);
+        [QGLNativeAPI("glVertexAttrib4d")] internal static delegate* unmanaged<uint, double, double, double, double, void> _glVertexAttrib4d = null;
+        
+        public static void glVertexAttrib4dv(uint index, double* v) => _glVertexAttrib4dv(index, v);
+        [QGLNativeAPI("glVertexAttrib4dv")] internal static delegate* unmanaged<uint, double*, void> _glVertexAttrib4dv = null;
+        
+        public static void glVertexAttrib4f(uint index, float x, float y, float z, float w) => _glVertexAttrib4f(index, x, y, z, w);
+        [QGLNativeAPI("glVertexAttrib4f")] internal static delegate* unmanaged<uint, float, float, float, float, void> _glVertexAttrib4f = null;
+        
+        public static void glVertexAttrib4fv(uint index, float* v) => _glVertexAttrib4fv(index, v);
+        [QGLNativeAPI("glVertexAttrib4fv")] internal static delegate* unmanaged<uint, float*, void> _glVertexAttrib4fv = null;
+        
+        public static void glVertexAttrib4iv(uint index, int* v) => _glVertexAttrib4iv(index, v);
+        [QGLNativeAPI("glVertexAttrib4iv")] internal static delegate* unmanaged<uint, int*, void> _glVertexAttrib4iv = null;
+        
+        public static void glVertexAttrib4s(uint index, short x, short y, short z, short w) => _glVertexAttrib4s(index, x, y, z, w);
+        [QGLNativeAPI("glVertexAttrib4s")] internal static delegate* unmanaged<uint, short, short, short, short, void> _glVertexAttrib4s = null;
+        
+        public static void glVertexAttrib4sv(uint index, short* v) => _glVertexAttrib4sv(index, v);
+        [QGLNativeAPI("glVertexAttrib4sv")] internal static delegate* unmanaged<uint, short*, void> _glVertexAttrib4sv = null;
+        
+        public static void glVertexAttrib4ubv(uint index, byte* v) => _glVertexAttrib4ubv(index, v);
+        [QGLNativeAPI("glVertexAttrib4ubv")] internal static delegate* unmanaged<uint, byte*, void> _glVertexAttrib4ubv = null;
+        
+        public static void glVertexAttrib4uiv(uint index, uint* v) => _glVertexAttrib4uiv(index, v);
+        [QGLNativeAPI("glVertexAttrib4uiv")] internal static delegate* unmanaged<uint, uint*, void> _glVertexAttrib4uiv = null;
+        
+        public static void glVertexAttrib4usv(uint index, ushort* v) => _glVertexAttrib4usv(index, v);
+        [QGLNativeAPI("glVertexAttrib4usv")] internal static delegate* unmanaged<uint, ushort*, void> _glVertexAttrib4usv = null;
+        
+        public static void glVertexAttribPointer(uint index, int size, uint type, bool normalized, int stride, void* pointer) => _glVertexAttribPointer(index, size, type, normalized, stride, pointer);
+        [QGLNativeAPI("glVertexAttribPointer")] internal static delegate* unmanaged<uint, int, uint, bool, int, void*, void> _glVertexAttribPointer = null;
         #endregion
     }
 }

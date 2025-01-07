@@ -22,7 +22,7 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-01-04 19:06:28.364423
+// Bindings generated at 2025-01-07 19:43:59.911632
 namespace QuickGLNS.Bindings
 {
     [GLFeature]
@@ -82,53 +82,146 @@ namespace QuickGLNS.Bindings
         #endregion
         
         #region Commands
-        [QGLNativeAPI("glBlendFuncSeparate")] public static delegate* unmanaged<uint, uint, uint, uint, void> glBlendFuncSeparate;
-        [QGLNativeAPI("glMultiDrawArrays")] public static delegate* unmanaged<uint, int*, int*, int, void> glMultiDrawArrays;
-        [QGLNativeAPI("glMultiDrawElements")] public static delegate* unmanaged<uint, int*, uint, void**, int, void> glMultiDrawElements;
-        [QGLNativeAPI("glPointParameterf")] public static delegate* unmanaged<uint, float, void> glPointParameterf;
-        [QGLNativeAPI("glPointParameterfv")] public static delegate* unmanaged<uint, float*, void> glPointParameterfv;
-        [QGLNativeAPI("glPointParameteri")] public static delegate* unmanaged<uint, int, void> glPointParameteri;
-        [QGLNativeAPI("glPointParameteriv")] public static delegate* unmanaged<uint, int*, void> glPointParameteriv;
-        [QGLNativeAPI("glFogCoordf")] public static delegate* unmanaged<float, void> glFogCoordf;
-        [QGLNativeAPI("glFogCoordfv")] public static delegate* unmanaged<float*, void> glFogCoordfv;
-        [QGLNativeAPI("glFogCoordd")] public static delegate* unmanaged<double, void> glFogCoordd;
-        [QGLNativeAPI("glFogCoorddv")] public static delegate* unmanaged<double*, void> glFogCoorddv;
-        [QGLNativeAPI("glFogCoordPointer")] public static delegate* unmanaged<uint, int, void*, void> glFogCoordPointer;
-        [QGLNativeAPI("glSecondaryColor3b")] public static delegate* unmanaged<sbyte, sbyte, sbyte, void> glSecondaryColor3b;
-        [QGLNativeAPI("glSecondaryColor3bv")] public static delegate* unmanaged<sbyte*, void> glSecondaryColor3bv;
-        [QGLNativeAPI("glSecondaryColor3d")] public static delegate* unmanaged<double, double, double, void> glSecondaryColor3d;
-        [QGLNativeAPI("glSecondaryColor3dv")] public static delegate* unmanaged<double*, void> glSecondaryColor3dv;
-        [QGLNativeAPI("glSecondaryColor3f")] public static delegate* unmanaged<float, float, float, void> glSecondaryColor3f;
-        [QGLNativeAPI("glSecondaryColor3fv")] public static delegate* unmanaged<float*, void> glSecondaryColor3fv;
-        [QGLNativeAPI("glSecondaryColor3i")] public static delegate* unmanaged<int, int, int, void> glSecondaryColor3i;
-        [QGLNativeAPI("glSecondaryColor3iv")] public static delegate* unmanaged<int*, void> glSecondaryColor3iv;
-        [QGLNativeAPI("glSecondaryColor3s")] public static delegate* unmanaged<short, short, short, void> glSecondaryColor3s;
-        [QGLNativeAPI("glSecondaryColor3sv")] public static delegate* unmanaged<short*, void> glSecondaryColor3sv;
-        [QGLNativeAPI("glSecondaryColor3ub")] public static delegate* unmanaged<byte, byte, byte, void> glSecondaryColor3ub;
-        [QGLNativeAPI("glSecondaryColor3ubv")] public static delegate* unmanaged<byte*, void> glSecondaryColor3ubv;
-        [QGLNativeAPI("glSecondaryColor3ui")] public static delegate* unmanaged<uint, uint, uint, void> glSecondaryColor3ui;
-        [QGLNativeAPI("glSecondaryColor3uiv")] public static delegate* unmanaged<uint*, void> glSecondaryColor3uiv;
-        [QGLNativeAPI("glSecondaryColor3us")] public static delegate* unmanaged<ushort, ushort, ushort, void> glSecondaryColor3us;
-        [QGLNativeAPI("glSecondaryColor3usv")] public static delegate* unmanaged<ushort*, void> glSecondaryColor3usv;
-        [QGLNativeAPI("glSecondaryColorPointer")] public static delegate* unmanaged<int, uint, int, void*, void> glSecondaryColorPointer;
-        [QGLNativeAPI("glWindowPos2d")] public static delegate* unmanaged<double, double, void> glWindowPos2d;
-        [QGLNativeAPI("glWindowPos2dv")] public static delegate* unmanaged<double*, void> glWindowPos2dv;
-        [QGLNativeAPI("glWindowPos2f")] public static delegate* unmanaged<float, float, void> glWindowPos2f;
-        [QGLNativeAPI("glWindowPos2fv")] public static delegate* unmanaged<float*, void> glWindowPos2fv;
-        [QGLNativeAPI("glWindowPos2i")] public static delegate* unmanaged<int, int, void> glWindowPos2i;
-        [QGLNativeAPI("glWindowPos2iv")] public static delegate* unmanaged<int*, void> glWindowPos2iv;
-        [QGLNativeAPI("glWindowPos2s")] public static delegate* unmanaged<short, short, void> glWindowPos2s;
-        [QGLNativeAPI("glWindowPos2sv")] public static delegate* unmanaged<short*, void> glWindowPos2sv;
-        [QGLNativeAPI("glWindowPos3d")] public static delegate* unmanaged<double, double, double, void> glWindowPos3d;
-        [QGLNativeAPI("glWindowPos3dv")] public static delegate* unmanaged<double*, void> glWindowPos3dv;
-        [QGLNativeAPI("glWindowPos3f")] public static delegate* unmanaged<float, float, float, void> glWindowPos3f;
-        [QGLNativeAPI("glWindowPos3fv")] public static delegate* unmanaged<float*, void> glWindowPos3fv;
-        [QGLNativeAPI("glWindowPos3i")] public static delegate* unmanaged<int, int, int, void> glWindowPos3i;
-        [QGLNativeAPI("glWindowPos3iv")] public static delegate* unmanaged<int*, void> glWindowPos3iv;
-        [QGLNativeAPI("glWindowPos3s")] public static delegate* unmanaged<short, short, short, void> glWindowPos3s;
-        [QGLNativeAPI("glWindowPos3sv")] public static delegate* unmanaged<short*, void> glWindowPos3sv;
-        [QGLNativeAPI("glBlendColor")] public static delegate* unmanaged<float, float, float, float, void> glBlendColor;
-        [QGLNativeAPI("glBlendEquation")] public static delegate* unmanaged<uint, void> glBlendEquation;
+        public static void glBlendFuncSeparate(uint sfactorRGB, uint dfactorRGB, uint sfactorAlpha, uint dfactorAlpha) => _glBlendFuncSeparate(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha);
+        [QGLNativeAPI("glBlendFuncSeparate")] internal static delegate* unmanaged<uint, uint, uint, uint, void> _glBlendFuncSeparate = null;
+        
+        public static void glMultiDrawArrays(uint mode, int* first, int* count, int drawcount) => _glMultiDrawArrays(mode, first, count, drawcount);
+        [QGLNativeAPI("glMultiDrawArrays")] internal static delegate* unmanaged<uint, int*, int*, int, void> _glMultiDrawArrays = null;
+        
+        public static void glMultiDrawElements(uint mode, int* count, uint type, void** indices, int drawcount) => _glMultiDrawElements(mode, count, type, indices, drawcount);
+        [QGLNativeAPI("glMultiDrawElements")] internal static delegate* unmanaged<uint, int*, uint, void**, int, void> _glMultiDrawElements = null;
+        
+        public static void glPointParameterf(uint pname, float param) => _glPointParameterf(pname, param);
+        [QGLNativeAPI("glPointParameterf")] internal static delegate* unmanaged<uint, float, void> _glPointParameterf = null;
+        
+        public static void glPointParameterfv(uint pname, float* @params) => _glPointParameterfv(pname, @params);
+        [QGLNativeAPI("glPointParameterfv")] internal static delegate* unmanaged<uint, float*, void> _glPointParameterfv = null;
+        
+        public static void glPointParameteri(uint pname, int param) => _glPointParameteri(pname, param);
+        [QGLNativeAPI("glPointParameteri")] internal static delegate* unmanaged<uint, int, void> _glPointParameteri = null;
+        
+        public static void glPointParameteriv(uint pname, int* @params) => _glPointParameteriv(pname, @params);
+        [QGLNativeAPI("glPointParameteriv")] internal static delegate* unmanaged<uint, int*, void> _glPointParameteriv = null;
+        
+        public static void glFogCoordf(float coord) => _glFogCoordf(coord);
+        [QGLNativeAPI("glFogCoordf")] internal static delegate* unmanaged<float, void> _glFogCoordf = null;
+        
+        public static void glFogCoordfv(float* coord) => _glFogCoordfv(coord);
+        [QGLNativeAPI("glFogCoordfv")] internal static delegate* unmanaged<float*, void> _glFogCoordfv = null;
+        
+        public static void glFogCoordd(double coord) => _glFogCoordd(coord);
+        [QGLNativeAPI("glFogCoordd")] internal static delegate* unmanaged<double, void> _glFogCoordd = null;
+        
+        public static void glFogCoorddv(double* coord) => _glFogCoorddv(coord);
+        [QGLNativeAPI("glFogCoorddv")] internal static delegate* unmanaged<double*, void> _glFogCoorddv = null;
+        
+        public static void glFogCoordPointer(uint type, int stride, void* pointer) => _glFogCoordPointer(type, stride, pointer);
+        [QGLNativeAPI("glFogCoordPointer")] internal static delegate* unmanaged<uint, int, void*, void> _glFogCoordPointer = null;
+        
+        public static void glSecondaryColor3b(sbyte red, sbyte green, sbyte blue) => _glSecondaryColor3b(red, green, blue);
+        [QGLNativeAPI("glSecondaryColor3b")] internal static delegate* unmanaged<sbyte, sbyte, sbyte, void> _glSecondaryColor3b = null;
+        
+        public static void glSecondaryColor3bv(sbyte* v) => _glSecondaryColor3bv(v);
+        [QGLNativeAPI("glSecondaryColor3bv")] internal static delegate* unmanaged<sbyte*, void> _glSecondaryColor3bv = null;
+        
+        public static void glSecondaryColor3d(double red, double green, double blue) => _glSecondaryColor3d(red, green, blue);
+        [QGLNativeAPI("glSecondaryColor3d")] internal static delegate* unmanaged<double, double, double, void> _glSecondaryColor3d = null;
+        
+        public static void glSecondaryColor3dv(double* v) => _glSecondaryColor3dv(v);
+        [QGLNativeAPI("glSecondaryColor3dv")] internal static delegate* unmanaged<double*, void> _glSecondaryColor3dv = null;
+        
+        public static void glSecondaryColor3f(float red, float green, float blue) => _glSecondaryColor3f(red, green, blue);
+        [QGLNativeAPI("glSecondaryColor3f")] internal static delegate* unmanaged<float, float, float, void> _glSecondaryColor3f = null;
+        
+        public static void glSecondaryColor3fv(float* v) => _glSecondaryColor3fv(v);
+        [QGLNativeAPI("glSecondaryColor3fv")] internal static delegate* unmanaged<float*, void> _glSecondaryColor3fv = null;
+        
+        public static void glSecondaryColor3i(int red, int green, int blue) => _glSecondaryColor3i(red, green, blue);
+        [QGLNativeAPI("glSecondaryColor3i")] internal static delegate* unmanaged<int, int, int, void> _glSecondaryColor3i = null;
+        
+        public static void glSecondaryColor3iv(int* v) => _glSecondaryColor3iv(v);
+        [QGLNativeAPI("glSecondaryColor3iv")] internal static delegate* unmanaged<int*, void> _glSecondaryColor3iv = null;
+        
+        public static void glSecondaryColor3s(short red, short green, short blue) => _glSecondaryColor3s(red, green, blue);
+        [QGLNativeAPI("glSecondaryColor3s")] internal static delegate* unmanaged<short, short, short, void> _glSecondaryColor3s = null;
+        
+        public static void glSecondaryColor3sv(short* v) => _glSecondaryColor3sv(v);
+        [QGLNativeAPI("glSecondaryColor3sv")] internal static delegate* unmanaged<short*, void> _glSecondaryColor3sv = null;
+        
+        public static void glSecondaryColor3ub(byte red, byte green, byte blue) => _glSecondaryColor3ub(red, green, blue);
+        [QGLNativeAPI("glSecondaryColor3ub")] internal static delegate* unmanaged<byte, byte, byte, void> _glSecondaryColor3ub = null;
+        
+        public static void glSecondaryColor3ubv(byte* v) => _glSecondaryColor3ubv(v);
+        [QGLNativeAPI("glSecondaryColor3ubv")] internal static delegate* unmanaged<byte*, void> _glSecondaryColor3ubv = null;
+        
+        public static void glSecondaryColor3ui(uint red, uint green, uint blue) => _glSecondaryColor3ui(red, green, blue);
+        [QGLNativeAPI("glSecondaryColor3ui")] internal static delegate* unmanaged<uint, uint, uint, void> _glSecondaryColor3ui = null;
+        
+        public static void glSecondaryColor3uiv(uint* v) => _glSecondaryColor3uiv(v);
+        [QGLNativeAPI("glSecondaryColor3uiv")] internal static delegate* unmanaged<uint*, void> _glSecondaryColor3uiv = null;
+        
+        public static void glSecondaryColor3us(ushort red, ushort green, ushort blue) => _glSecondaryColor3us(red, green, blue);
+        [QGLNativeAPI("glSecondaryColor3us")] internal static delegate* unmanaged<ushort, ushort, ushort, void> _glSecondaryColor3us = null;
+        
+        public static void glSecondaryColor3usv(ushort* v) => _glSecondaryColor3usv(v);
+        [QGLNativeAPI("glSecondaryColor3usv")] internal static delegate* unmanaged<ushort*, void> _glSecondaryColor3usv = null;
+        
+        public static void glSecondaryColorPointer(int size, uint type, int stride, void* pointer) => _glSecondaryColorPointer(size, type, stride, pointer);
+        [QGLNativeAPI("glSecondaryColorPointer")] internal static delegate* unmanaged<int, uint, int, void*, void> _glSecondaryColorPointer = null;
+        
+        public static void glWindowPos2d(double x, double y) => _glWindowPos2d(x, y);
+        [QGLNativeAPI("glWindowPos2d")] internal static delegate* unmanaged<double, double, void> _glWindowPos2d = null;
+        
+        public static void glWindowPos2dv(double* v) => _glWindowPos2dv(v);
+        [QGLNativeAPI("glWindowPos2dv")] internal static delegate* unmanaged<double*, void> _glWindowPos2dv = null;
+        
+        public static void glWindowPos2f(float x, float y) => _glWindowPos2f(x, y);
+        [QGLNativeAPI("glWindowPos2f")] internal static delegate* unmanaged<float, float, void> _glWindowPos2f = null;
+        
+        public static void glWindowPos2fv(float* v) => _glWindowPos2fv(v);
+        [QGLNativeAPI("glWindowPos2fv")] internal static delegate* unmanaged<float*, void> _glWindowPos2fv = null;
+        
+        public static void glWindowPos2i(int x, int y) => _glWindowPos2i(x, y);
+        [QGLNativeAPI("glWindowPos2i")] internal static delegate* unmanaged<int, int, void> _glWindowPos2i = null;
+        
+        public static void glWindowPos2iv(int* v) => _glWindowPos2iv(v);
+        [QGLNativeAPI("glWindowPos2iv")] internal static delegate* unmanaged<int*, void> _glWindowPos2iv = null;
+        
+        public static void glWindowPos2s(short x, short y) => _glWindowPos2s(x, y);
+        [QGLNativeAPI("glWindowPos2s")] internal static delegate* unmanaged<short, short, void> _glWindowPos2s = null;
+        
+        public static void glWindowPos2sv(short* v) => _glWindowPos2sv(v);
+        [QGLNativeAPI("glWindowPos2sv")] internal static delegate* unmanaged<short*, void> _glWindowPos2sv = null;
+        
+        public static void glWindowPos3d(double x, double y, double z) => _glWindowPos3d(x, y, z);
+        [QGLNativeAPI("glWindowPos3d")] internal static delegate* unmanaged<double, double, double, void> _glWindowPos3d = null;
+        
+        public static void glWindowPos3dv(double* v) => _glWindowPos3dv(v);
+        [QGLNativeAPI("glWindowPos3dv")] internal static delegate* unmanaged<double*, void> _glWindowPos3dv = null;
+        
+        public static void glWindowPos3f(float x, float y, float z) => _glWindowPos3f(x, y, z);
+        [QGLNativeAPI("glWindowPos3f")] internal static delegate* unmanaged<float, float, float, void> _glWindowPos3f = null;
+        
+        public static void glWindowPos3fv(float* v) => _glWindowPos3fv(v);
+        [QGLNativeAPI("glWindowPos3fv")] internal static delegate* unmanaged<float*, void> _glWindowPos3fv = null;
+        
+        public static void glWindowPos3i(int x, int y, int z) => _glWindowPos3i(x, y, z);
+        [QGLNativeAPI("glWindowPos3i")] internal static delegate* unmanaged<int, int, int, void> _glWindowPos3i = null;
+        
+        public static void glWindowPos3iv(int* v) => _glWindowPos3iv(v);
+        [QGLNativeAPI("glWindowPos3iv")] internal static delegate* unmanaged<int*, void> _glWindowPos3iv = null;
+        
+        public static void glWindowPos3s(short x, short y, short z) => _glWindowPos3s(x, y, z);
+        [QGLNativeAPI("glWindowPos3s")] internal static delegate* unmanaged<short, short, short, void> _glWindowPos3s = null;
+        
+        public static void glWindowPos3sv(short* v) => _glWindowPos3sv(v);
+        [QGLNativeAPI("glWindowPos3sv")] internal static delegate* unmanaged<short*, void> _glWindowPos3sv = null;
+        
+        public static void glBlendColor(float red, float green, float blue, float alpha) => _glBlendColor(red, green, blue, alpha);
+        [QGLNativeAPI("glBlendColor")] internal static delegate* unmanaged<float, float, float, float, void> _glBlendColor = null;
+        
+        public static void glBlendEquation(uint mode) => _glBlendEquation(mode);
+        [QGLNativeAPI("glBlendEquation")] internal static delegate* unmanaged<uint, void> _glBlendEquation = null;
         #endregion
     }
 }

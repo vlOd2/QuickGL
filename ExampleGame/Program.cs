@@ -107,6 +107,7 @@ namespace ExampleGameNS
             if (glfwInit() == GLFW_FALSE) 
                 throw new Exception("Failed to initialize GLFW");
 
+            
             // The driver usually picks the latest version
             // glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
             // glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
