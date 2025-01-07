@@ -46,6 +46,10 @@ namespace QuickGLNS
         /// <exception cref="ArgumentException">if an input system is already assigned</exception>
         public static void Create(nint window)
         {
+            if (!QuickGL.initialized)
+                throw new GLException("QuickGL not initialized");
+            if (QuickGL.noGLFW)
+                throw new InvalidOperationException("QuickGL initialized without GLFW");
             if (mouse.ContainsKey(window) && keyboard.ContainsKey(window))
                 throw new ArgumentException("Window already has an input system");
             mouse[window] = new Mouse();
