@@ -16,7 +16,7 @@ QuickGL.LoadGL();
 ```
 
 # 🔧 Utilities
-QuickGL includes some utilities to try and speed up your development times:
+QuickGL includes some utilities to help you out with repetitive tasks:
 - `QGLString`, to ease the interop between native strings (`byte*`) and managed strings
 - `QuickGL::ToPtr`, to help you use the fast stack memory (`stackalloc`) with GLFW/GL functions
 - `Input`, a wrapper around GLFW for keyboard and mouse input
