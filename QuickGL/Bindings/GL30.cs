@@ -22,10 +22,10 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-01-07 19:43:59.924155
+// Bindings generated at 2025-01-07 20:24:12.626838
 namespace QuickGLNS.Bindings
 {
-    [GLFeature]
+    [GLFeature(false)]
     public static unsafe class GL30
     {
         #region Enums

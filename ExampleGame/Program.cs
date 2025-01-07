@@ -106,13 +106,13 @@ namespace ExampleGameNS
             QuickGL.Init();
             if (glfwInit() == GLFW_FALSE) 
                 throw new Exception("Failed to initialize GLFW");
-
             
             // The driver usually picks the latest version
             // glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
             // glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
             // glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
+            glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
+            
             width = 640;
             height = 480;
             window = glfwCreateWindow(width, height, new QGLString("QuickGL - Example Game"), 0, 0);

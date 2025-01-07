@@ -23,7 +23,7 @@
 using System.Runtime.InteropServices;
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-01-07 19:42:23.526339
+// Bindings generated at 2025-01-07 20:24:11.745050
 namespace QuickGLNS.Bindings
 {
     #region Callbacks
