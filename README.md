@@ -21,6 +21,9 @@ QuickGL includes some utilities to help you out with repetitive tasks:
 - `QuickGL::ToPtr`, to help you use the fast stack memory (`stackalloc`) with GLFW/GL functions
 - `Input`, a wrapper around GLFW for keyboard and mouse input
 
+>[!NOTE]
+>All of these are optional and you can just use QuickGL for the bindings just fine without them
+
 # ⚙ Bindings
 The bindings are automatically generated based on the official GLFW header and OpenGL registry<br>
 You may generate your own custom bindings using [QGLBindingsGen](https://github.com/vlOd2/QGLBindingsGen)
