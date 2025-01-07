@@ -16,11 +16,10 @@ QuickGL.LoadGL();
 ```
 
 # 🔧 Utilities
-QuickGL includes some utilities to try and speed up your development times<br>
-These include:
-- Easy to use native string interop (QGLString)
-- Methods to convert stack allocated spans to pointers (QuickGL::ToPtr)
-- Easy to use, optional, input wrapper for GLFW (Input)
+QuickGL includes some utilities to try and speed up your development times:
+- `QGLString`, to ease the interop between native strings (`byte*`) and managed strings
+- `QuickGL::ToPtr`, to help you use the fast stack memory (`stackalloc`) with GLFW/GL functions
+- `Input`, a wrapper around GLFW for keyboard and mouse input
 
 # ⚙ Bindings
 The bindings are automatically generated based on the official GLFW header and OpenGL registry<br>
