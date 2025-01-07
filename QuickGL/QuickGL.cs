@@ -53,6 +53,8 @@ namespace QuickGLNS
         /// <exception cref="GLException">if GLFW could not be loaded successfully</exception>
         public static void Init()
         {
+            if (initialized)
+                throw new GLException("Already initialized");
             glfwLoader = new GLFWLoader();
             
             foreach (FieldInfo field in typeof(GLFW).GetFields(BINDING_FLAGS))
@@ -79,6 +81,8 @@ namespace QuickGLNS
         /// <param name="glLoader">the function called to load OpenGL functions from</param>
         public static void InitNoGLFW(delegate* unmanaged<byte*, nint> glLoader)
         {
+            if (initialized)
+                throw new GLException("Already initialized");   
             initialized = true;
             noGLFW = true;
             QuickGL.glLoader = glLoader;
