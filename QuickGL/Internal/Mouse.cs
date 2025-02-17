@@ -25,7 +25,7 @@ using static QuickGLNS.Bindings.GLFW;
 
 namespace QuickGLNS.Internal
 {
-    public unsafe class Mouse : IMouse
+    internal unsafe class Mouse : IMouse
     {
         private nint window;
         private GLFWcursorposfun positionCallback;

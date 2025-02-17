@@ -25,7 +25,7 @@ using static QuickGLNS.Bindings.GLFW;
 
 namespace QuickGLNS.Internal
 {
-    public unsafe class Keyboard : IKeyboard
+    internal unsafe class Keyboard : IKeyboard
     {
         private nint window;
         private GLFWkeyfun keyCallback;
