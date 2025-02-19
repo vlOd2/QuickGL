@@ -20,66 +20,65 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-namespace QuickGLNS
+namespace QuickGLNS;
+
+/// <summary>
+/// Simple event-queue based keyboard for GLFW
+/// </summary>
+public interface IKeyboard : IDisposable
 {
+    #region Event properties
     /// <summary>
-    /// Simple event-queue based keyboard for GLFW
+    /// The key of the current event
     /// </summary>
-    public interface IKeyboard : IDisposable
-    {
-        #region Event properties
-        /// <summary>
-        /// The key of the current event
-        /// </summary>
-        public int EventKey { get; }
-        /// <summary>
-        /// The character of the current event or null if not applicable
-        /// </summary>
-        public char EventChar { get; }
-        /// <summary>
-        /// The key state of the current event
-        /// </summary>
-        public KeyState EventState { get; }
-        /// <summary>
-        /// Does the current event indicate a key press
-        /// </summary>
-        public bool IsPressedEvent => EventState == KeyState.PRESSED || EventState == KeyState.REPEATED; 
-        #endregion
-        #region Keyboard settings
-        /// <summary>
-        /// Whether to send repeat events
-        /// </summary>
-        bool AllowRepeatEvents { get; set; }
-        /// <summary>
-        /// Whether to use fast mode or not<br/>
-        /// Fast mode does not wait for character events,
-        /// so key events are received faster at the cost of characters
-        /// </summary>
-        bool FastMode { get; set; }
-        #endregion
-        
-        void Init(nint window);
+    public int EventKey { get; }
+    /// <summary>
+    /// The character of the current event or null if not applicable
+    /// </summary>
+    public char EventChar { get; }
+    /// <summary>
+    /// The key state of the current event
+    /// </summary>
+    public KeyState EventState { get; }
+    /// <summary>
+    /// Does the current event indicate a key press
+    /// </summary>
+    public bool IsPressedEvent => EventState == KeyState.PRESSED || EventState == KeyState.REPEATED;
+    #endregion
+    #region Keyboard settings
+    /// <summary>
+    /// Whether to send repeat events
+    /// </summary>
+    bool AllowRepeatEvents { get; set; }
+    /// <summary>
+    /// Whether to use fast mode or not<br/>
+    /// Fast mode does not wait for character events,
+    /// so key events are received faster at the cost of characters
+    /// </summary>
+    bool FastMode { get; set; }
+    #endregion
 
-        /// <summary>
-        /// De-queues the next event<br/>
-        /// NOTE: Accessing any event information 
-        /// when this returns false is undefined
-        /// </summary>
-        /// <returns>if an event was de-queued</returns>
-        bool Next();
+    void Init(nint window);
 
-        /// <summary>
-        /// Checks if a key is pressed
-        /// </summary>
-        /// <param name="key">the key</param>
-        /// <returns>true if the key is pressed, false if otherwise</returns>
-        bool GetState(int key);
+    /// <summary>
+    /// De-queues the next event<br/>
+    /// NOTE: Accessing any event information 
+    /// when this returns false is undefined
+    /// </summary>
+    /// <returns>if an event was de-queued</returns>
+    bool Next();
 
-        /// <summary>
-        /// Gets the friendly name of a key
-        /// </summary>
-        /// <param name="key">the key</param>
-        /// <returns>the friendly name or null</returns>
-        QGLString GetName(int key);
-    }
+    /// <summary>
+    /// Checks if a key is pressed
+    /// </summary>
+    /// <param name="key">the key</param>
+    /// <returns>true if the key is pressed, false if otherwise</returns>
+    bool GetState(int key);
+
+    /// <summary>
+    /// Gets the friendly name of a key
+    /// </summary>
+    /// <param name="key">the key</param>
+    /// <returns>the friendly name or null</returns>
+    string GetName(int key);
 }

@@ -20,15 +20,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-namespace QuickGLNS
+namespace QuickGLNS;
+
+/// <summary>
+/// Represents an error that can occur during an OpenGL operation
+/// </summary>
+public class GLException : Exception
 {
-    /// <summary>
-    /// Represents an error that can occur during an OpenGL operation
-    /// </summary>
-    public class GLException : Exception
+    public GLException(string message) : base(message)
     {
-        public GLException(string message) : base(message)
-        {
-        }
     }
 }

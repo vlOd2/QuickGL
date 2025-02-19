@@ -22,40 +22,39 @@
 
 using System.Runtime.InteropServices;
 
-namespace QuickGLNS.Internal
-{
-    internal class GLFWLoader
-    {
-        private const string WIN_LIB_NAME = "glfw3.dll";
-        private const string UNIX_LIB_NAME = "libglfw.so.3";
-        private nint handle;
-        
-        public GLFWLoader()
-        {
-            string libName;
-            switch (Environment.OSVersion.Platform)
-            {
-                case PlatformID.Win32NT:
-                    libName = WIN_LIB_NAME;
-                    break;
-                case PlatformID.Unix:
-                    libName = UNIX_LIB_NAME;
-                    break;
-                default:
-                    throw new PlatformNotSupportedException();
-            }
-            handle = NativeLibrary.Load(libName);
-            if (handle == nint.Zero)
-                throw new GLException($"Could not load {libName}");
-        }
+namespace QuickGLNS.Internal;
 
-        public nint GetProcAddress(string name) => NativeLibrary.GetExport(handle, name);
-        
-        public void Dispose()
+internal class GLFWLoader
+{
+    private const string WIN_LIB_NAME = "glfw3.dll";
+    private const string UNIX_LIB_NAME = "libglfw.so.3";
+    private nint handle;
+
+    public GLFWLoader()
+    {
+        string libName;
+        switch (Environment.OSVersion.Platform)
         {
-            if (handle == nint.Zero) return;
-            NativeLibrary.Free(handle);
-            handle = nint.Zero;
+            case PlatformID.Win32NT:
+                libName = WIN_LIB_NAME;
+                break;
+            case PlatformID.Unix:
+                libName = UNIX_LIB_NAME;
+                break;
+            default:
+                throw new PlatformNotSupportedException();
         }
+        handle = NativeLibrary.Load(libName);
+        if (handle == nint.Zero)
+            throw new GLException($"Could not load {libName}");
+    }
+
+    public nint GetProcAddress(string name) => NativeLibrary.GetExport(handle, name);
+
+    public void Dispose()
+    {
+        if (handle == nint.Zero) return;
+        NativeLibrary.Free(handle);
+        handle = nint.Zero;
     }
 }

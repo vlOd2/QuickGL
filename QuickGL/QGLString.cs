@@ -23,83 +23,86 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace QuickGLNS
+namespace QuickGLNS;
+
+/// <summary>
+/// Convenience class to allow for easy interop with native ASCII strings
+/// </summary>
+public unsafe class QGLString : IDisposable
 {
+    private nint data;
+    private bool notOwned;
+    public int Length { get; private set; }
     /// <summary>
-    /// Convenience class to allow for easy interop with native ASCII strings
+    /// Reads a managed string from the pointer
     /// </summary>
-    public unsafe class QGLString : IDisposable
+    public string Data => Marshal.PtrToStringAnsi(data);
+    /// <summary>
+    /// The pointer behind this string
+    /// </summary>
+    public byte* RawData => (byte*)data;
+
+    /// <summary>
+    /// Imports a native null terminated string
+    /// </summary>
+    /// <param name="data">the native string</param>
+    public QGLString(byte* data)
     {
-        private nint data;
-        private bool notOwned;
-        public int Length { get; private set; }
-        /// <summary>
-        /// Reads a managed string from the pointer
-        /// </summary>
-        public string Data => Marshal.PtrToStringAnsi(data);
-        /// <summary>
-        /// The pointer behind this string
-        /// </summary>
-        public byte* RawData => (byte*)data;
+        this.data = (nint)data;
+        int idx = 0;
+        while (data[idx++] != 0x00) ;
+        Length = idx - 1;
+        notOwned = true;
+    }
 
-        /// <summary>
-        /// Imports a native null terminated string
-        /// </summary>
-        /// <param name="data">the native string</param>
-        public QGLString(byte* data)
-        {
-            this.data = (nint)data;
-            int idx = 0;
-            while (data[idx++] != 0x00);
-            Length = idx - 1;
-            notOwned = true;
-        }
+    /// <summary>
+    /// Allocates a native string from the given managed string
+    /// </summary>
+    /// <param name="data">the managed string to allocate from</param>
+    public QGLString(string data)
+    {
+        this.data = Marshal.StringToHGlobalAnsi(data);
+        Length = Encoding.ASCII.GetByteCount(data);
+    }
 
-        /// <summary>
-        /// Allocates a native string from the given managed string
-        /// </summary>
-        /// <param name="data">the managed string to allocate from</param>
-        public QGLString(string data)
-        {
-            this.data = Marshal.StringToHGlobalAnsi(data);
-            Length = Encoding.ASCII.GetByteCount(data);
-        }
+    /// <summary>
+    /// Allocates a native string with the given size
+    /// </summary>
+    /// <param name="size">the size of the string</param>
+    public QGLString(int size)
+    {
+        data = Marshal.AllocHGlobal(size);
+        Length = size;
+    }
 
-        /// <summary>
-        /// Allocates a native string with the given size
-        /// </summary>
-        /// <param name="size">the size of the string</param>
-        public QGLString(int size)
-        {
-            data = Marshal.AllocHGlobal(size);
-            Length = size;
-        }
+    ~QGLString()
+    {
+        Dispose(false);
+    }
 
-        ~QGLString()
-        {
-            Dispose(false);
-        }
+    public static implicit operator byte*(QGLString str) => str.RawData;
 
-        public static implicit operator byte*(QGLString str) => str.RawData;
+    public static implicit operator string(QGLString str) => str.Data;
 
-        public static implicit operator string(QGLString str) => str.Data;
+    public static implicit operator QGLString(byte* data) => new(data);
 
-        public static implicit operator QGLString(byte* data) => new(data);
+    public static implicit operator QGLString(string data) => new(data);
 
-        public static implicit operator QGLString(string data) => new(data);
+    public override int GetHashCode() => Data.GetHashCode();
 
-        protected virtual void Dispose(bool disposing)
-        {
-            if (notOwned || data == nint.Zero)
-                return;
-            Marshal.FreeHGlobal(data);
-            data = nint.Zero;
-        }
+    public override string ToString() => Data;
 
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
+    protected virtual void Dispose(bool disposing)
+    {
+        if (notOwned || data == nint.Zero)
+            return;
+        Marshal.FreeHGlobal(data);
+        data = nint.Zero;
+    }
+
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
     }
 }

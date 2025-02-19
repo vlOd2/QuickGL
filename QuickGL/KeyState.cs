@@ -20,25 +20,24 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-namespace QuickGLNS
+namespace QuickGLNS;
+
+/// <summary>
+/// The key state of a Keyboard event
+/// </summary>
+public enum KeyState
 {
     /// <summary>
-    /// The key state of a Keyboard event
+    /// If the key has been released
     /// </summary>
-    public enum KeyState
-    {
-        /// <summary>
-        /// If the key has been released
-        /// </summary>
-        RELEASED = 0,
-        /// <summary>
-        /// If the key has been pressed
-        /// </summary>
-        PRESSED = 1,
-        /// <summary>
-        /// If the key is being repeated<br/>
-        /// NOTE: The repeat rate is defined by the user's preferences
-        /// </summary>
-        REPEATED = 2
-    }
+    RELEASED = 0,
+    /// <summary>
+    /// If the key has been pressed
+    /// </summary>
+    PRESSED = 1,
+    /// <summary>
+    /// If the key is being repeated<br/>
+    /// NOTE: The repeat rate is defined by the user's preferences
+    /// </summary>
+    REPEATED = 2
 }

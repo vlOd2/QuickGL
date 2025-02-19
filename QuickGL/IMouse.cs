@@ -20,65 +20,64 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-namespace QuickGLNS
-{
-    /// <summary>
-    /// Simple event-queue based mouse for GLFW
-    /// </summary>
-    public interface IMouse : IDisposable
-    {
-        #region General properties
-        /// <summary>
-        /// The X position relative to the top-left corner of the window
-        /// </summary>
-        int X { get; }
-        /// <summary>
-        /// The Y position relative to the top-left corner of the window
-        /// </summary>
-        int Y { get; }
-        /// <summary>
-        /// The X movement since this was last queried 
-        /// </summary>
-        int DX { get; }
-        /// <summary>
-        /// The Y movement since this was last queried 
-        /// </summary>
-        int DY { get; }
-        /// <summary>
-        /// The vertical wheel scroll amount since this was last queried
-        /// </summary>
-        int Wheel { get; }
-        #endregion
-        #region Event properties
-        /// <summary>
-        /// The button of the current event
-        /// </summary>
-        int EventButton { get; }
-        /// <summary>
-        /// The pressed state of the current event
-        /// </summary>
-        bool EventState { get; }
-        #endregion
-        /// <summary>
-        /// Whether the mouse is captured and confined to the center of the window or not
-        /// </summary>
-        bool Captured { get; set; }
-        
-        void Init(nint window);
+namespace QuickGLNS;
 
-        /// <summary>
-        /// De-queues the next event<br/>
-        /// NOTE: Accessing any event information 
-        /// when this returns false is undefined
-        /// </summary>
-        /// <returns>if an event was de-queued</returns>
-        bool Next();
-        
-        /// <summary>
-        /// Checks if a button is pressed
-        /// </summary>
-        /// <param name="button">the ID of the button</param>
-        /// <returns></returns>
-        bool GetState(int button);
-    }
+/// <summary>
+/// Simple event-queue based mouse for GLFW
+/// </summary>
+public interface IMouse : IDisposable
+{
+    #region General properties
+    /// <summary>
+    /// The X position relative to the top-left corner of the window
+    /// </summary>
+    int X { get; }
+    /// <summary>
+    /// The Y position relative to the top-left corner of the window
+    /// </summary>
+    int Y { get; }
+    /// <summary>
+    /// The X movement since this was last queried 
+    /// </summary>
+    int DX { get; }
+    /// <summary>
+    /// The Y movement since this was last queried 
+    /// </summary>
+    int DY { get; }
+    /// <summary>
+    /// The vertical wheel scroll amount since this was last queried
+    /// </summary>
+    int Wheel { get; }
+    #endregion
+    #region Event properties
+    /// <summary>
+    /// The button of the current event
+    /// </summary>
+    int EventButton { get; }
+    /// <summary>
+    /// The pressed state of the current event
+    /// </summary>
+    bool EventState { get; }
+    #endregion
+    /// <summary>
+    /// Whether the mouse is captured and confined to the center of the window or not
+    /// </summary>
+    bool Captured { get; set; }
+
+    void Init(nint window);
+
+    /// <summary>
+    /// De-queues the next event<br/>
+    /// NOTE: Accessing any event information 
+    /// when this returns false is undefined
+    /// </summary>
+    /// <returns>if an event was de-queued</returns>
+    bool Next();
+
+    /// <summary>
+    /// Checks if a button is pressed
+    /// </summary>
+    /// <param name="button">the ID of the button</param>
+    /// <returns></returns>
+    bool GetState(int button);
 }

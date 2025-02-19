@@ -20,16 +20,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-namespace QuickGLNS.Internal
+namespace QuickGLNS.Internal;
+
+[AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
+internal class GLFeature : Attribute
 {
-    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
-    internal class GLFeature : Attribute
+    public bool IsGLES { get; private set; }
+
+    public GLFeature(bool isGLES)
     {
-        public bool IsGLES { get; private set; }
-        
-        public GLFeature(bool isGLES)
-        {
-            IsGLES = isGLES;
-        }
+        IsGLES = isGLES;
     }
 }
