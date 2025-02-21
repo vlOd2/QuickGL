@@ -31,10 +31,11 @@ namespace QuickGLNS;
 /// <summary>
 /// Class to load and manage GLFW, OpenGL with additional utilities
 /// </summary>
-public static unsafe class QuickGL
+public static unsafe partial class QuickGL
 {
     private const BindingFlags BINDING_FLAGS = BindingFlags.NonPublic | BindingFlags.Static;
     private static GLFWLoader glfwLoader;
+    private static OpenALLoader openALLoader;
     internal static bool initialized;
     internal static bool doNotUseGLFW;
     internal static delegate* unmanaged<byte*, nint> nativeAPILoader;
@@ -53,6 +54,9 @@ public static unsafe class QuickGL
     public static int GLVersionMinor { get; private set; }
     #endregion
 
+    [GeneratedRegex(@"(\d)\.(\d)(?:\.\d)?(?= )")]
+    private static partial Regex GLVersionRegex();
+
     /// <summary>
     /// Initializes QuickGL and loads GLFW functions
     /// </summary>
@@ -61,7 +65,7 @@ public static unsafe class QuickGL
     {
         if (initialized)
             throw new GLException("Already initialized");
-        glfwLoader = new GLFWLoader();
+        glfwLoader = new();
 
         foreach (FieldInfo field in typeof(GLFW).GetFields(BINDING_FLAGS))
         {
@@ -96,9 +100,47 @@ public static unsafe class QuickGL
         nativeAPILoader = loader;
     }
 
+    /// <summary>
+    /// Loads OpenAL's AL/ALC functions
+    /// </summary>
+    /// <exception cref="GLException"></exception>
+    public static void LoadAL()
+    {
+        if (!initialized)
+            throw new GLException("Not initialized");
+        openALLoader = new();
+
+        foreach (FieldInfo field in typeof(AL).GetFields(BINDING_FLAGS))
+        {
+            QGLNativeAPI nativeAPI = field.GetCustomAttribute<QGLNativeAPI>();
+            if (nativeAPI == null) continue;
+            nint handle = openALLoader.GetProcAddress(nativeAPI.Name);
+            if (handle == nint.Zero)
+            {
+                Destroy();
+                throw new GLException($"Could not find AL method: {nativeAPI.Name}");
+            }
+            field.SetValue(null, handle);
+        }
+
+        foreach (FieldInfo field in typeof(ALC).GetFields(BINDING_FLAGS))
+        {
+            QGLNativeAPI nativeAPI = field.GetCustomAttribute<QGLNativeAPI>();
+            if (nativeAPI == null) continue;
+            nint handle = openALLoader.GetProcAddress(nativeAPI.Name);
+            if (handle == nint.Zero)
+            {
+                Destroy();
+                throw new GLException($"Could not find ALC method: {nativeAPI.Name}");
+            }
+            field.SetValue(null, handle);
+        }
+    }
+
     private static void ParseGLVersion()
     {
-        nint handle = nativeAPILoader(new QGLString("glGetString"));
+        using QGLString str = new("glGetString");
+        nint handle = nativeAPILoader(str);
         if (handle == nint.Zero)
             throw new GLException("Could not initialize OpenGL");
 
@@ -107,8 +149,9 @@ public static unsafe class QuickGL
         if (strPtr == null)
             throw new GLException("Invalid OpenGL context");
 
-        Match match = Regex.Match(new QGLString(strPtr), @"(\d)\.(\d)(?:\.\d)?(?= )");
-        if (!match.Success) throw new GLException("Could not figure out OpenGL version");
+        Match match = GLVersionRegex().Match(new QGLString(strPtr));
+        if (!match.Success)
+            throw new GLException("Could not figure out OpenGL version");
         GLVersionMajor = int.Parse(match.Groups[1].Value);
         GLVersionMinor = int.Parse(match.Groups[2].Value);
     }
@@ -143,7 +186,9 @@ public static unsafe class QuickGL
             {
                 QGLNativeAPI nativeAPI = field.GetCustomAttribute<QGLNativeAPI>();
                 if (nativeAPI == null) continue;
-                nint handle = nativeAPILoader(new QGLString(nativeAPI.Name));
+                nint handle;
+                using (QGLString str = new(nativeAPI.Name))
+                    handle = nativeAPILoader(str);
                 // The result could be anything even if the command doesn't exist, so this is useless
                 // if (handle == nint.Zero) break;
                 field.SetValue(null, handle);
@@ -192,6 +237,20 @@ public static unsafe class QuickGL
             field.SetValue(null, nint.Zero);
         }
 
+        foreach (FieldInfo field in typeof(AL).GetFields(BINDING_FLAGS))
+        {
+            QGLNativeAPI nativeAPI = field.GetCustomAttribute<QGLNativeAPI>();
+            if (nativeAPI == null) continue;
+            field.SetValue(null, nint.Zero);
+        }
+
+        foreach (FieldInfo field in typeof(ALC).GetFields(BINDING_FLAGS))
+        {
+            QGLNativeAPI nativeAPI = field.GetCustomAttribute<QGLNativeAPI>();
+            if (nativeAPI == null) continue;
+            field.SetValue(null, nint.Zero);
+        }
+
         glfwLoader?.Dispose();
         glfwLoader = null;
         GLVersionMajor = GLVersionMinor = 0;
@@ -218,4 +277,5 @@ public static unsafe class QuickGL
     /// <returns>the pointer to the span's data</returns>
     public static T* ToPtr<T>(ReadOnlySpan<T> span) where T : unmanaged
         => (T*)Unsafe.AsPointer(ref Unsafe.AsRef(in span.GetPinnableReference()));
+
 }

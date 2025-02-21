@@ -60,17 +60,18 @@ namespace ExampleGameNS
         private static uint CompileShader(uint type, string source)
         {
             uint shader = glCreateShader(type);
-            byte* str = new QGLString(source);
-            glShaderSource(shader, 1, &str, (int*)0);
+            using QGLString str = new(source);
+            byte* ptr = str;
+            glShaderSource(shader, 1, &ptr, (int*)0);
             glCompileShader(shader);
-            
+
             int compileStatus = 0;
-            str = new QGLString(512);
             glGetShaderiv(shader, GL_COMPILE_STATUS, &compileStatus);
             if (compileStatus == GL_FALSE)
             {
-                glGetShaderInfoLog(shader, 512, (int*)0, str);
-                Console.Error.WriteLine((QGLString)str);
+                using QGLString log = new(512);
+                glGetShaderInfoLog(shader, 512, (int*)0, log);
+                Console.Error.WriteLine(log);
             }
 
             return shader;
@@ -89,12 +90,12 @@ namespace ExampleGameNS
             glDeleteShader(fragShader);
             
             int success = 0;
-            byte* str = new QGLString(512);
             glGetProgramiv(program, GL_LINK_STATUS, &success);
             if (success == GL_FALSE) 
             {
-                glGetProgramInfoLog(program, 512, (int*)0, str);
-                Console.Error.WriteLine((QGLString)str);
+                using QGLString log = new(512);
+                glGetProgramInfoLog(program, 512, (int*)0, log);
+                Console.Error.WriteLine(log);
             }
 
             return program;
@@ -127,19 +128,27 @@ namespace ExampleGameNS
             
             width = 640;
             height = 480;
-            window = glfwCreateWindow(width, height, new QGLString("QuickGL - Example Game"), 0, 0);
+            QGLString str = new("QuickGL - Example Game");
+            window = glfwCreateWindow(width, height, str, 0, 0);
             if (window == 0) throw new Exception("Failed to create window");
             glfwSetWindowSizeCallback(window, sizeCallback = WindowResized);
             glfwSwapInterval(0);
+            str.Dispose();
             
             glfwMakeContextCurrent(window);
             QuickGL.LoadGL();
             Input.Create(window);
             Input.GetMouse(window).Captured = true;
 
-            Console.WriteLine($"Vendor: {new QGLString(glGetString(GL_VENDOR)).Data}");
-            Console.WriteLine($"Version: {new QGLString(glGetString(GL_VERSION)).Data}");
-            Console.WriteLine($"Renderer: {new QGLString(glGetString(GL_RENDERER)).Data}");
+            str = new(glGetString(GL_VENDOR));
+            Console.WriteLine($"Vendor: {str}");
+            str.Dispose();
+            str = new(glGetString(GL_VERSION));
+            Console.WriteLine($"Version: {str}");
+            str.Dispose();
+            str = new(glGetString(GL_RENDERER));
+            Console.WriteLine($"Renderer: {str}");
+            str.Dispose();
             Console.WriteLine($"QGL parsed version: {QuickGL.GLVersionMajor}.{QuickGL.GLVersionMinor}");
             
             if (!QuickGL.IsGLVersionAvailable(3, 0))
@@ -254,10 +263,16 @@ namespace ExampleGameNS
                 view *= Matrix4x4.CreateTranslation(cameraX, cameraY, cameraZ);
                 view *= Matrix4x4.CreateRotationY(ToRad(cameraYaw));
                 view *= Matrix4x4.CreateRotationX(ToRad(cameraPitch));
-                
-                int timeUniform = glGetUniformLocation(program, new QGLString("time"));
-                int projUniform = glGetUniformLocation(program, new QGLString("projMatrix"));
-                int viewUniform = glGetUniformLocation(program, new QGLString("viewMatrix"));
+
+                QGLString str = new("time");
+                int timeUniform = glGetUniformLocation(program, str);
+                str.Dispose();
+                str = new("projMatrix");
+                int projUniform = glGetUniformLocation(program, str);
+                str.Dispose();
+                str = new("viewMatrix");
+                int viewUniform = glGetUniformLocation(program, str);
+                str.Dispose();
                 glUniform1f(timeUniform, (float)glfwGetTime());
                 glUniformMatrix4fv(projUniform, 1, false, &proj.M11);
                 glUniformMatrix4fv(viewUniform, 1, false, &view.M11);

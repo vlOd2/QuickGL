@@ -24,13 +24,13 @@ using System.Runtime.InteropServices;
 
 namespace QuickGLNS.Internal;
 
-internal class GLFWLoader
+internal class OpenALLoader
 {
-    private const string WIN_LIB_NAME = "glfw3.dll";
-    private const string UNIX_LIB_NAME = "libglfw.so.3";
+    private const string WIN_LIB_NAME = "OpenAL32.dll";
+    private const string UNIX_LIB_NAME = "libopenal.so";
     private nint handle;
 
-    public GLFWLoader(string winLibName = null, string unixLibName = null)
+    public OpenALLoader(string winLibName = null, string unixLibName = null)
     {
         winLibName ??= WIN_LIB_NAME;
         unixLibName ??= UNIX_LIB_NAME;

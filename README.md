@@ -1,5 +1,5 @@
 # ℹ QuickGL
-Straightforward OpenGL and GLFW bindings for C# targeting .NET 8<br>
+Straightforward GLFW, OpenGL and OpenAL bindings for C# targeting .NET 8<br>
 The main goal is to keep the experience as similar to C/C++ as possible<br>
 This meant exporting the bindings with pointers, so **unsafe code is required**
 
@@ -25,7 +25,7 @@ QuickGL includes some utilities to help you out with repetitive tasks:
 >All of these are optional and you can just use QuickGL for the bindings just fine without them
 
 # ⚙ Bindings
-The bindings are automatically generated based on the official GLFW header and OpenGL registry<br>
+The bindings are automatically generated based on the official GLFW, AL/ALC headers and OpenGL registry<br>
 You may generate your own custom bindings using [QGLBindingsGen](https://github.com/vlOd2/QGLBindingsGen)
 
 # ⚖ License
