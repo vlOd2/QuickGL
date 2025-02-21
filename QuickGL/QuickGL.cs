@@ -60,12 +60,14 @@ public static unsafe partial class QuickGL
     /// <summary>
     /// Initializes QuickGL and loads GLFW functions
     /// </summary>
+    /// <param name="winLibName">the GLFW library name to use on Windows platforms, null for default</param>
+    /// <param name="unixLibName">the GLFW library name to use on Unix platforms, null for default</param>
     /// <exception cref="GLException">if GLFW could not be loaded successfully</exception>
-    public static void Init()
+    public static void Init(string winLibName = null, string unixLibName = null)
     {
         if (initialized)
             throw new GLException("Already initialized");
-        glfwLoader = new();
+        glfwLoader = new(winLibName, unixLibName);
 
         foreach (FieldInfo field in typeof(GLFW).GetFields(BINDING_FLAGS))
         {
@@ -103,12 +105,14 @@ public static unsafe partial class QuickGL
     /// <summary>
     /// Loads OpenAL's AL/ALC functions
     /// </summary>
+    /// <param name="winLibName">the OpenAL library name to use on Windows platforms, null for default</param>
+    /// <param name="unixLibName">the OpenAL library name to use on Unix platforms, null for default</param>
     /// <exception cref="GLException"></exception>
-    public static void LoadAL()
+    public static void LoadAL(string winLibName = null, string unixLibName = null)
     {
         if (!initialized)
             throw new GLException("Not initialized");
-        openALLoader = new();
+        openALLoader = new(winLibName, unixLibName);
 
         foreach (FieldInfo field in typeof(AL).GetFields(BINDING_FLAGS))
         {
