@@ -23,7 +23,7 @@
 using System.Runtime.InteropServices;
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-02-21 16:29:59.384993
+// Bindings generated at 2025-02-22 14:36:34.316517
 namespace QuickGLNS.Bindings;
 
 public static unsafe class AL
@@ -121,8 +121,8 @@ public static unsafe class AL
     public static void alDistanceModel(int distanceModel) => _alDistanceModel(distanceModel);
     [QGLNativeAPI("alDistanceModel")] internal static delegate* unmanaged[Cdecl]<int, void> _alDistanceModel = null;
     
-    public static char* alGetString(int param) => _alGetString(param);
-    [QGLNativeAPI("alGetString")] internal static delegate* unmanaged[Cdecl]<int, char*> _alGetString = null;
+    public static byte* alGetString(int param) => _alGetString(param);
+    [QGLNativeAPI("alGetString")] internal static delegate* unmanaged[Cdecl]<int, byte*> _alGetString = null;
     
     public static void alGetBooleanv(int param, [MarshalAs(UnmanagedType.I1)] bool* values) => _alGetBooleanv(param, values);
     [QGLNativeAPI("alGetBooleanv")] internal static delegate* unmanaged[Cdecl]<int, bool*, void> _alGetBooleanv = null;
@@ -151,14 +151,14 @@ public static unsafe class AL
     public static int alGetError() => _alGetError();
     [QGLNativeAPI("alGetError")] internal static delegate* unmanaged[Cdecl]<int> _alGetError = null;
     
-    [return: MarshalAs(UnmanagedType.I1)] public static bool alIsExtensionPresent(char* extname) => _alIsExtensionPresent(extname);
-    [QGLNativeAPI("alIsExtensionPresent")] internal static delegate* unmanaged[Cdecl]<char*, bool> _alIsExtensionPresent = null;
+    [return: MarshalAs(UnmanagedType.I1)] public static bool alIsExtensionPresent(byte* extname) => _alIsExtensionPresent(extname);
+    [QGLNativeAPI("alIsExtensionPresent")] internal static delegate* unmanaged[Cdecl]<byte*, bool> _alIsExtensionPresent = null;
     
-    public static void* alGetProcAddress(char* fname) => _alGetProcAddress(fname);
-    [QGLNativeAPI("alGetProcAddress")] internal static delegate* unmanaged[Cdecl]<char*, void*> _alGetProcAddress = null;
+    public static void* alGetProcAddress(byte* fname) => _alGetProcAddress(fname);
+    [QGLNativeAPI("alGetProcAddress")] internal static delegate* unmanaged[Cdecl]<byte*, void*> _alGetProcAddress = null;
     
-    public static int alGetEnumValue(char* ename) => _alGetEnumValue(ename);
-    [QGLNativeAPI("alGetEnumValue")] internal static delegate* unmanaged[Cdecl]<char*, int> _alGetEnumValue = null;
+    public static int alGetEnumValue(byte* ename) => _alGetEnumValue(ename);
+    [QGLNativeAPI("alGetEnumValue")] internal static delegate* unmanaged[Cdecl]<byte*, int> _alGetEnumValue = null;
     
     public static void alListenerf(int param, float value) => _alListenerf(param, value);
     [QGLNativeAPI("alListenerf")] internal static delegate* unmanaged[Cdecl]<int, float, void> _alListenerf = null;

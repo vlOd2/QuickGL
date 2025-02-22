@@ -23,7 +23,7 @@
 using System.Runtime.InteropServices;
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-02-21 16:29:59.392639
+// Bindings generated at 2025-02-22 14:36:34.325284
 namespace QuickGLNS.Bindings;
 
 public static unsafe class ALC
@@ -82,8 +82,8 @@ public static unsafe class ALC
     public static nint alcGetContextsDevice(nint context) => _alcGetContextsDevice(context);
     [QGLNativeAPI("alcGetContextsDevice")] internal static delegate* unmanaged[Cdecl]<nint, nint> _alcGetContextsDevice = null;
     
-    public static nint alcOpenDevice(char* devicename) => _alcOpenDevice(devicename);
-    [QGLNativeAPI("alcOpenDevice")] internal static delegate* unmanaged[Cdecl]<char*, nint> _alcOpenDevice = null;
+    public static nint alcOpenDevice(byte* devicename) => _alcOpenDevice(devicename);
+    [QGLNativeAPI("alcOpenDevice")] internal static delegate* unmanaged[Cdecl]<byte*, nint> _alcOpenDevice = null;
     
     [return: MarshalAs(UnmanagedType.I1)] public static bool alcCloseDevice(nint device) => _alcCloseDevice(device);
     [QGLNativeAPI("alcCloseDevice")] internal static delegate* unmanaged[Cdecl]<nint, bool> _alcCloseDevice = null;
@@ -91,23 +91,23 @@ public static unsafe class ALC
     public static int alcGetError(nint device) => _alcGetError(device);
     [QGLNativeAPI("alcGetError")] internal static delegate* unmanaged[Cdecl]<nint, int> _alcGetError = null;
     
-    [return: MarshalAs(UnmanagedType.I1)] public static bool alcIsExtensionPresent(nint device, char* extname) => _alcIsExtensionPresent(device, extname);
-    [QGLNativeAPI("alcIsExtensionPresent")] internal static delegate* unmanaged[Cdecl]<nint, char*, bool> _alcIsExtensionPresent = null;
+    [return: MarshalAs(UnmanagedType.I1)] public static bool alcIsExtensionPresent(nint device, byte* extname) => _alcIsExtensionPresent(device, extname);
+    [QGLNativeAPI("alcIsExtensionPresent")] internal static delegate* unmanaged[Cdecl]<nint, byte*, bool> _alcIsExtensionPresent = null;
     
-    public static void* alcGetProcAddress(nint device, char* funcname) => _alcGetProcAddress(device, funcname);
-    [QGLNativeAPI("alcGetProcAddress")] internal static delegate* unmanaged[Cdecl]<nint, char*, void*> _alcGetProcAddress = null;
+    public static void* alcGetProcAddress(nint device, byte* funcname) => _alcGetProcAddress(device, funcname);
+    [QGLNativeAPI("alcGetProcAddress")] internal static delegate* unmanaged[Cdecl]<nint, byte*, void*> _alcGetProcAddress = null;
     
-    public static int alcGetEnumValue(nint device, char* enumname) => _alcGetEnumValue(device, enumname);
-    [QGLNativeAPI("alcGetEnumValue")] internal static delegate* unmanaged[Cdecl]<nint, char*, int> _alcGetEnumValue = null;
+    public static int alcGetEnumValue(nint device, byte* enumname) => _alcGetEnumValue(device, enumname);
+    [QGLNativeAPI("alcGetEnumValue")] internal static delegate* unmanaged[Cdecl]<nint, byte*, int> _alcGetEnumValue = null;
     
-    public static char* alcGetString(nint device, int param) => _alcGetString(device, param);
-    [QGLNativeAPI("alcGetString")] internal static delegate* unmanaged[Cdecl]<nint, int, char*> _alcGetString = null;
+    public static byte* alcGetString(nint device, int param) => _alcGetString(device, param);
+    [QGLNativeAPI("alcGetString")] internal static delegate* unmanaged[Cdecl]<nint, int, byte*> _alcGetString = null;
     
     public static void alcGetIntegerv(nint device, int param, int size, int* values) => _alcGetIntegerv(device, param, size, values);
     [QGLNativeAPI("alcGetIntegerv")] internal static delegate* unmanaged[Cdecl]<nint, int, int, int*, void> _alcGetIntegerv = null;
     
-    public static nint alcCaptureOpenDevice(char* devicename, uint frequency, int format, int buffersize) => _alcCaptureOpenDevice(devicename, frequency, format, buffersize);
-    [QGLNativeAPI("alcCaptureOpenDevice")] internal static delegate* unmanaged[Cdecl]<char*, uint, int, int, nint> _alcCaptureOpenDevice = null;
+    public static nint alcCaptureOpenDevice(byte* devicename, uint frequency, int format, int buffersize) => _alcCaptureOpenDevice(devicename, frequency, format, buffersize);
+    [QGLNativeAPI("alcCaptureOpenDevice")] internal static delegate* unmanaged[Cdecl]<byte*, uint, int, int, nint> _alcCaptureOpenDevice = null;
     
     [return: MarshalAs(UnmanagedType.I1)] public static bool alcCaptureCloseDevice(nint device) => _alcCaptureCloseDevice(device);
     [QGLNativeAPI("alcCaptureCloseDevice")] internal static delegate* unmanaged[Cdecl]<nint, bool> _alcCaptureCloseDevice = null;
