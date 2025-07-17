@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ExampleGame/ExampleGame.csproj" />
+  <Project Path="QuickGL/QuickGL.csproj" />
+</Solution>
