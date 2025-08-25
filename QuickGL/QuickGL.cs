@@ -41,6 +41,10 @@ public static unsafe partial class QuickGL
     internal static delegate* unmanaged<byte*, nint> nativeAPILoader;
     #region Context properties
     /// <summary>
+    /// Indicates if QuickGL has been initialized
+    /// </summary>
+    public static bool IsInitialized => initialized;
+    /// <summary>
     /// Indicates if the current context is for OpenGL ES
     /// </summary>
     public static bool IsGLESContext { get; private set; }
