@@ -30,6 +30,7 @@ namespace QuickGLNS;
 /// </summary>
 public unsafe class QGLString : IDisposable
 {
+    private static List<QGLString> pool = [];
     private nint data;
     private bool notOwned;
     public int Length { get; private set; }
@@ -78,6 +79,32 @@ public unsafe class QGLString : IDisposable
     ~QGLString()
     {
         Dispose(false);
+    }
+
+    /// <summary>
+    /// Creates an instance that will not be automatically freed designed for persistent read-only usage<br/>
+    /// Make sure to clean up all instances by calling <see cref="ClearPool"/>
+    /// </summary>
+    /// <param name="str"></param>
+    /// <returns></returns>
+    public static QGLString CreatePool(string str)
+    {
+        QGLString instance = new(str) { notOwned = true };
+        pool.Add(instance);
+        return instance;
+    }
+
+    /// <summary>
+    /// Cleans up all pooled instances
+    /// </summary>
+    public static void ClearPool()
+    {
+        foreach (QGLString instance in pool)
+        {
+            instance.notOwned = false;
+            instance.Dispose();
+        }
+        pool.Clear();
     }
 
     public static implicit operator byte*(QGLString str) => str.RawData;
