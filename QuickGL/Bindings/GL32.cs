@@ -22,10 +22,10 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-02-21 16:29:58.851714
+// Bindings generated at 2025-08-30 15:45:08.430318
 namespace QuickGLNS.Bindings;
 
-[GLFeature(false)]
+[QGLFeature("GL_VERSION_3_2", false, false)]
 public static unsafe class GL32
 {
     #region Enums
@@ -96,61 +96,61 @@ public static unsafe class GL32
     #endregion
     
     #region Commands
-    public static void glDrawElementsBaseVertex(uint mode, int count, uint type, void* indices, int basevertex) => _glDrawElementsBaseVertex(mode, count, type, indices, basevertex);
+    public static void glDrawElementsBaseVertex(uint mode, int count, uint type, void* indices, int basevertex) { QGLNativeAPI.Verify((nint)_glDrawElementsBaseVertex); _glDrawElementsBaseVertex(mode, count, type, indices, basevertex); }
     [QGLNativeAPI("glDrawElementsBaseVertex")] internal static delegate* unmanaged<uint, int, uint, void*, int, void> _glDrawElementsBaseVertex = null;
     
-    public static void glDrawRangeElementsBaseVertex(uint mode, uint start, uint end, int count, uint type, void* indices, int basevertex) => _glDrawRangeElementsBaseVertex(mode, start, end, count, type, indices, basevertex);
+    public static void glDrawRangeElementsBaseVertex(uint mode, uint start, uint end, int count, uint type, void* indices, int basevertex) { QGLNativeAPI.Verify((nint)_glDrawRangeElementsBaseVertex); _glDrawRangeElementsBaseVertex(mode, start, end, count, type, indices, basevertex); }
     [QGLNativeAPI("glDrawRangeElementsBaseVertex")] internal static delegate* unmanaged<uint, uint, uint, int, uint, void*, int, void> _glDrawRangeElementsBaseVertex = null;
     
-    public static void glDrawElementsInstancedBaseVertex(uint mode, int count, uint type, void* indices, int instancecount, int basevertex) => _glDrawElementsInstancedBaseVertex(mode, count, type, indices, instancecount, basevertex);
+    public static void glDrawElementsInstancedBaseVertex(uint mode, int count, uint type, void* indices, int instancecount, int basevertex) { QGLNativeAPI.Verify((nint)_glDrawElementsInstancedBaseVertex); _glDrawElementsInstancedBaseVertex(mode, count, type, indices, instancecount, basevertex); }
     [QGLNativeAPI("glDrawElementsInstancedBaseVertex")] internal static delegate* unmanaged<uint, int, uint, void*, int, int, void> _glDrawElementsInstancedBaseVertex = null;
     
-    public static void glMultiDrawElementsBaseVertex(uint mode, int* count, uint type, void** indices, int drawcount, int* basevertex) => _glMultiDrawElementsBaseVertex(mode, count, type, indices, drawcount, basevertex);
+    public static void glMultiDrawElementsBaseVertex(uint mode, int* count, uint type, void** indices, int drawcount, int* basevertex) { QGLNativeAPI.Verify((nint)_glMultiDrawElementsBaseVertex); _glMultiDrawElementsBaseVertex(mode, count, type, indices, drawcount, basevertex); }
     [QGLNativeAPI("glMultiDrawElementsBaseVertex")] internal static delegate* unmanaged<uint, int*, uint, void**, int, int*, void> _glMultiDrawElementsBaseVertex = null;
     
-    public static void glProvokingVertex(uint mode) => _glProvokingVertex(mode);
+    public static void glProvokingVertex(uint mode) { QGLNativeAPI.Verify((nint)_glProvokingVertex); _glProvokingVertex(mode); }
     [QGLNativeAPI("glProvokingVertex")] internal static delegate* unmanaged<uint, void> _glProvokingVertex = null;
     
-    public static nint glFenceSync(uint condition, uint flags) => _glFenceSync(condition, flags);
+    public static nint glFenceSync(uint condition, uint flags) { QGLNativeAPI.Verify((nint)_glFenceSync); return _glFenceSync(condition, flags); }
     [QGLNativeAPI("glFenceSync")] internal static delegate* unmanaged<uint, uint, nint> _glFenceSync = null;
     
-    public static bool glIsSync(nint sync) => _glIsSync(sync);
+    public static bool glIsSync(nint sync) { QGLNativeAPI.Verify((nint)_glIsSync); return _glIsSync(sync); }
     [QGLNativeAPI("glIsSync")] internal static delegate* unmanaged<nint, bool> _glIsSync = null;
     
-    public static void glDeleteSync(nint sync) => _glDeleteSync(sync);
+    public static void glDeleteSync(nint sync) { QGLNativeAPI.Verify((nint)_glDeleteSync); _glDeleteSync(sync); }
     [QGLNativeAPI("glDeleteSync")] internal static delegate* unmanaged<nint, void> _glDeleteSync = null;
     
-    public static uint glClientWaitSync(nint sync, uint flags, ulong timeout) => _glClientWaitSync(sync, flags, timeout);
+    public static uint glClientWaitSync(nint sync, uint flags, ulong timeout) { QGLNativeAPI.Verify((nint)_glClientWaitSync); return _glClientWaitSync(sync, flags, timeout); }
     [QGLNativeAPI("glClientWaitSync")] internal static delegate* unmanaged<nint, uint, ulong, uint> _glClientWaitSync = null;
     
-    public static void glWaitSync(nint sync, uint flags, ulong timeout) => _glWaitSync(sync, flags, timeout);
+    public static void glWaitSync(nint sync, uint flags, ulong timeout) { QGLNativeAPI.Verify((nint)_glWaitSync); _glWaitSync(sync, flags, timeout); }
     [QGLNativeAPI("glWaitSync")] internal static delegate* unmanaged<nint, uint, ulong, void> _glWaitSync = null;
     
-    public static void glGetInteger64v(uint pname, long* data) => _glGetInteger64v(pname, data);
+    public static void glGetInteger64v(uint pname, long* data) { QGLNativeAPI.Verify((nint)_glGetInteger64v); _glGetInteger64v(pname, data); }
     [QGLNativeAPI("glGetInteger64v")] internal static delegate* unmanaged<uint, long*, void> _glGetInteger64v = null;
     
-    public static void glGetSynciv(nint sync, uint pname, int count, int* length, int* values) => _glGetSynciv(sync, pname, count, length, values);
+    public static void glGetSynciv(nint sync, uint pname, int count, int* length, int* values) { QGLNativeAPI.Verify((nint)_glGetSynciv); _glGetSynciv(sync, pname, count, length, values); }
     [QGLNativeAPI("glGetSynciv")] internal static delegate* unmanaged<nint, uint, int, int*, int*, void> _glGetSynciv = null;
     
-    public static void glGetInteger64i_v(uint target, uint index, long* data) => _glGetInteger64i_v(target, index, data);
+    public static void glGetInteger64i_v(uint target, uint index, long* data) { QGLNativeAPI.Verify((nint)_glGetInteger64i_v); _glGetInteger64i_v(target, index, data); }
     [QGLNativeAPI("glGetInteger64i_v")] internal static delegate* unmanaged<uint, uint, long*, void> _glGetInteger64i_v = null;
     
-    public static void glGetBufferParameteri64v(uint target, uint pname, long* @params) => _glGetBufferParameteri64v(target, pname, @params);
+    public static void glGetBufferParameteri64v(uint target, uint pname, long* @params) { QGLNativeAPI.Verify((nint)_glGetBufferParameteri64v); _glGetBufferParameteri64v(target, pname, @params); }
     [QGLNativeAPI("glGetBufferParameteri64v")] internal static delegate* unmanaged<uint, uint, long*, void> _glGetBufferParameteri64v = null;
     
-    public static void glFramebufferTexture(uint target, uint attachment, uint texture, int level) => _glFramebufferTexture(target, attachment, texture, level);
+    public static void glFramebufferTexture(uint target, uint attachment, uint texture, int level) { QGLNativeAPI.Verify((nint)_glFramebufferTexture); _glFramebufferTexture(target, attachment, texture, level); }
     [QGLNativeAPI("glFramebufferTexture")] internal static delegate* unmanaged<uint, uint, uint, int, void> _glFramebufferTexture = null;
     
-    public static void glTexImage2DMultisample(uint target, int samples, uint internalformat, int width, int height, bool fixedsamplelocations) => _glTexImage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations);
+    public static void glTexImage2DMultisample(uint target, int samples, uint internalformat, int width, int height, bool fixedsamplelocations) { QGLNativeAPI.Verify((nint)_glTexImage2DMultisample); _glTexImage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations); }
     [QGLNativeAPI("glTexImage2DMultisample")] internal static delegate* unmanaged<uint, int, uint, int, int, bool, void> _glTexImage2DMultisample = null;
     
-    public static void glTexImage3DMultisample(uint target, int samples, uint internalformat, int width, int height, int depth, bool fixedsamplelocations) => _glTexImage3DMultisample(target, samples, internalformat, width, height, depth, fixedsamplelocations);
+    public static void glTexImage3DMultisample(uint target, int samples, uint internalformat, int width, int height, int depth, bool fixedsamplelocations) { QGLNativeAPI.Verify((nint)_glTexImage3DMultisample); _glTexImage3DMultisample(target, samples, internalformat, width, height, depth, fixedsamplelocations); }
     [QGLNativeAPI("glTexImage3DMultisample")] internal static delegate* unmanaged<uint, int, uint, int, int, int, bool, void> _glTexImage3DMultisample = null;
     
-    public static void glGetMultisamplefv(uint pname, uint index, float* val) => _glGetMultisamplefv(pname, index, val);
+    public static void glGetMultisamplefv(uint pname, uint index, float* val) { QGLNativeAPI.Verify((nint)_glGetMultisamplefv); _glGetMultisamplefv(pname, index, val); }
     [QGLNativeAPI("glGetMultisamplefv")] internal static delegate* unmanaged<uint, uint, float*, void> _glGetMultisamplefv = null;
     
-    public static void glSampleMaski(uint maskNumber, uint mask) => _glSampleMaski(maskNumber, mask);
+    public static void glSampleMaski(uint maskNumber, uint mask) { QGLNativeAPI.Verify((nint)_glSampleMaski); _glSampleMaski(maskNumber, mask); }
     [QGLNativeAPI("glSampleMaski")] internal static delegate* unmanaged<uint, uint, void> _glSampleMaski = null;
      #endregion
 }

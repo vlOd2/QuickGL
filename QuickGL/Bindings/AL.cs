@@ -23,7 +23,7 @@
 using System.Runtime.InteropServices;
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-02-22 14:36:34.316517
+// Bindings generated at 2025-08-30 15:45:09.224605
 namespace QuickGLNS.Bindings;
 
 public static unsafe class AL
@@ -100,223 +100,223 @@ public static unsafe class AL
     #endregion
     
     #region Functions
-    public static void alEnable(int capability) => _alEnable(capability);
+    public static void alEnable(int capability) { QGLNativeAPI.Verify((nint)_alEnable); _alEnable(capability); }
     [QGLNativeAPI("alEnable")] internal static delegate* unmanaged[Cdecl]<int, void> _alEnable = null;
     
-    public static void alDisable(int capability) => _alDisable(capability);
+    public static void alDisable(int capability) { QGLNativeAPI.Verify((nint)_alDisable); _alDisable(capability); }
     [QGLNativeAPI("alDisable")] internal static delegate* unmanaged[Cdecl]<int, void> _alDisable = null;
     
-    [return: MarshalAs(UnmanagedType.I1)] public static bool alIsEnabled(int capability) => _alIsEnabled(capability);
+    [return: MarshalAs(UnmanagedType.I1)] public static bool alIsEnabled(int capability) { QGLNativeAPI.Verify((nint)_alIsEnabled); return _alIsEnabled(capability); }
     [QGLNativeAPI("alIsEnabled")] internal static delegate* unmanaged[Cdecl]<int, bool> _alIsEnabled = null;
     
-    public static void alDopplerFactor(float value) => _alDopplerFactor(value);
+    public static void alDopplerFactor(float value) { QGLNativeAPI.Verify((nint)_alDopplerFactor); _alDopplerFactor(value); }
     [QGLNativeAPI("alDopplerFactor")] internal static delegate* unmanaged[Cdecl]<float, void> _alDopplerFactor = null;
     
-    public static void alDopplerVelocity(float value) => _alDopplerVelocity(value);
+    public static void alDopplerVelocity(float value) { QGLNativeAPI.Verify((nint)_alDopplerVelocity); _alDopplerVelocity(value); }
     [QGLNativeAPI("alDopplerVelocity")] internal static delegate* unmanaged[Cdecl]<float, void> _alDopplerVelocity = null;
     
-    public static void alSpeedOfSound(float value) => _alSpeedOfSound(value);
+    public static void alSpeedOfSound(float value) { QGLNativeAPI.Verify((nint)_alSpeedOfSound); _alSpeedOfSound(value); }
     [QGLNativeAPI("alSpeedOfSound")] internal static delegate* unmanaged[Cdecl]<float, void> _alSpeedOfSound = null;
     
-    public static void alDistanceModel(int distanceModel) => _alDistanceModel(distanceModel);
+    public static void alDistanceModel(int distanceModel) { QGLNativeAPI.Verify((nint)_alDistanceModel); _alDistanceModel(distanceModel); }
     [QGLNativeAPI("alDistanceModel")] internal static delegate* unmanaged[Cdecl]<int, void> _alDistanceModel = null;
     
-    public static byte* alGetString(int param) => _alGetString(param);
+    public static byte* alGetString(int param) { QGLNativeAPI.Verify((nint)_alGetString); return _alGetString(param); }
     [QGLNativeAPI("alGetString")] internal static delegate* unmanaged[Cdecl]<int, byte*> _alGetString = null;
     
-    public static void alGetBooleanv(int param, [MarshalAs(UnmanagedType.I1)] bool* values) => _alGetBooleanv(param, values);
+    public static void alGetBooleanv(int param, [MarshalAs(UnmanagedType.I1)] bool* values) { QGLNativeAPI.Verify((nint)_alGetBooleanv); _alGetBooleanv(param, values); }
     [QGLNativeAPI("alGetBooleanv")] internal static delegate* unmanaged[Cdecl]<int, bool*, void> _alGetBooleanv = null;
     
-    public static void alGetIntegerv(int param, int* values) => _alGetIntegerv(param, values);
+    public static void alGetIntegerv(int param, int* values) { QGLNativeAPI.Verify((nint)_alGetIntegerv); _alGetIntegerv(param, values); }
     [QGLNativeAPI("alGetIntegerv")] internal static delegate* unmanaged[Cdecl]<int, int*, void> _alGetIntegerv = null;
     
-    public static void alGetFloatv(int param, float* values) => _alGetFloatv(param, values);
+    public static void alGetFloatv(int param, float* values) { QGLNativeAPI.Verify((nint)_alGetFloatv); _alGetFloatv(param, values); }
     [QGLNativeAPI("alGetFloatv")] internal static delegate* unmanaged[Cdecl]<int, float*, void> _alGetFloatv = null;
     
-    public static void alGetDoublev(int param, double* values) => _alGetDoublev(param, values);
+    public static void alGetDoublev(int param, double* values) { QGLNativeAPI.Verify((nint)_alGetDoublev); _alGetDoublev(param, values); }
     [QGLNativeAPI("alGetDoublev")] internal static delegate* unmanaged[Cdecl]<int, double*, void> _alGetDoublev = null;
     
-    [return: MarshalAs(UnmanagedType.I1)] public static bool alGetBoolean(int param) => _alGetBoolean(param);
+    [return: MarshalAs(UnmanagedType.I1)] public static bool alGetBoolean(int param) { QGLNativeAPI.Verify((nint)_alGetBoolean); return _alGetBoolean(param); }
     [QGLNativeAPI("alGetBoolean")] internal static delegate* unmanaged[Cdecl]<int, bool> _alGetBoolean = null;
     
-    public static int alGetInteger(int param) => _alGetInteger(param);
+    public static int alGetInteger(int param) { QGLNativeAPI.Verify((nint)_alGetInteger); return _alGetInteger(param); }
     [QGLNativeAPI("alGetInteger")] internal static delegate* unmanaged[Cdecl]<int, int> _alGetInteger = null;
     
-    public static float alGetFloat(int param) => _alGetFloat(param);
+    public static float alGetFloat(int param) { QGLNativeAPI.Verify((nint)_alGetFloat); return _alGetFloat(param); }
     [QGLNativeAPI("alGetFloat")] internal static delegate* unmanaged[Cdecl]<int, float> _alGetFloat = null;
     
-    public static double alGetDouble(int param) => _alGetDouble(param);
+    public static double alGetDouble(int param) { QGLNativeAPI.Verify((nint)_alGetDouble); return _alGetDouble(param); }
     [QGLNativeAPI("alGetDouble")] internal static delegate* unmanaged[Cdecl]<int, double> _alGetDouble = null;
     
-    public static int alGetError() => _alGetError();
+    public static int alGetError() { QGLNativeAPI.Verify((nint)_alGetError); return _alGetError(); }
     [QGLNativeAPI("alGetError")] internal static delegate* unmanaged[Cdecl]<int> _alGetError = null;
     
-    [return: MarshalAs(UnmanagedType.I1)] public static bool alIsExtensionPresent(byte* extname) => _alIsExtensionPresent(extname);
+    [return: MarshalAs(UnmanagedType.I1)] public static bool alIsExtensionPresent(byte* extname) { QGLNativeAPI.Verify((nint)_alIsExtensionPresent); return _alIsExtensionPresent(extname); }
     [QGLNativeAPI("alIsExtensionPresent")] internal static delegate* unmanaged[Cdecl]<byte*, bool> _alIsExtensionPresent = null;
     
-    public static void* alGetProcAddress(byte* fname) => _alGetProcAddress(fname);
+    public static void* alGetProcAddress(byte* fname) { QGLNativeAPI.Verify((nint)_alGetProcAddress); return _alGetProcAddress(fname); }
     [QGLNativeAPI("alGetProcAddress")] internal static delegate* unmanaged[Cdecl]<byte*, void*> _alGetProcAddress = null;
     
-    public static int alGetEnumValue(byte* ename) => _alGetEnumValue(ename);
+    public static int alGetEnumValue(byte* ename) { QGLNativeAPI.Verify((nint)_alGetEnumValue); return _alGetEnumValue(ename); }
     [QGLNativeAPI("alGetEnumValue")] internal static delegate* unmanaged[Cdecl]<byte*, int> _alGetEnumValue = null;
     
-    public static void alListenerf(int param, float value) => _alListenerf(param, value);
+    public static void alListenerf(int param, float value) { QGLNativeAPI.Verify((nint)_alListenerf); _alListenerf(param, value); }
     [QGLNativeAPI("alListenerf")] internal static delegate* unmanaged[Cdecl]<int, float, void> _alListenerf = null;
     
-    public static void alListener3f(int param, float value1, float value2, float value3) => _alListener3f(param, value1, value2, value3);
+    public static void alListener3f(int param, float value1, float value2, float value3) { QGLNativeAPI.Verify((nint)_alListener3f); _alListener3f(param, value1, value2, value3); }
     [QGLNativeAPI("alListener3f")] internal static delegate* unmanaged[Cdecl]<int, float, float, float, void> _alListener3f = null;
     
-    public static void alListenerfv(int param, float* values) => _alListenerfv(param, values);
+    public static void alListenerfv(int param, float* values) { QGLNativeAPI.Verify((nint)_alListenerfv); _alListenerfv(param, values); }
     [QGLNativeAPI("alListenerfv")] internal static delegate* unmanaged[Cdecl]<int, float*, void> _alListenerfv = null;
     
-    public static void alListeneri(int param, int value) => _alListeneri(param, value);
+    public static void alListeneri(int param, int value) { QGLNativeAPI.Verify((nint)_alListeneri); _alListeneri(param, value); }
     [QGLNativeAPI("alListeneri")] internal static delegate* unmanaged[Cdecl]<int, int, void> _alListeneri = null;
     
-    public static void alListener3i(int param, int value1, int value2, int value3) => _alListener3i(param, value1, value2, value3);
+    public static void alListener3i(int param, int value1, int value2, int value3) { QGLNativeAPI.Verify((nint)_alListener3i); _alListener3i(param, value1, value2, value3); }
     [QGLNativeAPI("alListener3i")] internal static delegate* unmanaged[Cdecl]<int, int, int, int, void> _alListener3i = null;
     
-    public static void alListeneriv(int param, int* values) => _alListeneriv(param, values);
+    public static void alListeneriv(int param, int* values) { QGLNativeAPI.Verify((nint)_alListeneriv); _alListeneriv(param, values); }
     [QGLNativeAPI("alListeneriv")] internal static delegate* unmanaged[Cdecl]<int, int*, void> _alListeneriv = null;
     
-    public static void alGetListenerf(int param, float* value) => _alGetListenerf(param, value);
+    public static void alGetListenerf(int param, float* value) { QGLNativeAPI.Verify((nint)_alGetListenerf); _alGetListenerf(param, value); }
     [QGLNativeAPI("alGetListenerf")] internal static delegate* unmanaged[Cdecl]<int, float*, void> _alGetListenerf = null;
     
-    public static void alGetListener3f(int param, float* value1, float* value2, float* value3) => _alGetListener3f(param, value1, value2, value3);
+    public static void alGetListener3f(int param, float* value1, float* value2, float* value3) { QGLNativeAPI.Verify((nint)_alGetListener3f); _alGetListener3f(param, value1, value2, value3); }
     [QGLNativeAPI("alGetListener3f")] internal static delegate* unmanaged[Cdecl]<int, float*, float*, float*, void> _alGetListener3f = null;
     
-    public static void alGetListenerfv(int param, float* values) => _alGetListenerfv(param, values);
+    public static void alGetListenerfv(int param, float* values) { QGLNativeAPI.Verify((nint)_alGetListenerfv); _alGetListenerfv(param, values); }
     [QGLNativeAPI("alGetListenerfv")] internal static delegate* unmanaged[Cdecl]<int, float*, void> _alGetListenerfv = null;
     
-    public static void alGetListeneri(int param, int* value) => _alGetListeneri(param, value);
+    public static void alGetListeneri(int param, int* value) { QGLNativeAPI.Verify((nint)_alGetListeneri); _alGetListeneri(param, value); }
     [QGLNativeAPI("alGetListeneri")] internal static delegate* unmanaged[Cdecl]<int, int*, void> _alGetListeneri = null;
     
-    public static void alGetListener3i(int param, int* value1, int* value2, int* value3) => _alGetListener3i(param, value1, value2, value3);
+    public static void alGetListener3i(int param, int* value1, int* value2, int* value3) { QGLNativeAPI.Verify((nint)_alGetListener3i); _alGetListener3i(param, value1, value2, value3); }
     [QGLNativeAPI("alGetListener3i")] internal static delegate* unmanaged[Cdecl]<int, int*, int*, int*, void> _alGetListener3i = null;
     
-    public static void alGetListeneriv(int param, int* values) => _alGetListeneriv(param, values);
+    public static void alGetListeneriv(int param, int* values) { QGLNativeAPI.Verify((nint)_alGetListeneriv); _alGetListeneriv(param, values); }
     [QGLNativeAPI("alGetListeneriv")] internal static delegate* unmanaged[Cdecl]<int, int*, void> _alGetListeneriv = null;
     
-    public static void alGenSources(int n, uint* sources) => _alGenSources(n, sources);
+    public static void alGenSources(int n, uint* sources) { QGLNativeAPI.Verify((nint)_alGenSources); _alGenSources(n, sources); }
     [QGLNativeAPI("alGenSources")] internal static delegate* unmanaged[Cdecl]<int, uint*, void> _alGenSources = null;
     
-    public static void alDeleteSources(int n, uint* sources) => _alDeleteSources(n, sources);
+    public static void alDeleteSources(int n, uint* sources) { QGLNativeAPI.Verify((nint)_alDeleteSources); _alDeleteSources(n, sources); }
     [QGLNativeAPI("alDeleteSources")] internal static delegate* unmanaged[Cdecl]<int, uint*, void> _alDeleteSources = null;
     
-    [return: MarshalAs(UnmanagedType.I1)] public static bool alIsSource(uint source) => _alIsSource(source);
+    [return: MarshalAs(UnmanagedType.I1)] public static bool alIsSource(uint source) { QGLNativeAPI.Verify((nint)_alIsSource); return _alIsSource(source); }
     [QGLNativeAPI("alIsSource")] internal static delegate* unmanaged[Cdecl]<uint, bool> _alIsSource = null;
     
-    public static void alSourcef(uint source, int param, float value) => _alSourcef(source, param, value);
+    public static void alSourcef(uint source, int param, float value) { QGLNativeAPI.Verify((nint)_alSourcef); _alSourcef(source, param, value); }
     [QGLNativeAPI("alSourcef")] internal static delegate* unmanaged[Cdecl]<uint, int, float, void> _alSourcef = null;
     
-    public static void alSource3f(uint source, int param, float value1, float value2, float value3) => _alSource3f(source, param, value1, value2, value3);
+    public static void alSource3f(uint source, int param, float value1, float value2, float value3) { QGLNativeAPI.Verify((nint)_alSource3f); _alSource3f(source, param, value1, value2, value3); }
     [QGLNativeAPI("alSource3f")] internal static delegate* unmanaged[Cdecl]<uint, int, float, float, float, void> _alSource3f = null;
     
-    public static void alSourcefv(uint source, int param, float* values) => _alSourcefv(source, param, values);
+    public static void alSourcefv(uint source, int param, float* values) { QGLNativeAPI.Verify((nint)_alSourcefv); _alSourcefv(source, param, values); }
     [QGLNativeAPI("alSourcefv")] internal static delegate* unmanaged[Cdecl]<uint, int, float*, void> _alSourcefv = null;
     
-    public static void alSourcei(uint source, int param, int value) => _alSourcei(source, param, value);
+    public static void alSourcei(uint source, int param, int value) { QGLNativeAPI.Verify((nint)_alSourcei); _alSourcei(source, param, value); }
     [QGLNativeAPI("alSourcei")] internal static delegate* unmanaged[Cdecl]<uint, int, int, void> _alSourcei = null;
     
-    public static void alSource3i(uint source, int param, int value1, int value2, int value3) => _alSource3i(source, param, value1, value2, value3);
+    public static void alSource3i(uint source, int param, int value1, int value2, int value3) { QGLNativeAPI.Verify((nint)_alSource3i); _alSource3i(source, param, value1, value2, value3); }
     [QGLNativeAPI("alSource3i")] internal static delegate* unmanaged[Cdecl]<uint, int, int, int, int, void> _alSource3i = null;
     
-    public static void alSourceiv(uint source, int param, int* values) => _alSourceiv(source, param, values);
+    public static void alSourceiv(uint source, int param, int* values) { QGLNativeAPI.Verify((nint)_alSourceiv); _alSourceiv(source, param, values); }
     [QGLNativeAPI("alSourceiv")] internal static delegate* unmanaged[Cdecl]<uint, int, int*, void> _alSourceiv = null;
     
-    public static void alGetSourcef(uint source, int param, float* value) => _alGetSourcef(source, param, value);
+    public static void alGetSourcef(uint source, int param, float* value) { QGLNativeAPI.Verify((nint)_alGetSourcef); _alGetSourcef(source, param, value); }
     [QGLNativeAPI("alGetSourcef")] internal static delegate* unmanaged[Cdecl]<uint, int, float*, void> _alGetSourcef = null;
     
-    public static void alGetSource3f(uint source, int param, float* value1, float* value2, float* value3) => _alGetSource3f(source, param, value1, value2, value3);
+    public static void alGetSource3f(uint source, int param, float* value1, float* value2, float* value3) { QGLNativeAPI.Verify((nint)_alGetSource3f); _alGetSource3f(source, param, value1, value2, value3); }
     [QGLNativeAPI("alGetSource3f")] internal static delegate* unmanaged[Cdecl]<uint, int, float*, float*, float*, void> _alGetSource3f = null;
     
-    public static void alGetSourcefv(uint source, int param, float* values) => _alGetSourcefv(source, param, values);
+    public static void alGetSourcefv(uint source, int param, float* values) { QGLNativeAPI.Verify((nint)_alGetSourcefv); _alGetSourcefv(source, param, values); }
     [QGLNativeAPI("alGetSourcefv")] internal static delegate* unmanaged[Cdecl]<uint, int, float*, void> _alGetSourcefv = null;
     
-    public static void alGetSourcei(uint source, int param, int* value) => _alGetSourcei(source, param, value);
+    public static void alGetSourcei(uint source, int param, int* value) { QGLNativeAPI.Verify((nint)_alGetSourcei); _alGetSourcei(source, param, value); }
     [QGLNativeAPI("alGetSourcei")] internal static delegate* unmanaged[Cdecl]<uint, int, int*, void> _alGetSourcei = null;
     
-    public static void alGetSource3i(uint source, int param, int* value1, int* value2, int* value3) => _alGetSource3i(source, param, value1, value2, value3);
+    public static void alGetSource3i(uint source, int param, int* value1, int* value2, int* value3) { QGLNativeAPI.Verify((nint)_alGetSource3i); _alGetSource3i(source, param, value1, value2, value3); }
     [QGLNativeAPI("alGetSource3i")] internal static delegate* unmanaged[Cdecl]<uint, int, int*, int*, int*, void> _alGetSource3i = null;
     
-    public static void alGetSourceiv(uint source, int param, int* values) => _alGetSourceiv(source, param, values);
+    public static void alGetSourceiv(uint source, int param, int* values) { QGLNativeAPI.Verify((nint)_alGetSourceiv); _alGetSourceiv(source, param, values); }
     [QGLNativeAPI("alGetSourceiv")] internal static delegate* unmanaged[Cdecl]<uint, int, int*, void> _alGetSourceiv = null;
     
-    public static void alSourcePlay(uint source) => _alSourcePlay(source);
+    public static void alSourcePlay(uint source) { QGLNativeAPI.Verify((nint)_alSourcePlay); _alSourcePlay(source); }
     [QGLNativeAPI("alSourcePlay")] internal static delegate* unmanaged[Cdecl]<uint, void> _alSourcePlay = null;
     
-    public static void alSourceStop(uint source) => _alSourceStop(source);
+    public static void alSourceStop(uint source) { QGLNativeAPI.Verify((nint)_alSourceStop); _alSourceStop(source); }
     [QGLNativeAPI("alSourceStop")] internal static delegate* unmanaged[Cdecl]<uint, void> _alSourceStop = null;
     
-    public static void alSourceRewind(uint source) => _alSourceRewind(source);
+    public static void alSourceRewind(uint source) { QGLNativeAPI.Verify((nint)_alSourceRewind); _alSourceRewind(source); }
     [QGLNativeAPI("alSourceRewind")] internal static delegate* unmanaged[Cdecl]<uint, void> _alSourceRewind = null;
     
-    public static void alSourcePause(uint source) => _alSourcePause(source);
+    public static void alSourcePause(uint source) { QGLNativeAPI.Verify((nint)_alSourcePause); _alSourcePause(source); }
     [QGLNativeAPI("alSourcePause")] internal static delegate* unmanaged[Cdecl]<uint, void> _alSourcePause = null;
     
-    public static void alSourcePlayv(int n, uint* sources) => _alSourcePlayv(n, sources);
+    public static void alSourcePlayv(int n, uint* sources) { QGLNativeAPI.Verify((nint)_alSourcePlayv); _alSourcePlayv(n, sources); }
     [QGLNativeAPI("alSourcePlayv")] internal static delegate* unmanaged[Cdecl]<int, uint*, void> _alSourcePlayv = null;
     
-    public static void alSourceStopv(int n, uint* sources) => _alSourceStopv(n, sources);
+    public static void alSourceStopv(int n, uint* sources) { QGLNativeAPI.Verify((nint)_alSourceStopv); _alSourceStopv(n, sources); }
     [QGLNativeAPI("alSourceStopv")] internal static delegate* unmanaged[Cdecl]<int, uint*, void> _alSourceStopv = null;
     
-    public static void alSourceRewindv(int n, uint* sources) => _alSourceRewindv(n, sources);
+    public static void alSourceRewindv(int n, uint* sources) { QGLNativeAPI.Verify((nint)_alSourceRewindv); _alSourceRewindv(n, sources); }
     [QGLNativeAPI("alSourceRewindv")] internal static delegate* unmanaged[Cdecl]<int, uint*, void> _alSourceRewindv = null;
     
-    public static void alSourcePausev(int n, uint* sources) => _alSourcePausev(n, sources);
+    public static void alSourcePausev(int n, uint* sources) { QGLNativeAPI.Verify((nint)_alSourcePausev); _alSourcePausev(n, sources); }
     [QGLNativeAPI("alSourcePausev")] internal static delegate* unmanaged[Cdecl]<int, uint*, void> _alSourcePausev = null;
     
-    public static void alSourceQueueBuffers(uint source, int nb, uint* buffers) => _alSourceQueueBuffers(source, nb, buffers);
+    public static void alSourceQueueBuffers(uint source, int nb, uint* buffers) { QGLNativeAPI.Verify((nint)_alSourceQueueBuffers); _alSourceQueueBuffers(source, nb, buffers); }
     [QGLNativeAPI("alSourceQueueBuffers")] internal static delegate* unmanaged[Cdecl]<uint, int, uint*, void> _alSourceQueueBuffers = null;
     
-    public static void alSourceUnqueueBuffers(uint source, int nb, uint* buffers) => _alSourceUnqueueBuffers(source, nb, buffers);
+    public static void alSourceUnqueueBuffers(uint source, int nb, uint* buffers) { QGLNativeAPI.Verify((nint)_alSourceUnqueueBuffers); _alSourceUnqueueBuffers(source, nb, buffers); }
     [QGLNativeAPI("alSourceUnqueueBuffers")] internal static delegate* unmanaged[Cdecl]<uint, int, uint*, void> _alSourceUnqueueBuffers = null;
     
-    public static void alGenBuffers(int n, uint* buffers) => _alGenBuffers(n, buffers);
+    public static void alGenBuffers(int n, uint* buffers) { QGLNativeAPI.Verify((nint)_alGenBuffers); _alGenBuffers(n, buffers); }
     [QGLNativeAPI("alGenBuffers")] internal static delegate* unmanaged[Cdecl]<int, uint*, void> _alGenBuffers = null;
     
-    public static void alDeleteBuffers(int n, uint* buffers) => _alDeleteBuffers(n, buffers);
+    public static void alDeleteBuffers(int n, uint* buffers) { QGLNativeAPI.Verify((nint)_alDeleteBuffers); _alDeleteBuffers(n, buffers); }
     [QGLNativeAPI("alDeleteBuffers")] internal static delegate* unmanaged[Cdecl]<int, uint*, void> _alDeleteBuffers = null;
     
-    [return: MarshalAs(UnmanagedType.I1)] public static bool alIsBuffer(uint buffer) => _alIsBuffer(buffer);
+    [return: MarshalAs(UnmanagedType.I1)] public static bool alIsBuffer(uint buffer) { QGLNativeAPI.Verify((nint)_alIsBuffer); return _alIsBuffer(buffer); }
     [QGLNativeAPI("alIsBuffer")] internal static delegate* unmanaged[Cdecl]<uint, bool> _alIsBuffer = null;
     
-    public static void alBufferData(uint buffer, int format, void* data, int size, int samplerate) => _alBufferData(buffer, format, data, size, samplerate);
+    public static void alBufferData(uint buffer, int format, void* data, int size, int samplerate) { QGLNativeAPI.Verify((nint)_alBufferData); _alBufferData(buffer, format, data, size, samplerate); }
     [QGLNativeAPI("alBufferData")] internal static delegate* unmanaged[Cdecl]<uint, int, void*, int, int, void> _alBufferData = null;
     
-    public static void alBufferf(uint buffer, int param, float value) => _alBufferf(buffer, param, value);
+    public static void alBufferf(uint buffer, int param, float value) { QGLNativeAPI.Verify((nint)_alBufferf); _alBufferf(buffer, param, value); }
     [QGLNativeAPI("alBufferf")] internal static delegate* unmanaged[Cdecl]<uint, int, float, void> _alBufferf = null;
     
-    public static void alBuffer3f(uint buffer, int param, float value1, float value2, float value3) => _alBuffer3f(buffer, param, value1, value2, value3);
+    public static void alBuffer3f(uint buffer, int param, float value1, float value2, float value3) { QGLNativeAPI.Verify((nint)_alBuffer3f); _alBuffer3f(buffer, param, value1, value2, value3); }
     [QGLNativeAPI("alBuffer3f")] internal static delegate* unmanaged[Cdecl]<uint, int, float, float, float, void> _alBuffer3f = null;
     
-    public static void alBufferfv(uint buffer, int param, float* values) => _alBufferfv(buffer, param, values);
+    public static void alBufferfv(uint buffer, int param, float* values) { QGLNativeAPI.Verify((nint)_alBufferfv); _alBufferfv(buffer, param, values); }
     [QGLNativeAPI("alBufferfv")] internal static delegate* unmanaged[Cdecl]<uint, int, float*, void> _alBufferfv = null;
     
-    public static void alBufferi(uint buffer, int param, int value) => _alBufferi(buffer, param, value);
+    public static void alBufferi(uint buffer, int param, int value) { QGLNativeAPI.Verify((nint)_alBufferi); _alBufferi(buffer, param, value); }
     [QGLNativeAPI("alBufferi")] internal static delegate* unmanaged[Cdecl]<uint, int, int, void> _alBufferi = null;
     
-    public static void alBuffer3i(uint buffer, int param, int value1, int value2, int value3) => _alBuffer3i(buffer, param, value1, value2, value3);
+    public static void alBuffer3i(uint buffer, int param, int value1, int value2, int value3) { QGLNativeAPI.Verify((nint)_alBuffer3i); _alBuffer3i(buffer, param, value1, value2, value3); }
     [QGLNativeAPI("alBuffer3i")] internal static delegate* unmanaged[Cdecl]<uint, int, int, int, int, void> _alBuffer3i = null;
     
-    public static void alBufferiv(uint buffer, int param, int* values) => _alBufferiv(buffer, param, values);
+    public static void alBufferiv(uint buffer, int param, int* values) { QGLNativeAPI.Verify((nint)_alBufferiv); _alBufferiv(buffer, param, values); }
     [QGLNativeAPI("alBufferiv")] internal static delegate* unmanaged[Cdecl]<uint, int, int*, void> _alBufferiv = null;
     
-    public static void alGetBufferf(uint buffer, int param, float* value) => _alGetBufferf(buffer, param, value);
+    public static void alGetBufferf(uint buffer, int param, float* value) { QGLNativeAPI.Verify((nint)_alGetBufferf); _alGetBufferf(buffer, param, value); }
     [QGLNativeAPI("alGetBufferf")] internal static delegate* unmanaged[Cdecl]<uint, int, float*, void> _alGetBufferf = null;
     
-    public static void alGetBuffer3f(uint buffer, int param, float* value1, float* value2, float* value3) => _alGetBuffer3f(buffer, param, value1, value2, value3);
+    public static void alGetBuffer3f(uint buffer, int param, float* value1, float* value2, float* value3) { QGLNativeAPI.Verify((nint)_alGetBuffer3f); _alGetBuffer3f(buffer, param, value1, value2, value3); }
     [QGLNativeAPI("alGetBuffer3f")] internal static delegate* unmanaged[Cdecl]<uint, int, float*, float*, float*, void> _alGetBuffer3f = null;
     
-    public static void alGetBufferfv(uint buffer, int param, float* values) => _alGetBufferfv(buffer, param, values);
+    public static void alGetBufferfv(uint buffer, int param, float* values) { QGLNativeAPI.Verify((nint)_alGetBufferfv); _alGetBufferfv(buffer, param, values); }
     [QGLNativeAPI("alGetBufferfv")] internal static delegate* unmanaged[Cdecl]<uint, int, float*, void> _alGetBufferfv = null;
     
-    public static void alGetBufferi(uint buffer, int param, int* value) => _alGetBufferi(buffer, param, value);
+    public static void alGetBufferi(uint buffer, int param, int* value) { QGLNativeAPI.Verify((nint)_alGetBufferi); _alGetBufferi(buffer, param, value); }
     [QGLNativeAPI("alGetBufferi")] internal static delegate* unmanaged[Cdecl]<uint, int, int*, void> _alGetBufferi = null;
     
-    public static void alGetBuffer3i(uint buffer, int param, int* value1, int* value2, int* value3) => _alGetBuffer3i(buffer, param, value1, value2, value3);
+    public static void alGetBuffer3i(uint buffer, int param, int* value1, int* value2, int* value3) { QGLNativeAPI.Verify((nint)_alGetBuffer3i); _alGetBuffer3i(buffer, param, value1, value2, value3); }
     [QGLNativeAPI("alGetBuffer3i")] internal static delegate* unmanaged[Cdecl]<uint, int, int*, int*, int*, void> _alGetBuffer3i = null;
     
-    public static void alGetBufferiv(uint buffer, int param, int* values) => _alGetBufferiv(buffer, param, values);
+    public static void alGetBufferiv(uint buffer, int param, int* values) { QGLNativeAPI.Verify((nint)_alGetBufferiv); _alGetBufferiv(buffer, param, values); }
     [QGLNativeAPI("alGetBufferiv")] internal static delegate* unmanaged[Cdecl]<uint, int, int*, void> _alGetBufferiv = null;
      #endregion
 }

@@ -23,12 +23,18 @@
 namespace QuickGLNS.Internal;
 
 [AttributeUsage(AttributeTargets.Field, AllowMultiple = false, Inherited = false)]
-internal class QGLNativeAPI : Attribute
+internal unsafe class QGLNativeAPI : Attribute
 {
     public string Name { get; private set; }
 
     public QGLNativeAPI(string name)
     {
         Name = name;
+    }
+
+    public static void Verify(nint funcPtr)
+    {
+        if (funcPtr == 0)
+            throw new InvalidOperationException("API has not been loaded");
     }
 }

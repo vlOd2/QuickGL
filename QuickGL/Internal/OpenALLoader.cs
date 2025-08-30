@@ -27,31 +27,52 @@ namespace QuickGLNS.Internal;
 internal class OpenALLoader
 {
     private const string WIN_LIB_NAME = "OpenAL32.dll";
-    private const string UNIX_LIB_NAME = "libopenal.so";
+    private static readonly string[] UNIX_LIB_NAMES = [ "libopenal.so.1", "libopenal.so", "libopenal.so.0" ];
     private nint handle;
 
     public OpenALLoader(string winLibName = null, string unixLibName = null)
     {
         winLibName ??= WIN_LIB_NAME;
-        unixLibName ??= UNIX_LIB_NAME;
-        string libName;
-        switch (Environment.OSVersion.Platform)
+
+        if (Environment.OSVersion.Platform != PlatformID.Win32NT && Environment.OSVersion.Platform != PlatformID.Unix)
+            throw new PlatformNotSupportedException();
+
+        if (Environment.OSVersion.Platform == PlatformID.Win32NT)
         {
-            case PlatformID.Win32NT:
-                libName = winLibName;
-                break;
-            case PlatformID.Unix:
-                libName = unixLibName;
-                break;
-            default:
-                throw new PlatformNotSupportedException();
+            handle = NativeLibrary.Load(winLibName);
+            if (handle == nint.Zero)
+                throw new GLException($"Failed to load OpenAL library: {winLibName}");
+            return;
         }
-        handle = NativeLibrary.Load(libName);
-        if (handle == nint.Zero)
-            throw new GLException($"Could not load {libName}");
+
+        if (unixLibName != null)
+        {
+            handle = NativeLibrary.Load(unixLibName);
+            if (handle == nint.Zero)
+                throw new GLException($"Failed to load OpenAL library: {unixLibName}");
+            return;
+        }
+
+        foreach (string libName in UNIX_LIB_NAMES)
+        {
+            handle = NativeLibrary.Load(libName);
+            if (handle != nint.Zero)
+                return;
+        }
+        throw new GLException($"Failed to locate OpenAL library");
     }
 
-    public nint GetProcAddress(string name) => NativeLibrary.GetExport(handle, name);
+    public nint GetProcAddress(string name)
+    {
+        try
+        {
+            return NativeLibrary.GetExport(handle, name);
+        }
+        catch
+        {
+            return 0;
+        }
+    }
 
     public void Dispose()
     {

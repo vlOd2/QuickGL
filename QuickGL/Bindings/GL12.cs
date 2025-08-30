@@ -22,10 +22,10 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-02-21 16:29:58.819135
+// Bindings generated at 2025-08-30 15:45:08.406303
 namespace QuickGLNS.Bindings;
 
-[GLFeature(false)]
+[QGLFeature("GL_VERSION_1_2", false, false)]
 public static unsafe class GL12
 {
     #region Enums
@@ -73,16 +73,16 @@ public static unsafe class GL12
     #endregion
     
     #region Commands
-    public static void glDrawRangeElements(uint mode, uint start, uint end, int count, uint type, void* indices) => _glDrawRangeElements(mode, start, end, count, type, indices);
+    public static void glDrawRangeElements(uint mode, uint start, uint end, int count, uint type, void* indices) { QGLNativeAPI.Verify((nint)_glDrawRangeElements); _glDrawRangeElements(mode, start, end, count, type, indices); }
     [QGLNativeAPI("glDrawRangeElements")] internal static delegate* unmanaged<uint, uint, uint, int, uint, void*, void> _glDrawRangeElements = null;
     
-    public static void glTexImage3D(uint target, int level, int internalformat, int width, int height, int depth, int border, uint format, uint type, void* pixels) => _glTexImage3D(target, level, internalformat, width, height, depth, border, format, type, pixels);
+    public static void glTexImage3D(uint target, int level, int internalformat, int width, int height, int depth, int border, uint format, uint type, void* pixels) { QGLNativeAPI.Verify((nint)_glTexImage3D); _glTexImage3D(target, level, internalformat, width, height, depth, border, format, type, pixels); }
     [QGLNativeAPI("glTexImage3D")] internal static delegate* unmanaged<uint, int, int, int, int, int, int, uint, uint, void*, void> _glTexImage3D = null;
     
-    public static void glTexSubImage3D(uint target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, void* pixels) => _glTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
+    public static void glTexSubImage3D(uint target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, void* pixels) { QGLNativeAPI.Verify((nint)_glTexSubImage3D); _glTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels); }
     [QGLNativeAPI("glTexSubImage3D")] internal static delegate* unmanaged<uint, int, int, int, int, int, int, int, uint, uint, void*, void> _glTexSubImage3D = null;
     
-    public static void glCopyTexSubImage3D(uint target, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height) => _glCopyTexSubImage3D(target, level, xoffset, yoffset, zoffset, x, y, width, height);
+    public static void glCopyTexSubImage3D(uint target, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height) { QGLNativeAPI.Verify((nint)_glCopyTexSubImage3D); _glCopyTexSubImage3D(target, level, xoffset, yoffset, zoffset, x, y, width, height); }
     [QGLNativeAPI("glCopyTexSubImage3D")] internal static delegate* unmanaged<uint, int, int, int, int, int, int, int, int, void> _glCopyTexSubImage3D = null;
      #endregion
 }

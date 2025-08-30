@@ -20,15 +20,22 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-namespace QuickGLNS.Internal;
+using QuickGLNS.Internal;
 
-[AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
-internal class GLFeature : Attribute
+// Bindings generated at 2025-08-30 15:45:08.716858
+namespace QuickGLNS.Bindings.Extensions;
+
+[QGLFeature("GL_ARB_texture_buffer_range", true, false)]
+public static unsafe class GLEXT_ARBtexturebufferrange
 {
-    public bool IsGLES { get; private set; }
-
-    public GLFeature(bool isGLES)
-    {
-        IsGLES = isGLES;
-    }
+    #region Enums
+    public const int GL_TEXTURE_BUFFER_OFFSET = 0x919D;
+    public const int GL_TEXTURE_BUFFER_SIZE = 0x919E;
+    public const int GL_TEXTURE_BUFFER_OFFSET_ALIGNMENT = 0x919F;
+    #endregion
+    
+    #region Commands
+    public static void glTexBufferRange(uint target, uint internalformat, uint buffer, nint offset, nint size) { QGLNativeAPI.Verify((nint)_glTexBufferRange); _glTexBufferRange(target, internalformat, buffer, offset, size); }
+    [QGLNativeAPI("glTexBufferRange")] internal static delegate* unmanaged<uint, uint, uint, nint, nint, void> _glTexBufferRange = null;
+     #endregion
 }

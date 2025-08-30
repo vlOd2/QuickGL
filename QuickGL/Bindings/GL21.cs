@@ -22,10 +22,10 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-02-21 16:29:58.836666
+// Bindings generated at 2025-08-30 15:45:08.420923
 namespace QuickGLNS.Bindings;
 
-[GLFeature(false)]
+[QGLFeature("GL_VERSION_2_1", false, false)]
 public static unsafe class GL21
 {
     #region Enums
@@ -55,22 +55,22 @@ public static unsafe class GL21
     #endregion
     
     #region Commands
-    public static void glUniformMatrix2x3fv(int location, int count, bool transpose, float* value) => _glUniformMatrix2x3fv(location, count, transpose, value);
+    public static void glUniformMatrix2x3fv(int location, int count, bool transpose, float* value) { QGLNativeAPI.Verify((nint)_glUniformMatrix2x3fv); _glUniformMatrix2x3fv(location, count, transpose, value); }
     [QGLNativeAPI("glUniformMatrix2x3fv")] internal static delegate* unmanaged<int, int, bool, float*, void> _glUniformMatrix2x3fv = null;
     
-    public static void glUniformMatrix3x2fv(int location, int count, bool transpose, float* value) => _glUniformMatrix3x2fv(location, count, transpose, value);
+    public static void glUniformMatrix3x2fv(int location, int count, bool transpose, float* value) { QGLNativeAPI.Verify((nint)_glUniformMatrix3x2fv); _glUniformMatrix3x2fv(location, count, transpose, value); }
     [QGLNativeAPI("glUniformMatrix3x2fv")] internal static delegate* unmanaged<int, int, bool, float*, void> _glUniformMatrix3x2fv = null;
     
-    public static void glUniformMatrix2x4fv(int location, int count, bool transpose, float* value) => _glUniformMatrix2x4fv(location, count, transpose, value);
+    public static void glUniformMatrix2x4fv(int location, int count, bool transpose, float* value) { QGLNativeAPI.Verify((nint)_glUniformMatrix2x4fv); _glUniformMatrix2x4fv(location, count, transpose, value); }
     [QGLNativeAPI("glUniformMatrix2x4fv")] internal static delegate* unmanaged<int, int, bool, float*, void> _glUniformMatrix2x4fv = null;
     
-    public static void glUniformMatrix4x2fv(int location, int count, bool transpose, float* value) => _glUniformMatrix4x2fv(location, count, transpose, value);
+    public static void glUniformMatrix4x2fv(int location, int count, bool transpose, float* value) { QGLNativeAPI.Verify((nint)_glUniformMatrix4x2fv); _glUniformMatrix4x2fv(location, count, transpose, value); }
     [QGLNativeAPI("glUniformMatrix4x2fv")] internal static delegate* unmanaged<int, int, bool, float*, void> _glUniformMatrix4x2fv = null;
     
-    public static void glUniformMatrix3x4fv(int location, int count, bool transpose, float* value) => _glUniformMatrix3x4fv(location, count, transpose, value);
+    public static void glUniformMatrix3x4fv(int location, int count, bool transpose, float* value) { QGLNativeAPI.Verify((nint)_glUniformMatrix3x4fv); _glUniformMatrix3x4fv(location, count, transpose, value); }
     [QGLNativeAPI("glUniformMatrix3x4fv")] internal static delegate* unmanaged<int, int, bool, float*, void> _glUniformMatrix3x4fv = null;
     
-    public static void glUniformMatrix4x3fv(int location, int count, bool transpose, float* value) => _glUniformMatrix4x3fv(location, count, transpose, value);
+    public static void glUniformMatrix4x3fv(int location, int count, bool transpose, float* value) { QGLNativeAPI.Verify((nint)_glUniformMatrix4x3fv); _glUniformMatrix4x3fv(location, count, transpose, value); }
     [QGLNativeAPI("glUniformMatrix4x3fv")] internal static delegate* unmanaged<int, int, bool, float*, void> _glUniformMatrix4x3fv = null;
      #endregion
 }

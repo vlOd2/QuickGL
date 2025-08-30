@@ -48,10 +48,20 @@ internal class GLFWLoader
         }
         handle = NativeLibrary.Load(libName);
         if (handle == nint.Zero)
-            throw new GLException($"Could not load {libName}");
+            throw new GLException($"Failed to load GLFW library: {libName}");
     }
 
-    public nint GetProcAddress(string name) => NativeLibrary.GetExport(handle, name);
+    public nint GetProcAddress(string name)
+    {
+        try
+        {
+            return NativeLibrary.GetExport(handle, name);
+        }
+        catch 
+        {
+            return 0;
+        }
+    }
 
     public void Dispose()
     {

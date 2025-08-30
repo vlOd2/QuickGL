@@ -49,6 +49,7 @@ public unsafe class QGLString : IDisposable
     /// <param name="data">the native string</param>
     public QGLString(byte* data)
     {
+        ArgumentNullException.ThrowIfNull(data, nameof(data));
         this.data = (nint)data;
         int idx = 0;
         while (data[idx++] != 0x00) ;
@@ -62,6 +63,7 @@ public unsafe class QGLString : IDisposable
     /// <param name="data">the managed string to allocate from</param>
     public QGLString(string data)
     {
+        ArgumentNullException.ThrowIfNull(data, nameof(data));
         this.data = Marshal.StringToHGlobalAnsi(data);
         Length = Encoding.ASCII.GetByteCount(data);
     }
@@ -72,6 +74,7 @@ public unsafe class QGLString : IDisposable
     /// <param name="size">the size of the string</param>
     public QGLString(int size)
     {
+        ArgumentOutOfRangeException.ThrowIfLessThan(size, 0, nameof(size));
         data = Marshal.AllocHGlobal(size);
         Length = size;
     }

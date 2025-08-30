@@ -22,10 +22,10 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-02-21 16:29:58.844181
+// Bindings generated at 2025-08-30 15:45:08.427662
 namespace QuickGLNS.Bindings;
 
-[GLFeature(false)]
+[QGLFeature("GL_VERSION_3_1", false, false)]
 public static unsafe class GL31
 {
     #region Enums
@@ -93,49 +93,49 @@ public static unsafe class GL31
     #endregion
     
     #region Commands
-    public static void glDrawArraysInstanced(uint mode, int first, int count, int instancecount) => _glDrawArraysInstanced(mode, first, count, instancecount);
+    public static void glDrawArraysInstanced(uint mode, int first, int count, int instancecount) { QGLNativeAPI.Verify((nint)_glDrawArraysInstanced); _glDrawArraysInstanced(mode, first, count, instancecount); }
     [QGLNativeAPI("glDrawArraysInstanced")] internal static delegate* unmanaged<uint, int, int, int, void> _glDrawArraysInstanced = null;
     
-    public static void glDrawElementsInstanced(uint mode, int count, uint type, void* indices, int instancecount) => _glDrawElementsInstanced(mode, count, type, indices, instancecount);
+    public static void glDrawElementsInstanced(uint mode, int count, uint type, void* indices, int instancecount) { QGLNativeAPI.Verify((nint)_glDrawElementsInstanced); _glDrawElementsInstanced(mode, count, type, indices, instancecount); }
     [QGLNativeAPI("glDrawElementsInstanced")] internal static delegate* unmanaged<uint, int, uint, void*, int, void> _glDrawElementsInstanced = null;
     
-    public static void glTexBuffer(uint target, uint internalformat, uint buffer) => _glTexBuffer(target, internalformat, buffer);
+    public static void glTexBuffer(uint target, uint internalformat, uint buffer) { QGLNativeAPI.Verify((nint)_glTexBuffer); _glTexBuffer(target, internalformat, buffer); }
     [QGLNativeAPI("glTexBuffer")] internal static delegate* unmanaged<uint, uint, uint, void> _glTexBuffer = null;
     
-    public static void glPrimitiveRestartIndex(uint index) => _glPrimitiveRestartIndex(index);
+    public static void glPrimitiveRestartIndex(uint index) { QGLNativeAPI.Verify((nint)_glPrimitiveRestartIndex); _glPrimitiveRestartIndex(index); }
     [QGLNativeAPI("glPrimitiveRestartIndex")] internal static delegate* unmanaged<uint, void> _glPrimitiveRestartIndex = null;
     
-    public static void glCopyBufferSubData(uint readTarget, uint writeTarget, nint readOffset, nint writeOffset, nint size) => _glCopyBufferSubData(readTarget, writeTarget, readOffset, writeOffset, size);
+    public static void glCopyBufferSubData(uint readTarget, uint writeTarget, nint readOffset, nint writeOffset, nint size) { QGLNativeAPI.Verify((nint)_glCopyBufferSubData); _glCopyBufferSubData(readTarget, writeTarget, readOffset, writeOffset, size); }
     [QGLNativeAPI("glCopyBufferSubData")] internal static delegate* unmanaged<uint, uint, nint, nint, nint, void> _glCopyBufferSubData = null;
     
-    public static void glGetUniformIndices(uint program, int uniformCount, byte** uniformNames, uint* uniformIndices) => _glGetUniformIndices(program, uniformCount, uniformNames, uniformIndices);
+    public static void glGetUniformIndices(uint program, int uniformCount, byte** uniformNames, uint* uniformIndices) { QGLNativeAPI.Verify((nint)_glGetUniformIndices); _glGetUniformIndices(program, uniformCount, uniformNames, uniformIndices); }
     [QGLNativeAPI("glGetUniformIndices")] internal static delegate* unmanaged<uint, int, byte**, uint*, void> _glGetUniformIndices = null;
     
-    public static void glGetActiveUniformsiv(uint program, int uniformCount, uint* uniformIndices, uint pname, int* @params) => _glGetActiveUniformsiv(program, uniformCount, uniformIndices, pname, @params);
+    public static void glGetActiveUniformsiv(uint program, int uniformCount, uint* uniformIndices, uint pname, int* @params) { QGLNativeAPI.Verify((nint)_glGetActiveUniformsiv); _glGetActiveUniformsiv(program, uniformCount, uniformIndices, pname, @params); }
     [QGLNativeAPI("glGetActiveUniformsiv")] internal static delegate* unmanaged<uint, int, uint*, uint, int*, void> _glGetActiveUniformsiv = null;
     
-    public static void glGetActiveUniformName(uint program, uint uniformIndex, int bufSize, int* length, byte* uniformName) => _glGetActiveUniformName(program, uniformIndex, bufSize, length, uniformName);
+    public static void glGetActiveUniformName(uint program, uint uniformIndex, int bufSize, int* length, byte* uniformName) { QGLNativeAPI.Verify((nint)_glGetActiveUniformName); _glGetActiveUniformName(program, uniformIndex, bufSize, length, uniformName); }
     [QGLNativeAPI("glGetActiveUniformName")] internal static delegate* unmanaged<uint, uint, int, int*, byte*, void> _glGetActiveUniformName = null;
     
-    public static uint glGetUniformBlockIndex(uint program, byte* uniformBlockName) => _glGetUniformBlockIndex(program, uniformBlockName);
+    public static uint glGetUniformBlockIndex(uint program, byte* uniformBlockName) { QGLNativeAPI.Verify((nint)_glGetUniformBlockIndex); return _glGetUniformBlockIndex(program, uniformBlockName); }
     [QGLNativeAPI("glGetUniformBlockIndex")] internal static delegate* unmanaged<uint, byte*, uint> _glGetUniformBlockIndex = null;
     
-    public static void glGetActiveUniformBlockiv(uint program, uint uniformBlockIndex, uint pname, int* @params) => _glGetActiveUniformBlockiv(program, uniformBlockIndex, pname, @params);
+    public static void glGetActiveUniformBlockiv(uint program, uint uniformBlockIndex, uint pname, int* @params) { QGLNativeAPI.Verify((nint)_glGetActiveUniformBlockiv); _glGetActiveUniformBlockiv(program, uniformBlockIndex, pname, @params); }
     [QGLNativeAPI("glGetActiveUniformBlockiv")] internal static delegate* unmanaged<uint, uint, uint, int*, void> _glGetActiveUniformBlockiv = null;
     
-    public static void glGetActiveUniformBlockName(uint program, uint uniformBlockIndex, int bufSize, int* length, byte* uniformBlockName) => _glGetActiveUniformBlockName(program, uniformBlockIndex, bufSize, length, uniformBlockName);
+    public static void glGetActiveUniformBlockName(uint program, uint uniformBlockIndex, int bufSize, int* length, byte* uniformBlockName) { QGLNativeAPI.Verify((nint)_glGetActiveUniformBlockName); _glGetActiveUniformBlockName(program, uniformBlockIndex, bufSize, length, uniformBlockName); }
     [QGLNativeAPI("glGetActiveUniformBlockName")] internal static delegate* unmanaged<uint, uint, int, int*, byte*, void> _glGetActiveUniformBlockName = null;
     
-    public static void glUniformBlockBinding(uint program, uint uniformBlockIndex, uint uniformBlockBinding) => _glUniformBlockBinding(program, uniformBlockIndex, uniformBlockBinding);
+    public static void glUniformBlockBinding(uint program, uint uniformBlockIndex, uint uniformBlockBinding) { QGLNativeAPI.Verify((nint)_glUniformBlockBinding); _glUniformBlockBinding(program, uniformBlockIndex, uniformBlockBinding); }
     [QGLNativeAPI("glUniformBlockBinding")] internal static delegate* unmanaged<uint, uint, uint, void> _glUniformBlockBinding = null;
     
-    public static void glBindBufferRange(uint target, uint index, uint buffer, nint offset, nint size) => _glBindBufferRange(target, index, buffer, offset, size);
+    public static void glBindBufferRange(uint target, uint index, uint buffer, nint offset, nint size) { QGLNativeAPI.Verify((nint)_glBindBufferRange); _glBindBufferRange(target, index, buffer, offset, size); }
     [QGLNativeAPI("glBindBufferRange")] internal static delegate* unmanaged<uint, uint, uint, nint, nint, void> _glBindBufferRange = null;
     
-    public static void glBindBufferBase(uint target, uint index, uint buffer) => _glBindBufferBase(target, index, buffer);
+    public static void glBindBufferBase(uint target, uint index, uint buffer) { QGLNativeAPI.Verify((nint)_glBindBufferBase); _glBindBufferBase(target, index, buffer); }
     [QGLNativeAPI("glBindBufferBase")] internal static delegate* unmanaged<uint, uint, uint, void> _glBindBufferBase = null;
     
-    public static void glGetIntegeri_v(uint target, uint index, int* data) => _glGetIntegeri_v(target, index, data);
+    public static void glGetIntegeri_v(uint target, uint index, int* data) { QGLNativeAPI.Verify((nint)_glGetIntegeri_v); _glGetIntegeri_v(target, index, data); }
     [QGLNativeAPI("glGetIntegeri_v")] internal static delegate* unmanaged<uint, uint, int*, void> _glGetIntegeri_v = null;
      #endregion
 }

@@ -22,10 +22,10 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-02-21 16:29:58.820752
+// Bindings generated at 2025-08-30 15:45:08.407824
 namespace QuickGLNS.Bindings;
 
-[GLFeature(false)]
+[QGLFeature("GL_VERSION_1_3", false, false)]
 public static unsafe class GL13
 {
     #region Enums
@@ -128,142 +128,142 @@ public static unsafe class GL13
     #endregion
     
     #region Commands
-    public static void glActiveTexture(uint texture) => _glActiveTexture(texture);
+    public static void glActiveTexture(uint texture) { QGLNativeAPI.Verify((nint)_glActiveTexture); _glActiveTexture(texture); }
     [QGLNativeAPI("glActiveTexture")] internal static delegate* unmanaged<uint, void> _glActiveTexture = null;
     
-    public static void glSampleCoverage(float value, bool invert) => _glSampleCoverage(value, invert);
+    public static void glSampleCoverage(float value, bool invert) { QGLNativeAPI.Verify((nint)_glSampleCoverage); _glSampleCoverage(value, invert); }
     [QGLNativeAPI("glSampleCoverage")] internal static delegate* unmanaged<float, bool, void> _glSampleCoverage = null;
     
-    public static void glCompressedTexImage3D(uint target, int level, uint internalformat, int width, int height, int depth, int border, int imageSize, void* data) => _glCompressedTexImage3D(target, level, internalformat, width, height, depth, border, imageSize, data);
+    public static void glCompressedTexImage3D(uint target, int level, uint internalformat, int width, int height, int depth, int border, int imageSize, void* data) { QGLNativeAPI.Verify((nint)_glCompressedTexImage3D); _glCompressedTexImage3D(target, level, internalformat, width, height, depth, border, imageSize, data); }
     [QGLNativeAPI("glCompressedTexImage3D")] internal static delegate* unmanaged<uint, int, uint, int, int, int, int, int, void*, void> _glCompressedTexImage3D = null;
     
-    public static void glCompressedTexImage2D(uint target, int level, uint internalformat, int width, int height, int border, int imageSize, void* data) => _glCompressedTexImage2D(target, level, internalformat, width, height, border, imageSize, data);
+    public static void glCompressedTexImage2D(uint target, int level, uint internalformat, int width, int height, int border, int imageSize, void* data) { QGLNativeAPI.Verify((nint)_glCompressedTexImage2D); _glCompressedTexImage2D(target, level, internalformat, width, height, border, imageSize, data); }
     [QGLNativeAPI("glCompressedTexImage2D")] internal static delegate* unmanaged<uint, int, uint, int, int, int, int, void*, void> _glCompressedTexImage2D = null;
     
-    public static void glCompressedTexImage1D(uint target, int level, uint internalformat, int width, int border, int imageSize, void* data) => _glCompressedTexImage1D(target, level, internalformat, width, border, imageSize, data);
+    public static void glCompressedTexImage1D(uint target, int level, uint internalformat, int width, int border, int imageSize, void* data) { QGLNativeAPI.Verify((nint)_glCompressedTexImage1D); _glCompressedTexImage1D(target, level, internalformat, width, border, imageSize, data); }
     [QGLNativeAPI("glCompressedTexImage1D")] internal static delegate* unmanaged<uint, int, uint, int, int, int, void*, void> _glCompressedTexImage1D = null;
     
-    public static void glCompressedTexSubImage3D(uint target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, int imageSize, void* data) => _glCompressedTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
+    public static void glCompressedTexSubImage3D(uint target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, int imageSize, void* data) { QGLNativeAPI.Verify((nint)_glCompressedTexSubImage3D); _glCompressedTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data); }
     [QGLNativeAPI("glCompressedTexSubImage3D")] internal static delegate* unmanaged<uint, int, int, int, int, int, int, int, uint, int, void*, void> _glCompressedTexSubImage3D = null;
     
-    public static void glCompressedTexSubImage2D(uint target, int level, int xoffset, int yoffset, int width, int height, uint format, int imageSize, void* data) => _glCompressedTexSubImage2D(target, level, xoffset, yoffset, width, height, format, imageSize, data);
+    public static void glCompressedTexSubImage2D(uint target, int level, int xoffset, int yoffset, int width, int height, uint format, int imageSize, void* data) { QGLNativeAPI.Verify((nint)_glCompressedTexSubImage2D); _glCompressedTexSubImage2D(target, level, xoffset, yoffset, width, height, format, imageSize, data); }
     [QGLNativeAPI("glCompressedTexSubImage2D")] internal static delegate* unmanaged<uint, int, int, int, int, int, uint, int, void*, void> _glCompressedTexSubImage2D = null;
     
-    public static void glCompressedTexSubImage1D(uint target, int level, int xoffset, int width, uint format, int imageSize, void* data) => _glCompressedTexSubImage1D(target, level, xoffset, width, format, imageSize, data);
+    public static void glCompressedTexSubImage1D(uint target, int level, int xoffset, int width, uint format, int imageSize, void* data) { QGLNativeAPI.Verify((nint)_glCompressedTexSubImage1D); _glCompressedTexSubImage1D(target, level, xoffset, width, format, imageSize, data); }
     [QGLNativeAPI("glCompressedTexSubImage1D")] internal static delegate* unmanaged<uint, int, int, int, uint, int, void*, void> _glCompressedTexSubImage1D = null;
     
-    public static void glGetCompressedTexImage(uint target, int level, void* img) => _glGetCompressedTexImage(target, level, img);
+    public static void glGetCompressedTexImage(uint target, int level, void* img) { QGLNativeAPI.Verify((nint)_glGetCompressedTexImage); _glGetCompressedTexImage(target, level, img); }
     [QGLNativeAPI("glGetCompressedTexImage")] internal static delegate* unmanaged<uint, int, void*, void> _glGetCompressedTexImage = null;
     
-    public static void glClientActiveTexture(uint texture) => _glClientActiveTexture(texture);
+    public static void glClientActiveTexture(uint texture) { QGLNativeAPI.Verify((nint)_glClientActiveTexture); _glClientActiveTexture(texture); }
     [QGLNativeAPI("glClientActiveTexture")] internal static delegate* unmanaged<uint, void> _glClientActiveTexture = null;
     
-    public static void glMultiTexCoord1d(uint target, double s) => _glMultiTexCoord1d(target, s);
+    public static void glMultiTexCoord1d(uint target, double s) { QGLNativeAPI.Verify((nint)_glMultiTexCoord1d); _glMultiTexCoord1d(target, s); }
     [QGLNativeAPI("glMultiTexCoord1d")] internal static delegate* unmanaged<uint, double, void> _glMultiTexCoord1d = null;
     
-    public static void glMultiTexCoord1dv(uint target, double* v) => _glMultiTexCoord1dv(target, v);
+    public static void glMultiTexCoord1dv(uint target, double* v) { QGLNativeAPI.Verify((nint)_glMultiTexCoord1dv); _glMultiTexCoord1dv(target, v); }
     [QGLNativeAPI("glMultiTexCoord1dv")] internal static delegate* unmanaged<uint, double*, void> _glMultiTexCoord1dv = null;
     
-    public static void glMultiTexCoord1f(uint target, float s) => _glMultiTexCoord1f(target, s);
+    public static void glMultiTexCoord1f(uint target, float s) { QGLNativeAPI.Verify((nint)_glMultiTexCoord1f); _glMultiTexCoord1f(target, s); }
     [QGLNativeAPI("glMultiTexCoord1f")] internal static delegate* unmanaged<uint, float, void> _glMultiTexCoord1f = null;
     
-    public static void glMultiTexCoord1fv(uint target, float* v) => _glMultiTexCoord1fv(target, v);
+    public static void glMultiTexCoord1fv(uint target, float* v) { QGLNativeAPI.Verify((nint)_glMultiTexCoord1fv); _glMultiTexCoord1fv(target, v); }
     [QGLNativeAPI("glMultiTexCoord1fv")] internal static delegate* unmanaged<uint, float*, void> _glMultiTexCoord1fv = null;
     
-    public static void glMultiTexCoord1i(uint target, int s) => _glMultiTexCoord1i(target, s);
+    public static void glMultiTexCoord1i(uint target, int s) { QGLNativeAPI.Verify((nint)_glMultiTexCoord1i); _glMultiTexCoord1i(target, s); }
     [QGLNativeAPI("glMultiTexCoord1i")] internal static delegate* unmanaged<uint, int, void> _glMultiTexCoord1i = null;
     
-    public static void glMultiTexCoord1iv(uint target, int* v) => _glMultiTexCoord1iv(target, v);
+    public static void glMultiTexCoord1iv(uint target, int* v) { QGLNativeAPI.Verify((nint)_glMultiTexCoord1iv); _glMultiTexCoord1iv(target, v); }
     [QGLNativeAPI("glMultiTexCoord1iv")] internal static delegate* unmanaged<uint, int*, void> _glMultiTexCoord1iv = null;
     
-    public static void glMultiTexCoord1s(uint target, short s) => _glMultiTexCoord1s(target, s);
+    public static void glMultiTexCoord1s(uint target, short s) { QGLNativeAPI.Verify((nint)_glMultiTexCoord1s); _glMultiTexCoord1s(target, s); }
     [QGLNativeAPI("glMultiTexCoord1s")] internal static delegate* unmanaged<uint, short, void> _glMultiTexCoord1s = null;
     
-    public static void glMultiTexCoord1sv(uint target, short* v) => _glMultiTexCoord1sv(target, v);
+    public static void glMultiTexCoord1sv(uint target, short* v) { QGLNativeAPI.Verify((nint)_glMultiTexCoord1sv); _glMultiTexCoord1sv(target, v); }
     [QGLNativeAPI("glMultiTexCoord1sv")] internal static delegate* unmanaged<uint, short*, void> _glMultiTexCoord1sv = null;
     
-    public static void glMultiTexCoord2d(uint target, double s, double t) => _glMultiTexCoord2d(target, s, t);
+    public static void glMultiTexCoord2d(uint target, double s, double t) { QGLNativeAPI.Verify((nint)_glMultiTexCoord2d); _glMultiTexCoord2d(target, s, t); }
     [QGLNativeAPI("glMultiTexCoord2d")] internal static delegate* unmanaged<uint, double, double, void> _glMultiTexCoord2d = null;
     
-    public static void glMultiTexCoord2dv(uint target, double* v) => _glMultiTexCoord2dv(target, v);
+    public static void glMultiTexCoord2dv(uint target, double* v) { QGLNativeAPI.Verify((nint)_glMultiTexCoord2dv); _glMultiTexCoord2dv(target, v); }
     [QGLNativeAPI("glMultiTexCoord2dv")] internal static delegate* unmanaged<uint, double*, void> _glMultiTexCoord2dv = null;
     
-    public static void glMultiTexCoord2f(uint target, float s, float t) => _glMultiTexCoord2f(target, s, t);
+    public static void glMultiTexCoord2f(uint target, float s, float t) { QGLNativeAPI.Verify((nint)_glMultiTexCoord2f); _glMultiTexCoord2f(target, s, t); }
     [QGLNativeAPI("glMultiTexCoord2f")] internal static delegate* unmanaged<uint, float, float, void> _glMultiTexCoord2f = null;
     
-    public static void glMultiTexCoord2fv(uint target, float* v) => _glMultiTexCoord2fv(target, v);
+    public static void glMultiTexCoord2fv(uint target, float* v) { QGLNativeAPI.Verify((nint)_glMultiTexCoord2fv); _glMultiTexCoord2fv(target, v); }
     [QGLNativeAPI("glMultiTexCoord2fv")] internal static delegate* unmanaged<uint, float*, void> _glMultiTexCoord2fv = null;
     
-    public static void glMultiTexCoord2i(uint target, int s, int t) => _glMultiTexCoord2i(target, s, t);
+    public static void glMultiTexCoord2i(uint target, int s, int t) { QGLNativeAPI.Verify((nint)_glMultiTexCoord2i); _glMultiTexCoord2i(target, s, t); }
     [QGLNativeAPI("glMultiTexCoord2i")] internal static delegate* unmanaged<uint, int, int, void> _glMultiTexCoord2i = null;
     
-    public static void glMultiTexCoord2iv(uint target, int* v) => _glMultiTexCoord2iv(target, v);
+    public static void glMultiTexCoord2iv(uint target, int* v) { QGLNativeAPI.Verify((nint)_glMultiTexCoord2iv); _glMultiTexCoord2iv(target, v); }
     [QGLNativeAPI("glMultiTexCoord2iv")] internal static delegate* unmanaged<uint, int*, void> _glMultiTexCoord2iv = null;
     
-    public static void glMultiTexCoord2s(uint target, short s, short t) => _glMultiTexCoord2s(target, s, t);
+    public static void glMultiTexCoord2s(uint target, short s, short t) { QGLNativeAPI.Verify((nint)_glMultiTexCoord2s); _glMultiTexCoord2s(target, s, t); }
     [QGLNativeAPI("glMultiTexCoord2s")] internal static delegate* unmanaged<uint, short, short, void> _glMultiTexCoord2s = null;
     
-    public static void glMultiTexCoord2sv(uint target, short* v) => _glMultiTexCoord2sv(target, v);
+    public static void glMultiTexCoord2sv(uint target, short* v) { QGLNativeAPI.Verify((nint)_glMultiTexCoord2sv); _glMultiTexCoord2sv(target, v); }
     [QGLNativeAPI("glMultiTexCoord2sv")] internal static delegate* unmanaged<uint, short*, void> _glMultiTexCoord2sv = null;
     
-    public static void glMultiTexCoord3d(uint target, double s, double t, double r) => _glMultiTexCoord3d(target, s, t, r);
+    public static void glMultiTexCoord3d(uint target, double s, double t, double r) { QGLNativeAPI.Verify((nint)_glMultiTexCoord3d); _glMultiTexCoord3d(target, s, t, r); }
     [QGLNativeAPI("glMultiTexCoord3d")] internal static delegate* unmanaged<uint, double, double, double, void> _glMultiTexCoord3d = null;
     
-    public static void glMultiTexCoord3dv(uint target, double* v) => _glMultiTexCoord3dv(target, v);
+    public static void glMultiTexCoord3dv(uint target, double* v) { QGLNativeAPI.Verify((nint)_glMultiTexCoord3dv); _glMultiTexCoord3dv(target, v); }
     [QGLNativeAPI("glMultiTexCoord3dv")] internal static delegate* unmanaged<uint, double*, void> _glMultiTexCoord3dv = null;
     
-    public static void glMultiTexCoord3f(uint target, float s, float t, float r) => _glMultiTexCoord3f(target, s, t, r);
+    public static void glMultiTexCoord3f(uint target, float s, float t, float r) { QGLNativeAPI.Verify((nint)_glMultiTexCoord3f); _glMultiTexCoord3f(target, s, t, r); }
     [QGLNativeAPI("glMultiTexCoord3f")] internal static delegate* unmanaged<uint, float, float, float, void> _glMultiTexCoord3f = null;
     
-    public static void glMultiTexCoord3fv(uint target, float* v) => _glMultiTexCoord3fv(target, v);
+    public static void glMultiTexCoord3fv(uint target, float* v) { QGLNativeAPI.Verify((nint)_glMultiTexCoord3fv); _glMultiTexCoord3fv(target, v); }
     [QGLNativeAPI("glMultiTexCoord3fv")] internal static delegate* unmanaged<uint, float*, void> _glMultiTexCoord3fv = null;
     
-    public static void glMultiTexCoord3i(uint target, int s, int t, int r) => _glMultiTexCoord3i(target, s, t, r);
+    public static void glMultiTexCoord3i(uint target, int s, int t, int r) { QGLNativeAPI.Verify((nint)_glMultiTexCoord3i); _glMultiTexCoord3i(target, s, t, r); }
     [QGLNativeAPI("glMultiTexCoord3i")] internal static delegate* unmanaged<uint, int, int, int, void> _glMultiTexCoord3i = null;
     
-    public static void glMultiTexCoord3iv(uint target, int* v) => _glMultiTexCoord3iv(target, v);
+    public static void glMultiTexCoord3iv(uint target, int* v) { QGLNativeAPI.Verify((nint)_glMultiTexCoord3iv); _glMultiTexCoord3iv(target, v); }
     [QGLNativeAPI("glMultiTexCoord3iv")] internal static delegate* unmanaged<uint, int*, void> _glMultiTexCoord3iv = null;
     
-    public static void glMultiTexCoord3s(uint target, short s, short t, short r) => _glMultiTexCoord3s(target, s, t, r);
+    public static void glMultiTexCoord3s(uint target, short s, short t, short r) { QGLNativeAPI.Verify((nint)_glMultiTexCoord3s); _glMultiTexCoord3s(target, s, t, r); }
     [QGLNativeAPI("glMultiTexCoord3s")] internal static delegate* unmanaged<uint, short, short, short, void> _glMultiTexCoord3s = null;
     
-    public static void glMultiTexCoord3sv(uint target, short* v) => _glMultiTexCoord3sv(target, v);
+    public static void glMultiTexCoord3sv(uint target, short* v) { QGLNativeAPI.Verify((nint)_glMultiTexCoord3sv); _glMultiTexCoord3sv(target, v); }
     [QGLNativeAPI("glMultiTexCoord3sv")] internal static delegate* unmanaged<uint, short*, void> _glMultiTexCoord3sv = null;
     
-    public static void glMultiTexCoord4d(uint target, double s, double t, double r, double q) => _glMultiTexCoord4d(target, s, t, r, q);
+    public static void glMultiTexCoord4d(uint target, double s, double t, double r, double q) { QGLNativeAPI.Verify((nint)_glMultiTexCoord4d); _glMultiTexCoord4d(target, s, t, r, q); }
     [QGLNativeAPI("glMultiTexCoord4d")] internal static delegate* unmanaged<uint, double, double, double, double, void> _glMultiTexCoord4d = null;
     
-    public static void glMultiTexCoord4dv(uint target, double* v) => _glMultiTexCoord4dv(target, v);
+    public static void glMultiTexCoord4dv(uint target, double* v) { QGLNativeAPI.Verify((nint)_glMultiTexCoord4dv); _glMultiTexCoord4dv(target, v); }
     [QGLNativeAPI("glMultiTexCoord4dv")] internal static delegate* unmanaged<uint, double*, void> _glMultiTexCoord4dv = null;
     
-    public static void glMultiTexCoord4f(uint target, float s, float t, float r, float q) => _glMultiTexCoord4f(target, s, t, r, q);
+    public static void glMultiTexCoord4f(uint target, float s, float t, float r, float q) { QGLNativeAPI.Verify((nint)_glMultiTexCoord4f); _glMultiTexCoord4f(target, s, t, r, q); }
     [QGLNativeAPI("glMultiTexCoord4f")] internal static delegate* unmanaged<uint, float, float, float, float, void> _glMultiTexCoord4f = null;
     
-    public static void glMultiTexCoord4fv(uint target, float* v) => _glMultiTexCoord4fv(target, v);
+    public static void glMultiTexCoord4fv(uint target, float* v) { QGLNativeAPI.Verify((nint)_glMultiTexCoord4fv); _glMultiTexCoord4fv(target, v); }
     [QGLNativeAPI("glMultiTexCoord4fv")] internal static delegate* unmanaged<uint, float*, void> _glMultiTexCoord4fv = null;
     
-    public static void glMultiTexCoord4i(uint target, int s, int t, int r, int q) => _glMultiTexCoord4i(target, s, t, r, q);
+    public static void glMultiTexCoord4i(uint target, int s, int t, int r, int q) { QGLNativeAPI.Verify((nint)_glMultiTexCoord4i); _glMultiTexCoord4i(target, s, t, r, q); }
     [QGLNativeAPI("glMultiTexCoord4i")] internal static delegate* unmanaged<uint, int, int, int, int, void> _glMultiTexCoord4i = null;
     
-    public static void glMultiTexCoord4iv(uint target, int* v) => _glMultiTexCoord4iv(target, v);
+    public static void glMultiTexCoord4iv(uint target, int* v) { QGLNativeAPI.Verify((nint)_glMultiTexCoord4iv); _glMultiTexCoord4iv(target, v); }
     [QGLNativeAPI("glMultiTexCoord4iv")] internal static delegate* unmanaged<uint, int*, void> _glMultiTexCoord4iv = null;
     
-    public static void glMultiTexCoord4s(uint target, short s, short t, short r, short q) => _glMultiTexCoord4s(target, s, t, r, q);
+    public static void glMultiTexCoord4s(uint target, short s, short t, short r, short q) { QGLNativeAPI.Verify((nint)_glMultiTexCoord4s); _glMultiTexCoord4s(target, s, t, r, q); }
     [QGLNativeAPI("glMultiTexCoord4s")] internal static delegate* unmanaged<uint, short, short, short, short, void> _glMultiTexCoord4s = null;
     
-    public static void glMultiTexCoord4sv(uint target, short* v) => _glMultiTexCoord4sv(target, v);
+    public static void glMultiTexCoord4sv(uint target, short* v) { QGLNativeAPI.Verify((nint)_glMultiTexCoord4sv); _glMultiTexCoord4sv(target, v); }
     [QGLNativeAPI("glMultiTexCoord4sv")] internal static delegate* unmanaged<uint, short*, void> _glMultiTexCoord4sv = null;
     
-    public static void glLoadTransposeMatrixf(float* m) => _glLoadTransposeMatrixf(m);
+    public static void glLoadTransposeMatrixf(float* m) { QGLNativeAPI.Verify((nint)_glLoadTransposeMatrixf); _glLoadTransposeMatrixf(m); }
     [QGLNativeAPI("glLoadTransposeMatrixf")] internal static delegate* unmanaged<float*, void> _glLoadTransposeMatrixf = null;
     
-    public static void glLoadTransposeMatrixd(double* m) => _glLoadTransposeMatrixd(m);
+    public static void glLoadTransposeMatrixd(double* m) { QGLNativeAPI.Verify((nint)_glLoadTransposeMatrixd); _glLoadTransposeMatrixd(m); }
     [QGLNativeAPI("glLoadTransposeMatrixd")] internal static delegate* unmanaged<double*, void> _glLoadTransposeMatrixd = null;
     
-    public static void glMultTransposeMatrixf(float* m) => _glMultTransposeMatrixf(m);
+    public static void glMultTransposeMatrixf(float* m) { QGLNativeAPI.Verify((nint)_glMultTransposeMatrixf); _glMultTransposeMatrixf(m); }
     [QGLNativeAPI("glMultTransposeMatrixf")] internal static delegate* unmanaged<float*, void> _glMultTransposeMatrixf = null;
     
-    public static void glMultTransposeMatrixd(double* m) => _glMultTransposeMatrixd(m);
+    public static void glMultTransposeMatrixd(double* m) { QGLNativeAPI.Verify((nint)_glMultTransposeMatrixd); _glMultTransposeMatrixd(m); }
     [QGLNativeAPI("glMultTransposeMatrixd")] internal static delegate* unmanaged<double*, void> _glMultTransposeMatrixd = null;
      #endregion
 }

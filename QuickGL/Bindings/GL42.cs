@@ -22,10 +22,10 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-02-21 16:29:58.873009
+// Bindings generated at 2025-08-30 15:45:08.447098
 namespace QuickGLNS.Bindings;
 
-[GLFeature(false)]
+[QGLFeature("GL_VERSION_4_2", false, false)]
 public static unsafe class GL42
 {
     #region Enums
@@ -144,40 +144,40 @@ public static unsafe class GL42
     #endregion
     
     #region Commands
-    public static void glDrawArraysInstancedBaseInstance(uint mode, int first, int count, int instancecount, uint baseinstance) => _glDrawArraysInstancedBaseInstance(mode, first, count, instancecount, baseinstance);
+    public static void glDrawArraysInstancedBaseInstance(uint mode, int first, int count, int instancecount, uint baseinstance) { QGLNativeAPI.Verify((nint)_glDrawArraysInstancedBaseInstance); _glDrawArraysInstancedBaseInstance(mode, first, count, instancecount, baseinstance); }
     [QGLNativeAPI("glDrawArraysInstancedBaseInstance")] internal static delegate* unmanaged<uint, int, int, int, uint, void> _glDrawArraysInstancedBaseInstance = null;
     
-    public static void glDrawElementsInstancedBaseInstance(uint mode, int count, uint type, void* indices, int instancecount, uint baseinstance) => _glDrawElementsInstancedBaseInstance(mode, count, type, indices, instancecount, baseinstance);
+    public static void glDrawElementsInstancedBaseInstance(uint mode, int count, uint type, void* indices, int instancecount, uint baseinstance) { QGLNativeAPI.Verify((nint)_glDrawElementsInstancedBaseInstance); _glDrawElementsInstancedBaseInstance(mode, count, type, indices, instancecount, baseinstance); }
     [QGLNativeAPI("glDrawElementsInstancedBaseInstance")] internal static delegate* unmanaged<uint, int, uint, void*, int, uint, void> _glDrawElementsInstancedBaseInstance = null;
     
-    public static void glDrawElementsInstancedBaseVertexBaseInstance(uint mode, int count, uint type, void* indices, int instancecount, int basevertex, uint baseinstance) => _glDrawElementsInstancedBaseVertexBaseInstance(mode, count, type, indices, instancecount, basevertex, baseinstance);
+    public static void glDrawElementsInstancedBaseVertexBaseInstance(uint mode, int count, uint type, void* indices, int instancecount, int basevertex, uint baseinstance) { QGLNativeAPI.Verify((nint)_glDrawElementsInstancedBaseVertexBaseInstance); _glDrawElementsInstancedBaseVertexBaseInstance(mode, count, type, indices, instancecount, basevertex, baseinstance); }
     [QGLNativeAPI("glDrawElementsInstancedBaseVertexBaseInstance")] internal static delegate* unmanaged<uint, int, uint, void*, int, int, uint, void> _glDrawElementsInstancedBaseVertexBaseInstance = null;
     
-    public static void glGetInternalformativ(uint target, uint internalformat, uint pname, int count, int* @params) => _glGetInternalformativ(target, internalformat, pname, count, @params);
+    public static void glGetInternalformativ(uint target, uint internalformat, uint pname, int count, int* @params) { QGLNativeAPI.Verify((nint)_glGetInternalformativ); _glGetInternalformativ(target, internalformat, pname, count, @params); }
     [QGLNativeAPI("glGetInternalformativ")] internal static delegate* unmanaged<uint, uint, uint, int, int*, void> _glGetInternalformativ = null;
     
-    public static void glGetActiveAtomicCounterBufferiv(uint program, uint bufferIndex, uint pname, int* @params) => _glGetActiveAtomicCounterBufferiv(program, bufferIndex, pname, @params);
+    public static void glGetActiveAtomicCounterBufferiv(uint program, uint bufferIndex, uint pname, int* @params) { QGLNativeAPI.Verify((nint)_glGetActiveAtomicCounterBufferiv); _glGetActiveAtomicCounterBufferiv(program, bufferIndex, pname, @params); }
     [QGLNativeAPI("glGetActiveAtomicCounterBufferiv")] internal static delegate* unmanaged<uint, uint, uint, int*, void> _glGetActiveAtomicCounterBufferiv = null;
     
-    public static void glBindImageTexture(uint unit, uint texture, int level, bool layered, int layer, uint access, uint format) => _glBindImageTexture(unit, texture, level, layered, layer, access, format);
+    public static void glBindImageTexture(uint unit, uint texture, int level, bool layered, int layer, uint access, uint format) { QGLNativeAPI.Verify((nint)_glBindImageTexture); _glBindImageTexture(unit, texture, level, layered, layer, access, format); }
     [QGLNativeAPI("glBindImageTexture")] internal static delegate* unmanaged<uint, uint, int, bool, int, uint, uint, void> _glBindImageTexture = null;
     
-    public static void glMemoryBarrier(uint barriers) => _glMemoryBarrier(barriers);
+    public static void glMemoryBarrier(uint barriers) { QGLNativeAPI.Verify((nint)_glMemoryBarrier); _glMemoryBarrier(barriers); }
     [QGLNativeAPI("glMemoryBarrier")] internal static delegate* unmanaged<uint, void> _glMemoryBarrier = null;
     
-    public static void glTexStorage1D(uint target, int levels, uint internalformat, int width) => _glTexStorage1D(target, levels, internalformat, width);
+    public static void glTexStorage1D(uint target, int levels, uint internalformat, int width) { QGLNativeAPI.Verify((nint)_glTexStorage1D); _glTexStorage1D(target, levels, internalformat, width); }
     [QGLNativeAPI("glTexStorage1D")] internal static delegate* unmanaged<uint, int, uint, int, void> _glTexStorage1D = null;
     
-    public static void glTexStorage2D(uint target, int levels, uint internalformat, int width, int height) => _glTexStorage2D(target, levels, internalformat, width, height);
+    public static void glTexStorage2D(uint target, int levels, uint internalformat, int width, int height) { QGLNativeAPI.Verify((nint)_glTexStorage2D); _glTexStorage2D(target, levels, internalformat, width, height); }
     [QGLNativeAPI("glTexStorage2D")] internal static delegate* unmanaged<uint, int, uint, int, int, void> _glTexStorage2D = null;
     
-    public static void glTexStorage3D(uint target, int levels, uint internalformat, int width, int height, int depth) => _glTexStorage3D(target, levels, internalformat, width, height, depth);
+    public static void glTexStorage3D(uint target, int levels, uint internalformat, int width, int height, int depth) { QGLNativeAPI.Verify((nint)_glTexStorage3D); _glTexStorage3D(target, levels, internalformat, width, height, depth); }
     [QGLNativeAPI("glTexStorage3D")] internal static delegate* unmanaged<uint, int, uint, int, int, int, void> _glTexStorage3D = null;
     
-    public static void glDrawTransformFeedbackInstanced(uint mode, uint id, int instancecount) => _glDrawTransformFeedbackInstanced(mode, id, instancecount);
+    public static void glDrawTransformFeedbackInstanced(uint mode, uint id, int instancecount) { QGLNativeAPI.Verify((nint)_glDrawTransformFeedbackInstanced); _glDrawTransformFeedbackInstanced(mode, id, instancecount); }
     [QGLNativeAPI("glDrawTransformFeedbackInstanced")] internal static delegate* unmanaged<uint, uint, int, void> _glDrawTransformFeedbackInstanced = null;
     
-    public static void glDrawTransformFeedbackStreamInstanced(uint mode, uint id, uint stream, int instancecount) => _glDrawTransformFeedbackStreamInstanced(mode, id, stream, instancecount);
+    public static void glDrawTransformFeedbackStreamInstanced(uint mode, uint id, uint stream, int instancecount) { QGLNativeAPI.Verify((nint)_glDrawTransformFeedbackStreamInstanced); _glDrawTransformFeedbackStreamInstanced(mode, id, stream, instancecount); }
     [QGLNativeAPI("glDrawTransformFeedbackStreamInstanced")] internal static delegate* unmanaged<uint, uint, uint, int, void> _glDrawTransformFeedbackStreamInstanced = null;
      #endregion
 }
