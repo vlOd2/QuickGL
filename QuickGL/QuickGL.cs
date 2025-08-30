@@ -163,15 +163,43 @@ public static unsafe partial class QuickGL
         if (glGetString == null)
             throw new GLException("Could not initialize OpenGL");
 
-        using QGLString version = new(glGetString(GL10.GL_VERSION));
+        byte* versionRaw = glGetString(GL10.GL_VERSION);
+        if (versionRaw == null)
+            throw new GLException("Could not figure out OpenGL version");
+
+        using QGLString version = new(versionRaw);
         Match match = GLVersionRegex().Match(version);
         if (!match.Success)
-            throw new GLException("Could not figure out OpenGL version");
+            throw new GLException("Could not parse OpenGL version");
         GLVersionMajor = int.Parse(match.Groups[1].Value);
         GLVersionMinor = int.Parse(match.Groups[2].Value);
 
-        using QGLString extensions = new(glGetString(GL10.GL_EXTENSIONS));
-        SupportedExtensions = ((string)extensions).Trim().Split(" ");
+        if (GLVersionMajor >= 3)
+        {
+            delegate* unmanaged<uint, uint, byte*> glGetStringi = (delegate* unmanaged<uint, uint, byte*>)GetProcAddress("glGetStringi");
+            delegate* unmanaged<uint, int*, byte*> glGetIntegerv = (delegate* unmanaged<uint, int*, byte*>)GetProcAddress("glGetIntegerv");
+            if (glGetStringi == null || glGetIntegerv == null)
+                throw new GLException("Could not figure out OpenGL extensions");
+
+            int count;
+            glGetIntegerv(GL30.GL_NUM_EXTENSIONS, &count);
+
+            List<string> ext = [];
+            for (int i = 0; i < count; i++)
+            {
+                using QGLString str = new(glGetStringi(GL10.GL_EXTENSIONS, (uint)i));
+                ext.Add(str.Data);
+            }
+            SupportedExtensions = [.. ext];
+        }
+        else
+        {
+            byte* extensionsRaw = glGetString(GL10.GL_EXTENSIONS);
+            if (extensionsRaw == null)
+                throw new GLException("Could not figure out OpenGL extensions");
+            using QGLString extensions = new(extensionsRaw);
+            SupportedExtensions = ((string)extensions).Trim().Split(" ");
+        }
     }
 
     /// <summary>

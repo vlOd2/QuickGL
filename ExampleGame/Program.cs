@@ -1,4 +1,4 @@
-﻿// #define USE_GLES
+﻿//#define USE_GLES
 
 using System.Numerics;
 using QuickGLNS;
@@ -19,33 +19,35 @@ namespace ExampleGameNS;
 
 public unsafe class Program
 {
-    private const string VERTEX_SHADER = """
-            #version 330 core
+    private const string VERTEX_SHADER = @"
+        #version 320 es
+        precision highp float;
+
+        layout (location = 0) in vec3 vertex;
+        layout (location = 1) in vec3 color;
         
-            layout (location = 0) in vec3 vertex;
-            layout (location = 1) in vec3 color;
-            
-            uniform float time;
-            uniform mat4 projMatrix;
-            uniform mat4 viewMatrix;
-            
-            out vec3 fragColor;
-            
-            void main() {
-                gl_Position = projMatrix * viewMatrix * vec4(vertex, 1.0F);
-                fragColor = color * sin(time);
-            }
-        """;
-    private const string FRAGMENT_SHADER = """
-            #version 330 core
+        uniform float time;
+        uniform mat4 projMatrix;
+        uniform mat4 viewMatrix;
+        
+        out vec3 fragColor;
+        
+        void main() {
+            gl_Position = projMatrix * viewMatrix * vec4(vertex, 1.0F);
+            fragColor = color * sin(time);
+        }
+    ";
+    private const string FRAGMENT_SHADER = @"
+        #version 320 es
+        precision highp float;        
 
-            in vec3 fragColor;
-            out vec4 resultColor;
-
-            void main() {
-                resultColor = vec4(fragColor, 1.0F);
-            }
-        """;
+        in vec3 fragColor;
+        out vec4 resultColor;
+        
+        void main() {
+            resultColor = vec4(fragColor, 1.0F);
+        }
+    ";
     private nint window;
     private int width;
     private int height;
@@ -116,14 +118,13 @@ public unsafe class Program
             throw new Exception("Failed to initialize GLFW");
 
 #if USE_GLES
-            glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-            glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
-            glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+        glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
 #else
-        // The driver usually picks the latest version
-        // glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-        // glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
-        // glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+        glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 #endif
 
         width = 640;
