@@ -19,4 +19,16 @@
       <Folder Include="Bindings\" />
     </ItemGroup>
 
+	<ItemGroup Condition="'$(QuickGLBundleLibs)' != 'false' And ('$(OS)' == 'Windows_NT' Or '$(TargetFramework)' == 'net9.0-windows')">
+		<ContentWithTargetPath Include="Libs\glfw3.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<TargetPath>glfw3.dll</TargetPath>
+		</ContentWithTargetPath>
+
+		<ContentWithTargetPath Include="Libs\OpenAL32.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<TargetPath>OpenAL32.dll</TargetPath>
+		</ContentWithTargetPath>
+	</ItemGroup>
+
 </Project>
