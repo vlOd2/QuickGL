@@ -21,13 +21,15 @@
 // SOFTWARE.
 
 using QuickGLNS.Bindings;
+using System.Runtime.InteropServices;
+using System.Text;
 using static QuickGLNS.Bindings.GLFW;
 
 namespace QuickGLNS.Internal;
 
 internal unsafe class Keyboard : IKeyboard
 {
-    private static readonly Dictionary<int, string> KEY_NAMES = new()
+    private static readonly Dictionary<int, string> KNOWN_KEY_NAMES = new()
     {
         { GLFW_KEY_SPACE, "SPACE" },
         { GLFW_KEY_ENTER, "ENTER" },
@@ -62,15 +64,16 @@ internal unsafe class Keyboard : IKeyboard
     private GLFWkeyfun keyCallback;
     private GLFWcharfun charCallback;
     private readonly Dictionary<int, bool> keys = [];
-    private readonly Queue<KeyEvent> events = [];
-    private readonly object eventLock = new();
-    private KeyEvent pendingEvent;
+    // Events that are not yet ready to be handled
+    private KeyEvent* pendingEvent;
+    private readonly Queue<nint> pendingEvents = [];
+    // Fully filled events ready to be handled
     private KeyEvent currentEvent;
+    private readonly Queue<KeyEvent> events = [];
     public int EventKey => currentEvent.Key;
     public char EventChar => currentEvent.Character;
     public KeyState EventState => currentEvent.State;
     public bool AllowRepeatEvents { get; set; }
-    public bool FastMode { get; set; }
 
     private struct KeyEvent
     {
@@ -85,28 +88,28 @@ internal unsafe class Keyboard : IKeyboard
         this.window = window;
         glfwSetKeyCallback(window, keyCallback = KeyCallback);
         glfwSetCharCallback(window, charCallback = CharCallback);
-        for (int i = GLFW_KEY_SPACE; i <= GLFW_KEY_LAST; i++) keys[i] = false;
+        for (int i = GLFW_KEY_SPACE; i <= GLFW_KEY_LAST; i++) 
+            keys[i] = false;
     }
 
     private static char ConvertCodepoint(uint code)
     {
-        char c = '\0';
-
-        if (code <= 0x7F)
-            c = (char)code;
-        else if (code <= 0x7FF)
+        if (!Rune.TryCreate(code, out Rune rune))
+            return '\0';
+        Span<char> bytes = stackalloc char[rune.Utf16SequenceLength];
+        if (!rune.TryEncodeToUtf16(bytes, out int written))
+            return '\0';
+        if (written > 1)
         {
-            byte c0 = (byte)(0xC0 | (code >> 6));
-            byte c1 = (byte)(0x80 | (code & 0x3F));
-            c = (char)(c0 | c1);
+            Console.Error.WriteLine($"[QuickGL] Pressed key cannot fit in a single char, ignoring: {new string(bytes)}");
+            return '\0';
         }
-
-        return c;
+        return bytes[0];
     }
 
     private void KeyCallback(nint _, int key, int scancode, int action, int mods)
     {
-        lock (eventLock)
+        lock (pendingEvents)
         {
             bool prevState = keys.ContainsKey(key) && keys[key];
             bool state = action == GLFW_PRESS || action == GLFW_REPEAT;
@@ -123,70 +126,87 @@ internal unsafe class Keyboard : IKeyboard
                 keyState = KeyState.REPEATED;
             }
 
-            pendingEvent = new()
-            {
-                Key = key,
-                State = keyState,
-                Valid = true
-            };
-
-            if (!FastMode && state && key <= 0x7F)
-                return;
-            events.Enqueue(pendingEvent);
-            pendingEvent.Valid = false;
+            KeyEvent* @event = (KeyEvent*)NativeMemory.AllocZeroed((uint)sizeof(KeyEvent));
+            @event->Key = key;
+            @event->State = keyState;
+            @event->Valid = true;
+            pendingEvents.Enqueue((nint)@event);
+            // char callback is not called on release events
+            pendingEvent = state ? @event : null;
         }
     }
 
     private void CharCallback(nint _, uint code)
     {
-        if (FastMode) return;
-        lock (eventLock)
+        lock (pendingEvents)
         {
-            if (!pendingEvent.Valid)
-                return;
-            pendingEvent.Character = ConvertCodepoint(code);
-            events.Enqueue(pendingEvent);
-            pendingEvent.Valid = false;
+            if (pendingEvent != null && pendingEvent->Character == 0)
+                pendingEvent->Character = ConvertCodepoint(code);
+            pendingEvent = null;
         }
     }
 
-    private bool IsCharOnlyEvent(KeyEvent e) => e.Key < 0 && e.Character != '\0';
-
-    private bool IsValidEvent(KeyEvent e) => e.Valid && (IsCharOnlyEvent(e) || currentEvent.Key > 0);
+    private static bool IsValidEvent(KeyEvent e) => e.Valid && (e.Character != 0 || e.Key > 0);
 
     public bool Next()
     {
-        lock (eventLock)
+        lock (pendingEvents)
         {
-            if (events.Count == 0)
+            while (pendingEvents.Count > 0)
             {
-                currentEvent.Valid = false;
-                return false;
+                KeyEvent* ptr = (KeyEvent*)pendingEvents.Dequeue();
+                if (ptr == null)
+                    continue;
+                events.Enqueue(*ptr);
+                NativeMemory.Free(ptr);
             }
-            while (events.Count > 0 && !IsValidEvent(currentEvent = events.Dequeue())) ;
-            if (events.Count == 0 && !IsValidEvent(currentEvent))
-                return false;
-            return true;
         }
+
+        if (events.Count == 0)
+        {
+            currentEvent.Valid = false;
+            return false;
+        }
+
+        while (events.Count > 0 && !IsValidEvent(currentEvent = events.Dequeue())) ;
+
+        if (events.Count == 0 && !IsValidEvent(currentEvent))
+            return false;
+
+        return true;
     }
 
     public bool GetState(int key) => keys.ContainsKey(key) && keys[key];
 
     public string GetName(int key)
     {
-        if (KEY_NAMES.TryGetValue(key, out string data))
+        if (KNOWN_KEY_NAMES.TryGetValue(key, out string data))
             return data;
         byte* ptr = glfwGetKeyName(key, 0);
         if (ptr == (byte*)0)
             return null;
-        QGLString str = new(ptr);
+        using QGLString str = new(ptr);
         data = str.Data.ToUpper();
-        str.Dispose();
         return data;
     }
 
     public void Dispose()
     {
+        lock (pendingEvents)
+        {
+            if (pendingEvent != null)
+            {
+                NativeMemory.Free(pendingEvent);
+                pendingEvent = null;
+            }
+            foreach (nint ptr in pendingEvents) 
+            {
+                if (ptr == 0)
+                    continue;
+                NativeMemory.Free((KeyEvent*)ptr);
+            }
+            pendingEvents.Clear();
+        }
         glfwSetKeyCallback(window, null);
         glfwSetCharCallback(window, null);
         keyCallback = null;

@@ -50,12 +50,6 @@ public interface IKeyboard : IDisposable
     /// Whether to send repeat events
     /// </summary>
     bool AllowRepeatEvents { get; set; }
-    /// <summary>
-    /// Whether to use fast mode or not<br/>
-    /// Fast mode does not wait for character events,
-    /// so key events are received faster at the cost of characters
-    /// </summary>
-    bool FastMode { get; set; }
     #endregion
 
     void Init(nint window);
