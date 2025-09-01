@@ -34,10 +34,10 @@ internal class OpenALLoader
     {
         winLibName ??= WIN_LIB_NAME;
 
-        if (Environment.OSVersion.Platform != PlatformID.Win32NT && Environment.OSVersion.Platform != PlatformID.Unix)
+        if (!OperatingSystem.IsWindows() && !OperatingSystem.IsLinux())
             throw new PlatformNotSupportedException();
 
-        if (Environment.OSVersion.Platform == PlatformID.Win32NT)
+        if (OperatingSystem.IsWindows())
         {
             try
             {
