@@ -61,6 +61,7 @@ internal unsafe class Keyboard : IKeyboard
         { GLFW_KEY_RIGHT, "RIGHT" }
     };
     private nint window;
+    private bool fallbackKeyEvent;
     private GLFWkeyfun keyCallback;
     private GLFWcharfun charCallback;
     private readonly Dictionary<int, bool> keys = [];
@@ -86,13 +87,20 @@ internal unsafe class Keyboard : IKeyboard
     public void Init(nint window)
     {
         this.window = window;
-        glfwSetKeyCallback(window, keyCallback = KeyCallback);
-        glfwSetCharCallback(window, charCallback = CharCallback);
+        fallbackKeyEvent = glfwGetPlatform() == GLFW_PLATFORM_X11;
         for (int i = GLFW_KEY_SPACE; i <= GLFW_KEY_LAST; i++) 
             keys[i] = false;
+        glfwSetKeyCallback(window, keyCallback = KeyCallback);
+        if (!fallbackKeyEvent)
+            glfwSetCharCallback(window, charCallback = CharCallback);
+        else
+        {
+            Console.Error.WriteLine($"[QuickGL] Using fallback char input on current platform");
+            glfwSetInputMode(window, GLFW_LOCK_KEY_MODS, GLFW_TRUE);
+        }
     }
 
-    private static char ConvertCodepoint(uint code)
+    private static char GetCharCodepoint(uint code)
     {
         if (!Rune.TryCreate(code, out Rune rune))
             return '\0';
@@ -105,6 +113,54 @@ internal unsafe class Keyboard : IKeyboard
             return '\0';
         }
         return bytes[0];
+    }
+
+    private static char GetShiftASCII(char c)
+    {
+        switch (c)
+        {
+            case '1': return '!';
+            case '2': return '@';
+            case '3': return '#';
+            case '4': return '$';
+            case '5': return '%';
+            case '6': return '^';
+            case '7': return '&';
+            case '8': return '*';
+            case '9': return '(';
+            case '0': return ')';
+            case '-': return '_';
+            case '=': return '+';
+            case '[': return '{';
+            case ']': return '}';
+            case '\\': return '|';
+            case ';': return ':';
+            case '\'': return '"';
+            case ',': return '<';
+            case '.': return '>';
+            case '/': return '?';
+            default:
+                return c;
+        }
+    }
+
+    private static char GetCharFallback(int key, int mods)
+    {
+        if (key < 0x20 || key > 0x7F)
+            return '\0';
+        char c = (char)key;
+        bool hasCaps = (mods & GLFW_MOD_CAPS_LOCK) != 0;
+        bool hasShift = (mods & GLFW_MOD_SHIFT) != 0;
+
+        if (c >= 'A' && c <= 'Z')
+        {
+            if ((!hasCaps && !hasShift) || (hasCaps && hasShift))
+                c = (char)(key + 32);
+        }
+        else if (hasShift)
+            c = GetShiftASCII(c);
+
+        return c;
     }
 
     private void KeyCallback(nint _, int key, int scancode, int action, int mods)
@@ -130,18 +186,24 @@ internal unsafe class Keyboard : IKeyboard
             @event->Key = key;
             @event->State = keyState;
             @event->Valid = true;
+
+            if (state && fallbackKeyEvent)
+                @event->Character = GetCharFallback(key, mods);
+            else
+                pendingEvent = state && !fallbackKeyEvent ? @event : null;
+
             pendingEvents.Enqueue((nint)@event);
-            // char callback is not called on release events
-            pendingEvent = state ? @event : null;
         }
     }
 
     private void CharCallback(nint _, uint code)
     {
+        if (fallbackKeyEvent)
+            return;
         lock (pendingEvents)
         {
             if (pendingEvent != null && pendingEvent->Character == 0)
-                pendingEvent->Character = ConvertCodepoint(code);
+                pendingEvent->Character = GetCharCodepoint(code);
             pendingEvent = null;
         }
     }
