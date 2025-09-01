@@ -39,7 +39,14 @@ internal class OpenALLoader
 
         if (Environment.OSVersion.Platform == PlatformID.Win32NT)
         {
-            handle = NativeLibrary.Load(winLibName);
+            try
+            {
+                handle = NativeLibrary.Load(winLibName);
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine(ex);
+            }
             if (handle == nint.Zero)
                 throw new GLException($"Failed to load OpenAL library: {winLibName}");
             return;
@@ -47,7 +54,14 @@ internal class OpenALLoader
 
         if (unixLibName != null)
         {
-            handle = NativeLibrary.Load(unixLibName);
+            try 
+            {
+                handle = NativeLibrary.Load(unixLibName);
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine(ex);
+            }
             if (handle == nint.Zero)
                 throw new GLException($"Failed to load OpenAL library: {unixLibName}");
             return;
@@ -55,7 +69,14 @@ internal class OpenALLoader
 
         foreach (string libName in UNIX_LIB_NAMES)
         {
-            handle = NativeLibrary.Load(libName);
+            try
+            {
+                handle = NativeLibrary.Load(libName);
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine(ex);
+            }
             if (handle != nint.Zero)
                 return;
         }

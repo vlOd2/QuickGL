@@ -46,7 +46,14 @@ internal class GLFWLoader
             default:
                 throw new PlatformNotSupportedException();
         }
-        handle = NativeLibrary.Load(libName);
+        try
+        {
+            handle = NativeLibrary.Load(libName);
+        }
+        catch (Exception ex)
+        {
+            Console.Error.WriteLine(ex);
+        }
         if (handle == nint.Zero)
             throw new GLException($"Failed to load GLFW library: {libName}");
     }
