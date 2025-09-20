@@ -22,20 +22,33 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.757060
+// Bindings generated at 2025-09-20 18:58:20.098916
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_texture_storage_multisample", true, false)]
 public static unsafe class GLEXT_ARBtexturestoragemultisample
 {
     #region Enums
     #endregion
     
     #region Commands
-    public static void glTexStorage2DMultisample(uint target, int samples, uint internalformat, int width, int height, bool fixedsamplelocations) { QGLNativeAPI.Verify((nint)_glTexStorage2DMultisample); _glTexStorage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations); }
-    [QGLNativeAPI("glTexStorage2DMultisample")] internal static delegate* unmanaged<uint, int, uint, int, int, bool, void> _glTexStorage2DMultisample = null;
+    public static void glTexStorage2DMultisample(uint target, int samples, uint internalformat, int width, int height, bool fixedsamplelocations) { QGLFeature.VerifyFunc((nint)_glTexStorage2DMultisample); _glTexStorage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations); }
+    internal static delegate* unmanaged<uint, int, uint, int, int, bool, void> _glTexStorage2DMultisample = null;
     
-    public static void glTexStorage3DMultisample(uint target, int samples, uint internalformat, int width, int height, int depth, bool fixedsamplelocations) { QGLNativeAPI.Verify((nint)_glTexStorage3DMultisample); _glTexStorage3DMultisample(target, samples, internalformat, width, height, depth, fixedsamplelocations); }
-    [QGLNativeAPI("glTexStorage3DMultisample")] internal static delegate* unmanaged<uint, int, uint, int, int, int, bool, void> _glTexStorage3DMultisample = null;
+    public static void glTexStorage3DMultisample(uint target, int samples, uint internalformat, int width, int height, int depth, bool fixedsamplelocations) { QGLFeature.VerifyFunc((nint)_glTexStorage3DMultisample); _glTexStorage3DMultisample(target, samples, internalformat, width, height, depth, fixedsamplelocations); }
+    internal static delegate* unmanaged<uint, int, uint, int, int, int, bool, void> _glTexStorage3DMultisample = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glTexStorage2DMultisample = (delegate* unmanaged<uint, int, uint, int, int, bool, void>)QuickGL.GetGLProcAddress("glTexStorage2DMultisample");
+        _glTexStorage3DMultisample = (delegate* unmanaged<uint, int, uint, int, int, int, bool, void>)QuickGL.GetGLProcAddress("glTexStorage3DMultisample");
+    }
+    
+    internal static void Unload()
+    {
+        _glTexStorage2DMultisample = null;
+        _glTexStorage3DMultisample = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_texture_storage_multisample", true, false);
 }

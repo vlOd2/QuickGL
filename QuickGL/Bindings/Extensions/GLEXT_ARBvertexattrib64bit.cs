@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.775147
+// Bindings generated at 2025-09-20 18:58:20.124736
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_vertex_attrib_64bit", true, false)]
 public static unsafe class GLEXT_ARBvertexattrib64bit
 {
     #region Enums
@@ -45,34 +44,64 @@ public static unsafe class GLEXT_ARBvertexattrib64bit
     #endregion
     
     #region Commands
-    public static void glVertexAttribL1d(uint index, double x) { QGLNativeAPI.Verify((nint)_glVertexAttribL1d); _glVertexAttribL1d(index, x); }
-    [QGLNativeAPI("glVertexAttribL1d")] internal static delegate* unmanaged<uint, double, void> _glVertexAttribL1d = null;
+    public static void glVertexAttribL1d(uint index, double x) { QGLFeature.VerifyFunc((nint)_glVertexAttribL1d); _glVertexAttribL1d(index, x); }
+    internal static delegate* unmanaged<uint, double, void> _glVertexAttribL1d = null;
     
-    public static void glVertexAttribL2d(uint index, double x, double y) { QGLNativeAPI.Verify((nint)_glVertexAttribL2d); _glVertexAttribL2d(index, x, y); }
-    [QGLNativeAPI("glVertexAttribL2d")] internal static delegate* unmanaged<uint, double, double, void> _glVertexAttribL2d = null;
+    public static void glVertexAttribL2d(uint index, double x, double y) { QGLFeature.VerifyFunc((nint)_glVertexAttribL2d); _glVertexAttribL2d(index, x, y); }
+    internal static delegate* unmanaged<uint, double, double, void> _glVertexAttribL2d = null;
     
-    public static void glVertexAttribL3d(uint index, double x, double y, double z) { QGLNativeAPI.Verify((nint)_glVertexAttribL3d); _glVertexAttribL3d(index, x, y, z); }
-    [QGLNativeAPI("glVertexAttribL3d")] internal static delegate* unmanaged<uint, double, double, double, void> _glVertexAttribL3d = null;
+    public static void glVertexAttribL3d(uint index, double x, double y, double z) { QGLFeature.VerifyFunc((nint)_glVertexAttribL3d); _glVertexAttribL3d(index, x, y, z); }
+    internal static delegate* unmanaged<uint, double, double, double, void> _glVertexAttribL3d = null;
     
-    public static void glVertexAttribL4d(uint index, double x, double y, double z, double w) { QGLNativeAPI.Verify((nint)_glVertexAttribL4d); _glVertexAttribL4d(index, x, y, z, w); }
-    [QGLNativeAPI("glVertexAttribL4d")] internal static delegate* unmanaged<uint, double, double, double, double, void> _glVertexAttribL4d = null;
+    public static void glVertexAttribL4d(uint index, double x, double y, double z, double w) { QGLFeature.VerifyFunc((nint)_glVertexAttribL4d); _glVertexAttribL4d(index, x, y, z, w); }
+    internal static delegate* unmanaged<uint, double, double, double, double, void> _glVertexAttribL4d = null;
     
-    public static void glVertexAttribL1dv(uint index, double* v) { QGLNativeAPI.Verify((nint)_glVertexAttribL1dv); _glVertexAttribL1dv(index, v); }
-    [QGLNativeAPI("glVertexAttribL1dv")] internal static delegate* unmanaged<uint, double*, void> _glVertexAttribL1dv = null;
+    public static void glVertexAttribL1dv(uint index, double* v) { QGLFeature.VerifyFunc((nint)_glVertexAttribL1dv); _glVertexAttribL1dv(index, v); }
+    internal static delegate* unmanaged<uint, double*, void> _glVertexAttribL1dv = null;
     
-    public static void glVertexAttribL2dv(uint index, double* v) { QGLNativeAPI.Verify((nint)_glVertexAttribL2dv); _glVertexAttribL2dv(index, v); }
-    [QGLNativeAPI("glVertexAttribL2dv")] internal static delegate* unmanaged<uint, double*, void> _glVertexAttribL2dv = null;
+    public static void glVertexAttribL2dv(uint index, double* v) { QGLFeature.VerifyFunc((nint)_glVertexAttribL2dv); _glVertexAttribL2dv(index, v); }
+    internal static delegate* unmanaged<uint, double*, void> _glVertexAttribL2dv = null;
     
-    public static void glVertexAttribL3dv(uint index, double* v) { QGLNativeAPI.Verify((nint)_glVertexAttribL3dv); _glVertexAttribL3dv(index, v); }
-    [QGLNativeAPI("glVertexAttribL3dv")] internal static delegate* unmanaged<uint, double*, void> _glVertexAttribL3dv = null;
+    public static void glVertexAttribL3dv(uint index, double* v) { QGLFeature.VerifyFunc((nint)_glVertexAttribL3dv); _glVertexAttribL3dv(index, v); }
+    internal static delegate* unmanaged<uint, double*, void> _glVertexAttribL3dv = null;
     
-    public static void glVertexAttribL4dv(uint index, double* v) { QGLNativeAPI.Verify((nint)_glVertexAttribL4dv); _glVertexAttribL4dv(index, v); }
-    [QGLNativeAPI("glVertexAttribL4dv")] internal static delegate* unmanaged<uint, double*, void> _glVertexAttribL4dv = null;
+    public static void glVertexAttribL4dv(uint index, double* v) { QGLFeature.VerifyFunc((nint)_glVertexAttribL4dv); _glVertexAttribL4dv(index, v); }
+    internal static delegate* unmanaged<uint, double*, void> _glVertexAttribL4dv = null;
     
-    public static void glVertexAttribLPointer(uint index, int size, uint type, int stride, void* pointer) { QGLNativeAPI.Verify((nint)_glVertexAttribLPointer); _glVertexAttribLPointer(index, size, type, stride, pointer); }
-    [QGLNativeAPI("glVertexAttribLPointer")] internal static delegate* unmanaged<uint, int, uint, int, void*, void> _glVertexAttribLPointer = null;
+    public static void glVertexAttribLPointer(uint index, int size, uint type, int stride, void* pointer) { QGLFeature.VerifyFunc((nint)_glVertexAttribLPointer); _glVertexAttribLPointer(index, size, type, stride, pointer); }
+    internal static delegate* unmanaged<uint, int, uint, int, void*, void> _glVertexAttribLPointer = null;
     
-    public static void glGetVertexAttribLdv(uint index, uint pname, double* @params) { QGLNativeAPI.Verify((nint)_glGetVertexAttribLdv); _glGetVertexAttribLdv(index, pname, @params); }
-    [QGLNativeAPI("glGetVertexAttribLdv")] internal static delegate* unmanaged<uint, uint, double*, void> _glGetVertexAttribLdv = null;
+    public static void glGetVertexAttribLdv(uint index, uint pname, double* @params) { QGLFeature.VerifyFunc((nint)_glGetVertexAttribLdv); _glGetVertexAttribLdv(index, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, double*, void> _glGetVertexAttribLdv = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glVertexAttribL1d = (delegate* unmanaged<uint, double, void>)QuickGL.GetGLProcAddress("glVertexAttribL1d");
+        _glVertexAttribL2d = (delegate* unmanaged<uint, double, double, void>)QuickGL.GetGLProcAddress("glVertexAttribL2d");
+        _glVertexAttribL3d = (delegate* unmanaged<uint, double, double, double, void>)QuickGL.GetGLProcAddress("glVertexAttribL3d");
+        _glVertexAttribL4d = (delegate* unmanaged<uint, double, double, double, double, void>)QuickGL.GetGLProcAddress("glVertexAttribL4d");
+        _glVertexAttribL1dv = (delegate* unmanaged<uint, double*, void>)QuickGL.GetGLProcAddress("glVertexAttribL1dv");
+        _glVertexAttribL2dv = (delegate* unmanaged<uint, double*, void>)QuickGL.GetGLProcAddress("glVertexAttribL2dv");
+        _glVertexAttribL3dv = (delegate* unmanaged<uint, double*, void>)QuickGL.GetGLProcAddress("glVertexAttribL3dv");
+        _glVertexAttribL4dv = (delegate* unmanaged<uint, double*, void>)QuickGL.GetGLProcAddress("glVertexAttribL4dv");
+        _glVertexAttribLPointer = (delegate* unmanaged<uint, int, uint, int, void*, void>)QuickGL.GetGLProcAddress("glVertexAttribLPointer");
+        _glGetVertexAttribLdv = (delegate* unmanaged<uint, uint, double*, void>)QuickGL.GetGLProcAddress("glGetVertexAttribLdv");
+    }
+    
+    internal static void Unload()
+    {
+        _glVertexAttribL1d = null;
+        _glVertexAttribL2d = null;
+        _glVertexAttribL3d = null;
+        _glVertexAttribL4d = null;
+        _glVertexAttribL1dv = null;
+        _glVertexAttribL2dv = null;
+        _glVertexAttribL3dv = null;
+        _glVertexAttribL4dv = null;
+        _glVertexAttribLPointer = null;
+        _glGetVertexAttribLdv = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_vertex_attrib_64bit", true, false);
 }

@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.725050
+// Bindings generated at 2025-09-20 18:58:20.033495
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_texture_cube_map", true, false)]
 public static unsafe class GLEXT_ARBtexturecubemap
 {
     #region Enums
@@ -45,4 +44,14 @@ public static unsafe class GLEXT_ARBtexturecubemap
     
     #region Commands
     #endregion
+    
+    internal static void Load()
+    {
+    }
+    
+    internal static void Unload()
+    {
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_texture_cube_map", true, false);
 }

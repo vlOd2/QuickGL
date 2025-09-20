@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.473629
+// Bindings generated at 2025-09-20 18:58:19.817141
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_ES3_2_compatibility", true, false)]
 public static unsafe class GLEXT_ARBES32compatibility
 {
     #region Enums
@@ -35,7 +34,19 @@ public static unsafe class GLEXT_ARBES32compatibility
     #endregion
     
     #region Commands
-    public static void glPrimitiveBoundingBoxARB(float minX, float minY, float minZ, float minW, float maxX, float maxY, float maxZ, float maxW) { QGLNativeAPI.Verify((nint)_glPrimitiveBoundingBoxARB); _glPrimitiveBoundingBoxARB(minX, minY, minZ, minW, maxX, maxY, maxZ, maxW); }
-    [QGLNativeAPI("glPrimitiveBoundingBoxARB")] internal static delegate* unmanaged<float, float, float, float, float, float, float, float, void> _glPrimitiveBoundingBoxARB = null;
+    public static void glPrimitiveBoundingBoxARB(float minX, float minY, float minZ, float minW, float maxX, float maxY, float maxZ, float maxW) { QGLFeature.VerifyFunc((nint)_glPrimitiveBoundingBoxARB); _glPrimitiveBoundingBoxARB(minX, minY, minZ, minW, maxX, maxY, maxZ, maxW); }
+    internal static delegate* unmanaged<float, float, float, float, float, float, float, float, void> _glPrimitiveBoundingBoxARB = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glPrimitiveBoundingBoxARB = (delegate* unmanaged<float, float, float, float, float, float, float, float, void>)QuickGL.GetGLProcAddress("glPrimitiveBoundingBoxARB");
+    }
+    
+    internal static void Unload()
+    {
+        _glPrimitiveBoundingBoxARB = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_ES3_2_compatibility", true, false);
 }

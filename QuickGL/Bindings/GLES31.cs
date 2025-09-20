@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.465417
+// Bindings generated at 2025-09-20 18:58:19.806091
 namespace QuickGLNS.Bindings;
 
-[QGLFeature("GL_ES_VERSION_3_1", false, true)]
 public static unsafe class GLES31
 {
     #region Enums
@@ -205,208 +204,354 @@ public static unsafe class GLES31
     #endregion
     
     #region Commands
-    public static void glDispatchCompute(uint num_groups_x, uint num_groups_y, uint num_groups_z) { QGLNativeAPI.Verify((nint)_glDispatchCompute); _glDispatchCompute(num_groups_x, num_groups_y, num_groups_z); }
-    [QGLNativeAPI("glDispatchCompute")] internal static delegate* unmanaged<uint, uint, uint, void> _glDispatchCompute = null;
+    public static void glDispatchCompute(uint num_groups_x, uint num_groups_y, uint num_groups_z) { QGLFeature.VerifyFunc((nint)_glDispatchCompute); _glDispatchCompute(num_groups_x, num_groups_y, num_groups_z); }
+    internal static delegate* unmanaged<uint, uint, uint, void> _glDispatchCompute = null;
     
-    public static void glDispatchComputeIndirect(nint indirect) { QGLNativeAPI.Verify((nint)_glDispatchComputeIndirect); _glDispatchComputeIndirect(indirect); }
-    [QGLNativeAPI("glDispatchComputeIndirect")] internal static delegate* unmanaged<nint, void> _glDispatchComputeIndirect = null;
+    public static void glDispatchComputeIndirect(nint indirect) { QGLFeature.VerifyFunc((nint)_glDispatchComputeIndirect); _glDispatchComputeIndirect(indirect); }
+    internal static delegate* unmanaged<nint, void> _glDispatchComputeIndirect = null;
     
-    public static void glDrawArraysIndirect(uint mode, void* indirect) { QGLNativeAPI.Verify((nint)_glDrawArraysIndirect); _glDrawArraysIndirect(mode, indirect); }
-    [QGLNativeAPI("glDrawArraysIndirect")] internal static delegate* unmanaged<uint, void*, void> _glDrawArraysIndirect = null;
+    public static void glDrawArraysIndirect(uint mode, void* indirect) { QGLFeature.VerifyFunc((nint)_glDrawArraysIndirect); _glDrawArraysIndirect(mode, indirect); }
+    internal static delegate* unmanaged<uint, void*, void> _glDrawArraysIndirect = null;
     
-    public static void glDrawElementsIndirect(uint mode, uint type, void* indirect) { QGLNativeAPI.Verify((nint)_glDrawElementsIndirect); _glDrawElementsIndirect(mode, type, indirect); }
-    [QGLNativeAPI("glDrawElementsIndirect")] internal static delegate* unmanaged<uint, uint, void*, void> _glDrawElementsIndirect = null;
+    public static void glDrawElementsIndirect(uint mode, uint type, void* indirect) { QGLFeature.VerifyFunc((nint)_glDrawElementsIndirect); _glDrawElementsIndirect(mode, type, indirect); }
+    internal static delegate* unmanaged<uint, uint, void*, void> _glDrawElementsIndirect = null;
     
-    public static void glFramebufferParameteri(uint target, uint pname, int param) { QGLNativeAPI.Verify((nint)_glFramebufferParameteri); _glFramebufferParameteri(target, pname, param); }
-    [QGLNativeAPI("glFramebufferParameteri")] internal static delegate* unmanaged<uint, uint, int, void> _glFramebufferParameteri = null;
+    public static void glFramebufferParameteri(uint target, uint pname, int param) { QGLFeature.VerifyFunc((nint)_glFramebufferParameteri); _glFramebufferParameteri(target, pname, param); }
+    internal static delegate* unmanaged<uint, uint, int, void> _glFramebufferParameteri = null;
     
-    public static void glGetFramebufferParameteriv(uint target, uint pname, int* @params) { QGLNativeAPI.Verify((nint)_glGetFramebufferParameteriv); _glGetFramebufferParameteriv(target, pname, @params); }
-    [QGLNativeAPI("glGetFramebufferParameteriv")] internal static delegate* unmanaged<uint, uint, int*, void> _glGetFramebufferParameteriv = null;
+    public static void glGetFramebufferParameteriv(uint target, uint pname, int* @params) { QGLFeature.VerifyFunc((nint)_glGetFramebufferParameteriv); _glGetFramebufferParameteriv(target, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, int*, void> _glGetFramebufferParameteriv = null;
     
-    public static void glGetProgramInterfaceiv(uint program, uint programInterface, uint pname, int* @params) { QGLNativeAPI.Verify((nint)_glGetProgramInterfaceiv); _glGetProgramInterfaceiv(program, programInterface, pname, @params); }
-    [QGLNativeAPI("glGetProgramInterfaceiv")] internal static delegate* unmanaged<uint, uint, uint, int*, void> _glGetProgramInterfaceiv = null;
+    public static void glGetProgramInterfaceiv(uint program, uint programInterface, uint pname, int* @params) { QGLFeature.VerifyFunc((nint)_glGetProgramInterfaceiv); _glGetProgramInterfaceiv(program, programInterface, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, uint, int*, void> _glGetProgramInterfaceiv = null;
     
-    public static uint glGetProgramResourceIndex(uint program, uint programInterface, byte* name) { QGLNativeAPI.Verify((nint)_glGetProgramResourceIndex); return _glGetProgramResourceIndex(program, programInterface, name); }
-    [QGLNativeAPI("glGetProgramResourceIndex")] internal static delegate* unmanaged<uint, uint, byte*, uint> _glGetProgramResourceIndex = null;
+    public static uint glGetProgramResourceIndex(uint program, uint programInterface, byte* name) { QGLFeature.VerifyFunc((nint)_glGetProgramResourceIndex); return _glGetProgramResourceIndex(program, programInterface, name); }
+    internal static delegate* unmanaged<uint, uint, byte*, uint> _glGetProgramResourceIndex = null;
     
-    public static void glGetProgramResourceName(uint program, uint programInterface, uint index, int bufSize, int* length, byte* name) { QGLNativeAPI.Verify((nint)_glGetProgramResourceName); _glGetProgramResourceName(program, programInterface, index, bufSize, length, name); }
-    [QGLNativeAPI("glGetProgramResourceName")] internal static delegate* unmanaged<uint, uint, uint, int, int*, byte*, void> _glGetProgramResourceName = null;
+    public static void glGetProgramResourceName(uint program, uint programInterface, uint index, int bufSize, int* length, byte* name) { QGLFeature.VerifyFunc((nint)_glGetProgramResourceName); _glGetProgramResourceName(program, programInterface, index, bufSize, length, name); }
+    internal static delegate* unmanaged<uint, uint, uint, int, int*, byte*, void> _glGetProgramResourceName = null;
     
-    public static void glGetProgramResourceiv(uint program, uint programInterface, uint index, int propCount, uint* props, int count, int* length, int* @params) { QGLNativeAPI.Verify((nint)_glGetProgramResourceiv); _glGetProgramResourceiv(program, programInterface, index, propCount, props, count, length, @params); }
-    [QGLNativeAPI("glGetProgramResourceiv")] internal static delegate* unmanaged<uint, uint, uint, int, uint*, int, int*, int*, void> _glGetProgramResourceiv = null;
+    public static void glGetProgramResourceiv(uint program, uint programInterface, uint index, int propCount, uint* props, int count, int* length, int* @params) { QGLFeature.VerifyFunc((nint)_glGetProgramResourceiv); _glGetProgramResourceiv(program, programInterface, index, propCount, props, count, length, @params); }
+    internal static delegate* unmanaged<uint, uint, uint, int, uint*, int, int*, int*, void> _glGetProgramResourceiv = null;
     
-    public static int glGetProgramResourceLocation(uint program, uint programInterface, byte* name) { QGLNativeAPI.Verify((nint)_glGetProgramResourceLocation); return _glGetProgramResourceLocation(program, programInterface, name); }
-    [QGLNativeAPI("glGetProgramResourceLocation")] internal static delegate* unmanaged<uint, uint, byte*, int> _glGetProgramResourceLocation = null;
+    public static int glGetProgramResourceLocation(uint program, uint programInterface, byte* name) { QGLFeature.VerifyFunc((nint)_glGetProgramResourceLocation); return _glGetProgramResourceLocation(program, programInterface, name); }
+    internal static delegate* unmanaged<uint, uint, byte*, int> _glGetProgramResourceLocation = null;
     
-    public static void glUseProgramStages(uint pipeline, uint stages, uint program) { QGLNativeAPI.Verify((nint)_glUseProgramStages); _glUseProgramStages(pipeline, stages, program); }
-    [QGLNativeAPI("glUseProgramStages")] internal static delegate* unmanaged<uint, uint, uint, void> _glUseProgramStages = null;
+    public static void glUseProgramStages(uint pipeline, uint stages, uint program) { QGLFeature.VerifyFunc((nint)_glUseProgramStages); _glUseProgramStages(pipeline, stages, program); }
+    internal static delegate* unmanaged<uint, uint, uint, void> _glUseProgramStages = null;
     
-    public static void glActiveShaderProgram(uint pipeline, uint program) { QGLNativeAPI.Verify((nint)_glActiveShaderProgram); _glActiveShaderProgram(pipeline, program); }
-    [QGLNativeAPI("glActiveShaderProgram")] internal static delegate* unmanaged<uint, uint, void> _glActiveShaderProgram = null;
+    public static void glActiveShaderProgram(uint pipeline, uint program) { QGLFeature.VerifyFunc((nint)_glActiveShaderProgram); _glActiveShaderProgram(pipeline, program); }
+    internal static delegate* unmanaged<uint, uint, void> _glActiveShaderProgram = null;
     
-    public static uint glCreateShaderProgramv(uint type, int count, byte** strings) { QGLNativeAPI.Verify((nint)_glCreateShaderProgramv); return _glCreateShaderProgramv(type, count, strings); }
-    [QGLNativeAPI("glCreateShaderProgramv")] internal static delegate* unmanaged<uint, int, byte**, uint> _glCreateShaderProgramv = null;
+    public static uint glCreateShaderProgramv(uint type, int count, byte** strings) { QGLFeature.VerifyFunc((nint)_glCreateShaderProgramv); return _glCreateShaderProgramv(type, count, strings); }
+    internal static delegate* unmanaged<uint, int, byte**, uint> _glCreateShaderProgramv = null;
     
-    public static void glBindProgramPipeline(uint pipeline) { QGLNativeAPI.Verify((nint)_glBindProgramPipeline); _glBindProgramPipeline(pipeline); }
-    [QGLNativeAPI("glBindProgramPipeline")] internal static delegate* unmanaged<uint, void> _glBindProgramPipeline = null;
+    public static void glBindProgramPipeline(uint pipeline) { QGLFeature.VerifyFunc((nint)_glBindProgramPipeline); _glBindProgramPipeline(pipeline); }
+    internal static delegate* unmanaged<uint, void> _glBindProgramPipeline = null;
     
-    public static void glDeleteProgramPipelines(int n, uint* pipelines) { QGLNativeAPI.Verify((nint)_glDeleteProgramPipelines); _glDeleteProgramPipelines(n, pipelines); }
-    [QGLNativeAPI("glDeleteProgramPipelines")] internal static delegate* unmanaged<int, uint*, void> _glDeleteProgramPipelines = null;
+    public static void glDeleteProgramPipelines(int n, uint* pipelines) { QGLFeature.VerifyFunc((nint)_glDeleteProgramPipelines); _glDeleteProgramPipelines(n, pipelines); }
+    internal static delegate* unmanaged<int, uint*, void> _glDeleteProgramPipelines = null;
     
-    public static void glGenProgramPipelines(int n, uint* pipelines) { QGLNativeAPI.Verify((nint)_glGenProgramPipelines); _glGenProgramPipelines(n, pipelines); }
-    [QGLNativeAPI("glGenProgramPipelines")] internal static delegate* unmanaged<int, uint*, void> _glGenProgramPipelines = null;
+    public static void glGenProgramPipelines(int n, uint* pipelines) { QGLFeature.VerifyFunc((nint)_glGenProgramPipelines); _glGenProgramPipelines(n, pipelines); }
+    internal static delegate* unmanaged<int, uint*, void> _glGenProgramPipelines = null;
     
-    public static bool glIsProgramPipeline(uint pipeline) { QGLNativeAPI.Verify((nint)_glIsProgramPipeline); return _glIsProgramPipeline(pipeline); }
-    [QGLNativeAPI("glIsProgramPipeline")] internal static delegate* unmanaged<uint, bool> _glIsProgramPipeline = null;
+    public static bool glIsProgramPipeline(uint pipeline) { QGLFeature.VerifyFunc((nint)_glIsProgramPipeline); return _glIsProgramPipeline(pipeline); }
+    internal static delegate* unmanaged<uint, bool> _glIsProgramPipeline = null;
     
-    public static void glGetProgramPipelineiv(uint pipeline, uint pname, int* @params) { QGLNativeAPI.Verify((nint)_glGetProgramPipelineiv); _glGetProgramPipelineiv(pipeline, pname, @params); }
-    [QGLNativeAPI("glGetProgramPipelineiv")] internal static delegate* unmanaged<uint, uint, int*, void> _glGetProgramPipelineiv = null;
+    public static void glGetProgramPipelineiv(uint pipeline, uint pname, int* @params) { QGLFeature.VerifyFunc((nint)_glGetProgramPipelineiv); _glGetProgramPipelineiv(pipeline, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, int*, void> _glGetProgramPipelineiv = null;
     
-    public static void glProgramUniform1i(uint program, int location, int v0) { QGLNativeAPI.Verify((nint)_glProgramUniform1i); _glProgramUniform1i(program, location, v0); }
-    [QGLNativeAPI("glProgramUniform1i")] internal static delegate* unmanaged<uint, int, int, void> _glProgramUniform1i = null;
+    public static void glProgramUniform1i(uint program, int location, int v0) { QGLFeature.VerifyFunc((nint)_glProgramUniform1i); _glProgramUniform1i(program, location, v0); }
+    internal static delegate* unmanaged<uint, int, int, void> _glProgramUniform1i = null;
     
-    public static void glProgramUniform2i(uint program, int location, int v0, int v1) { QGLNativeAPI.Verify((nint)_glProgramUniform2i); _glProgramUniform2i(program, location, v0, v1); }
-    [QGLNativeAPI("glProgramUniform2i")] internal static delegate* unmanaged<uint, int, int, int, void> _glProgramUniform2i = null;
+    public static void glProgramUniform2i(uint program, int location, int v0, int v1) { QGLFeature.VerifyFunc((nint)_glProgramUniform2i); _glProgramUniform2i(program, location, v0, v1); }
+    internal static delegate* unmanaged<uint, int, int, int, void> _glProgramUniform2i = null;
     
-    public static void glProgramUniform3i(uint program, int location, int v0, int v1, int v2) { QGLNativeAPI.Verify((nint)_glProgramUniform3i); _glProgramUniform3i(program, location, v0, v1, v2); }
-    [QGLNativeAPI("glProgramUniform3i")] internal static delegate* unmanaged<uint, int, int, int, int, void> _glProgramUniform3i = null;
+    public static void glProgramUniform3i(uint program, int location, int v0, int v1, int v2) { QGLFeature.VerifyFunc((nint)_glProgramUniform3i); _glProgramUniform3i(program, location, v0, v1, v2); }
+    internal static delegate* unmanaged<uint, int, int, int, int, void> _glProgramUniform3i = null;
     
-    public static void glProgramUniform4i(uint program, int location, int v0, int v1, int v2, int v3) { QGLNativeAPI.Verify((nint)_glProgramUniform4i); _glProgramUniform4i(program, location, v0, v1, v2, v3); }
-    [QGLNativeAPI("glProgramUniform4i")] internal static delegate* unmanaged<uint, int, int, int, int, int, void> _glProgramUniform4i = null;
+    public static void glProgramUniform4i(uint program, int location, int v0, int v1, int v2, int v3) { QGLFeature.VerifyFunc((nint)_glProgramUniform4i); _glProgramUniform4i(program, location, v0, v1, v2, v3); }
+    internal static delegate* unmanaged<uint, int, int, int, int, int, void> _glProgramUniform4i = null;
     
-    public static void glProgramUniform1ui(uint program, int location, uint v0) { QGLNativeAPI.Verify((nint)_glProgramUniform1ui); _glProgramUniform1ui(program, location, v0); }
-    [QGLNativeAPI("glProgramUniform1ui")] internal static delegate* unmanaged<uint, int, uint, void> _glProgramUniform1ui = null;
+    public static void glProgramUniform1ui(uint program, int location, uint v0) { QGLFeature.VerifyFunc((nint)_glProgramUniform1ui); _glProgramUniform1ui(program, location, v0); }
+    internal static delegate* unmanaged<uint, int, uint, void> _glProgramUniform1ui = null;
     
-    public static void glProgramUniform2ui(uint program, int location, uint v0, uint v1) { QGLNativeAPI.Verify((nint)_glProgramUniform2ui); _glProgramUniform2ui(program, location, v0, v1); }
-    [QGLNativeAPI("glProgramUniform2ui")] internal static delegate* unmanaged<uint, int, uint, uint, void> _glProgramUniform2ui = null;
+    public static void glProgramUniform2ui(uint program, int location, uint v0, uint v1) { QGLFeature.VerifyFunc((nint)_glProgramUniform2ui); _glProgramUniform2ui(program, location, v0, v1); }
+    internal static delegate* unmanaged<uint, int, uint, uint, void> _glProgramUniform2ui = null;
     
-    public static void glProgramUniform3ui(uint program, int location, uint v0, uint v1, uint v2) { QGLNativeAPI.Verify((nint)_glProgramUniform3ui); _glProgramUniform3ui(program, location, v0, v1, v2); }
-    [QGLNativeAPI("glProgramUniform3ui")] internal static delegate* unmanaged<uint, int, uint, uint, uint, void> _glProgramUniform3ui = null;
+    public static void glProgramUniform3ui(uint program, int location, uint v0, uint v1, uint v2) { QGLFeature.VerifyFunc((nint)_glProgramUniform3ui); _glProgramUniform3ui(program, location, v0, v1, v2); }
+    internal static delegate* unmanaged<uint, int, uint, uint, uint, void> _glProgramUniform3ui = null;
     
-    public static void glProgramUniform4ui(uint program, int location, uint v0, uint v1, uint v2, uint v3) { QGLNativeAPI.Verify((nint)_glProgramUniform4ui); _glProgramUniform4ui(program, location, v0, v1, v2, v3); }
-    [QGLNativeAPI("glProgramUniform4ui")] internal static delegate* unmanaged<uint, int, uint, uint, uint, uint, void> _glProgramUniform4ui = null;
+    public static void glProgramUniform4ui(uint program, int location, uint v0, uint v1, uint v2, uint v3) { QGLFeature.VerifyFunc((nint)_glProgramUniform4ui); _glProgramUniform4ui(program, location, v0, v1, v2, v3); }
+    internal static delegate* unmanaged<uint, int, uint, uint, uint, uint, void> _glProgramUniform4ui = null;
     
-    public static void glProgramUniform1f(uint program, int location, float v0) { QGLNativeAPI.Verify((nint)_glProgramUniform1f); _glProgramUniform1f(program, location, v0); }
-    [QGLNativeAPI("glProgramUniform1f")] internal static delegate* unmanaged<uint, int, float, void> _glProgramUniform1f = null;
+    public static void glProgramUniform1f(uint program, int location, float v0) { QGLFeature.VerifyFunc((nint)_glProgramUniform1f); _glProgramUniform1f(program, location, v0); }
+    internal static delegate* unmanaged<uint, int, float, void> _glProgramUniform1f = null;
     
-    public static void glProgramUniform2f(uint program, int location, float v0, float v1) { QGLNativeAPI.Verify((nint)_glProgramUniform2f); _glProgramUniform2f(program, location, v0, v1); }
-    [QGLNativeAPI("glProgramUniform2f")] internal static delegate* unmanaged<uint, int, float, float, void> _glProgramUniform2f = null;
+    public static void glProgramUniform2f(uint program, int location, float v0, float v1) { QGLFeature.VerifyFunc((nint)_glProgramUniform2f); _glProgramUniform2f(program, location, v0, v1); }
+    internal static delegate* unmanaged<uint, int, float, float, void> _glProgramUniform2f = null;
     
-    public static void glProgramUniform3f(uint program, int location, float v0, float v1, float v2) { QGLNativeAPI.Verify((nint)_glProgramUniform3f); _glProgramUniform3f(program, location, v0, v1, v2); }
-    [QGLNativeAPI("glProgramUniform3f")] internal static delegate* unmanaged<uint, int, float, float, float, void> _glProgramUniform3f = null;
+    public static void glProgramUniform3f(uint program, int location, float v0, float v1, float v2) { QGLFeature.VerifyFunc((nint)_glProgramUniform3f); _glProgramUniform3f(program, location, v0, v1, v2); }
+    internal static delegate* unmanaged<uint, int, float, float, float, void> _glProgramUniform3f = null;
     
-    public static void glProgramUniform4f(uint program, int location, float v0, float v1, float v2, float v3) { QGLNativeAPI.Verify((nint)_glProgramUniform4f); _glProgramUniform4f(program, location, v0, v1, v2, v3); }
-    [QGLNativeAPI("glProgramUniform4f")] internal static delegate* unmanaged<uint, int, float, float, float, float, void> _glProgramUniform4f = null;
+    public static void glProgramUniform4f(uint program, int location, float v0, float v1, float v2, float v3) { QGLFeature.VerifyFunc((nint)_glProgramUniform4f); _glProgramUniform4f(program, location, v0, v1, v2, v3); }
+    internal static delegate* unmanaged<uint, int, float, float, float, float, void> _glProgramUniform4f = null;
     
-    public static void glProgramUniform1iv(uint program, int location, int count, int* value) { QGLNativeAPI.Verify((nint)_glProgramUniform1iv); _glProgramUniform1iv(program, location, count, value); }
-    [QGLNativeAPI("glProgramUniform1iv")] internal static delegate* unmanaged<uint, int, int, int*, void> _glProgramUniform1iv = null;
+    public static void glProgramUniform1iv(uint program, int location, int count, int* value) { QGLFeature.VerifyFunc((nint)_glProgramUniform1iv); _glProgramUniform1iv(program, location, count, value); }
+    internal static delegate* unmanaged<uint, int, int, int*, void> _glProgramUniform1iv = null;
     
-    public static void glProgramUniform2iv(uint program, int location, int count, int* value) { QGLNativeAPI.Verify((nint)_glProgramUniform2iv); _glProgramUniform2iv(program, location, count, value); }
-    [QGLNativeAPI("glProgramUniform2iv")] internal static delegate* unmanaged<uint, int, int, int*, void> _glProgramUniform2iv = null;
+    public static void glProgramUniform2iv(uint program, int location, int count, int* value) { QGLFeature.VerifyFunc((nint)_glProgramUniform2iv); _glProgramUniform2iv(program, location, count, value); }
+    internal static delegate* unmanaged<uint, int, int, int*, void> _glProgramUniform2iv = null;
     
-    public static void glProgramUniform3iv(uint program, int location, int count, int* value) { QGLNativeAPI.Verify((nint)_glProgramUniform3iv); _glProgramUniform3iv(program, location, count, value); }
-    [QGLNativeAPI("glProgramUniform3iv")] internal static delegate* unmanaged<uint, int, int, int*, void> _glProgramUniform3iv = null;
+    public static void glProgramUniform3iv(uint program, int location, int count, int* value) { QGLFeature.VerifyFunc((nint)_glProgramUniform3iv); _glProgramUniform3iv(program, location, count, value); }
+    internal static delegate* unmanaged<uint, int, int, int*, void> _glProgramUniform3iv = null;
     
-    public static void glProgramUniform4iv(uint program, int location, int count, int* value) { QGLNativeAPI.Verify((nint)_glProgramUniform4iv); _glProgramUniform4iv(program, location, count, value); }
-    [QGLNativeAPI("glProgramUniform4iv")] internal static delegate* unmanaged<uint, int, int, int*, void> _glProgramUniform4iv = null;
+    public static void glProgramUniform4iv(uint program, int location, int count, int* value) { QGLFeature.VerifyFunc((nint)_glProgramUniform4iv); _glProgramUniform4iv(program, location, count, value); }
+    internal static delegate* unmanaged<uint, int, int, int*, void> _glProgramUniform4iv = null;
     
-    public static void glProgramUniform1uiv(uint program, int location, int count, uint* value) { QGLNativeAPI.Verify((nint)_glProgramUniform1uiv); _glProgramUniform1uiv(program, location, count, value); }
-    [QGLNativeAPI("glProgramUniform1uiv")] internal static delegate* unmanaged<uint, int, int, uint*, void> _glProgramUniform1uiv = null;
+    public static void glProgramUniform1uiv(uint program, int location, int count, uint* value) { QGLFeature.VerifyFunc((nint)_glProgramUniform1uiv); _glProgramUniform1uiv(program, location, count, value); }
+    internal static delegate* unmanaged<uint, int, int, uint*, void> _glProgramUniform1uiv = null;
     
-    public static void glProgramUniform2uiv(uint program, int location, int count, uint* value) { QGLNativeAPI.Verify((nint)_glProgramUniform2uiv); _glProgramUniform2uiv(program, location, count, value); }
-    [QGLNativeAPI("glProgramUniform2uiv")] internal static delegate* unmanaged<uint, int, int, uint*, void> _glProgramUniform2uiv = null;
+    public static void glProgramUniform2uiv(uint program, int location, int count, uint* value) { QGLFeature.VerifyFunc((nint)_glProgramUniform2uiv); _glProgramUniform2uiv(program, location, count, value); }
+    internal static delegate* unmanaged<uint, int, int, uint*, void> _glProgramUniform2uiv = null;
     
-    public static void glProgramUniform3uiv(uint program, int location, int count, uint* value) { QGLNativeAPI.Verify((nint)_glProgramUniform3uiv); _glProgramUniform3uiv(program, location, count, value); }
-    [QGLNativeAPI("glProgramUniform3uiv")] internal static delegate* unmanaged<uint, int, int, uint*, void> _glProgramUniform3uiv = null;
+    public static void glProgramUniform3uiv(uint program, int location, int count, uint* value) { QGLFeature.VerifyFunc((nint)_glProgramUniform3uiv); _glProgramUniform3uiv(program, location, count, value); }
+    internal static delegate* unmanaged<uint, int, int, uint*, void> _glProgramUniform3uiv = null;
     
-    public static void glProgramUniform4uiv(uint program, int location, int count, uint* value) { QGLNativeAPI.Verify((nint)_glProgramUniform4uiv); _glProgramUniform4uiv(program, location, count, value); }
-    [QGLNativeAPI("glProgramUniform4uiv")] internal static delegate* unmanaged<uint, int, int, uint*, void> _glProgramUniform4uiv = null;
+    public static void glProgramUniform4uiv(uint program, int location, int count, uint* value) { QGLFeature.VerifyFunc((nint)_glProgramUniform4uiv); _glProgramUniform4uiv(program, location, count, value); }
+    internal static delegate* unmanaged<uint, int, int, uint*, void> _glProgramUniform4uiv = null;
     
-    public static void glProgramUniform1fv(uint program, int location, int count, float* value) { QGLNativeAPI.Verify((nint)_glProgramUniform1fv); _glProgramUniform1fv(program, location, count, value); }
-    [QGLNativeAPI("glProgramUniform1fv")] internal static delegate* unmanaged<uint, int, int, float*, void> _glProgramUniform1fv = null;
+    public static void glProgramUniform1fv(uint program, int location, int count, float* value) { QGLFeature.VerifyFunc((nint)_glProgramUniform1fv); _glProgramUniform1fv(program, location, count, value); }
+    internal static delegate* unmanaged<uint, int, int, float*, void> _glProgramUniform1fv = null;
     
-    public static void glProgramUniform2fv(uint program, int location, int count, float* value) { QGLNativeAPI.Verify((nint)_glProgramUniform2fv); _glProgramUniform2fv(program, location, count, value); }
-    [QGLNativeAPI("glProgramUniform2fv")] internal static delegate* unmanaged<uint, int, int, float*, void> _glProgramUniform2fv = null;
+    public static void glProgramUniform2fv(uint program, int location, int count, float* value) { QGLFeature.VerifyFunc((nint)_glProgramUniform2fv); _glProgramUniform2fv(program, location, count, value); }
+    internal static delegate* unmanaged<uint, int, int, float*, void> _glProgramUniform2fv = null;
     
-    public static void glProgramUniform3fv(uint program, int location, int count, float* value) { QGLNativeAPI.Verify((nint)_glProgramUniform3fv); _glProgramUniform3fv(program, location, count, value); }
-    [QGLNativeAPI("glProgramUniform3fv")] internal static delegate* unmanaged<uint, int, int, float*, void> _glProgramUniform3fv = null;
+    public static void glProgramUniform3fv(uint program, int location, int count, float* value) { QGLFeature.VerifyFunc((nint)_glProgramUniform3fv); _glProgramUniform3fv(program, location, count, value); }
+    internal static delegate* unmanaged<uint, int, int, float*, void> _glProgramUniform3fv = null;
     
-    public static void glProgramUniform4fv(uint program, int location, int count, float* value) { QGLNativeAPI.Verify((nint)_glProgramUniform4fv); _glProgramUniform4fv(program, location, count, value); }
-    [QGLNativeAPI("glProgramUniform4fv")] internal static delegate* unmanaged<uint, int, int, float*, void> _glProgramUniform4fv = null;
+    public static void glProgramUniform4fv(uint program, int location, int count, float* value) { QGLFeature.VerifyFunc((nint)_glProgramUniform4fv); _glProgramUniform4fv(program, location, count, value); }
+    internal static delegate* unmanaged<uint, int, int, float*, void> _glProgramUniform4fv = null;
     
-    public static void glProgramUniformMatrix2fv(uint program, int location, int count, bool transpose, float* value) { QGLNativeAPI.Verify((nint)_glProgramUniformMatrix2fv); _glProgramUniformMatrix2fv(program, location, count, transpose, value); }
-    [QGLNativeAPI("glProgramUniformMatrix2fv")] internal static delegate* unmanaged<uint, int, int, bool, float*, void> _glProgramUniformMatrix2fv = null;
+    public static void glProgramUniformMatrix2fv(uint program, int location, int count, bool transpose, float* value) { QGLFeature.VerifyFunc((nint)_glProgramUniformMatrix2fv); _glProgramUniformMatrix2fv(program, location, count, transpose, value); }
+    internal static delegate* unmanaged<uint, int, int, bool, float*, void> _glProgramUniformMatrix2fv = null;
     
-    public static void glProgramUniformMatrix3fv(uint program, int location, int count, bool transpose, float* value) { QGLNativeAPI.Verify((nint)_glProgramUniformMatrix3fv); _glProgramUniformMatrix3fv(program, location, count, transpose, value); }
-    [QGLNativeAPI("glProgramUniformMatrix3fv")] internal static delegate* unmanaged<uint, int, int, bool, float*, void> _glProgramUniformMatrix3fv = null;
+    public static void glProgramUniformMatrix3fv(uint program, int location, int count, bool transpose, float* value) { QGLFeature.VerifyFunc((nint)_glProgramUniformMatrix3fv); _glProgramUniformMatrix3fv(program, location, count, transpose, value); }
+    internal static delegate* unmanaged<uint, int, int, bool, float*, void> _glProgramUniformMatrix3fv = null;
     
-    public static void glProgramUniformMatrix4fv(uint program, int location, int count, bool transpose, float* value) { QGLNativeAPI.Verify((nint)_glProgramUniformMatrix4fv); _glProgramUniformMatrix4fv(program, location, count, transpose, value); }
-    [QGLNativeAPI("glProgramUniformMatrix4fv")] internal static delegate* unmanaged<uint, int, int, bool, float*, void> _glProgramUniformMatrix4fv = null;
+    public static void glProgramUniformMatrix4fv(uint program, int location, int count, bool transpose, float* value) { QGLFeature.VerifyFunc((nint)_glProgramUniformMatrix4fv); _glProgramUniformMatrix4fv(program, location, count, transpose, value); }
+    internal static delegate* unmanaged<uint, int, int, bool, float*, void> _glProgramUniformMatrix4fv = null;
     
-    public static void glProgramUniformMatrix2x3fv(uint program, int location, int count, bool transpose, float* value) { QGLNativeAPI.Verify((nint)_glProgramUniformMatrix2x3fv); _glProgramUniformMatrix2x3fv(program, location, count, transpose, value); }
-    [QGLNativeAPI("glProgramUniformMatrix2x3fv")] internal static delegate* unmanaged<uint, int, int, bool, float*, void> _glProgramUniformMatrix2x3fv = null;
+    public static void glProgramUniformMatrix2x3fv(uint program, int location, int count, bool transpose, float* value) { QGLFeature.VerifyFunc((nint)_glProgramUniformMatrix2x3fv); _glProgramUniformMatrix2x3fv(program, location, count, transpose, value); }
+    internal static delegate* unmanaged<uint, int, int, bool, float*, void> _glProgramUniformMatrix2x3fv = null;
     
-    public static void glProgramUniformMatrix3x2fv(uint program, int location, int count, bool transpose, float* value) { QGLNativeAPI.Verify((nint)_glProgramUniformMatrix3x2fv); _glProgramUniformMatrix3x2fv(program, location, count, transpose, value); }
-    [QGLNativeAPI("glProgramUniformMatrix3x2fv")] internal static delegate* unmanaged<uint, int, int, bool, float*, void> _glProgramUniformMatrix3x2fv = null;
+    public static void glProgramUniformMatrix3x2fv(uint program, int location, int count, bool transpose, float* value) { QGLFeature.VerifyFunc((nint)_glProgramUniformMatrix3x2fv); _glProgramUniformMatrix3x2fv(program, location, count, transpose, value); }
+    internal static delegate* unmanaged<uint, int, int, bool, float*, void> _glProgramUniformMatrix3x2fv = null;
     
-    public static void glProgramUniformMatrix2x4fv(uint program, int location, int count, bool transpose, float* value) { QGLNativeAPI.Verify((nint)_glProgramUniformMatrix2x4fv); _glProgramUniformMatrix2x4fv(program, location, count, transpose, value); }
-    [QGLNativeAPI("glProgramUniformMatrix2x4fv")] internal static delegate* unmanaged<uint, int, int, bool, float*, void> _glProgramUniformMatrix2x4fv = null;
+    public static void glProgramUniformMatrix2x4fv(uint program, int location, int count, bool transpose, float* value) { QGLFeature.VerifyFunc((nint)_glProgramUniformMatrix2x4fv); _glProgramUniformMatrix2x4fv(program, location, count, transpose, value); }
+    internal static delegate* unmanaged<uint, int, int, bool, float*, void> _glProgramUniformMatrix2x4fv = null;
     
-    public static void glProgramUniformMatrix4x2fv(uint program, int location, int count, bool transpose, float* value) { QGLNativeAPI.Verify((nint)_glProgramUniformMatrix4x2fv); _glProgramUniformMatrix4x2fv(program, location, count, transpose, value); }
-    [QGLNativeAPI("glProgramUniformMatrix4x2fv")] internal static delegate* unmanaged<uint, int, int, bool, float*, void> _glProgramUniformMatrix4x2fv = null;
+    public static void glProgramUniformMatrix4x2fv(uint program, int location, int count, bool transpose, float* value) { QGLFeature.VerifyFunc((nint)_glProgramUniformMatrix4x2fv); _glProgramUniformMatrix4x2fv(program, location, count, transpose, value); }
+    internal static delegate* unmanaged<uint, int, int, bool, float*, void> _glProgramUniformMatrix4x2fv = null;
     
-    public static void glProgramUniformMatrix3x4fv(uint program, int location, int count, bool transpose, float* value) { QGLNativeAPI.Verify((nint)_glProgramUniformMatrix3x4fv); _glProgramUniformMatrix3x4fv(program, location, count, transpose, value); }
-    [QGLNativeAPI("glProgramUniformMatrix3x4fv")] internal static delegate* unmanaged<uint, int, int, bool, float*, void> _glProgramUniformMatrix3x4fv = null;
+    public static void glProgramUniformMatrix3x4fv(uint program, int location, int count, bool transpose, float* value) { QGLFeature.VerifyFunc((nint)_glProgramUniformMatrix3x4fv); _glProgramUniformMatrix3x4fv(program, location, count, transpose, value); }
+    internal static delegate* unmanaged<uint, int, int, bool, float*, void> _glProgramUniformMatrix3x4fv = null;
     
-    public static void glProgramUniformMatrix4x3fv(uint program, int location, int count, bool transpose, float* value) { QGLNativeAPI.Verify((nint)_glProgramUniformMatrix4x3fv); _glProgramUniformMatrix4x3fv(program, location, count, transpose, value); }
-    [QGLNativeAPI("glProgramUniformMatrix4x3fv")] internal static delegate* unmanaged<uint, int, int, bool, float*, void> _glProgramUniformMatrix4x3fv = null;
+    public static void glProgramUniformMatrix4x3fv(uint program, int location, int count, bool transpose, float* value) { QGLFeature.VerifyFunc((nint)_glProgramUniformMatrix4x3fv); _glProgramUniformMatrix4x3fv(program, location, count, transpose, value); }
+    internal static delegate* unmanaged<uint, int, int, bool, float*, void> _glProgramUniformMatrix4x3fv = null;
     
-    public static void glValidateProgramPipeline(uint pipeline) { QGLNativeAPI.Verify((nint)_glValidateProgramPipeline); _glValidateProgramPipeline(pipeline); }
-    [QGLNativeAPI("glValidateProgramPipeline")] internal static delegate* unmanaged<uint, void> _glValidateProgramPipeline = null;
+    public static void glValidateProgramPipeline(uint pipeline) { QGLFeature.VerifyFunc((nint)_glValidateProgramPipeline); _glValidateProgramPipeline(pipeline); }
+    internal static delegate* unmanaged<uint, void> _glValidateProgramPipeline = null;
     
-    public static void glGetProgramPipelineInfoLog(uint pipeline, int bufSize, int* length, byte* infoLog) { QGLNativeAPI.Verify((nint)_glGetProgramPipelineInfoLog); _glGetProgramPipelineInfoLog(pipeline, bufSize, length, infoLog); }
-    [QGLNativeAPI("glGetProgramPipelineInfoLog")] internal static delegate* unmanaged<uint, int, int*, byte*, void> _glGetProgramPipelineInfoLog = null;
+    public static void glGetProgramPipelineInfoLog(uint pipeline, int bufSize, int* length, byte* infoLog) { QGLFeature.VerifyFunc((nint)_glGetProgramPipelineInfoLog); _glGetProgramPipelineInfoLog(pipeline, bufSize, length, infoLog); }
+    internal static delegate* unmanaged<uint, int, int*, byte*, void> _glGetProgramPipelineInfoLog = null;
     
-    public static void glBindImageTexture(uint unit, uint texture, int level, bool layered, int layer, uint access, uint format) { QGLNativeAPI.Verify((nint)_glBindImageTexture); _glBindImageTexture(unit, texture, level, layered, layer, access, format); }
-    [QGLNativeAPI("glBindImageTexture")] internal static delegate* unmanaged<uint, uint, int, bool, int, uint, uint, void> _glBindImageTexture = null;
+    public static void glBindImageTexture(uint unit, uint texture, int level, bool layered, int layer, uint access, uint format) { QGLFeature.VerifyFunc((nint)_glBindImageTexture); _glBindImageTexture(unit, texture, level, layered, layer, access, format); }
+    internal static delegate* unmanaged<uint, uint, int, bool, int, uint, uint, void> _glBindImageTexture = null;
     
-    public static void glGetBooleani_v(uint target, uint index, bool* data) { QGLNativeAPI.Verify((nint)_glGetBooleani_v); _glGetBooleani_v(target, index, data); }
-    [QGLNativeAPI("glGetBooleani_v")] internal static delegate* unmanaged<uint, uint, bool*, void> _glGetBooleani_v = null;
+    public static void glGetBooleani_v(uint target, uint index, bool* data) { QGLFeature.VerifyFunc((nint)_glGetBooleani_v); _glGetBooleani_v(target, index, data); }
+    internal static delegate* unmanaged<uint, uint, bool*, void> _glGetBooleani_v = null;
     
-    public static void glMemoryBarrier(uint barriers) { QGLNativeAPI.Verify((nint)_glMemoryBarrier); _glMemoryBarrier(barriers); }
-    [QGLNativeAPI("glMemoryBarrier")] internal static delegate* unmanaged<uint, void> _glMemoryBarrier = null;
+    public static void glMemoryBarrier(uint barriers) { QGLFeature.VerifyFunc((nint)_glMemoryBarrier); _glMemoryBarrier(barriers); }
+    internal static delegate* unmanaged<uint, void> _glMemoryBarrier = null;
     
-    public static void glMemoryBarrierByRegion(uint barriers) { QGLNativeAPI.Verify((nint)_glMemoryBarrierByRegion); _glMemoryBarrierByRegion(barriers); }
-    [QGLNativeAPI("glMemoryBarrierByRegion")] internal static delegate* unmanaged<uint, void> _glMemoryBarrierByRegion = null;
+    public static void glMemoryBarrierByRegion(uint barriers) { QGLFeature.VerifyFunc((nint)_glMemoryBarrierByRegion); _glMemoryBarrierByRegion(barriers); }
+    internal static delegate* unmanaged<uint, void> _glMemoryBarrierByRegion = null;
     
-    public static void glTexStorage2DMultisample(uint target, int samples, uint internalformat, int width, int height, bool fixedsamplelocations) { QGLNativeAPI.Verify((nint)_glTexStorage2DMultisample); _glTexStorage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations); }
-    [QGLNativeAPI("glTexStorage2DMultisample")] internal static delegate* unmanaged<uint, int, uint, int, int, bool, void> _glTexStorage2DMultisample = null;
+    public static void glTexStorage2DMultisample(uint target, int samples, uint internalformat, int width, int height, bool fixedsamplelocations) { QGLFeature.VerifyFunc((nint)_glTexStorage2DMultisample); _glTexStorage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations); }
+    internal static delegate* unmanaged<uint, int, uint, int, int, bool, void> _glTexStorage2DMultisample = null;
     
-    public static void glGetMultisamplefv(uint pname, uint index, float* val) { QGLNativeAPI.Verify((nint)_glGetMultisamplefv); _glGetMultisamplefv(pname, index, val); }
-    [QGLNativeAPI("glGetMultisamplefv")] internal static delegate* unmanaged<uint, uint, float*, void> _glGetMultisamplefv = null;
+    public static void glGetMultisamplefv(uint pname, uint index, float* val) { QGLFeature.VerifyFunc((nint)_glGetMultisamplefv); _glGetMultisamplefv(pname, index, val); }
+    internal static delegate* unmanaged<uint, uint, float*, void> _glGetMultisamplefv = null;
     
-    public static void glSampleMaski(uint maskNumber, uint mask) { QGLNativeAPI.Verify((nint)_glSampleMaski); _glSampleMaski(maskNumber, mask); }
-    [QGLNativeAPI("glSampleMaski")] internal static delegate* unmanaged<uint, uint, void> _glSampleMaski = null;
+    public static void glSampleMaski(uint maskNumber, uint mask) { QGLFeature.VerifyFunc((nint)_glSampleMaski); _glSampleMaski(maskNumber, mask); }
+    internal static delegate* unmanaged<uint, uint, void> _glSampleMaski = null;
     
-    public static void glGetTexLevelParameteriv(uint target, int level, uint pname, int* @params) { QGLNativeAPI.Verify((nint)_glGetTexLevelParameteriv); _glGetTexLevelParameteriv(target, level, pname, @params); }
-    [QGLNativeAPI("glGetTexLevelParameteriv")] internal static delegate* unmanaged<uint, int, uint, int*, void> _glGetTexLevelParameteriv = null;
+    public static void glGetTexLevelParameteriv(uint target, int level, uint pname, int* @params) { QGLFeature.VerifyFunc((nint)_glGetTexLevelParameteriv); _glGetTexLevelParameteriv(target, level, pname, @params); }
+    internal static delegate* unmanaged<uint, int, uint, int*, void> _glGetTexLevelParameteriv = null;
     
-    public static void glGetTexLevelParameterfv(uint target, int level, uint pname, float* @params) { QGLNativeAPI.Verify((nint)_glGetTexLevelParameterfv); _glGetTexLevelParameterfv(target, level, pname, @params); }
-    [QGLNativeAPI("glGetTexLevelParameterfv")] internal static delegate* unmanaged<uint, int, uint, float*, void> _glGetTexLevelParameterfv = null;
+    public static void glGetTexLevelParameterfv(uint target, int level, uint pname, float* @params) { QGLFeature.VerifyFunc((nint)_glGetTexLevelParameterfv); _glGetTexLevelParameterfv(target, level, pname, @params); }
+    internal static delegate* unmanaged<uint, int, uint, float*, void> _glGetTexLevelParameterfv = null;
     
-    public static void glBindVertexBuffer(uint bindingindex, uint buffer, nint offset, int stride) { QGLNativeAPI.Verify((nint)_glBindVertexBuffer); _glBindVertexBuffer(bindingindex, buffer, offset, stride); }
-    [QGLNativeAPI("glBindVertexBuffer")] internal static delegate* unmanaged<uint, uint, nint, int, void> _glBindVertexBuffer = null;
+    public static void glBindVertexBuffer(uint bindingindex, uint buffer, nint offset, int stride) { QGLFeature.VerifyFunc((nint)_glBindVertexBuffer); _glBindVertexBuffer(bindingindex, buffer, offset, stride); }
+    internal static delegate* unmanaged<uint, uint, nint, int, void> _glBindVertexBuffer = null;
     
-    public static void glVertexAttribFormat(uint attribindex, int size, uint type, bool normalized, uint relativeoffset) { QGLNativeAPI.Verify((nint)_glVertexAttribFormat); _glVertexAttribFormat(attribindex, size, type, normalized, relativeoffset); }
-    [QGLNativeAPI("glVertexAttribFormat")] internal static delegate* unmanaged<uint, int, uint, bool, uint, void> _glVertexAttribFormat = null;
+    public static void glVertexAttribFormat(uint attribindex, int size, uint type, bool normalized, uint relativeoffset) { QGLFeature.VerifyFunc((nint)_glVertexAttribFormat); _glVertexAttribFormat(attribindex, size, type, normalized, relativeoffset); }
+    internal static delegate* unmanaged<uint, int, uint, bool, uint, void> _glVertexAttribFormat = null;
     
-    public static void glVertexAttribIFormat(uint attribindex, int size, uint type, uint relativeoffset) { QGLNativeAPI.Verify((nint)_glVertexAttribIFormat); _glVertexAttribIFormat(attribindex, size, type, relativeoffset); }
-    [QGLNativeAPI("glVertexAttribIFormat")] internal static delegate* unmanaged<uint, int, uint, uint, void> _glVertexAttribIFormat = null;
+    public static void glVertexAttribIFormat(uint attribindex, int size, uint type, uint relativeoffset) { QGLFeature.VerifyFunc((nint)_glVertexAttribIFormat); _glVertexAttribIFormat(attribindex, size, type, relativeoffset); }
+    internal static delegate* unmanaged<uint, int, uint, uint, void> _glVertexAttribIFormat = null;
     
-    public static void glVertexAttribBinding(uint attribindex, uint bindingindex) { QGLNativeAPI.Verify((nint)_glVertexAttribBinding); _glVertexAttribBinding(attribindex, bindingindex); }
-    [QGLNativeAPI("glVertexAttribBinding")] internal static delegate* unmanaged<uint, uint, void> _glVertexAttribBinding = null;
+    public static void glVertexAttribBinding(uint attribindex, uint bindingindex) { QGLFeature.VerifyFunc((nint)_glVertexAttribBinding); _glVertexAttribBinding(attribindex, bindingindex); }
+    internal static delegate* unmanaged<uint, uint, void> _glVertexAttribBinding = null;
     
-    public static void glVertexBindingDivisor(uint bindingindex, uint divisor) { QGLNativeAPI.Verify((nint)_glVertexBindingDivisor); _glVertexBindingDivisor(bindingindex, divisor); }
-    [QGLNativeAPI("glVertexBindingDivisor")] internal static delegate* unmanaged<uint, uint, void> _glVertexBindingDivisor = null;
+    public static void glVertexBindingDivisor(uint bindingindex, uint divisor) { QGLFeature.VerifyFunc((nint)_glVertexBindingDivisor); _glVertexBindingDivisor(bindingindex, divisor); }
+    internal static delegate* unmanaged<uint, uint, void> _glVertexBindingDivisor = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glDispatchCompute = (delegate* unmanaged<uint, uint, uint, void>)QuickGL.GetGLProcAddress("glDispatchCompute");
+        _glDispatchComputeIndirect = (delegate* unmanaged<nint, void>)QuickGL.GetGLProcAddress("glDispatchComputeIndirect");
+        _glDrawArraysIndirect = (delegate* unmanaged<uint, void*, void>)QuickGL.GetGLProcAddress("glDrawArraysIndirect");
+        _glDrawElementsIndirect = (delegate* unmanaged<uint, uint, void*, void>)QuickGL.GetGLProcAddress("glDrawElementsIndirect");
+        _glFramebufferParameteri = (delegate* unmanaged<uint, uint, int, void>)QuickGL.GetGLProcAddress("glFramebufferParameteri");
+        _glGetFramebufferParameteriv = (delegate* unmanaged<uint, uint, int*, void>)QuickGL.GetGLProcAddress("glGetFramebufferParameteriv");
+        _glGetProgramInterfaceiv = (delegate* unmanaged<uint, uint, uint, int*, void>)QuickGL.GetGLProcAddress("glGetProgramInterfaceiv");
+        _glGetProgramResourceIndex = (delegate* unmanaged<uint, uint, byte*, uint>)QuickGL.GetGLProcAddress("glGetProgramResourceIndex");
+        _glGetProgramResourceName = (delegate* unmanaged<uint, uint, uint, int, int*, byte*, void>)QuickGL.GetGLProcAddress("glGetProgramResourceName");
+        _glGetProgramResourceiv = (delegate* unmanaged<uint, uint, uint, int, uint*, int, int*, int*, void>)QuickGL.GetGLProcAddress("glGetProgramResourceiv");
+        _glGetProgramResourceLocation = (delegate* unmanaged<uint, uint, byte*, int>)QuickGL.GetGLProcAddress("glGetProgramResourceLocation");
+        _glUseProgramStages = (delegate* unmanaged<uint, uint, uint, void>)QuickGL.GetGLProcAddress("glUseProgramStages");
+        _glActiveShaderProgram = (delegate* unmanaged<uint, uint, void>)QuickGL.GetGLProcAddress("glActiveShaderProgram");
+        _glCreateShaderProgramv = (delegate* unmanaged<uint, int, byte**, uint>)QuickGL.GetGLProcAddress("glCreateShaderProgramv");
+        _glBindProgramPipeline = (delegate* unmanaged<uint, void>)QuickGL.GetGLProcAddress("glBindProgramPipeline");
+        _glDeleteProgramPipelines = (delegate* unmanaged<int, uint*, void>)QuickGL.GetGLProcAddress("glDeleteProgramPipelines");
+        _glGenProgramPipelines = (delegate* unmanaged<int, uint*, void>)QuickGL.GetGLProcAddress("glGenProgramPipelines");
+        _glIsProgramPipeline = (delegate* unmanaged<uint, bool>)QuickGL.GetGLProcAddress("glIsProgramPipeline");
+        _glGetProgramPipelineiv = (delegate* unmanaged<uint, uint, int*, void>)QuickGL.GetGLProcAddress("glGetProgramPipelineiv");
+        _glProgramUniform1i = (delegate* unmanaged<uint, int, int, void>)QuickGL.GetGLProcAddress("glProgramUniform1i");
+        _glProgramUniform2i = (delegate* unmanaged<uint, int, int, int, void>)QuickGL.GetGLProcAddress("glProgramUniform2i");
+        _glProgramUniform3i = (delegate* unmanaged<uint, int, int, int, int, void>)QuickGL.GetGLProcAddress("glProgramUniform3i");
+        _glProgramUniform4i = (delegate* unmanaged<uint, int, int, int, int, int, void>)QuickGL.GetGLProcAddress("glProgramUniform4i");
+        _glProgramUniform1ui = (delegate* unmanaged<uint, int, uint, void>)QuickGL.GetGLProcAddress("glProgramUniform1ui");
+        _glProgramUniform2ui = (delegate* unmanaged<uint, int, uint, uint, void>)QuickGL.GetGLProcAddress("glProgramUniform2ui");
+        _glProgramUniform3ui = (delegate* unmanaged<uint, int, uint, uint, uint, void>)QuickGL.GetGLProcAddress("glProgramUniform3ui");
+        _glProgramUniform4ui = (delegate* unmanaged<uint, int, uint, uint, uint, uint, void>)QuickGL.GetGLProcAddress("glProgramUniform4ui");
+        _glProgramUniform1f = (delegate* unmanaged<uint, int, float, void>)QuickGL.GetGLProcAddress("glProgramUniform1f");
+        _glProgramUniform2f = (delegate* unmanaged<uint, int, float, float, void>)QuickGL.GetGLProcAddress("glProgramUniform2f");
+        _glProgramUniform3f = (delegate* unmanaged<uint, int, float, float, float, void>)QuickGL.GetGLProcAddress("glProgramUniform3f");
+        _glProgramUniform4f = (delegate* unmanaged<uint, int, float, float, float, float, void>)QuickGL.GetGLProcAddress("glProgramUniform4f");
+        _glProgramUniform1iv = (delegate* unmanaged<uint, int, int, int*, void>)QuickGL.GetGLProcAddress("glProgramUniform1iv");
+        _glProgramUniform2iv = (delegate* unmanaged<uint, int, int, int*, void>)QuickGL.GetGLProcAddress("glProgramUniform2iv");
+        _glProgramUniform3iv = (delegate* unmanaged<uint, int, int, int*, void>)QuickGL.GetGLProcAddress("glProgramUniform3iv");
+        _glProgramUniform4iv = (delegate* unmanaged<uint, int, int, int*, void>)QuickGL.GetGLProcAddress("glProgramUniform4iv");
+        _glProgramUniform1uiv = (delegate* unmanaged<uint, int, int, uint*, void>)QuickGL.GetGLProcAddress("glProgramUniform1uiv");
+        _glProgramUniform2uiv = (delegate* unmanaged<uint, int, int, uint*, void>)QuickGL.GetGLProcAddress("glProgramUniform2uiv");
+        _glProgramUniform3uiv = (delegate* unmanaged<uint, int, int, uint*, void>)QuickGL.GetGLProcAddress("glProgramUniform3uiv");
+        _glProgramUniform4uiv = (delegate* unmanaged<uint, int, int, uint*, void>)QuickGL.GetGLProcAddress("glProgramUniform4uiv");
+        _glProgramUniform1fv = (delegate* unmanaged<uint, int, int, float*, void>)QuickGL.GetGLProcAddress("glProgramUniform1fv");
+        _glProgramUniform2fv = (delegate* unmanaged<uint, int, int, float*, void>)QuickGL.GetGLProcAddress("glProgramUniform2fv");
+        _glProgramUniform3fv = (delegate* unmanaged<uint, int, int, float*, void>)QuickGL.GetGLProcAddress("glProgramUniform3fv");
+        _glProgramUniform4fv = (delegate* unmanaged<uint, int, int, float*, void>)QuickGL.GetGLProcAddress("glProgramUniform4fv");
+        _glProgramUniformMatrix2fv = (delegate* unmanaged<uint, int, int, bool, float*, void>)QuickGL.GetGLProcAddress("glProgramUniformMatrix2fv");
+        _glProgramUniformMatrix3fv = (delegate* unmanaged<uint, int, int, bool, float*, void>)QuickGL.GetGLProcAddress("glProgramUniformMatrix3fv");
+        _glProgramUniformMatrix4fv = (delegate* unmanaged<uint, int, int, bool, float*, void>)QuickGL.GetGLProcAddress("glProgramUniformMatrix4fv");
+        _glProgramUniformMatrix2x3fv = (delegate* unmanaged<uint, int, int, bool, float*, void>)QuickGL.GetGLProcAddress("glProgramUniformMatrix2x3fv");
+        _glProgramUniformMatrix3x2fv = (delegate* unmanaged<uint, int, int, bool, float*, void>)QuickGL.GetGLProcAddress("glProgramUniformMatrix3x2fv");
+        _glProgramUniformMatrix2x4fv = (delegate* unmanaged<uint, int, int, bool, float*, void>)QuickGL.GetGLProcAddress("glProgramUniformMatrix2x4fv");
+        _glProgramUniformMatrix4x2fv = (delegate* unmanaged<uint, int, int, bool, float*, void>)QuickGL.GetGLProcAddress("glProgramUniformMatrix4x2fv");
+        _glProgramUniformMatrix3x4fv = (delegate* unmanaged<uint, int, int, bool, float*, void>)QuickGL.GetGLProcAddress("glProgramUniformMatrix3x4fv");
+        _glProgramUniformMatrix4x3fv = (delegate* unmanaged<uint, int, int, bool, float*, void>)QuickGL.GetGLProcAddress("glProgramUniformMatrix4x3fv");
+        _glValidateProgramPipeline = (delegate* unmanaged<uint, void>)QuickGL.GetGLProcAddress("glValidateProgramPipeline");
+        _glGetProgramPipelineInfoLog = (delegate* unmanaged<uint, int, int*, byte*, void>)QuickGL.GetGLProcAddress("glGetProgramPipelineInfoLog");
+        _glBindImageTexture = (delegate* unmanaged<uint, uint, int, bool, int, uint, uint, void>)QuickGL.GetGLProcAddress("glBindImageTexture");
+        _glGetBooleani_v = (delegate* unmanaged<uint, uint, bool*, void>)QuickGL.GetGLProcAddress("glGetBooleani_v");
+        _glMemoryBarrier = (delegate* unmanaged<uint, void>)QuickGL.GetGLProcAddress("glMemoryBarrier");
+        _glMemoryBarrierByRegion = (delegate* unmanaged<uint, void>)QuickGL.GetGLProcAddress("glMemoryBarrierByRegion");
+        _glTexStorage2DMultisample = (delegate* unmanaged<uint, int, uint, int, int, bool, void>)QuickGL.GetGLProcAddress("glTexStorage2DMultisample");
+        _glGetMultisamplefv = (delegate* unmanaged<uint, uint, float*, void>)QuickGL.GetGLProcAddress("glGetMultisamplefv");
+        _glSampleMaski = (delegate* unmanaged<uint, uint, void>)QuickGL.GetGLProcAddress("glSampleMaski");
+        _glGetTexLevelParameteriv = (delegate* unmanaged<uint, int, uint, int*, void>)QuickGL.GetGLProcAddress("glGetTexLevelParameteriv");
+        _glGetTexLevelParameterfv = (delegate* unmanaged<uint, int, uint, float*, void>)QuickGL.GetGLProcAddress("glGetTexLevelParameterfv");
+        _glBindVertexBuffer = (delegate* unmanaged<uint, uint, nint, int, void>)QuickGL.GetGLProcAddress("glBindVertexBuffer");
+        _glVertexAttribFormat = (delegate* unmanaged<uint, int, uint, bool, uint, void>)QuickGL.GetGLProcAddress("glVertexAttribFormat");
+        _glVertexAttribIFormat = (delegate* unmanaged<uint, int, uint, uint, void>)QuickGL.GetGLProcAddress("glVertexAttribIFormat");
+        _glVertexAttribBinding = (delegate* unmanaged<uint, uint, void>)QuickGL.GetGLProcAddress("glVertexAttribBinding");
+        _glVertexBindingDivisor = (delegate* unmanaged<uint, uint, void>)QuickGL.GetGLProcAddress("glVertexBindingDivisor");
+    }
+    
+    internal static void Unload()
+    {
+        _glDispatchCompute = null;
+        _glDispatchComputeIndirect = null;
+        _glDrawArraysIndirect = null;
+        _glDrawElementsIndirect = null;
+        _glFramebufferParameteri = null;
+        _glGetFramebufferParameteriv = null;
+        _glGetProgramInterfaceiv = null;
+        _glGetProgramResourceIndex = null;
+        _glGetProgramResourceName = null;
+        _glGetProgramResourceiv = null;
+        _glGetProgramResourceLocation = null;
+        _glUseProgramStages = null;
+        _glActiveShaderProgram = null;
+        _glCreateShaderProgramv = null;
+        _glBindProgramPipeline = null;
+        _glDeleteProgramPipelines = null;
+        _glGenProgramPipelines = null;
+        _glIsProgramPipeline = null;
+        _glGetProgramPipelineiv = null;
+        _glProgramUniform1i = null;
+        _glProgramUniform2i = null;
+        _glProgramUniform3i = null;
+        _glProgramUniform4i = null;
+        _glProgramUniform1ui = null;
+        _glProgramUniform2ui = null;
+        _glProgramUniform3ui = null;
+        _glProgramUniform4ui = null;
+        _glProgramUniform1f = null;
+        _glProgramUniform2f = null;
+        _glProgramUniform3f = null;
+        _glProgramUniform4f = null;
+        _glProgramUniform1iv = null;
+        _glProgramUniform2iv = null;
+        _glProgramUniform3iv = null;
+        _glProgramUniform4iv = null;
+        _glProgramUniform1uiv = null;
+        _glProgramUniform2uiv = null;
+        _glProgramUniform3uiv = null;
+        _glProgramUniform4uiv = null;
+        _glProgramUniform1fv = null;
+        _glProgramUniform2fv = null;
+        _glProgramUniform3fv = null;
+        _glProgramUniform4fv = null;
+        _glProgramUniformMatrix2fv = null;
+        _glProgramUniformMatrix3fv = null;
+        _glProgramUniformMatrix4fv = null;
+        _glProgramUniformMatrix2x3fv = null;
+        _glProgramUniformMatrix3x2fv = null;
+        _glProgramUniformMatrix2x4fv = null;
+        _glProgramUniformMatrix4x2fv = null;
+        _glProgramUniformMatrix3x4fv = null;
+        _glProgramUniformMatrix4x3fv = null;
+        _glValidateProgramPipeline = null;
+        _glGetProgramPipelineInfoLog = null;
+        _glBindImageTexture = null;
+        _glGetBooleani_v = null;
+        _glMemoryBarrier = null;
+        _glMemoryBarrierByRegion = null;
+        _glTexStorage2DMultisample = null;
+        _glGetMultisamplefv = null;
+        _glSampleMaski = null;
+        _glGetTexLevelParameteriv = null;
+        _glGetTexLevelParameterfv = null;
+        _glBindVertexBuffer = null;
+        _glVertexAttribFormat = null;
+        _glVertexAttribIFormat = null;
+        _glVertexAttribBinding = null;
+        _glVertexBindingDivisor = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ES_VERSION_3_1", false, true);
 }

@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.471417
+// Bindings generated at 2025-09-20 18:58:19.814985
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_ES2_compatibility", true, false)]
 public static unsafe class GLEXT_ARBES2compatibility
 {
     #region Enums
@@ -48,19 +47,39 @@ public static unsafe class GLEXT_ARBES2compatibility
     #endregion
     
     #region Commands
-    public static void glReleaseShaderCompiler() { QGLNativeAPI.Verify((nint)_glReleaseShaderCompiler); _glReleaseShaderCompiler(); }
-    [QGLNativeAPI("glReleaseShaderCompiler")] internal static delegate* unmanaged<void> _glReleaseShaderCompiler = null;
+    public static void glReleaseShaderCompiler() { QGLFeature.VerifyFunc((nint)_glReleaseShaderCompiler); _glReleaseShaderCompiler(); }
+    internal static delegate* unmanaged<void> _glReleaseShaderCompiler = null;
     
-    public static void glShaderBinary(int count, uint* shaders, uint binaryFormat, void* binary, int length) { QGLNativeAPI.Verify((nint)_glShaderBinary); _glShaderBinary(count, shaders, binaryFormat, binary, length); }
-    [QGLNativeAPI("glShaderBinary")] internal static delegate* unmanaged<int, uint*, uint, void*, int, void> _glShaderBinary = null;
+    public static void glShaderBinary(int count, uint* shaders, uint binaryFormat, void* binary, int length) { QGLFeature.VerifyFunc((nint)_glShaderBinary); _glShaderBinary(count, shaders, binaryFormat, binary, length); }
+    internal static delegate* unmanaged<int, uint*, uint, void*, int, void> _glShaderBinary = null;
     
-    public static void glGetShaderPrecisionFormat(uint shadertype, uint precisiontype, int* range, int* precision) { QGLNativeAPI.Verify((nint)_glGetShaderPrecisionFormat); _glGetShaderPrecisionFormat(shadertype, precisiontype, range, precision); }
-    [QGLNativeAPI("glGetShaderPrecisionFormat")] internal static delegate* unmanaged<uint, uint, int*, int*, void> _glGetShaderPrecisionFormat = null;
+    public static void glGetShaderPrecisionFormat(uint shadertype, uint precisiontype, int* range, int* precision) { QGLFeature.VerifyFunc((nint)_glGetShaderPrecisionFormat); _glGetShaderPrecisionFormat(shadertype, precisiontype, range, precision); }
+    internal static delegate* unmanaged<uint, uint, int*, int*, void> _glGetShaderPrecisionFormat = null;
     
-    public static void glDepthRangef(float n, float f) { QGLNativeAPI.Verify((nint)_glDepthRangef); _glDepthRangef(n, f); }
-    [QGLNativeAPI("glDepthRangef")] internal static delegate* unmanaged<float, float, void> _glDepthRangef = null;
+    public static void glDepthRangef(float n, float f) { QGLFeature.VerifyFunc((nint)_glDepthRangef); _glDepthRangef(n, f); }
+    internal static delegate* unmanaged<float, float, void> _glDepthRangef = null;
     
-    public static void glClearDepthf(float d) { QGLNativeAPI.Verify((nint)_glClearDepthf); _glClearDepthf(d); }
-    [QGLNativeAPI("glClearDepthf")] internal static delegate* unmanaged<float, void> _glClearDepthf = null;
+    public static void glClearDepthf(float d) { QGLFeature.VerifyFunc((nint)_glClearDepthf); _glClearDepthf(d); }
+    internal static delegate* unmanaged<float, void> _glClearDepthf = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glReleaseShaderCompiler = (delegate* unmanaged<void>)QuickGL.GetGLProcAddress("glReleaseShaderCompiler");
+        _glShaderBinary = (delegate* unmanaged<int, uint*, uint, void*, int, void>)QuickGL.GetGLProcAddress("glShaderBinary");
+        _glGetShaderPrecisionFormat = (delegate* unmanaged<uint, uint, int*, int*, void>)QuickGL.GetGLProcAddress("glGetShaderPrecisionFormat");
+        _glDepthRangef = (delegate* unmanaged<float, float, void>)QuickGL.GetGLProcAddress("glDepthRangef");
+        _glClearDepthf = (delegate* unmanaged<float, void>)QuickGL.GetGLProcAddress("glClearDepthf");
+    }
+    
+    internal static void Unload()
+    {
+        _glReleaseShaderCompiler = null;
+        _glShaderBinary = null;
+        _glGetShaderPrecisionFormat = null;
+        _glDepthRangef = null;
+        _glClearDepthf = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_ES2_compatibility", true, false);
 }

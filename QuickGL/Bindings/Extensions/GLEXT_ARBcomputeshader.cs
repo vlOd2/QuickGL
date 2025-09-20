@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.488820
+// Bindings generated at 2025-09-20 18:58:19.836563
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_compute_shader", true, false)]
 public static unsafe class GLEXT_ARBcomputeshader
 {
     #region Enums
@@ -50,10 +49,24 @@ public static unsafe class GLEXT_ARBcomputeshader
     #endregion
     
     #region Commands
-    public static void glDispatchCompute(uint num_groups_x, uint num_groups_y, uint num_groups_z) { QGLNativeAPI.Verify((nint)_glDispatchCompute); _glDispatchCompute(num_groups_x, num_groups_y, num_groups_z); }
-    [QGLNativeAPI("glDispatchCompute")] internal static delegate* unmanaged<uint, uint, uint, void> _glDispatchCompute = null;
+    public static void glDispatchCompute(uint num_groups_x, uint num_groups_y, uint num_groups_z) { QGLFeature.VerifyFunc((nint)_glDispatchCompute); _glDispatchCompute(num_groups_x, num_groups_y, num_groups_z); }
+    internal static delegate* unmanaged<uint, uint, uint, void> _glDispatchCompute = null;
     
-    public static void glDispatchComputeIndirect(nint indirect) { QGLNativeAPI.Verify((nint)_glDispatchComputeIndirect); _glDispatchComputeIndirect(indirect); }
-    [QGLNativeAPI("glDispatchComputeIndirect")] internal static delegate* unmanaged<nint, void> _glDispatchComputeIndirect = null;
+    public static void glDispatchComputeIndirect(nint indirect) { QGLFeature.VerifyFunc((nint)_glDispatchComputeIndirect); _glDispatchComputeIndirect(indirect); }
+    internal static delegate* unmanaged<nint, void> _glDispatchComputeIndirect = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glDispatchCompute = (delegate* unmanaged<uint, uint, uint, void>)QuickGL.GetGLProcAddress("glDispatchCompute");
+        _glDispatchComputeIndirect = (delegate* unmanaged<nint, void>)QuickGL.GetGLProcAddress("glDispatchComputeIndirect");
+    }
+    
+    internal static void Unload()
+    {
+        _glDispatchCompute = null;
+        _glDispatchComputeIndirect = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_compute_shader", true, false);
 }

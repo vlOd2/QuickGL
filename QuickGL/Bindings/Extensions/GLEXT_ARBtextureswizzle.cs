@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.758058
+// Bindings generated at 2025-09-20 18:58:20.100582
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_texture_swizzle", true, false)]
 public static unsafe class GLEXT_ARBtextureswizzle
 {
     #region Enums
@@ -38,4 +37,14 @@ public static unsafe class GLEXT_ARBtextureswizzle
     
     #region Commands
     #endregion
+    
+    internal static void Load()
+    {
+    }
+    
+    internal static void Unload()
+    {
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_texture_swizzle", true, false);
 }

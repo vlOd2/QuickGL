@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.669822
+// Bindings generated at 2025-09-20 18:58:19.966607
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_shader_clock", true, false)]
 public static unsafe class GLEXT_ARBshaderclock
 {
     #region Enums
@@ -33,4 +32,14 @@ public static unsafe class GLEXT_ARBshaderclock
     
     #region Commands
     #endregion
+    
+    internal static void Load()
+    {
+    }
+    
+    internal static void Unload()
+    {
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_shader_clock", true, false);
 }

@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.682684
+// Bindings generated at 2025-09-20 18:58:19.978047
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_shader_subroutine", true, false)]
 public static unsafe class GLEXT_ARBshadersubroutine
 {
     #region Enums
@@ -43,28 +42,54 @@ public static unsafe class GLEXT_ARBshadersubroutine
     #endregion
     
     #region Commands
-    public static int glGetSubroutineUniformLocation(uint program, uint shadertype, byte* name) { QGLNativeAPI.Verify((nint)_glGetSubroutineUniformLocation); return _glGetSubroutineUniformLocation(program, shadertype, name); }
-    [QGLNativeAPI("glGetSubroutineUniformLocation")] internal static delegate* unmanaged<uint, uint, byte*, int> _glGetSubroutineUniformLocation = null;
+    public static int glGetSubroutineUniformLocation(uint program, uint shadertype, byte* name) { QGLFeature.VerifyFunc((nint)_glGetSubroutineUniformLocation); return _glGetSubroutineUniformLocation(program, shadertype, name); }
+    internal static delegate* unmanaged<uint, uint, byte*, int> _glGetSubroutineUniformLocation = null;
     
-    public static uint glGetSubroutineIndex(uint program, uint shadertype, byte* name) { QGLNativeAPI.Verify((nint)_glGetSubroutineIndex); return _glGetSubroutineIndex(program, shadertype, name); }
-    [QGLNativeAPI("glGetSubroutineIndex")] internal static delegate* unmanaged<uint, uint, byte*, uint> _glGetSubroutineIndex = null;
+    public static uint glGetSubroutineIndex(uint program, uint shadertype, byte* name) { QGLFeature.VerifyFunc((nint)_glGetSubroutineIndex); return _glGetSubroutineIndex(program, shadertype, name); }
+    internal static delegate* unmanaged<uint, uint, byte*, uint> _glGetSubroutineIndex = null;
     
-    public static void glGetActiveSubroutineUniformiv(uint program, uint shadertype, uint index, uint pname, int* values) { QGLNativeAPI.Verify((nint)_glGetActiveSubroutineUniformiv); _glGetActiveSubroutineUniformiv(program, shadertype, index, pname, values); }
-    [QGLNativeAPI("glGetActiveSubroutineUniformiv")] internal static delegate* unmanaged<uint, uint, uint, uint, int*, void> _glGetActiveSubroutineUniformiv = null;
+    public static void glGetActiveSubroutineUniformiv(uint program, uint shadertype, uint index, uint pname, int* values) { QGLFeature.VerifyFunc((nint)_glGetActiveSubroutineUniformiv); _glGetActiveSubroutineUniformiv(program, shadertype, index, pname, values); }
+    internal static delegate* unmanaged<uint, uint, uint, uint, int*, void> _glGetActiveSubroutineUniformiv = null;
     
-    public static void glGetActiveSubroutineUniformName(uint program, uint shadertype, uint index, int bufSize, int* length, byte* name) { QGLNativeAPI.Verify((nint)_glGetActiveSubroutineUniformName); _glGetActiveSubroutineUniformName(program, shadertype, index, bufSize, length, name); }
-    [QGLNativeAPI("glGetActiveSubroutineUniformName")] internal static delegate* unmanaged<uint, uint, uint, int, int*, byte*, void> _glGetActiveSubroutineUniformName = null;
+    public static void glGetActiveSubroutineUniformName(uint program, uint shadertype, uint index, int bufSize, int* length, byte* name) { QGLFeature.VerifyFunc((nint)_glGetActiveSubroutineUniformName); _glGetActiveSubroutineUniformName(program, shadertype, index, bufSize, length, name); }
+    internal static delegate* unmanaged<uint, uint, uint, int, int*, byte*, void> _glGetActiveSubroutineUniformName = null;
     
-    public static void glGetActiveSubroutineName(uint program, uint shadertype, uint index, int bufSize, int* length, byte* name) { QGLNativeAPI.Verify((nint)_glGetActiveSubroutineName); _glGetActiveSubroutineName(program, shadertype, index, bufSize, length, name); }
-    [QGLNativeAPI("glGetActiveSubroutineName")] internal static delegate* unmanaged<uint, uint, uint, int, int*, byte*, void> _glGetActiveSubroutineName = null;
+    public static void glGetActiveSubroutineName(uint program, uint shadertype, uint index, int bufSize, int* length, byte* name) { QGLFeature.VerifyFunc((nint)_glGetActiveSubroutineName); _glGetActiveSubroutineName(program, shadertype, index, bufSize, length, name); }
+    internal static delegate* unmanaged<uint, uint, uint, int, int*, byte*, void> _glGetActiveSubroutineName = null;
     
-    public static void glUniformSubroutinesuiv(uint shadertype, int count, uint* indices) { QGLNativeAPI.Verify((nint)_glUniformSubroutinesuiv); _glUniformSubroutinesuiv(shadertype, count, indices); }
-    [QGLNativeAPI("glUniformSubroutinesuiv")] internal static delegate* unmanaged<uint, int, uint*, void> _glUniformSubroutinesuiv = null;
+    public static void glUniformSubroutinesuiv(uint shadertype, int count, uint* indices) { QGLFeature.VerifyFunc((nint)_glUniformSubroutinesuiv); _glUniformSubroutinesuiv(shadertype, count, indices); }
+    internal static delegate* unmanaged<uint, int, uint*, void> _glUniformSubroutinesuiv = null;
     
-    public static void glGetUniformSubroutineuiv(uint shadertype, int location, uint* @params) { QGLNativeAPI.Verify((nint)_glGetUniformSubroutineuiv); _glGetUniformSubroutineuiv(shadertype, location, @params); }
-    [QGLNativeAPI("glGetUniformSubroutineuiv")] internal static delegate* unmanaged<uint, int, uint*, void> _glGetUniformSubroutineuiv = null;
+    public static void glGetUniformSubroutineuiv(uint shadertype, int location, uint* @params) { QGLFeature.VerifyFunc((nint)_glGetUniformSubroutineuiv); _glGetUniformSubroutineuiv(shadertype, location, @params); }
+    internal static delegate* unmanaged<uint, int, uint*, void> _glGetUniformSubroutineuiv = null;
     
-    public static void glGetProgramStageiv(uint program, uint shadertype, uint pname, int* values) { QGLNativeAPI.Verify((nint)_glGetProgramStageiv); _glGetProgramStageiv(program, shadertype, pname, values); }
-    [QGLNativeAPI("glGetProgramStageiv")] internal static delegate* unmanaged<uint, uint, uint, int*, void> _glGetProgramStageiv = null;
+    public static void glGetProgramStageiv(uint program, uint shadertype, uint pname, int* values) { QGLFeature.VerifyFunc((nint)_glGetProgramStageiv); _glGetProgramStageiv(program, shadertype, pname, values); }
+    internal static delegate* unmanaged<uint, uint, uint, int*, void> _glGetProgramStageiv = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glGetSubroutineUniformLocation = (delegate* unmanaged<uint, uint, byte*, int>)QuickGL.GetGLProcAddress("glGetSubroutineUniformLocation");
+        _glGetSubroutineIndex = (delegate* unmanaged<uint, uint, byte*, uint>)QuickGL.GetGLProcAddress("glGetSubroutineIndex");
+        _glGetActiveSubroutineUniformiv = (delegate* unmanaged<uint, uint, uint, uint, int*, void>)QuickGL.GetGLProcAddress("glGetActiveSubroutineUniformiv");
+        _glGetActiveSubroutineUniformName = (delegate* unmanaged<uint, uint, uint, int, int*, byte*, void>)QuickGL.GetGLProcAddress("glGetActiveSubroutineUniformName");
+        _glGetActiveSubroutineName = (delegate* unmanaged<uint, uint, uint, int, int*, byte*, void>)QuickGL.GetGLProcAddress("glGetActiveSubroutineName");
+        _glUniformSubroutinesuiv = (delegate* unmanaged<uint, int, uint*, void>)QuickGL.GetGLProcAddress("glUniformSubroutinesuiv");
+        _glGetUniformSubroutineuiv = (delegate* unmanaged<uint, int, uint*, void>)QuickGL.GetGLProcAddress("glGetUniformSubroutineuiv");
+        _glGetProgramStageiv = (delegate* unmanaged<uint, uint, uint, int*, void>)QuickGL.GetGLProcAddress("glGetProgramStageiv");
+    }
+    
+    internal static void Unload()
+    {
+        _glGetSubroutineUniformLocation = null;
+        _glGetSubroutineIndex = null;
+        _glGetActiveSubroutineUniformiv = null;
+        _glGetActiveSubroutineUniformName = null;
+        _glGetActiveSubroutineName = null;
+        _glUniformSubroutinesuiv = null;
+        _glGetUniformSubroutineuiv = null;
+        _glGetProgramStageiv = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_shader_subroutine", true, false);
 }

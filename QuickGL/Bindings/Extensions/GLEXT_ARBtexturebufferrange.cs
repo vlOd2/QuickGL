@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.716858
+// Bindings generated at 2025-09-20 18:58:20.022855
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_texture_buffer_range", true, false)]
 public static unsafe class GLEXT_ARBtexturebufferrange
 {
     #region Enums
@@ -35,7 +34,19 @@ public static unsafe class GLEXT_ARBtexturebufferrange
     #endregion
     
     #region Commands
-    public static void glTexBufferRange(uint target, uint internalformat, uint buffer, nint offset, nint size) { QGLNativeAPI.Verify((nint)_glTexBufferRange); _glTexBufferRange(target, internalformat, buffer, offset, size); }
-    [QGLNativeAPI("glTexBufferRange")] internal static delegate* unmanaged<uint, uint, uint, nint, nint, void> _glTexBufferRange = null;
+    public static void glTexBufferRange(uint target, uint internalformat, uint buffer, nint offset, nint size) { QGLFeature.VerifyFunc((nint)_glTexBufferRange); _glTexBufferRange(target, internalformat, buffer, offset, size); }
+    internal static delegate* unmanaged<uint, uint, uint, nint, nint, void> _glTexBufferRange = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glTexBufferRange = (delegate* unmanaged<uint, uint, uint, nint, nint, void>)QuickGL.GetGLProcAddress("glTexBufferRange");
+    }
+    
+    internal static void Unload()
+    {
+        _glTexBufferRange = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_texture_buffer_range", true, false);
 }

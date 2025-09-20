@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.521841
+// Bindings generated at 2025-09-20 18:58:19.882320
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_framebuffer_no_attachments", true, false)]
 public static unsafe class GLEXT_ARBframebuffernoattachments
 {
     #region Enums
@@ -41,10 +40,24 @@ public static unsafe class GLEXT_ARBframebuffernoattachments
     #endregion
     
     #region Commands
-    public static void glFramebufferParameteri(uint target, uint pname, int param) { QGLNativeAPI.Verify((nint)_glFramebufferParameteri); _glFramebufferParameteri(target, pname, param); }
-    [QGLNativeAPI("glFramebufferParameteri")] internal static delegate* unmanaged<uint, uint, int, void> _glFramebufferParameteri = null;
+    public static void glFramebufferParameteri(uint target, uint pname, int param) { QGLFeature.VerifyFunc((nint)_glFramebufferParameteri); _glFramebufferParameteri(target, pname, param); }
+    internal static delegate* unmanaged<uint, uint, int, void> _glFramebufferParameteri = null;
     
-    public static void glGetFramebufferParameteriv(uint target, uint pname, int* @params) { QGLNativeAPI.Verify((nint)_glGetFramebufferParameteriv); _glGetFramebufferParameteriv(target, pname, @params); }
-    [QGLNativeAPI("glGetFramebufferParameteriv")] internal static delegate* unmanaged<uint, uint, int*, void> _glGetFramebufferParameteriv = null;
+    public static void glGetFramebufferParameteriv(uint target, uint pname, int* @params) { QGLFeature.VerifyFunc((nint)_glGetFramebufferParameteriv); _glGetFramebufferParameteriv(target, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, int*, void> _glGetFramebufferParameteriv = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glFramebufferParameteri = (delegate* unmanaged<uint, uint, int, void>)QuickGL.GetGLProcAddress("glFramebufferParameteri");
+        _glGetFramebufferParameteriv = (delegate* unmanaged<uint, uint, int*, void>)QuickGL.GetGLProcAddress("glGetFramebufferParameteriv");
+    }
+    
+    internal static void Unload()
+    {
+        _glFramebufferParameteri = null;
+        _glGetFramebufferParameteriv = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_framebuffer_no_attachments", true, false);
 }

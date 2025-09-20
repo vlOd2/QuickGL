@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.761644
+// Bindings generated at 2025-09-20 18:58:20.104937
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_transform_feedback2", true, false)]
 public static unsafe class GLEXT_ARBtransformfeedback2
 {
     #region Enums
@@ -36,25 +35,49 @@ public static unsafe class GLEXT_ARBtransformfeedback2
     #endregion
     
     #region Commands
-    public static void glBindTransformFeedback(uint target, uint id) { QGLNativeAPI.Verify((nint)_glBindTransformFeedback); _glBindTransformFeedback(target, id); }
-    [QGLNativeAPI("glBindTransformFeedback")] internal static delegate* unmanaged<uint, uint, void> _glBindTransformFeedback = null;
+    public static void glBindTransformFeedback(uint target, uint id) { QGLFeature.VerifyFunc((nint)_glBindTransformFeedback); _glBindTransformFeedback(target, id); }
+    internal static delegate* unmanaged<uint, uint, void> _glBindTransformFeedback = null;
     
-    public static void glDeleteTransformFeedbacks(int n, uint* ids) { QGLNativeAPI.Verify((nint)_glDeleteTransformFeedbacks); _glDeleteTransformFeedbacks(n, ids); }
-    [QGLNativeAPI("glDeleteTransformFeedbacks")] internal static delegate* unmanaged<int, uint*, void> _glDeleteTransformFeedbacks = null;
+    public static void glDeleteTransformFeedbacks(int n, uint* ids) { QGLFeature.VerifyFunc((nint)_glDeleteTransformFeedbacks); _glDeleteTransformFeedbacks(n, ids); }
+    internal static delegate* unmanaged<int, uint*, void> _glDeleteTransformFeedbacks = null;
     
-    public static void glGenTransformFeedbacks(int n, uint* ids) { QGLNativeAPI.Verify((nint)_glGenTransformFeedbacks); _glGenTransformFeedbacks(n, ids); }
-    [QGLNativeAPI("glGenTransformFeedbacks")] internal static delegate* unmanaged<int, uint*, void> _glGenTransformFeedbacks = null;
+    public static void glGenTransformFeedbacks(int n, uint* ids) { QGLFeature.VerifyFunc((nint)_glGenTransformFeedbacks); _glGenTransformFeedbacks(n, ids); }
+    internal static delegate* unmanaged<int, uint*, void> _glGenTransformFeedbacks = null;
     
-    public static bool glIsTransformFeedback(uint id) { QGLNativeAPI.Verify((nint)_glIsTransformFeedback); return _glIsTransformFeedback(id); }
-    [QGLNativeAPI("glIsTransformFeedback")] internal static delegate* unmanaged<uint, bool> _glIsTransformFeedback = null;
+    public static bool glIsTransformFeedback(uint id) { QGLFeature.VerifyFunc((nint)_glIsTransformFeedback); return _glIsTransformFeedback(id); }
+    internal static delegate* unmanaged<uint, bool> _glIsTransformFeedback = null;
     
-    public static void glPauseTransformFeedback() { QGLNativeAPI.Verify((nint)_glPauseTransformFeedback); _glPauseTransformFeedback(); }
-    [QGLNativeAPI("glPauseTransformFeedback")] internal static delegate* unmanaged<void> _glPauseTransformFeedback = null;
+    public static void glPauseTransformFeedback() { QGLFeature.VerifyFunc((nint)_glPauseTransformFeedback); _glPauseTransformFeedback(); }
+    internal static delegate* unmanaged<void> _glPauseTransformFeedback = null;
     
-    public static void glResumeTransformFeedback() { QGLNativeAPI.Verify((nint)_glResumeTransformFeedback); _glResumeTransformFeedback(); }
-    [QGLNativeAPI("glResumeTransformFeedback")] internal static delegate* unmanaged<void> _glResumeTransformFeedback = null;
+    public static void glResumeTransformFeedback() { QGLFeature.VerifyFunc((nint)_glResumeTransformFeedback); _glResumeTransformFeedback(); }
+    internal static delegate* unmanaged<void> _glResumeTransformFeedback = null;
     
-    public static void glDrawTransformFeedback(uint mode, uint id) { QGLNativeAPI.Verify((nint)_glDrawTransformFeedback); _glDrawTransformFeedback(mode, id); }
-    [QGLNativeAPI("glDrawTransformFeedback")] internal static delegate* unmanaged<uint, uint, void> _glDrawTransformFeedback = null;
+    public static void glDrawTransformFeedback(uint mode, uint id) { QGLFeature.VerifyFunc((nint)_glDrawTransformFeedback); _glDrawTransformFeedback(mode, id); }
+    internal static delegate* unmanaged<uint, uint, void> _glDrawTransformFeedback = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glBindTransformFeedback = (delegate* unmanaged<uint, uint, void>)QuickGL.GetGLProcAddress("glBindTransformFeedback");
+        _glDeleteTransformFeedbacks = (delegate* unmanaged<int, uint*, void>)QuickGL.GetGLProcAddress("glDeleteTransformFeedbacks");
+        _glGenTransformFeedbacks = (delegate* unmanaged<int, uint*, void>)QuickGL.GetGLProcAddress("glGenTransformFeedbacks");
+        _glIsTransformFeedback = (delegate* unmanaged<uint, bool>)QuickGL.GetGLProcAddress("glIsTransformFeedback");
+        _glPauseTransformFeedback = (delegate* unmanaged<void>)QuickGL.GetGLProcAddress("glPauseTransformFeedback");
+        _glResumeTransformFeedback = (delegate* unmanaged<void>)QuickGL.GetGLProcAddress("glResumeTransformFeedback");
+        _glDrawTransformFeedback = (delegate* unmanaged<uint, uint, void>)QuickGL.GetGLProcAddress("glDrawTransformFeedback");
+    }
+    
+    internal static void Unload()
+    {
+        _glBindTransformFeedback = null;
+        _glDeleteTransformFeedbacks = null;
+        _glGenTransformFeedbacks = null;
+        _glIsTransformFeedback = null;
+        _glPauseTransformFeedback = null;
+        _glResumeTransformFeedback = null;
+        _glDrawTransformFeedback = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_transform_feedback2", true, false);
 }

@@ -22,26 +22,43 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.506603
+// Bindings generated at 2025-09-20 18:58:19.864170
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_draw_elements_base_vertex", true, false)]
 public static unsafe class GLEXT_ARBdrawelementsbasevertex
 {
     #region Enums
     #endregion
     
     #region Commands
-    public static void glDrawElementsBaseVertex(uint mode, int count, uint type, void* indices, int basevertex) { QGLNativeAPI.Verify((nint)_glDrawElementsBaseVertex); _glDrawElementsBaseVertex(mode, count, type, indices, basevertex); }
-    [QGLNativeAPI("glDrawElementsBaseVertex")] internal static delegate* unmanaged<uint, int, uint, void*, int, void> _glDrawElementsBaseVertex = null;
+    public static void glDrawElementsBaseVertex(uint mode, int count, uint type, void* indices, int basevertex) { QGLFeature.VerifyFunc((nint)_glDrawElementsBaseVertex); _glDrawElementsBaseVertex(mode, count, type, indices, basevertex); }
+    internal static delegate* unmanaged<uint, int, uint, void*, int, void> _glDrawElementsBaseVertex = null;
     
-    public static void glDrawRangeElementsBaseVertex(uint mode, uint start, uint end, int count, uint type, void* indices, int basevertex) { QGLNativeAPI.Verify((nint)_glDrawRangeElementsBaseVertex); _glDrawRangeElementsBaseVertex(mode, start, end, count, type, indices, basevertex); }
-    [QGLNativeAPI("glDrawRangeElementsBaseVertex")] internal static delegate* unmanaged<uint, uint, uint, int, uint, void*, int, void> _glDrawRangeElementsBaseVertex = null;
+    public static void glDrawRangeElementsBaseVertex(uint mode, uint start, uint end, int count, uint type, void* indices, int basevertex) { QGLFeature.VerifyFunc((nint)_glDrawRangeElementsBaseVertex); _glDrawRangeElementsBaseVertex(mode, start, end, count, type, indices, basevertex); }
+    internal static delegate* unmanaged<uint, uint, uint, int, uint, void*, int, void> _glDrawRangeElementsBaseVertex = null;
     
-    public static void glDrawElementsInstancedBaseVertex(uint mode, int count, uint type, void* indices, int instancecount, int basevertex) { QGLNativeAPI.Verify((nint)_glDrawElementsInstancedBaseVertex); _glDrawElementsInstancedBaseVertex(mode, count, type, indices, instancecount, basevertex); }
-    [QGLNativeAPI("glDrawElementsInstancedBaseVertex")] internal static delegate* unmanaged<uint, int, uint, void*, int, int, void> _glDrawElementsInstancedBaseVertex = null;
+    public static void glDrawElementsInstancedBaseVertex(uint mode, int count, uint type, void* indices, int instancecount, int basevertex) { QGLFeature.VerifyFunc((nint)_glDrawElementsInstancedBaseVertex); _glDrawElementsInstancedBaseVertex(mode, count, type, indices, instancecount, basevertex); }
+    internal static delegate* unmanaged<uint, int, uint, void*, int, int, void> _glDrawElementsInstancedBaseVertex = null;
     
-    public static void glMultiDrawElementsBaseVertex(uint mode, int* count, uint type, void** indices, int drawcount, int* basevertex) { QGLNativeAPI.Verify((nint)_glMultiDrawElementsBaseVertex); _glMultiDrawElementsBaseVertex(mode, count, type, indices, drawcount, basevertex); }
-    [QGLNativeAPI("glMultiDrawElementsBaseVertex")] internal static delegate* unmanaged<uint, int*, uint, void**, int, int*, void> _glMultiDrawElementsBaseVertex = null;
+    public static void glMultiDrawElementsBaseVertex(uint mode, int* count, uint type, void** indices, int drawcount, int* basevertex) { QGLFeature.VerifyFunc((nint)_glMultiDrawElementsBaseVertex); _glMultiDrawElementsBaseVertex(mode, count, type, indices, drawcount, basevertex); }
+    internal static delegate* unmanaged<uint, int*, uint, void**, int, int*, void> _glMultiDrawElementsBaseVertex = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glDrawElementsBaseVertex = (delegate* unmanaged<uint, int, uint, void*, int, void>)QuickGL.GetGLProcAddress("glDrawElementsBaseVertex");
+        _glDrawRangeElementsBaseVertex = (delegate* unmanaged<uint, uint, uint, int, uint, void*, int, void>)QuickGL.GetGLProcAddress("glDrawRangeElementsBaseVertex");
+        _glDrawElementsInstancedBaseVertex = (delegate* unmanaged<uint, int, uint, void*, int, int, void>)QuickGL.GetGLProcAddress("glDrawElementsInstancedBaseVertex");
+        _glMultiDrawElementsBaseVertex = (delegate* unmanaged<uint, int*, uint, void**, int, int*, void>)QuickGL.GetGLProcAddress("glMultiDrawElementsBaseVertex");
+    }
+    
+    internal static void Unload()
+    {
+        _glDrawElementsBaseVertex = null;
+        _glDrawRangeElementsBaseVertex = null;
+        _glDrawElementsInstancedBaseVertex = null;
+        _glMultiDrawElementsBaseVertex = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_draw_elements_base_vertex", true, false);
 }

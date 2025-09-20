@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.681547
+// Bindings generated at 2025-09-20 18:58:19.975569
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_shader_storage_buffer_object", true, false)]
 public static unsafe class GLEXT_ARBshaderstoragebufferobject
 {
     #region Enums
@@ -49,7 +48,19 @@ public static unsafe class GLEXT_ARBshaderstoragebufferobject
     #endregion
     
     #region Commands
-    public static void glShaderStorageBlockBinding(uint program, uint storageBlockIndex, uint storageBlockBinding) { QGLNativeAPI.Verify((nint)_glShaderStorageBlockBinding); _glShaderStorageBlockBinding(program, storageBlockIndex, storageBlockBinding); }
-    [QGLNativeAPI("glShaderStorageBlockBinding")] internal static delegate* unmanaged<uint, uint, uint, void> _glShaderStorageBlockBinding = null;
+    public static void glShaderStorageBlockBinding(uint program, uint storageBlockIndex, uint storageBlockBinding) { QGLFeature.VerifyFunc((nint)_glShaderStorageBlockBinding); _glShaderStorageBlockBinding(program, storageBlockIndex, storageBlockBinding); }
+    internal static delegate* unmanaged<uint, uint, uint, void> _glShaderStorageBlockBinding = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glShaderStorageBlockBinding = (delegate* unmanaged<uint, uint, uint, void>)QuickGL.GetGLProcAddress("glShaderStorageBlockBinding");
+    }
+    
+    internal static void Unload()
+    {
+        _glShaderStorageBlockBinding = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_shader_storage_buffer_object", true, false);
 }

@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.564748
+// Bindings generated at 2025-09-20 18:58:19.925329
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_point_parameters", true, false)]
 public static unsafe class GLEXT_ARBpointparameters
 {
     #region Enums
@@ -36,10 +35,24 @@ public static unsafe class GLEXT_ARBpointparameters
     #endregion
     
     #region Commands
-    public static void glPointParameterfARB(uint pname, float param) { QGLNativeAPI.Verify((nint)_glPointParameterfARB); _glPointParameterfARB(pname, param); }
-    [QGLNativeAPI("glPointParameterfARB")] internal static delegate* unmanaged<uint, float, void> _glPointParameterfARB = null;
+    public static void glPointParameterfARB(uint pname, float param) { QGLFeature.VerifyFunc((nint)_glPointParameterfARB); _glPointParameterfARB(pname, param); }
+    internal static delegate* unmanaged<uint, float, void> _glPointParameterfARB = null;
     
-    public static void glPointParameterfvARB(uint pname, float* @params) { QGLNativeAPI.Verify((nint)_glPointParameterfvARB); _glPointParameterfvARB(pname, @params); }
-    [QGLNativeAPI("glPointParameterfvARB")] internal static delegate* unmanaged<uint, float*, void> _glPointParameterfvARB = null;
+    public static void glPointParameterfvARB(uint pname, float* @params) { QGLFeature.VerifyFunc((nint)_glPointParameterfvARB); _glPointParameterfvARB(pname, @params); }
+    internal static delegate* unmanaged<uint, float*, void> _glPointParameterfvARB = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glPointParameterfARB = (delegate* unmanaged<uint, float, void>)QuickGL.GetGLProcAddress("glPointParameterfARB");
+        _glPointParameterfvARB = (delegate* unmanaged<uint, float*, void>)QuickGL.GetGLProcAddress("glPointParameterfvARB");
+    }
+    
+    internal static void Unload()
+    {
+        _glPointParameterfARB = null;
+        _glPointParameterfvARB = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_point_parameters", true, false);
 }

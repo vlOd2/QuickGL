@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.674807
+// Bindings generated at 2025-09-20 18:58:19.968982
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_shader_image_load_store", true, false)]
 public static unsafe class GLEXT_ARBshaderimageloadstore
 {
     #region Enums
@@ -96,10 +95,24 @@ public static unsafe class GLEXT_ARBshaderimageloadstore
     #endregion
     
     #region Commands
-    public static void glBindImageTexture(uint unit, uint texture, int level, bool layered, int layer, uint access, uint format) { QGLNativeAPI.Verify((nint)_glBindImageTexture); _glBindImageTexture(unit, texture, level, layered, layer, access, format); }
-    [QGLNativeAPI("glBindImageTexture")] internal static delegate* unmanaged<uint, uint, int, bool, int, uint, uint, void> _glBindImageTexture = null;
+    public static void glBindImageTexture(uint unit, uint texture, int level, bool layered, int layer, uint access, uint format) { QGLFeature.VerifyFunc((nint)_glBindImageTexture); _glBindImageTexture(unit, texture, level, layered, layer, access, format); }
+    internal static delegate* unmanaged<uint, uint, int, bool, int, uint, uint, void> _glBindImageTexture = null;
     
-    public static void glMemoryBarrier(uint barriers) { QGLNativeAPI.Verify((nint)_glMemoryBarrier); _glMemoryBarrier(barriers); }
-    [QGLNativeAPI("glMemoryBarrier")] internal static delegate* unmanaged<uint, void> _glMemoryBarrier = null;
+    public static void glMemoryBarrier(uint barriers) { QGLFeature.VerifyFunc((nint)_glMemoryBarrier); _glMemoryBarrier(barriers); }
+    internal static delegate* unmanaged<uint, void> _glMemoryBarrier = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glBindImageTexture = (delegate* unmanaged<uint, uint, int, bool, int, uint, uint, void>)QuickGL.GetGLProcAddress("glBindImageTexture");
+        _glMemoryBarrier = (delegate* unmanaged<uint, void>)QuickGL.GetGLProcAddress("glMemoryBarrier");
+    }
+    
+    internal static void Unload()
+    {
+        _glBindImageTexture = null;
+        _glMemoryBarrier = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_shader_image_load_store", true, false);
 }

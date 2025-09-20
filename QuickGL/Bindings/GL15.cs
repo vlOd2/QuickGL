@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.413092
+// Bindings generated at 2025-09-20 18:58:19.744045
 namespace QuickGLNS.Bindings;
 
-[QGLFeature("GL_VERSION_1_5", false, false)]
 public static unsafe class GL15
 {
     #region Enums
@@ -82,61 +81,109 @@ public static unsafe class GL15
     #endregion
     
     #region Commands
-    public static void glGenQueries(int n, uint* ids) { QGLNativeAPI.Verify((nint)_glGenQueries); _glGenQueries(n, ids); }
-    [QGLNativeAPI("glGenQueries")] internal static delegate* unmanaged<int, uint*, void> _glGenQueries = null;
+    public static void glGenQueries(int n, uint* ids) { QGLFeature.VerifyFunc((nint)_glGenQueries); _glGenQueries(n, ids); }
+    internal static delegate* unmanaged<int, uint*, void> _glGenQueries = null;
     
-    public static void glDeleteQueries(int n, uint* ids) { QGLNativeAPI.Verify((nint)_glDeleteQueries); _glDeleteQueries(n, ids); }
-    [QGLNativeAPI("glDeleteQueries")] internal static delegate* unmanaged<int, uint*, void> _glDeleteQueries = null;
+    public static void glDeleteQueries(int n, uint* ids) { QGLFeature.VerifyFunc((nint)_glDeleteQueries); _glDeleteQueries(n, ids); }
+    internal static delegate* unmanaged<int, uint*, void> _glDeleteQueries = null;
     
-    public static bool glIsQuery(uint id) { QGLNativeAPI.Verify((nint)_glIsQuery); return _glIsQuery(id); }
-    [QGLNativeAPI("glIsQuery")] internal static delegate* unmanaged<uint, bool> _glIsQuery = null;
+    public static bool glIsQuery(uint id) { QGLFeature.VerifyFunc((nint)_glIsQuery); return _glIsQuery(id); }
+    internal static delegate* unmanaged<uint, bool> _glIsQuery = null;
     
-    public static void glBeginQuery(uint target, uint id) { QGLNativeAPI.Verify((nint)_glBeginQuery); _glBeginQuery(target, id); }
-    [QGLNativeAPI("glBeginQuery")] internal static delegate* unmanaged<uint, uint, void> _glBeginQuery = null;
+    public static void glBeginQuery(uint target, uint id) { QGLFeature.VerifyFunc((nint)_glBeginQuery); _glBeginQuery(target, id); }
+    internal static delegate* unmanaged<uint, uint, void> _glBeginQuery = null;
     
-    public static void glEndQuery(uint target) { QGLNativeAPI.Verify((nint)_glEndQuery); _glEndQuery(target); }
-    [QGLNativeAPI("glEndQuery")] internal static delegate* unmanaged<uint, void> _glEndQuery = null;
+    public static void glEndQuery(uint target) { QGLFeature.VerifyFunc((nint)_glEndQuery); _glEndQuery(target); }
+    internal static delegate* unmanaged<uint, void> _glEndQuery = null;
     
-    public static void glGetQueryiv(uint target, uint pname, int* @params) { QGLNativeAPI.Verify((nint)_glGetQueryiv); _glGetQueryiv(target, pname, @params); }
-    [QGLNativeAPI("glGetQueryiv")] internal static delegate* unmanaged<uint, uint, int*, void> _glGetQueryiv = null;
+    public static void glGetQueryiv(uint target, uint pname, int* @params) { QGLFeature.VerifyFunc((nint)_glGetQueryiv); _glGetQueryiv(target, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, int*, void> _glGetQueryiv = null;
     
-    public static void glGetQueryObjectiv(uint id, uint pname, int* @params) { QGLNativeAPI.Verify((nint)_glGetQueryObjectiv); _glGetQueryObjectiv(id, pname, @params); }
-    [QGLNativeAPI("glGetQueryObjectiv")] internal static delegate* unmanaged<uint, uint, int*, void> _glGetQueryObjectiv = null;
+    public static void glGetQueryObjectiv(uint id, uint pname, int* @params) { QGLFeature.VerifyFunc((nint)_glGetQueryObjectiv); _glGetQueryObjectiv(id, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, int*, void> _glGetQueryObjectiv = null;
     
-    public static void glGetQueryObjectuiv(uint id, uint pname, uint* @params) { QGLNativeAPI.Verify((nint)_glGetQueryObjectuiv); _glGetQueryObjectuiv(id, pname, @params); }
-    [QGLNativeAPI("glGetQueryObjectuiv")] internal static delegate* unmanaged<uint, uint, uint*, void> _glGetQueryObjectuiv = null;
+    public static void glGetQueryObjectuiv(uint id, uint pname, uint* @params) { QGLFeature.VerifyFunc((nint)_glGetQueryObjectuiv); _glGetQueryObjectuiv(id, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, uint*, void> _glGetQueryObjectuiv = null;
     
-    public static void glBindBuffer(uint target, uint buffer) { QGLNativeAPI.Verify((nint)_glBindBuffer); _glBindBuffer(target, buffer); }
-    [QGLNativeAPI("glBindBuffer")] internal static delegate* unmanaged<uint, uint, void> _glBindBuffer = null;
+    public static void glBindBuffer(uint target, uint buffer) { QGLFeature.VerifyFunc((nint)_glBindBuffer); _glBindBuffer(target, buffer); }
+    internal static delegate* unmanaged<uint, uint, void> _glBindBuffer = null;
     
-    public static void glDeleteBuffers(int n, uint* buffers) { QGLNativeAPI.Verify((nint)_glDeleteBuffers); _glDeleteBuffers(n, buffers); }
-    [QGLNativeAPI("glDeleteBuffers")] internal static delegate* unmanaged<int, uint*, void> _glDeleteBuffers = null;
+    public static void glDeleteBuffers(int n, uint* buffers) { QGLFeature.VerifyFunc((nint)_glDeleteBuffers); _glDeleteBuffers(n, buffers); }
+    internal static delegate* unmanaged<int, uint*, void> _glDeleteBuffers = null;
     
-    public static void glGenBuffers(int n, uint* buffers) { QGLNativeAPI.Verify((nint)_glGenBuffers); _glGenBuffers(n, buffers); }
-    [QGLNativeAPI("glGenBuffers")] internal static delegate* unmanaged<int, uint*, void> _glGenBuffers = null;
+    public static void glGenBuffers(int n, uint* buffers) { QGLFeature.VerifyFunc((nint)_glGenBuffers); _glGenBuffers(n, buffers); }
+    internal static delegate* unmanaged<int, uint*, void> _glGenBuffers = null;
     
-    public static bool glIsBuffer(uint buffer) { QGLNativeAPI.Verify((nint)_glIsBuffer); return _glIsBuffer(buffer); }
-    [QGLNativeAPI("glIsBuffer")] internal static delegate* unmanaged<uint, bool> _glIsBuffer = null;
+    public static bool glIsBuffer(uint buffer) { QGLFeature.VerifyFunc((nint)_glIsBuffer); return _glIsBuffer(buffer); }
+    internal static delegate* unmanaged<uint, bool> _glIsBuffer = null;
     
-    public static void glBufferData(uint target, nint size, void* data, uint usage) { QGLNativeAPI.Verify((nint)_glBufferData); _glBufferData(target, size, data, usage); }
-    [QGLNativeAPI("glBufferData")] internal static delegate* unmanaged<uint, nint, void*, uint, void> _glBufferData = null;
+    public static void glBufferData(uint target, nint size, void* data, uint usage) { QGLFeature.VerifyFunc((nint)_glBufferData); _glBufferData(target, size, data, usage); }
+    internal static delegate* unmanaged<uint, nint, void*, uint, void> _glBufferData = null;
     
-    public static void glBufferSubData(uint target, nint offset, nint size, void* data) { QGLNativeAPI.Verify((nint)_glBufferSubData); _glBufferSubData(target, offset, size, data); }
-    [QGLNativeAPI("glBufferSubData")] internal static delegate* unmanaged<uint, nint, nint, void*, void> _glBufferSubData = null;
+    public static void glBufferSubData(uint target, nint offset, nint size, void* data) { QGLFeature.VerifyFunc((nint)_glBufferSubData); _glBufferSubData(target, offset, size, data); }
+    internal static delegate* unmanaged<uint, nint, nint, void*, void> _glBufferSubData = null;
     
-    public static void glGetBufferSubData(uint target, nint offset, nint size, void* data) { QGLNativeAPI.Verify((nint)_glGetBufferSubData); _glGetBufferSubData(target, offset, size, data); }
-    [QGLNativeAPI("glGetBufferSubData")] internal static delegate* unmanaged<uint, nint, nint, void*, void> _glGetBufferSubData = null;
+    public static void glGetBufferSubData(uint target, nint offset, nint size, void* data) { QGLFeature.VerifyFunc((nint)_glGetBufferSubData); _glGetBufferSubData(target, offset, size, data); }
+    internal static delegate* unmanaged<uint, nint, nint, void*, void> _glGetBufferSubData = null;
     
-    public static void* glMapBuffer(uint target, uint access) { QGLNativeAPI.Verify((nint)_glMapBuffer); return _glMapBuffer(target, access); }
-    [QGLNativeAPI("glMapBuffer")] internal static delegate* unmanaged<uint, uint, void*> _glMapBuffer = null;
+    public static void* glMapBuffer(uint target, uint access) { QGLFeature.VerifyFunc((nint)_glMapBuffer); return _glMapBuffer(target, access); }
+    internal static delegate* unmanaged<uint, uint, void*> _glMapBuffer = null;
     
-    public static bool glUnmapBuffer(uint target) { QGLNativeAPI.Verify((nint)_glUnmapBuffer); return _glUnmapBuffer(target); }
-    [QGLNativeAPI("glUnmapBuffer")] internal static delegate* unmanaged<uint, bool> _glUnmapBuffer = null;
+    public static bool glUnmapBuffer(uint target) { QGLFeature.VerifyFunc((nint)_glUnmapBuffer); return _glUnmapBuffer(target); }
+    internal static delegate* unmanaged<uint, bool> _glUnmapBuffer = null;
     
-    public static void glGetBufferParameteriv(uint target, uint pname, int* @params) { QGLNativeAPI.Verify((nint)_glGetBufferParameteriv); _glGetBufferParameteriv(target, pname, @params); }
-    [QGLNativeAPI("glGetBufferParameteriv")] internal static delegate* unmanaged<uint, uint, int*, void> _glGetBufferParameteriv = null;
+    public static void glGetBufferParameteriv(uint target, uint pname, int* @params) { QGLFeature.VerifyFunc((nint)_glGetBufferParameteriv); _glGetBufferParameteriv(target, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, int*, void> _glGetBufferParameteriv = null;
     
-    public static void glGetBufferPointerv(uint target, uint pname, void** @params) { QGLNativeAPI.Verify((nint)_glGetBufferPointerv); _glGetBufferPointerv(target, pname, @params); }
-    [QGLNativeAPI("glGetBufferPointerv")] internal static delegate* unmanaged<uint, uint, void**, void> _glGetBufferPointerv = null;
+    public static void glGetBufferPointerv(uint target, uint pname, void** @params) { QGLFeature.VerifyFunc((nint)_glGetBufferPointerv); _glGetBufferPointerv(target, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, void**, void> _glGetBufferPointerv = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glGenQueries = (delegate* unmanaged<int, uint*, void>)QuickGL.GetGLProcAddress("glGenQueries");
+        _glDeleteQueries = (delegate* unmanaged<int, uint*, void>)QuickGL.GetGLProcAddress("glDeleteQueries");
+        _glIsQuery = (delegate* unmanaged<uint, bool>)QuickGL.GetGLProcAddress("glIsQuery");
+        _glBeginQuery = (delegate* unmanaged<uint, uint, void>)QuickGL.GetGLProcAddress("glBeginQuery");
+        _glEndQuery = (delegate* unmanaged<uint, void>)QuickGL.GetGLProcAddress("glEndQuery");
+        _glGetQueryiv = (delegate* unmanaged<uint, uint, int*, void>)QuickGL.GetGLProcAddress("glGetQueryiv");
+        _glGetQueryObjectiv = (delegate* unmanaged<uint, uint, int*, void>)QuickGL.GetGLProcAddress("glGetQueryObjectiv");
+        _glGetQueryObjectuiv = (delegate* unmanaged<uint, uint, uint*, void>)QuickGL.GetGLProcAddress("glGetQueryObjectuiv");
+        _glBindBuffer = (delegate* unmanaged<uint, uint, void>)QuickGL.GetGLProcAddress("glBindBuffer");
+        _glDeleteBuffers = (delegate* unmanaged<int, uint*, void>)QuickGL.GetGLProcAddress("glDeleteBuffers");
+        _glGenBuffers = (delegate* unmanaged<int, uint*, void>)QuickGL.GetGLProcAddress("glGenBuffers");
+        _glIsBuffer = (delegate* unmanaged<uint, bool>)QuickGL.GetGLProcAddress("glIsBuffer");
+        _glBufferData = (delegate* unmanaged<uint, nint, void*, uint, void>)QuickGL.GetGLProcAddress("glBufferData");
+        _glBufferSubData = (delegate* unmanaged<uint, nint, nint, void*, void>)QuickGL.GetGLProcAddress("glBufferSubData");
+        _glGetBufferSubData = (delegate* unmanaged<uint, nint, nint, void*, void>)QuickGL.GetGLProcAddress("glGetBufferSubData");
+        _glMapBuffer = (delegate* unmanaged<uint, uint, void*>)QuickGL.GetGLProcAddress("glMapBuffer");
+        _glUnmapBuffer = (delegate* unmanaged<uint, bool>)QuickGL.GetGLProcAddress("glUnmapBuffer");
+        _glGetBufferParameteriv = (delegate* unmanaged<uint, uint, int*, void>)QuickGL.GetGLProcAddress("glGetBufferParameteriv");
+        _glGetBufferPointerv = (delegate* unmanaged<uint, uint, void**, void>)QuickGL.GetGLProcAddress("glGetBufferPointerv");
+    }
+    
+    internal static void Unload()
+    {
+        _glGenQueries = null;
+        _glDeleteQueries = null;
+        _glIsQuery = null;
+        _glBeginQuery = null;
+        _glEndQuery = null;
+        _glGetQueryiv = null;
+        _glGetQueryObjectiv = null;
+        _glGetQueryObjectuiv = null;
+        _glBindBuffer = null;
+        _glDeleteBuffers = null;
+        _glGenBuffers = null;
+        _glIsBuffer = null;
+        _glBufferData = null;
+        _glBufferSubData = null;
+        _glGetBufferSubData = null;
+        _glMapBuffer = null;
+        _glUnmapBuffer = null;
+        _glGetBufferParameteriv = null;
+        _glGetBufferPointerv = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_VERSION_1_5", false, false);
 }

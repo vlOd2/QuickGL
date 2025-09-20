@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.558773
+// Bindings generated at 2025-09-20 18:58:19.919515
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_occlusion_query", true, false)]
 public static unsafe class GLEXT_ARBocclusionquery
 {
     #region Enums
@@ -37,28 +36,54 @@ public static unsafe class GLEXT_ARBocclusionquery
     #endregion
     
     #region Commands
-    public static void glGenQueriesARB(int n, uint* ids) { QGLNativeAPI.Verify((nint)_glGenQueriesARB); _glGenQueriesARB(n, ids); }
-    [QGLNativeAPI("glGenQueriesARB")] internal static delegate* unmanaged<int, uint*, void> _glGenQueriesARB = null;
+    public static void glGenQueriesARB(int n, uint* ids) { QGLFeature.VerifyFunc((nint)_glGenQueriesARB); _glGenQueriesARB(n, ids); }
+    internal static delegate* unmanaged<int, uint*, void> _glGenQueriesARB = null;
     
-    public static void glDeleteQueriesARB(int n, uint* ids) { QGLNativeAPI.Verify((nint)_glDeleteQueriesARB); _glDeleteQueriesARB(n, ids); }
-    [QGLNativeAPI("glDeleteQueriesARB")] internal static delegate* unmanaged<int, uint*, void> _glDeleteQueriesARB = null;
+    public static void glDeleteQueriesARB(int n, uint* ids) { QGLFeature.VerifyFunc((nint)_glDeleteQueriesARB); _glDeleteQueriesARB(n, ids); }
+    internal static delegate* unmanaged<int, uint*, void> _glDeleteQueriesARB = null;
     
-    public static bool glIsQueryARB(uint id) { QGLNativeAPI.Verify((nint)_glIsQueryARB); return _glIsQueryARB(id); }
-    [QGLNativeAPI("glIsQueryARB")] internal static delegate* unmanaged<uint, bool> _glIsQueryARB = null;
+    public static bool glIsQueryARB(uint id) { QGLFeature.VerifyFunc((nint)_glIsQueryARB); return _glIsQueryARB(id); }
+    internal static delegate* unmanaged<uint, bool> _glIsQueryARB = null;
     
-    public static void glBeginQueryARB(uint target, uint id) { QGLNativeAPI.Verify((nint)_glBeginQueryARB); _glBeginQueryARB(target, id); }
-    [QGLNativeAPI("glBeginQueryARB")] internal static delegate* unmanaged<uint, uint, void> _glBeginQueryARB = null;
+    public static void glBeginQueryARB(uint target, uint id) { QGLFeature.VerifyFunc((nint)_glBeginQueryARB); _glBeginQueryARB(target, id); }
+    internal static delegate* unmanaged<uint, uint, void> _glBeginQueryARB = null;
     
-    public static void glEndQueryARB(uint target) { QGLNativeAPI.Verify((nint)_glEndQueryARB); _glEndQueryARB(target); }
-    [QGLNativeAPI("glEndQueryARB")] internal static delegate* unmanaged<uint, void> _glEndQueryARB = null;
+    public static void glEndQueryARB(uint target) { QGLFeature.VerifyFunc((nint)_glEndQueryARB); _glEndQueryARB(target); }
+    internal static delegate* unmanaged<uint, void> _glEndQueryARB = null;
     
-    public static void glGetQueryivARB(uint target, uint pname, int* @params) { QGLNativeAPI.Verify((nint)_glGetQueryivARB); _glGetQueryivARB(target, pname, @params); }
-    [QGLNativeAPI("glGetQueryivARB")] internal static delegate* unmanaged<uint, uint, int*, void> _glGetQueryivARB = null;
+    public static void glGetQueryivARB(uint target, uint pname, int* @params) { QGLFeature.VerifyFunc((nint)_glGetQueryivARB); _glGetQueryivARB(target, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, int*, void> _glGetQueryivARB = null;
     
-    public static void glGetQueryObjectivARB(uint id, uint pname, int* @params) { QGLNativeAPI.Verify((nint)_glGetQueryObjectivARB); _glGetQueryObjectivARB(id, pname, @params); }
-    [QGLNativeAPI("glGetQueryObjectivARB")] internal static delegate* unmanaged<uint, uint, int*, void> _glGetQueryObjectivARB = null;
+    public static void glGetQueryObjectivARB(uint id, uint pname, int* @params) { QGLFeature.VerifyFunc((nint)_glGetQueryObjectivARB); _glGetQueryObjectivARB(id, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, int*, void> _glGetQueryObjectivARB = null;
     
-    public static void glGetQueryObjectuivARB(uint id, uint pname, uint* @params) { QGLNativeAPI.Verify((nint)_glGetQueryObjectuivARB); _glGetQueryObjectuivARB(id, pname, @params); }
-    [QGLNativeAPI("glGetQueryObjectuivARB")] internal static delegate* unmanaged<uint, uint, uint*, void> _glGetQueryObjectuivARB = null;
+    public static void glGetQueryObjectuivARB(uint id, uint pname, uint* @params) { QGLFeature.VerifyFunc((nint)_glGetQueryObjectuivARB); _glGetQueryObjectuivARB(id, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, uint*, void> _glGetQueryObjectuivARB = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glGenQueriesARB = (delegate* unmanaged<int, uint*, void>)QuickGL.GetGLProcAddress("glGenQueriesARB");
+        _glDeleteQueriesARB = (delegate* unmanaged<int, uint*, void>)QuickGL.GetGLProcAddress("glDeleteQueriesARB");
+        _glIsQueryARB = (delegate* unmanaged<uint, bool>)QuickGL.GetGLProcAddress("glIsQueryARB");
+        _glBeginQueryARB = (delegate* unmanaged<uint, uint, void>)QuickGL.GetGLProcAddress("glBeginQueryARB");
+        _glEndQueryARB = (delegate* unmanaged<uint, void>)QuickGL.GetGLProcAddress("glEndQueryARB");
+        _glGetQueryivARB = (delegate* unmanaged<uint, uint, int*, void>)QuickGL.GetGLProcAddress("glGetQueryivARB");
+        _glGetQueryObjectivARB = (delegate* unmanaged<uint, uint, int*, void>)QuickGL.GetGLProcAddress("glGetQueryObjectivARB");
+        _glGetQueryObjectuivARB = (delegate* unmanaged<uint, uint, uint*, void>)QuickGL.GetGLProcAddress("glGetQueryObjectuivARB");
+    }
+    
+    internal static void Unload()
+    {
+        _glGenQueriesARB = null;
+        _glDeleteQueriesARB = null;
+        _glIsQueryARB = null;
+        _glBeginQueryARB = null;
+        _glEndQueryARB = null;
+        _glGetQueryivARB = null;
+        _glGetQueryObjectivARB = null;
+        _glGetQueryObjectuivARB = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_occlusion_query", true, false);
 }

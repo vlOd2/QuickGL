@@ -22,20 +22,33 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.531086
+// Bindings generated at 2025-09-20 18:58:19.888977
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_get_texture_sub_image", true, false)]
 public static unsafe class GLEXT_ARBgettexturesubimage
 {
     #region Enums
     #endregion
     
     #region Commands
-    public static void glGetTextureSubImage(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, int bufSize, void* pixels) { QGLNativeAPI.Verify((nint)_glGetTextureSubImage); _glGetTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, bufSize, pixels); }
-    [QGLNativeAPI("glGetTextureSubImage")] internal static delegate* unmanaged<uint, int, int, int, int, int, int, int, uint, uint, int, void*, void> _glGetTextureSubImage = null;
+    public static void glGetTextureSubImage(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, int bufSize, void* pixels) { QGLFeature.VerifyFunc((nint)_glGetTextureSubImage); _glGetTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, bufSize, pixels); }
+    internal static delegate* unmanaged<uint, int, int, int, int, int, int, int, uint, uint, int, void*, void> _glGetTextureSubImage = null;
     
-    public static void glGetCompressedTextureSubImage(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int bufSize, void* pixels) { QGLNativeAPI.Verify((nint)_glGetCompressedTextureSubImage); _glGetCompressedTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, bufSize, pixels); }
-    [QGLNativeAPI("glGetCompressedTextureSubImage")] internal static delegate* unmanaged<uint, int, int, int, int, int, int, int, int, void*, void> _glGetCompressedTextureSubImage = null;
+    public static void glGetCompressedTextureSubImage(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int bufSize, void* pixels) { QGLFeature.VerifyFunc((nint)_glGetCompressedTextureSubImage); _glGetCompressedTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, bufSize, pixels); }
+    internal static delegate* unmanaged<uint, int, int, int, int, int, int, int, int, void*, void> _glGetCompressedTextureSubImage = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glGetTextureSubImage = (delegate* unmanaged<uint, int, int, int, int, int, int, int, uint, uint, int, void*, void>)QuickGL.GetGLProcAddress("glGetTextureSubImage");
+        _glGetCompressedTextureSubImage = (delegate* unmanaged<uint, int, int, int, int, int, int, int, int, void*, void>)QuickGL.GetGLProcAddress("glGetCompressedTextureSubImage");
+    }
+    
+    internal static void Unload()
+    {
+        _glGetTextureSubImage = null;
+        _glGetCompressedTextureSubImage = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_get_texture_sub_image", true, false);
 }

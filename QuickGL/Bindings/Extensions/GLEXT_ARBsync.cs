@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.709459
+// Bindings generated at 2025-09-20 18:58:20.008737
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_sync", true, false)]
 public static unsafe class GLEXT_ARBsync
 {
     #region Enums
@@ -47,25 +46,49 @@ public static unsafe class GLEXT_ARBsync
     #endregion
     
     #region Commands
-    public static nint glFenceSync(uint condition, uint flags) { QGLNativeAPI.Verify((nint)_glFenceSync); return _glFenceSync(condition, flags); }
-    [QGLNativeAPI("glFenceSync")] internal static delegate* unmanaged<uint, uint, nint> _glFenceSync = null;
+    public static nint glFenceSync(uint condition, uint flags) { QGLFeature.VerifyFunc((nint)_glFenceSync); return _glFenceSync(condition, flags); }
+    internal static delegate* unmanaged<uint, uint, nint> _glFenceSync = null;
     
-    public static bool glIsSync(nint sync) { QGLNativeAPI.Verify((nint)_glIsSync); return _glIsSync(sync); }
-    [QGLNativeAPI("glIsSync")] internal static delegate* unmanaged<nint, bool> _glIsSync = null;
+    public static bool glIsSync(nint sync) { QGLFeature.VerifyFunc((nint)_glIsSync); return _glIsSync(sync); }
+    internal static delegate* unmanaged<nint, bool> _glIsSync = null;
     
-    public static void glDeleteSync(nint sync) { QGLNativeAPI.Verify((nint)_glDeleteSync); _glDeleteSync(sync); }
-    [QGLNativeAPI("glDeleteSync")] internal static delegate* unmanaged<nint, void> _glDeleteSync = null;
+    public static void glDeleteSync(nint sync) { QGLFeature.VerifyFunc((nint)_glDeleteSync); _glDeleteSync(sync); }
+    internal static delegate* unmanaged<nint, void> _glDeleteSync = null;
     
-    public static uint glClientWaitSync(nint sync, uint flags, ulong timeout) { QGLNativeAPI.Verify((nint)_glClientWaitSync); return _glClientWaitSync(sync, flags, timeout); }
-    [QGLNativeAPI("glClientWaitSync")] internal static delegate* unmanaged<nint, uint, ulong, uint> _glClientWaitSync = null;
+    public static uint glClientWaitSync(nint sync, uint flags, ulong timeout) { QGLFeature.VerifyFunc((nint)_glClientWaitSync); return _glClientWaitSync(sync, flags, timeout); }
+    internal static delegate* unmanaged<nint, uint, ulong, uint> _glClientWaitSync = null;
     
-    public static void glWaitSync(nint sync, uint flags, ulong timeout) { QGLNativeAPI.Verify((nint)_glWaitSync); _glWaitSync(sync, flags, timeout); }
-    [QGLNativeAPI("glWaitSync")] internal static delegate* unmanaged<nint, uint, ulong, void> _glWaitSync = null;
+    public static void glWaitSync(nint sync, uint flags, ulong timeout) { QGLFeature.VerifyFunc((nint)_glWaitSync); _glWaitSync(sync, flags, timeout); }
+    internal static delegate* unmanaged<nint, uint, ulong, void> _glWaitSync = null;
     
-    public static void glGetInteger64v(uint pname, long* data) { QGLNativeAPI.Verify((nint)_glGetInteger64v); _glGetInteger64v(pname, data); }
-    [QGLNativeAPI("glGetInteger64v")] internal static delegate* unmanaged<uint, long*, void> _glGetInteger64v = null;
+    public static void glGetInteger64v(uint pname, long* data) { QGLFeature.VerifyFunc((nint)_glGetInteger64v); _glGetInteger64v(pname, data); }
+    internal static delegate* unmanaged<uint, long*, void> _glGetInteger64v = null;
     
-    public static void glGetSynciv(nint sync, uint pname, int count, int* length, int* values) { QGLNativeAPI.Verify((nint)_glGetSynciv); _glGetSynciv(sync, pname, count, length, values); }
-    [QGLNativeAPI("glGetSynciv")] internal static delegate* unmanaged<nint, uint, int, int*, int*, void> _glGetSynciv = null;
+    public static void glGetSynciv(nint sync, uint pname, int count, int* length, int* values) { QGLFeature.VerifyFunc((nint)_glGetSynciv); _glGetSynciv(sync, pname, count, length, values); }
+    internal static delegate* unmanaged<nint, uint, int, int*, int*, void> _glGetSynciv = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glFenceSync = (delegate* unmanaged<uint, uint, nint>)QuickGL.GetGLProcAddress("glFenceSync");
+        _glIsSync = (delegate* unmanaged<nint, bool>)QuickGL.GetGLProcAddress("glIsSync");
+        _glDeleteSync = (delegate* unmanaged<nint, void>)QuickGL.GetGLProcAddress("glDeleteSync");
+        _glClientWaitSync = (delegate* unmanaged<nint, uint, ulong, uint>)QuickGL.GetGLProcAddress("glClientWaitSync");
+        _glWaitSync = (delegate* unmanaged<nint, uint, ulong, void>)QuickGL.GetGLProcAddress("glWaitSync");
+        _glGetInteger64v = (delegate* unmanaged<uint, long*, void>)QuickGL.GetGLProcAddress("glGetInteger64v");
+        _glGetSynciv = (delegate* unmanaged<nint, uint, int, int*, int*, void>)QuickGL.GetGLProcAddress("glGetSynciv");
+    }
+    
+    internal static void Unload()
+    {
+        _glFenceSync = null;
+        _glIsSync = null;
+        _glDeleteSync = null;
+        _glClientWaitSync = null;
+        _glWaitSync = null;
+        _glGetInteger64v = null;
+        _glGetSynciv = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_sync", true, false);
 }

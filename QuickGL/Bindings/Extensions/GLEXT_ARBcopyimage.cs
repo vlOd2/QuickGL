@@ -22,17 +22,28 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.493035
+// Bindings generated at 2025-09-20 18:58:19.842212
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_copy_image", true, false)]
 public static unsafe class GLEXT_ARBcopyimage
 {
     #region Enums
     #endregion
     
     #region Commands
-    public static void glCopyImageSubData(uint srcName, uint srcTarget, int srcLevel, int srcX, int srcY, int srcZ, uint dstName, uint dstTarget, int dstLevel, int dstX, int dstY, int dstZ, int srcWidth, int srcHeight, int srcDepth) { QGLNativeAPI.Verify((nint)_glCopyImageSubData); _glCopyImageSubData(srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth); }
-    [QGLNativeAPI("glCopyImageSubData")] internal static delegate* unmanaged<uint, uint, int, int, int, int, uint, uint, int, int, int, int, int, int, int, void> _glCopyImageSubData = null;
+    public static void glCopyImageSubData(uint srcName, uint srcTarget, int srcLevel, int srcX, int srcY, int srcZ, uint dstName, uint dstTarget, int dstLevel, int dstX, int dstY, int dstZ, int srcWidth, int srcHeight, int srcDepth) { QGLFeature.VerifyFunc((nint)_glCopyImageSubData); _glCopyImageSubData(srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth); }
+    internal static delegate* unmanaged<uint, uint, int, int, int, int, uint, uint, int, int, int, int, int, int, int, void> _glCopyImageSubData = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glCopyImageSubData = (delegate* unmanaged<uint, uint, int, int, int, int, uint, uint, int, int, int, int, int, int, int, void>)QuickGL.GetGLProcAddress("glCopyImageSubData");
+    }
+    
+    internal static void Unload()
+    {
+        _glCopyImageSubData = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_copy_image", true, false);
 }

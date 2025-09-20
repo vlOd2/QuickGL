@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.693756
+// Bindings generated at 2025-09-20 18:58:19.987693
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_shading_language_include", true, false)]
 public static unsafe class GLEXT_ARBshadinglanguageinclude
 {
     #region Enums
@@ -35,22 +34,44 @@ public static unsafe class GLEXT_ARBshadinglanguageinclude
     #endregion
     
     #region Commands
-    public static void glNamedStringARB(uint type, int namelen, byte* name, int stringlen, byte* @string) { QGLNativeAPI.Verify((nint)_glNamedStringARB); _glNamedStringARB(type, namelen, name, stringlen, @string); }
-    [QGLNativeAPI("glNamedStringARB")] internal static delegate* unmanaged<uint, int, byte*, int, byte*, void> _glNamedStringARB = null;
+    public static void glNamedStringARB(uint type, int namelen, byte* name, int stringlen, byte* @string) { QGLFeature.VerifyFunc((nint)_glNamedStringARB); _glNamedStringARB(type, namelen, name, stringlen, @string); }
+    internal static delegate* unmanaged<uint, int, byte*, int, byte*, void> _glNamedStringARB = null;
     
-    public static void glDeleteNamedStringARB(int namelen, byte* name) { QGLNativeAPI.Verify((nint)_glDeleteNamedStringARB); _glDeleteNamedStringARB(namelen, name); }
-    [QGLNativeAPI("glDeleteNamedStringARB")] internal static delegate* unmanaged<int, byte*, void> _glDeleteNamedStringARB = null;
+    public static void glDeleteNamedStringARB(int namelen, byte* name) { QGLFeature.VerifyFunc((nint)_glDeleteNamedStringARB); _glDeleteNamedStringARB(namelen, name); }
+    internal static delegate* unmanaged<int, byte*, void> _glDeleteNamedStringARB = null;
     
-    public static void glCompileShaderIncludeARB(uint shader, int count, byte** path, int* length) { QGLNativeAPI.Verify((nint)_glCompileShaderIncludeARB); _glCompileShaderIncludeARB(shader, count, path, length); }
-    [QGLNativeAPI("glCompileShaderIncludeARB")] internal static delegate* unmanaged<uint, int, byte**, int*, void> _glCompileShaderIncludeARB = null;
+    public static void glCompileShaderIncludeARB(uint shader, int count, byte** path, int* length) { QGLFeature.VerifyFunc((nint)_glCompileShaderIncludeARB); _glCompileShaderIncludeARB(shader, count, path, length); }
+    internal static delegate* unmanaged<uint, int, byte**, int*, void> _glCompileShaderIncludeARB = null;
     
-    public static bool glIsNamedStringARB(int namelen, byte* name) { QGLNativeAPI.Verify((nint)_glIsNamedStringARB); return _glIsNamedStringARB(namelen, name); }
-    [QGLNativeAPI("glIsNamedStringARB")] internal static delegate* unmanaged<int, byte*, bool> _glIsNamedStringARB = null;
+    public static bool glIsNamedStringARB(int namelen, byte* name) { QGLFeature.VerifyFunc((nint)_glIsNamedStringARB); return _glIsNamedStringARB(namelen, name); }
+    internal static delegate* unmanaged<int, byte*, bool> _glIsNamedStringARB = null;
     
-    public static void glGetNamedStringARB(int namelen, byte* name, int bufSize, int* stringlen, byte* @string) { QGLNativeAPI.Verify((nint)_glGetNamedStringARB); _glGetNamedStringARB(namelen, name, bufSize, stringlen, @string); }
-    [QGLNativeAPI("glGetNamedStringARB")] internal static delegate* unmanaged<int, byte*, int, int*, byte*, void> _glGetNamedStringARB = null;
+    public static void glGetNamedStringARB(int namelen, byte* name, int bufSize, int* stringlen, byte* @string) { QGLFeature.VerifyFunc((nint)_glGetNamedStringARB); _glGetNamedStringARB(namelen, name, bufSize, stringlen, @string); }
+    internal static delegate* unmanaged<int, byte*, int, int*, byte*, void> _glGetNamedStringARB = null;
     
-    public static void glGetNamedStringivARB(int namelen, byte* name, uint pname, int* @params) { QGLNativeAPI.Verify((nint)_glGetNamedStringivARB); _glGetNamedStringivARB(namelen, name, pname, @params); }
-    [QGLNativeAPI("glGetNamedStringivARB")] internal static delegate* unmanaged<int, byte*, uint, int*, void> _glGetNamedStringivARB = null;
+    public static void glGetNamedStringivARB(int namelen, byte* name, uint pname, int* @params) { QGLFeature.VerifyFunc((nint)_glGetNamedStringivARB); _glGetNamedStringivARB(namelen, name, pname, @params); }
+    internal static delegate* unmanaged<int, byte*, uint, int*, void> _glGetNamedStringivARB = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glNamedStringARB = (delegate* unmanaged<uint, int, byte*, int, byte*, void>)QuickGL.GetGLProcAddress("glNamedStringARB");
+        _glDeleteNamedStringARB = (delegate* unmanaged<int, byte*, void>)QuickGL.GetGLProcAddress("glDeleteNamedStringARB");
+        _glCompileShaderIncludeARB = (delegate* unmanaged<uint, int, byte**, int*, void>)QuickGL.GetGLProcAddress("glCompileShaderIncludeARB");
+        _glIsNamedStringARB = (delegate* unmanaged<int, byte*, bool>)QuickGL.GetGLProcAddress("glIsNamedStringARB");
+        _glGetNamedStringARB = (delegate* unmanaged<int, byte*, int, int*, byte*, void>)QuickGL.GetGLProcAddress("glGetNamedStringARB");
+        _glGetNamedStringivARB = (delegate* unmanaged<int, byte*, uint, int*, void>)QuickGL.GetGLProcAddress("glGetNamedStringivARB");
+    }
+    
+    internal static void Unload()
+    {
+        _glNamedStringARB = null;
+        _glDeleteNamedStringARB = null;
+        _glCompileShaderIncludeARB = null;
+        _glIsNamedStringARB = null;
+        _glGetNamedStringARB = null;
+        _glGetNamedStringivARB = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_shading_language_include", true, false);
 }

@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.760126
+// Bindings generated at 2025-09-20 18:58:20.102911
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_timer_query", true, false)]
 public static unsafe class GLEXT_ARBtimerquery
 {
     #region Enums
@@ -34,13 +33,29 @@ public static unsafe class GLEXT_ARBtimerquery
     #endregion
     
     #region Commands
-    public static void glQueryCounter(uint id, uint target) { QGLNativeAPI.Verify((nint)_glQueryCounter); _glQueryCounter(id, target); }
-    [QGLNativeAPI("glQueryCounter")] internal static delegate* unmanaged<uint, uint, void> _glQueryCounter = null;
+    public static void glQueryCounter(uint id, uint target) { QGLFeature.VerifyFunc((nint)_glQueryCounter); _glQueryCounter(id, target); }
+    internal static delegate* unmanaged<uint, uint, void> _glQueryCounter = null;
     
-    public static void glGetQueryObjecti64v(uint id, uint pname, long* @params) { QGLNativeAPI.Verify((nint)_glGetQueryObjecti64v); _glGetQueryObjecti64v(id, pname, @params); }
-    [QGLNativeAPI("glGetQueryObjecti64v")] internal static delegate* unmanaged<uint, uint, long*, void> _glGetQueryObjecti64v = null;
+    public static void glGetQueryObjecti64v(uint id, uint pname, long* @params) { QGLFeature.VerifyFunc((nint)_glGetQueryObjecti64v); _glGetQueryObjecti64v(id, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, long*, void> _glGetQueryObjecti64v = null;
     
-    public static void glGetQueryObjectui64v(uint id, uint pname, ulong* @params) { QGLNativeAPI.Verify((nint)_glGetQueryObjectui64v); _glGetQueryObjectui64v(id, pname, @params); }
-    [QGLNativeAPI("glGetQueryObjectui64v")] internal static delegate* unmanaged<uint, uint, ulong*, void> _glGetQueryObjectui64v = null;
+    public static void glGetQueryObjectui64v(uint id, uint pname, ulong* @params) { QGLFeature.VerifyFunc((nint)_glGetQueryObjectui64v); _glGetQueryObjectui64v(id, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, ulong*, void> _glGetQueryObjectui64v = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glQueryCounter = (delegate* unmanaged<uint, uint, void>)QuickGL.GetGLProcAddress("glQueryCounter");
+        _glGetQueryObjecti64v = (delegate* unmanaged<uint, uint, long*, void>)QuickGL.GetGLProcAddress("glGetQueryObjecti64v");
+        _glGetQueryObjectui64v = (delegate* unmanaged<uint, uint, ulong*, void>)QuickGL.GetGLProcAddress("glGetQueryObjectui64v");
+    }
+    
+    internal static void Unload()
+    {
+        _glQueryCounter = null;
+        _glGetQueryObjecti64v = null;
+        _glGetQueryObjectui64v = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_timer_query", true, false);
 }

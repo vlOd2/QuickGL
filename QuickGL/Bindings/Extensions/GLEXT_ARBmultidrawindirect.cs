@@ -22,20 +22,33 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.554862
+// Bindings generated at 2025-09-20 18:58:19.914587
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_multi_draw_indirect", true, false)]
 public static unsafe class GLEXT_ARBmultidrawindirect
 {
     #region Enums
     #endregion
     
     #region Commands
-    public static void glMultiDrawArraysIndirect(uint mode, void* indirect, int drawcount, int stride) { QGLNativeAPI.Verify((nint)_glMultiDrawArraysIndirect); _glMultiDrawArraysIndirect(mode, indirect, drawcount, stride); }
-    [QGLNativeAPI("glMultiDrawArraysIndirect")] internal static delegate* unmanaged<uint, void*, int, int, void> _glMultiDrawArraysIndirect = null;
+    public static void glMultiDrawArraysIndirect(uint mode, void* indirect, int drawcount, int stride) { QGLFeature.VerifyFunc((nint)_glMultiDrawArraysIndirect); _glMultiDrawArraysIndirect(mode, indirect, drawcount, stride); }
+    internal static delegate* unmanaged<uint, void*, int, int, void> _glMultiDrawArraysIndirect = null;
     
-    public static void glMultiDrawElementsIndirect(uint mode, uint type, void* indirect, int drawcount, int stride) { QGLNativeAPI.Verify((nint)_glMultiDrawElementsIndirect); _glMultiDrawElementsIndirect(mode, type, indirect, drawcount, stride); }
-    [QGLNativeAPI("glMultiDrawElementsIndirect")] internal static delegate* unmanaged<uint, uint, void*, int, int, void> _glMultiDrawElementsIndirect = null;
+    public static void glMultiDrawElementsIndirect(uint mode, uint type, void* indirect, int drawcount, int stride) { QGLFeature.VerifyFunc((nint)_glMultiDrawElementsIndirect); _glMultiDrawElementsIndirect(mode, type, indirect, drawcount, stride); }
+    internal static delegate* unmanaged<uint, uint, void*, int, int, void> _glMultiDrawElementsIndirect = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glMultiDrawArraysIndirect = (delegate* unmanaged<uint, void*, int, int, void>)QuickGL.GetGLProcAddress("glMultiDrawArraysIndirect");
+        _glMultiDrawElementsIndirect = (delegate* unmanaged<uint, uint, void*, int, int, void>)QuickGL.GetGLProcAddress("glMultiDrawElementsIndirect");
+    }
+    
+    internal static void Unload()
+    {
+        _glMultiDrawArraysIndirect = null;
+        _glMultiDrawElementsIndirect = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_multi_draw_indirect", true, false);
 }

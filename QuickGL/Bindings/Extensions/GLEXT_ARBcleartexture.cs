@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.481707
+// Bindings generated at 2025-09-20 18:58:19.831074
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_clear_texture", true, false)]
 public static unsafe class GLEXT_ARBcleartexture
 {
     #region Enums
@@ -33,10 +32,24 @@ public static unsafe class GLEXT_ARBcleartexture
     #endregion
     
     #region Commands
-    public static void glClearTexImage(uint texture, int level, uint format, uint type, void* data) { QGLNativeAPI.Verify((nint)_glClearTexImage); _glClearTexImage(texture, level, format, type, data); }
-    [QGLNativeAPI("glClearTexImage")] internal static delegate* unmanaged<uint, int, uint, uint, void*, void> _glClearTexImage = null;
+    public static void glClearTexImage(uint texture, int level, uint format, uint type, void* data) { QGLFeature.VerifyFunc((nint)_glClearTexImage); _glClearTexImage(texture, level, format, type, data); }
+    internal static delegate* unmanaged<uint, int, uint, uint, void*, void> _glClearTexImage = null;
     
-    public static void glClearTexSubImage(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, void* data) { QGLNativeAPI.Verify((nint)_glClearTexSubImage); _glClearTexSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data); }
-    [QGLNativeAPI("glClearTexSubImage")] internal static delegate* unmanaged<uint, int, int, int, int, int, int, int, uint, uint, void*, void> _glClearTexSubImage = null;
+    public static void glClearTexSubImage(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, void* data) { QGLFeature.VerifyFunc((nint)_glClearTexSubImage); _glClearTexSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data); }
+    internal static delegate* unmanaged<uint, int, int, int, int, int, int, int, uint, uint, void*, void> _glClearTexSubImage = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glClearTexImage = (delegate* unmanaged<uint, int, uint, uint, void*, void>)QuickGL.GetGLProcAddress("glClearTexImage");
+        _glClearTexSubImage = (delegate* unmanaged<uint, int, int, int, int, int, int, int, uint, uint, void*, void>)QuickGL.GetGLProcAddress("glClearTexSubImage");
+    }
+    
+    internal static void Unload()
+    {
+        _glClearTexImage = null;
+        _glClearTexSubImage = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_clear_texture", true, false);
 }

@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.758814
+// Bindings generated at 2025-09-20 18:58:20.101643
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_texture_view", true, false)]
 public static unsafe class GLEXT_ARBtextureview
 {
     #region Enums
@@ -37,7 +36,19 @@ public static unsafe class GLEXT_ARBtextureview
     #endregion
     
     #region Commands
-    public static void glTextureView(uint texture, uint target, uint origtexture, uint internalformat, uint minlevel, uint numlevels, uint minlayer, uint numlayers) { QGLNativeAPI.Verify((nint)_glTextureView); _glTextureView(texture, target, origtexture, internalformat, minlevel, numlevels, minlayer, numlayers); }
-    [QGLNativeAPI("glTextureView")] internal static delegate* unmanaged<uint, uint, uint, uint, uint, uint, uint, uint, void> _glTextureView = null;
+    public static void glTextureView(uint texture, uint target, uint origtexture, uint internalformat, uint minlevel, uint numlevels, uint minlayer, uint numlayers) { QGLFeature.VerifyFunc((nint)_glTextureView); _glTextureView(texture, target, origtexture, internalformat, minlevel, numlevels, minlayer, numlayers); }
+    internal static delegate* unmanaged<uint, uint, uint, uint, uint, uint, uint, uint, void> _glTextureView = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glTextureView = (delegate* unmanaged<uint, uint, uint, uint, uint, uint, uint, uint, void>)QuickGL.GetGLProcAddress("glTextureView");
+    }
+    
+    internal static void Unload()
+    {
+        _glTextureView = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_texture_view", true, false);
 }

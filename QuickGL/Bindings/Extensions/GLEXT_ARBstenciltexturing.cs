@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.708522
+// Bindings generated at 2025-09-20 18:58:20.007895
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_stencil_texturing", true, false)]
 public static unsafe class GLEXT_ARBstenciltexturing
 {
     #region Enums
@@ -34,4 +33,14 @@ public static unsafe class GLEXT_ARBstenciltexturing
     
     #region Commands
     #endregion
+    
+    internal static void Load()
+    {
+    }
+    
+    internal static void Unload()
+    {
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_stencil_texturing", true, false);
 }

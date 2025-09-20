@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.547186
+// Bindings generated at 2025-09-20 18:58:19.905395
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_internalformat_query2", true, false)]
 public static unsafe class GLEXT_ARBinternalformatquery2
 {
     #region Enums
@@ -166,7 +165,19 @@ public static unsafe class GLEXT_ARBinternalformatquery2
     #endregion
     
     #region Commands
-    public static void glGetInternalformati64v(uint target, uint internalformat, uint pname, int count, long* @params) { QGLNativeAPI.Verify((nint)_glGetInternalformati64v); _glGetInternalformati64v(target, internalformat, pname, count, @params); }
-    [QGLNativeAPI("glGetInternalformati64v")] internal static delegate* unmanaged<uint, uint, uint, int, long*, void> _glGetInternalformati64v = null;
+    public static void glGetInternalformati64v(uint target, uint internalformat, uint pname, int count, long* @params) { QGLFeature.VerifyFunc((nint)_glGetInternalformati64v); _glGetInternalformati64v(target, internalformat, pname, count, @params); }
+    internal static delegate* unmanaged<uint, uint, uint, int, long*, void> _glGetInternalformati64v = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glGetInternalformati64v = (delegate* unmanaged<uint, uint, uint, int, long*, void>)QuickGL.GetGLProcAddress("glGetInternalformati64v");
+    }
+    
+    internal static void Unload()
+    {
+        _glGetInternalformati64v = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_internalformat_query2", true, false);
 }

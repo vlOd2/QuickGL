@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.777389
+// Bindings generated at 2025-09-20 18:58:20.130038
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_vertex_blend", true, false)]
 public static unsafe class GLEXT_ARBvertexblend
 {
     #region Enums
@@ -74,34 +73,64 @@ public static unsafe class GLEXT_ARBvertexblend
     #endregion
     
     #region Commands
-    public static void glWeightbvARB(int size, sbyte* weights) { QGLNativeAPI.Verify((nint)_glWeightbvARB); _glWeightbvARB(size, weights); }
-    [QGLNativeAPI("glWeightbvARB")] internal static delegate* unmanaged<int, sbyte*, void> _glWeightbvARB = null;
+    public static void glWeightbvARB(int size, sbyte* weights) { QGLFeature.VerifyFunc((nint)_glWeightbvARB); _glWeightbvARB(size, weights); }
+    internal static delegate* unmanaged<int, sbyte*, void> _glWeightbvARB = null;
     
-    public static void glWeightsvARB(int size, short* weights) { QGLNativeAPI.Verify((nint)_glWeightsvARB); _glWeightsvARB(size, weights); }
-    [QGLNativeAPI("glWeightsvARB")] internal static delegate* unmanaged<int, short*, void> _glWeightsvARB = null;
+    public static void glWeightsvARB(int size, short* weights) { QGLFeature.VerifyFunc((nint)_glWeightsvARB); _glWeightsvARB(size, weights); }
+    internal static delegate* unmanaged<int, short*, void> _glWeightsvARB = null;
     
-    public static void glWeightivARB(int size, int* weights) { QGLNativeAPI.Verify((nint)_glWeightivARB); _glWeightivARB(size, weights); }
-    [QGLNativeAPI("glWeightivARB")] internal static delegate* unmanaged<int, int*, void> _glWeightivARB = null;
+    public static void glWeightivARB(int size, int* weights) { QGLFeature.VerifyFunc((nint)_glWeightivARB); _glWeightivARB(size, weights); }
+    internal static delegate* unmanaged<int, int*, void> _glWeightivARB = null;
     
-    public static void glWeightfvARB(int size, float* weights) { QGLNativeAPI.Verify((nint)_glWeightfvARB); _glWeightfvARB(size, weights); }
-    [QGLNativeAPI("glWeightfvARB")] internal static delegate* unmanaged<int, float*, void> _glWeightfvARB = null;
+    public static void glWeightfvARB(int size, float* weights) { QGLFeature.VerifyFunc((nint)_glWeightfvARB); _glWeightfvARB(size, weights); }
+    internal static delegate* unmanaged<int, float*, void> _glWeightfvARB = null;
     
-    public static void glWeightdvARB(int size, double* weights) { QGLNativeAPI.Verify((nint)_glWeightdvARB); _glWeightdvARB(size, weights); }
-    [QGLNativeAPI("glWeightdvARB")] internal static delegate* unmanaged<int, double*, void> _glWeightdvARB = null;
+    public static void glWeightdvARB(int size, double* weights) { QGLFeature.VerifyFunc((nint)_glWeightdvARB); _glWeightdvARB(size, weights); }
+    internal static delegate* unmanaged<int, double*, void> _glWeightdvARB = null;
     
-    public static void glWeightubvARB(int size, byte* weights) { QGLNativeAPI.Verify((nint)_glWeightubvARB); _glWeightubvARB(size, weights); }
-    [QGLNativeAPI("glWeightubvARB")] internal static delegate* unmanaged<int, byte*, void> _glWeightubvARB = null;
+    public static void glWeightubvARB(int size, byte* weights) { QGLFeature.VerifyFunc((nint)_glWeightubvARB); _glWeightubvARB(size, weights); }
+    internal static delegate* unmanaged<int, byte*, void> _glWeightubvARB = null;
     
-    public static void glWeightusvARB(int size, ushort* weights) { QGLNativeAPI.Verify((nint)_glWeightusvARB); _glWeightusvARB(size, weights); }
-    [QGLNativeAPI("glWeightusvARB")] internal static delegate* unmanaged<int, ushort*, void> _glWeightusvARB = null;
+    public static void glWeightusvARB(int size, ushort* weights) { QGLFeature.VerifyFunc((nint)_glWeightusvARB); _glWeightusvARB(size, weights); }
+    internal static delegate* unmanaged<int, ushort*, void> _glWeightusvARB = null;
     
-    public static void glWeightuivARB(int size, uint* weights) { QGLNativeAPI.Verify((nint)_glWeightuivARB); _glWeightuivARB(size, weights); }
-    [QGLNativeAPI("glWeightuivARB")] internal static delegate* unmanaged<int, uint*, void> _glWeightuivARB = null;
+    public static void glWeightuivARB(int size, uint* weights) { QGLFeature.VerifyFunc((nint)_glWeightuivARB); _glWeightuivARB(size, weights); }
+    internal static delegate* unmanaged<int, uint*, void> _glWeightuivARB = null;
     
-    public static void glWeightPointerARB(int size, uint type, int stride, void* pointer) { QGLNativeAPI.Verify((nint)_glWeightPointerARB); _glWeightPointerARB(size, type, stride, pointer); }
-    [QGLNativeAPI("glWeightPointerARB")] internal static delegate* unmanaged<int, uint, int, void*, void> _glWeightPointerARB = null;
+    public static void glWeightPointerARB(int size, uint type, int stride, void* pointer) { QGLFeature.VerifyFunc((nint)_glWeightPointerARB); _glWeightPointerARB(size, type, stride, pointer); }
+    internal static delegate* unmanaged<int, uint, int, void*, void> _glWeightPointerARB = null;
     
-    public static void glVertexBlendARB(int count) { QGLNativeAPI.Verify((nint)_glVertexBlendARB); _glVertexBlendARB(count); }
-    [QGLNativeAPI("glVertexBlendARB")] internal static delegate* unmanaged<int, void> _glVertexBlendARB = null;
+    public static void glVertexBlendARB(int count) { QGLFeature.VerifyFunc((nint)_glVertexBlendARB); _glVertexBlendARB(count); }
+    internal static delegate* unmanaged<int, void> _glVertexBlendARB = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glWeightbvARB = (delegate* unmanaged<int, sbyte*, void>)QuickGL.GetGLProcAddress("glWeightbvARB");
+        _glWeightsvARB = (delegate* unmanaged<int, short*, void>)QuickGL.GetGLProcAddress("glWeightsvARB");
+        _glWeightivARB = (delegate* unmanaged<int, int*, void>)QuickGL.GetGLProcAddress("glWeightivARB");
+        _glWeightfvARB = (delegate* unmanaged<int, float*, void>)QuickGL.GetGLProcAddress("glWeightfvARB");
+        _glWeightdvARB = (delegate* unmanaged<int, double*, void>)QuickGL.GetGLProcAddress("glWeightdvARB");
+        _glWeightubvARB = (delegate* unmanaged<int, byte*, void>)QuickGL.GetGLProcAddress("glWeightubvARB");
+        _glWeightusvARB = (delegate* unmanaged<int, ushort*, void>)QuickGL.GetGLProcAddress("glWeightusvARB");
+        _glWeightuivARB = (delegate* unmanaged<int, uint*, void>)QuickGL.GetGLProcAddress("glWeightuivARB");
+        _glWeightPointerARB = (delegate* unmanaged<int, uint, int, void*, void>)QuickGL.GetGLProcAddress("glWeightPointerARB");
+        _glVertexBlendARB = (delegate* unmanaged<int, void>)QuickGL.GetGLProcAddress("glVertexBlendARB");
+    }
+    
+    internal static void Unload()
+    {
+        _glWeightbvARB = null;
+        _glWeightsvARB = null;
+        _glWeightivARB = null;
+        _glWeightfvARB = null;
+        _glWeightdvARB = null;
+        _glWeightubvARB = null;
+        _glWeightusvARB = null;
+        _glWeightuivARB = null;
+        _glWeightPointerARB = null;
+        _glVertexBlendARB = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_vertex_blend", true, false);
 }

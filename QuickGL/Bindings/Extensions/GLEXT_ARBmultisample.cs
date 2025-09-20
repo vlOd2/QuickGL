@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.555768
+// Bindings generated at 2025-09-20 18:58:19.915583
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_multisample", true, false)]
 public static unsafe class GLEXT_ARBmultisample
 {
     #region Enums
@@ -41,7 +40,19 @@ public static unsafe class GLEXT_ARBmultisample
     #endregion
     
     #region Commands
-    public static void glSampleCoverageARB(float value, bool invert) { QGLNativeAPI.Verify((nint)_glSampleCoverageARB); _glSampleCoverageARB(value, invert); }
-    [QGLNativeAPI("glSampleCoverageARB")] internal static delegate* unmanaged<float, bool, void> _glSampleCoverageARB = null;
+    public static void glSampleCoverageARB(float value, bool invert) { QGLFeature.VerifyFunc((nint)_glSampleCoverageARB); _glSampleCoverageARB(value, invert); }
+    internal static delegate* unmanaged<float, bool, void> _glSampleCoverageARB = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glSampleCoverageARB = (delegate* unmanaged<float, bool, void>)QuickGL.GetGLProcAddress("glSampleCoverageARB");
+    }
+    
+    internal static void Unload()
+    {
+        _glSampleCoverageARB = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_multisample", true, false);
 }

@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.699682
+// Bindings generated at 2025-09-20 18:58:20.003010
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_sparse_texture", true, false)]
 public static unsafe class GLEXT_ARBsparsetexture
 {
     #region Enums
@@ -43,7 +42,19 @@ public static unsafe class GLEXT_ARBsparsetexture
     #endregion
     
     #region Commands
-    public static void glTexPageCommitmentARB(uint target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, bool commit) { QGLNativeAPI.Verify((nint)_glTexPageCommitmentARB); _glTexPageCommitmentARB(target, level, xoffset, yoffset, zoffset, width, height, depth, commit); }
-    [QGLNativeAPI("glTexPageCommitmentARB")] internal static delegate* unmanaged<uint, int, int, int, int, int, int, int, bool, void> _glTexPageCommitmentARB = null;
+    public static void glTexPageCommitmentARB(uint target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, bool commit) { QGLFeature.VerifyFunc((nint)_glTexPageCommitmentARB); _glTexPageCommitmentARB(target, level, xoffset, yoffset, zoffset, width, height, depth, commit); }
+    internal static delegate* unmanaged<uint, int, int, int, int, int, int, int, bool, void> _glTexPageCommitmentARB = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glTexPageCommitmentARB = (delegate* unmanaged<uint, int, int, int, int, int, int, int, bool, void>)QuickGL.GetGLProcAddress("glTexPageCommitmentARB");
+    }
+    
+    internal static void Unload()
+    {
+        _glTexPageCommitmentARB = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_sparse_texture", true, false);
 }

@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.766234
+// Bindings generated at 2025-09-20 18:58:20.117104
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_transpose_matrix", true, false)]
 public static unsafe class GLEXT_ARBtransposematrix
 {
     #region Enums
@@ -36,16 +35,34 @@ public static unsafe class GLEXT_ARBtransposematrix
     #endregion
     
     #region Commands
-    public static void glLoadTransposeMatrixfARB(float* m) { QGLNativeAPI.Verify((nint)_glLoadTransposeMatrixfARB); _glLoadTransposeMatrixfARB(m); }
-    [QGLNativeAPI("glLoadTransposeMatrixfARB")] internal static delegate* unmanaged<float*, void> _glLoadTransposeMatrixfARB = null;
+    public static void glLoadTransposeMatrixfARB(float* m) { QGLFeature.VerifyFunc((nint)_glLoadTransposeMatrixfARB); _glLoadTransposeMatrixfARB(m); }
+    internal static delegate* unmanaged<float*, void> _glLoadTransposeMatrixfARB = null;
     
-    public static void glLoadTransposeMatrixdARB(double* m) { QGLNativeAPI.Verify((nint)_glLoadTransposeMatrixdARB); _glLoadTransposeMatrixdARB(m); }
-    [QGLNativeAPI("glLoadTransposeMatrixdARB")] internal static delegate* unmanaged<double*, void> _glLoadTransposeMatrixdARB = null;
+    public static void glLoadTransposeMatrixdARB(double* m) { QGLFeature.VerifyFunc((nint)_glLoadTransposeMatrixdARB); _glLoadTransposeMatrixdARB(m); }
+    internal static delegate* unmanaged<double*, void> _glLoadTransposeMatrixdARB = null;
     
-    public static void glMultTransposeMatrixfARB(float* m) { QGLNativeAPI.Verify((nint)_glMultTransposeMatrixfARB); _glMultTransposeMatrixfARB(m); }
-    [QGLNativeAPI("glMultTransposeMatrixfARB")] internal static delegate* unmanaged<float*, void> _glMultTransposeMatrixfARB = null;
+    public static void glMultTransposeMatrixfARB(float* m) { QGLFeature.VerifyFunc((nint)_glMultTransposeMatrixfARB); _glMultTransposeMatrixfARB(m); }
+    internal static delegate* unmanaged<float*, void> _glMultTransposeMatrixfARB = null;
     
-    public static void glMultTransposeMatrixdARB(double* m) { QGLNativeAPI.Verify((nint)_glMultTransposeMatrixdARB); _glMultTransposeMatrixdARB(m); }
-    [QGLNativeAPI("glMultTransposeMatrixdARB")] internal static delegate* unmanaged<double*, void> _glMultTransposeMatrixdARB = null;
+    public static void glMultTransposeMatrixdARB(double* m) { QGLFeature.VerifyFunc((nint)_glMultTransposeMatrixdARB); _glMultTransposeMatrixdARB(m); }
+    internal static delegate* unmanaged<double*, void> _glMultTransposeMatrixdARB = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glLoadTransposeMatrixfARB = (delegate* unmanaged<float*, void>)QuickGL.GetGLProcAddress("glLoadTransposeMatrixfARB");
+        _glLoadTransposeMatrixdARB = (delegate* unmanaged<double*, void>)QuickGL.GetGLProcAddress("glLoadTransposeMatrixdARB");
+        _glMultTransposeMatrixfARB = (delegate* unmanaged<float*, void>)QuickGL.GetGLProcAddress("glMultTransposeMatrixfARB");
+        _glMultTransposeMatrixdARB = (delegate* unmanaged<double*, void>)QuickGL.GetGLProcAddress("glMultTransposeMatrixdARB");
+    }
+    
+    internal static void Unload()
+    {
+        _glLoadTransposeMatrixfARB = null;
+        _glLoadTransposeMatrixdARB = null;
+        _glMultTransposeMatrixfARB = null;
+        _glMultTransposeMatrixdARB = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_transpose_matrix", true, false);
 }

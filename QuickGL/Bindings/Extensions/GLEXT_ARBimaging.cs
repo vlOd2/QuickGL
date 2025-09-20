@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.541814
+// Bindings generated at 2025-09-20 18:58:19.898868
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_imaging", true, false)]
 public static unsafe class GLEXT_ARBimaging
 {
     #region Enums
@@ -107,106 +106,184 @@ public static unsafe class GLEXT_ARBimaging
     #endregion
     
     #region Commands
-    public static void glBlendColor(float red, float green, float blue, float alpha) { QGLNativeAPI.Verify((nint)_glBlendColor); _glBlendColor(red, green, blue, alpha); }
-    [QGLNativeAPI("glBlendColor")] internal static delegate* unmanaged<float, float, float, float, void> _glBlendColor = null;
+    public static void glBlendColor(float red, float green, float blue, float alpha) { QGLFeature.VerifyFunc((nint)_glBlendColor); _glBlendColor(red, green, blue, alpha); }
+    internal static delegate* unmanaged<float, float, float, float, void> _glBlendColor = null;
     
-    public static void glBlendEquation(uint mode) { QGLNativeAPI.Verify((nint)_glBlendEquation); _glBlendEquation(mode); }
-    [QGLNativeAPI("glBlendEquation")] internal static delegate* unmanaged<uint, void> _glBlendEquation = null;
+    public static void glBlendEquation(uint mode) { QGLFeature.VerifyFunc((nint)_glBlendEquation); _glBlendEquation(mode); }
+    internal static delegate* unmanaged<uint, void> _glBlendEquation = null;
     
-    public static void glColorTable(uint target, uint internalformat, int width, uint format, uint type, void* table) { QGLNativeAPI.Verify((nint)_glColorTable); _glColorTable(target, internalformat, width, format, type, table); }
-    [QGLNativeAPI("glColorTable")] internal static delegate* unmanaged<uint, uint, int, uint, uint, void*, void> _glColorTable = null;
+    public static void glColorTable(uint target, uint internalformat, int width, uint format, uint type, void* table) { QGLFeature.VerifyFunc((nint)_glColorTable); _glColorTable(target, internalformat, width, format, type, table); }
+    internal static delegate* unmanaged<uint, uint, int, uint, uint, void*, void> _glColorTable = null;
     
-    public static void glColorTableParameterfv(uint target, uint pname, float* @params) { QGLNativeAPI.Verify((nint)_glColorTableParameterfv); _glColorTableParameterfv(target, pname, @params); }
-    [QGLNativeAPI("glColorTableParameterfv")] internal static delegate* unmanaged<uint, uint, float*, void> _glColorTableParameterfv = null;
+    public static void glColorTableParameterfv(uint target, uint pname, float* @params) { QGLFeature.VerifyFunc((nint)_glColorTableParameterfv); _glColorTableParameterfv(target, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, float*, void> _glColorTableParameterfv = null;
     
-    public static void glColorTableParameteriv(uint target, uint pname, int* @params) { QGLNativeAPI.Verify((nint)_glColorTableParameteriv); _glColorTableParameteriv(target, pname, @params); }
-    [QGLNativeAPI("glColorTableParameteriv")] internal static delegate* unmanaged<uint, uint, int*, void> _glColorTableParameteriv = null;
+    public static void glColorTableParameteriv(uint target, uint pname, int* @params) { QGLFeature.VerifyFunc((nint)_glColorTableParameteriv); _glColorTableParameteriv(target, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, int*, void> _glColorTableParameteriv = null;
     
-    public static void glCopyColorTable(uint target, uint internalformat, int x, int y, int width) { QGLNativeAPI.Verify((nint)_glCopyColorTable); _glCopyColorTable(target, internalformat, x, y, width); }
-    [QGLNativeAPI("glCopyColorTable")] internal static delegate* unmanaged<uint, uint, int, int, int, void> _glCopyColorTable = null;
+    public static void glCopyColorTable(uint target, uint internalformat, int x, int y, int width) { QGLFeature.VerifyFunc((nint)_glCopyColorTable); _glCopyColorTable(target, internalformat, x, y, width); }
+    internal static delegate* unmanaged<uint, uint, int, int, int, void> _glCopyColorTable = null;
     
-    public static void glGetColorTable(uint target, uint format, uint type, void* table) { QGLNativeAPI.Verify((nint)_glGetColorTable); _glGetColorTable(target, format, type, table); }
-    [QGLNativeAPI("glGetColorTable")] internal static delegate* unmanaged<uint, uint, uint, void*, void> _glGetColorTable = null;
+    public static void glGetColorTable(uint target, uint format, uint type, void* table) { QGLFeature.VerifyFunc((nint)_glGetColorTable); _glGetColorTable(target, format, type, table); }
+    internal static delegate* unmanaged<uint, uint, uint, void*, void> _glGetColorTable = null;
     
-    public static void glGetColorTableParameterfv(uint target, uint pname, float* @params) { QGLNativeAPI.Verify((nint)_glGetColorTableParameterfv); _glGetColorTableParameterfv(target, pname, @params); }
-    [QGLNativeAPI("glGetColorTableParameterfv")] internal static delegate* unmanaged<uint, uint, float*, void> _glGetColorTableParameterfv = null;
+    public static void glGetColorTableParameterfv(uint target, uint pname, float* @params) { QGLFeature.VerifyFunc((nint)_glGetColorTableParameterfv); _glGetColorTableParameterfv(target, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, float*, void> _glGetColorTableParameterfv = null;
     
-    public static void glGetColorTableParameteriv(uint target, uint pname, int* @params) { QGLNativeAPI.Verify((nint)_glGetColorTableParameteriv); _glGetColorTableParameteriv(target, pname, @params); }
-    [QGLNativeAPI("glGetColorTableParameteriv")] internal static delegate* unmanaged<uint, uint, int*, void> _glGetColorTableParameteriv = null;
+    public static void glGetColorTableParameteriv(uint target, uint pname, int* @params) { QGLFeature.VerifyFunc((nint)_glGetColorTableParameteriv); _glGetColorTableParameteriv(target, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, int*, void> _glGetColorTableParameteriv = null;
     
-    public static void glColorSubTable(uint target, int start, int count, uint format, uint type, void* data) { QGLNativeAPI.Verify((nint)_glColorSubTable); _glColorSubTable(target, start, count, format, type, data); }
-    [QGLNativeAPI("glColorSubTable")] internal static delegate* unmanaged<uint, int, int, uint, uint, void*, void> _glColorSubTable = null;
+    public static void glColorSubTable(uint target, int start, int count, uint format, uint type, void* data) { QGLFeature.VerifyFunc((nint)_glColorSubTable); _glColorSubTable(target, start, count, format, type, data); }
+    internal static delegate* unmanaged<uint, int, int, uint, uint, void*, void> _glColorSubTable = null;
     
-    public static void glCopyColorSubTable(uint target, int start, int x, int y, int width) { QGLNativeAPI.Verify((nint)_glCopyColorSubTable); _glCopyColorSubTable(target, start, x, y, width); }
-    [QGLNativeAPI("glCopyColorSubTable")] internal static delegate* unmanaged<uint, int, int, int, int, void> _glCopyColorSubTable = null;
+    public static void glCopyColorSubTable(uint target, int start, int x, int y, int width) { QGLFeature.VerifyFunc((nint)_glCopyColorSubTable); _glCopyColorSubTable(target, start, x, y, width); }
+    internal static delegate* unmanaged<uint, int, int, int, int, void> _glCopyColorSubTable = null;
     
-    public static void glConvolutionFilter1D(uint target, uint internalformat, int width, uint format, uint type, void* image) { QGLNativeAPI.Verify((nint)_glConvolutionFilter1D); _glConvolutionFilter1D(target, internalformat, width, format, type, image); }
-    [QGLNativeAPI("glConvolutionFilter1D")] internal static delegate* unmanaged<uint, uint, int, uint, uint, void*, void> _glConvolutionFilter1D = null;
+    public static void glConvolutionFilter1D(uint target, uint internalformat, int width, uint format, uint type, void* image) { QGLFeature.VerifyFunc((nint)_glConvolutionFilter1D); _glConvolutionFilter1D(target, internalformat, width, format, type, image); }
+    internal static delegate* unmanaged<uint, uint, int, uint, uint, void*, void> _glConvolutionFilter1D = null;
     
-    public static void glConvolutionFilter2D(uint target, uint internalformat, int width, int height, uint format, uint type, void* image) { QGLNativeAPI.Verify((nint)_glConvolutionFilter2D); _glConvolutionFilter2D(target, internalformat, width, height, format, type, image); }
-    [QGLNativeAPI("glConvolutionFilter2D")] internal static delegate* unmanaged<uint, uint, int, int, uint, uint, void*, void> _glConvolutionFilter2D = null;
+    public static void glConvolutionFilter2D(uint target, uint internalformat, int width, int height, uint format, uint type, void* image) { QGLFeature.VerifyFunc((nint)_glConvolutionFilter2D); _glConvolutionFilter2D(target, internalformat, width, height, format, type, image); }
+    internal static delegate* unmanaged<uint, uint, int, int, uint, uint, void*, void> _glConvolutionFilter2D = null;
     
-    public static void glConvolutionParameterf(uint target, uint pname, float @params) { QGLNativeAPI.Verify((nint)_glConvolutionParameterf); _glConvolutionParameterf(target, pname, @params); }
-    [QGLNativeAPI("glConvolutionParameterf")] internal static delegate* unmanaged<uint, uint, float, void> _glConvolutionParameterf = null;
+    public static void glConvolutionParameterf(uint target, uint pname, float @params) { QGLFeature.VerifyFunc((nint)_glConvolutionParameterf); _glConvolutionParameterf(target, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, float, void> _glConvolutionParameterf = null;
     
-    public static void glConvolutionParameterfv(uint target, uint pname, float* @params) { QGLNativeAPI.Verify((nint)_glConvolutionParameterfv); _glConvolutionParameterfv(target, pname, @params); }
-    [QGLNativeAPI("glConvolutionParameterfv")] internal static delegate* unmanaged<uint, uint, float*, void> _glConvolutionParameterfv = null;
+    public static void glConvolutionParameterfv(uint target, uint pname, float* @params) { QGLFeature.VerifyFunc((nint)_glConvolutionParameterfv); _glConvolutionParameterfv(target, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, float*, void> _glConvolutionParameterfv = null;
     
-    public static void glConvolutionParameteri(uint target, uint pname, int @params) { QGLNativeAPI.Verify((nint)_glConvolutionParameteri); _glConvolutionParameteri(target, pname, @params); }
-    [QGLNativeAPI("glConvolutionParameteri")] internal static delegate* unmanaged<uint, uint, int, void> _glConvolutionParameteri = null;
+    public static void glConvolutionParameteri(uint target, uint pname, int @params) { QGLFeature.VerifyFunc((nint)_glConvolutionParameteri); _glConvolutionParameteri(target, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, int, void> _glConvolutionParameteri = null;
     
-    public static void glConvolutionParameteriv(uint target, uint pname, int* @params) { QGLNativeAPI.Verify((nint)_glConvolutionParameteriv); _glConvolutionParameteriv(target, pname, @params); }
-    [QGLNativeAPI("glConvolutionParameteriv")] internal static delegate* unmanaged<uint, uint, int*, void> _glConvolutionParameteriv = null;
+    public static void glConvolutionParameteriv(uint target, uint pname, int* @params) { QGLFeature.VerifyFunc((nint)_glConvolutionParameteriv); _glConvolutionParameteriv(target, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, int*, void> _glConvolutionParameteriv = null;
     
-    public static void glCopyConvolutionFilter1D(uint target, uint internalformat, int x, int y, int width) { QGLNativeAPI.Verify((nint)_glCopyConvolutionFilter1D); _glCopyConvolutionFilter1D(target, internalformat, x, y, width); }
-    [QGLNativeAPI("glCopyConvolutionFilter1D")] internal static delegate* unmanaged<uint, uint, int, int, int, void> _glCopyConvolutionFilter1D = null;
+    public static void glCopyConvolutionFilter1D(uint target, uint internalformat, int x, int y, int width) { QGLFeature.VerifyFunc((nint)_glCopyConvolutionFilter1D); _glCopyConvolutionFilter1D(target, internalformat, x, y, width); }
+    internal static delegate* unmanaged<uint, uint, int, int, int, void> _glCopyConvolutionFilter1D = null;
     
-    public static void glCopyConvolutionFilter2D(uint target, uint internalformat, int x, int y, int width, int height) { QGLNativeAPI.Verify((nint)_glCopyConvolutionFilter2D); _glCopyConvolutionFilter2D(target, internalformat, x, y, width, height); }
-    [QGLNativeAPI("glCopyConvolutionFilter2D")] internal static delegate* unmanaged<uint, uint, int, int, int, int, void> _glCopyConvolutionFilter2D = null;
+    public static void glCopyConvolutionFilter2D(uint target, uint internalformat, int x, int y, int width, int height) { QGLFeature.VerifyFunc((nint)_glCopyConvolutionFilter2D); _glCopyConvolutionFilter2D(target, internalformat, x, y, width, height); }
+    internal static delegate* unmanaged<uint, uint, int, int, int, int, void> _glCopyConvolutionFilter2D = null;
     
-    public static void glGetConvolutionFilter(uint target, uint format, uint type, void* image) { QGLNativeAPI.Verify((nint)_glGetConvolutionFilter); _glGetConvolutionFilter(target, format, type, image); }
-    [QGLNativeAPI("glGetConvolutionFilter")] internal static delegate* unmanaged<uint, uint, uint, void*, void> _glGetConvolutionFilter = null;
+    public static void glGetConvolutionFilter(uint target, uint format, uint type, void* image) { QGLFeature.VerifyFunc((nint)_glGetConvolutionFilter); _glGetConvolutionFilter(target, format, type, image); }
+    internal static delegate* unmanaged<uint, uint, uint, void*, void> _glGetConvolutionFilter = null;
     
-    public static void glGetConvolutionParameterfv(uint target, uint pname, float* @params) { QGLNativeAPI.Verify((nint)_glGetConvolutionParameterfv); _glGetConvolutionParameterfv(target, pname, @params); }
-    [QGLNativeAPI("glGetConvolutionParameterfv")] internal static delegate* unmanaged<uint, uint, float*, void> _glGetConvolutionParameterfv = null;
+    public static void glGetConvolutionParameterfv(uint target, uint pname, float* @params) { QGLFeature.VerifyFunc((nint)_glGetConvolutionParameterfv); _glGetConvolutionParameterfv(target, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, float*, void> _glGetConvolutionParameterfv = null;
     
-    public static void glGetConvolutionParameteriv(uint target, uint pname, int* @params) { QGLNativeAPI.Verify((nint)_glGetConvolutionParameteriv); _glGetConvolutionParameteriv(target, pname, @params); }
-    [QGLNativeAPI("glGetConvolutionParameteriv")] internal static delegate* unmanaged<uint, uint, int*, void> _glGetConvolutionParameteriv = null;
+    public static void glGetConvolutionParameteriv(uint target, uint pname, int* @params) { QGLFeature.VerifyFunc((nint)_glGetConvolutionParameteriv); _glGetConvolutionParameteriv(target, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, int*, void> _glGetConvolutionParameteriv = null;
     
-    public static void glGetSeparableFilter(uint target, uint format, uint type, void* row, void* column, void* span) { QGLNativeAPI.Verify((nint)_glGetSeparableFilter); _glGetSeparableFilter(target, format, type, row, column, span); }
-    [QGLNativeAPI("glGetSeparableFilter")] internal static delegate* unmanaged<uint, uint, uint, void*, void*, void*, void> _glGetSeparableFilter = null;
+    public static void glGetSeparableFilter(uint target, uint format, uint type, void* row, void* column, void* span) { QGLFeature.VerifyFunc((nint)_glGetSeparableFilter); _glGetSeparableFilter(target, format, type, row, column, span); }
+    internal static delegate* unmanaged<uint, uint, uint, void*, void*, void*, void> _glGetSeparableFilter = null;
     
-    public static void glSeparableFilter2D(uint target, uint internalformat, int width, int height, uint format, uint type, void* row, void* column) { QGLNativeAPI.Verify((nint)_glSeparableFilter2D); _glSeparableFilter2D(target, internalformat, width, height, format, type, row, column); }
-    [QGLNativeAPI("glSeparableFilter2D")] internal static delegate* unmanaged<uint, uint, int, int, uint, uint, void*, void*, void> _glSeparableFilter2D = null;
+    public static void glSeparableFilter2D(uint target, uint internalformat, int width, int height, uint format, uint type, void* row, void* column) { QGLFeature.VerifyFunc((nint)_glSeparableFilter2D); _glSeparableFilter2D(target, internalformat, width, height, format, type, row, column); }
+    internal static delegate* unmanaged<uint, uint, int, int, uint, uint, void*, void*, void> _glSeparableFilter2D = null;
     
-    public static void glGetHistogram(uint target, bool reset, uint format, uint type, void* values) { QGLNativeAPI.Verify((nint)_glGetHistogram); _glGetHistogram(target, reset, format, type, values); }
-    [QGLNativeAPI("glGetHistogram")] internal static delegate* unmanaged<uint, bool, uint, uint, void*, void> _glGetHistogram = null;
+    public static void glGetHistogram(uint target, bool reset, uint format, uint type, void* values) { QGLFeature.VerifyFunc((nint)_glGetHistogram); _glGetHistogram(target, reset, format, type, values); }
+    internal static delegate* unmanaged<uint, bool, uint, uint, void*, void> _glGetHistogram = null;
     
-    public static void glGetHistogramParameterfv(uint target, uint pname, float* @params) { QGLNativeAPI.Verify((nint)_glGetHistogramParameterfv); _glGetHistogramParameterfv(target, pname, @params); }
-    [QGLNativeAPI("glGetHistogramParameterfv")] internal static delegate* unmanaged<uint, uint, float*, void> _glGetHistogramParameterfv = null;
+    public static void glGetHistogramParameterfv(uint target, uint pname, float* @params) { QGLFeature.VerifyFunc((nint)_glGetHistogramParameterfv); _glGetHistogramParameterfv(target, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, float*, void> _glGetHistogramParameterfv = null;
     
-    public static void glGetHistogramParameteriv(uint target, uint pname, int* @params) { QGLNativeAPI.Verify((nint)_glGetHistogramParameteriv); _glGetHistogramParameteriv(target, pname, @params); }
-    [QGLNativeAPI("glGetHistogramParameteriv")] internal static delegate* unmanaged<uint, uint, int*, void> _glGetHistogramParameteriv = null;
+    public static void glGetHistogramParameteriv(uint target, uint pname, int* @params) { QGLFeature.VerifyFunc((nint)_glGetHistogramParameteriv); _glGetHistogramParameteriv(target, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, int*, void> _glGetHistogramParameteriv = null;
     
-    public static void glGetMinmax(uint target, bool reset, uint format, uint type, void* values) { QGLNativeAPI.Verify((nint)_glGetMinmax); _glGetMinmax(target, reset, format, type, values); }
-    [QGLNativeAPI("glGetMinmax")] internal static delegate* unmanaged<uint, bool, uint, uint, void*, void> _glGetMinmax = null;
+    public static void glGetMinmax(uint target, bool reset, uint format, uint type, void* values) { QGLFeature.VerifyFunc((nint)_glGetMinmax); _glGetMinmax(target, reset, format, type, values); }
+    internal static delegate* unmanaged<uint, bool, uint, uint, void*, void> _glGetMinmax = null;
     
-    public static void glGetMinmaxParameterfv(uint target, uint pname, float* @params) { QGLNativeAPI.Verify((nint)_glGetMinmaxParameterfv); _glGetMinmaxParameterfv(target, pname, @params); }
-    [QGLNativeAPI("glGetMinmaxParameterfv")] internal static delegate* unmanaged<uint, uint, float*, void> _glGetMinmaxParameterfv = null;
+    public static void glGetMinmaxParameterfv(uint target, uint pname, float* @params) { QGLFeature.VerifyFunc((nint)_glGetMinmaxParameterfv); _glGetMinmaxParameterfv(target, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, float*, void> _glGetMinmaxParameterfv = null;
     
-    public static void glGetMinmaxParameteriv(uint target, uint pname, int* @params) { QGLNativeAPI.Verify((nint)_glGetMinmaxParameteriv); _glGetMinmaxParameteriv(target, pname, @params); }
-    [QGLNativeAPI("glGetMinmaxParameteriv")] internal static delegate* unmanaged<uint, uint, int*, void> _glGetMinmaxParameteriv = null;
+    public static void glGetMinmaxParameteriv(uint target, uint pname, int* @params) { QGLFeature.VerifyFunc((nint)_glGetMinmaxParameteriv); _glGetMinmaxParameteriv(target, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, int*, void> _glGetMinmaxParameteriv = null;
     
-    public static void glHistogram(uint target, int width, uint internalformat, bool sink) { QGLNativeAPI.Verify((nint)_glHistogram); _glHistogram(target, width, internalformat, sink); }
-    [QGLNativeAPI("glHistogram")] internal static delegate* unmanaged<uint, int, uint, bool, void> _glHistogram = null;
+    public static void glHistogram(uint target, int width, uint internalformat, bool sink) { QGLFeature.VerifyFunc((nint)_glHistogram); _glHistogram(target, width, internalformat, sink); }
+    internal static delegate* unmanaged<uint, int, uint, bool, void> _glHistogram = null;
     
-    public static void glMinmax(uint target, uint internalformat, bool sink) { QGLNativeAPI.Verify((nint)_glMinmax); _glMinmax(target, internalformat, sink); }
-    [QGLNativeAPI("glMinmax")] internal static delegate* unmanaged<uint, uint, bool, void> _glMinmax = null;
+    public static void glMinmax(uint target, uint internalformat, bool sink) { QGLFeature.VerifyFunc((nint)_glMinmax); _glMinmax(target, internalformat, sink); }
+    internal static delegate* unmanaged<uint, uint, bool, void> _glMinmax = null;
     
-    public static void glResetHistogram(uint target) { QGLNativeAPI.Verify((nint)_glResetHistogram); _glResetHistogram(target); }
-    [QGLNativeAPI("glResetHistogram")] internal static delegate* unmanaged<uint, void> _glResetHistogram = null;
+    public static void glResetHistogram(uint target) { QGLFeature.VerifyFunc((nint)_glResetHistogram); _glResetHistogram(target); }
+    internal static delegate* unmanaged<uint, void> _glResetHistogram = null;
     
-    public static void glResetMinmax(uint target) { QGLNativeAPI.Verify((nint)_glResetMinmax); _glResetMinmax(target); }
-    [QGLNativeAPI("glResetMinmax")] internal static delegate* unmanaged<uint, void> _glResetMinmax = null;
+    public static void glResetMinmax(uint target) { QGLFeature.VerifyFunc((nint)_glResetMinmax); _glResetMinmax(target); }
+    internal static delegate* unmanaged<uint, void> _glResetMinmax = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glBlendColor = (delegate* unmanaged<float, float, float, float, void>)QuickGL.GetGLProcAddress("glBlendColor");
+        _glBlendEquation = (delegate* unmanaged<uint, void>)QuickGL.GetGLProcAddress("glBlendEquation");
+        _glColorTable = (delegate* unmanaged<uint, uint, int, uint, uint, void*, void>)QuickGL.GetGLProcAddress("glColorTable");
+        _glColorTableParameterfv = (delegate* unmanaged<uint, uint, float*, void>)QuickGL.GetGLProcAddress("glColorTableParameterfv");
+        _glColorTableParameteriv = (delegate* unmanaged<uint, uint, int*, void>)QuickGL.GetGLProcAddress("glColorTableParameteriv");
+        _glCopyColorTable = (delegate* unmanaged<uint, uint, int, int, int, void>)QuickGL.GetGLProcAddress("glCopyColorTable");
+        _glGetColorTable = (delegate* unmanaged<uint, uint, uint, void*, void>)QuickGL.GetGLProcAddress("glGetColorTable");
+        _glGetColorTableParameterfv = (delegate* unmanaged<uint, uint, float*, void>)QuickGL.GetGLProcAddress("glGetColorTableParameterfv");
+        _glGetColorTableParameteriv = (delegate* unmanaged<uint, uint, int*, void>)QuickGL.GetGLProcAddress("glGetColorTableParameteriv");
+        _glColorSubTable = (delegate* unmanaged<uint, int, int, uint, uint, void*, void>)QuickGL.GetGLProcAddress("glColorSubTable");
+        _glCopyColorSubTable = (delegate* unmanaged<uint, int, int, int, int, void>)QuickGL.GetGLProcAddress("glCopyColorSubTable");
+        _glConvolutionFilter1D = (delegate* unmanaged<uint, uint, int, uint, uint, void*, void>)QuickGL.GetGLProcAddress("glConvolutionFilter1D");
+        _glConvolutionFilter2D = (delegate* unmanaged<uint, uint, int, int, uint, uint, void*, void>)QuickGL.GetGLProcAddress("glConvolutionFilter2D");
+        _glConvolutionParameterf = (delegate* unmanaged<uint, uint, float, void>)QuickGL.GetGLProcAddress("glConvolutionParameterf");
+        _glConvolutionParameterfv = (delegate* unmanaged<uint, uint, float*, void>)QuickGL.GetGLProcAddress("glConvolutionParameterfv");
+        _glConvolutionParameteri = (delegate* unmanaged<uint, uint, int, void>)QuickGL.GetGLProcAddress("glConvolutionParameteri");
+        _glConvolutionParameteriv = (delegate* unmanaged<uint, uint, int*, void>)QuickGL.GetGLProcAddress("glConvolutionParameteriv");
+        _glCopyConvolutionFilter1D = (delegate* unmanaged<uint, uint, int, int, int, void>)QuickGL.GetGLProcAddress("glCopyConvolutionFilter1D");
+        _glCopyConvolutionFilter2D = (delegate* unmanaged<uint, uint, int, int, int, int, void>)QuickGL.GetGLProcAddress("glCopyConvolutionFilter2D");
+        _glGetConvolutionFilter = (delegate* unmanaged<uint, uint, uint, void*, void>)QuickGL.GetGLProcAddress("glGetConvolutionFilter");
+        _glGetConvolutionParameterfv = (delegate* unmanaged<uint, uint, float*, void>)QuickGL.GetGLProcAddress("glGetConvolutionParameterfv");
+        _glGetConvolutionParameteriv = (delegate* unmanaged<uint, uint, int*, void>)QuickGL.GetGLProcAddress("glGetConvolutionParameteriv");
+        _glGetSeparableFilter = (delegate* unmanaged<uint, uint, uint, void*, void*, void*, void>)QuickGL.GetGLProcAddress("glGetSeparableFilter");
+        _glSeparableFilter2D = (delegate* unmanaged<uint, uint, int, int, uint, uint, void*, void*, void>)QuickGL.GetGLProcAddress("glSeparableFilter2D");
+        _glGetHistogram = (delegate* unmanaged<uint, bool, uint, uint, void*, void>)QuickGL.GetGLProcAddress("glGetHistogram");
+        _glGetHistogramParameterfv = (delegate* unmanaged<uint, uint, float*, void>)QuickGL.GetGLProcAddress("glGetHistogramParameterfv");
+        _glGetHistogramParameteriv = (delegate* unmanaged<uint, uint, int*, void>)QuickGL.GetGLProcAddress("glGetHistogramParameteriv");
+        _glGetMinmax = (delegate* unmanaged<uint, bool, uint, uint, void*, void>)QuickGL.GetGLProcAddress("glGetMinmax");
+        _glGetMinmaxParameterfv = (delegate* unmanaged<uint, uint, float*, void>)QuickGL.GetGLProcAddress("glGetMinmaxParameterfv");
+        _glGetMinmaxParameteriv = (delegate* unmanaged<uint, uint, int*, void>)QuickGL.GetGLProcAddress("glGetMinmaxParameteriv");
+        _glHistogram = (delegate* unmanaged<uint, int, uint, bool, void>)QuickGL.GetGLProcAddress("glHistogram");
+        _glMinmax = (delegate* unmanaged<uint, uint, bool, void>)QuickGL.GetGLProcAddress("glMinmax");
+        _glResetHistogram = (delegate* unmanaged<uint, void>)QuickGL.GetGLProcAddress("glResetHistogram");
+        _glResetMinmax = (delegate* unmanaged<uint, void>)QuickGL.GetGLProcAddress("glResetMinmax");
+    }
+    
+    internal static void Unload()
+    {
+        _glBlendColor = null;
+        _glBlendEquation = null;
+        _glColorTable = null;
+        _glColorTableParameterfv = null;
+        _glColorTableParameteriv = null;
+        _glCopyColorTable = null;
+        _glGetColorTable = null;
+        _glGetColorTableParameterfv = null;
+        _glGetColorTableParameteriv = null;
+        _glColorSubTable = null;
+        _glCopyColorSubTable = null;
+        _glConvolutionFilter1D = null;
+        _glConvolutionFilter2D = null;
+        _glConvolutionParameterf = null;
+        _glConvolutionParameterfv = null;
+        _glConvolutionParameteri = null;
+        _glConvolutionParameteriv = null;
+        _glCopyConvolutionFilter1D = null;
+        _glCopyConvolutionFilter2D = null;
+        _glGetConvolutionFilter = null;
+        _glGetConvolutionParameterfv = null;
+        _glGetConvolutionParameteriv = null;
+        _glGetSeparableFilter = null;
+        _glSeparableFilter2D = null;
+        _glGetHistogram = null;
+        _glGetHistogramParameterfv = null;
+        _glGetHistogramParameteriv = null;
+        _glGetMinmax = null;
+        _glGetMinmaxParameterfv = null;
+        _glGetMinmaxParameteriv = null;
+        _glHistogram = null;
+        _glMinmax = null;
+        _glResetHistogram = null;
+        _glResetMinmax = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_imaging", true, false);
 }

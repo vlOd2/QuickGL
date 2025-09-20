@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.741259
+// Bindings generated at 2025-09-20 18:58:20.051341
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_texture_mirror_clamp_to_edge", true, false)]
 public static unsafe class GLEXT_ARBtexturemirrorclamptoedge
 {
     #region Enums
@@ -34,4 +33,14 @@ public static unsafe class GLEXT_ARBtexturemirrorclamptoedge
     
     #region Commands
     #endregion
+    
+    internal static void Load()
+    {
+    }
+    
+    internal static void Unload()
+    {
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_texture_mirror_clamp_to_edge", true, false);
 }

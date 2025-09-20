@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.773809
+// Bindings generated at 2025-09-20 18:58:20.122720
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_vertex_array_object", true, false)]
 public static unsafe class GLEXT_ARBvertexarrayobject
 {
     #region Enums
@@ -33,16 +32,34 @@ public static unsafe class GLEXT_ARBvertexarrayobject
     #endregion
     
     #region Commands
-    public static void glBindVertexArray(uint array) { QGLNativeAPI.Verify((nint)_glBindVertexArray); _glBindVertexArray(array); }
-    [QGLNativeAPI("glBindVertexArray")] internal static delegate* unmanaged<uint, void> _glBindVertexArray = null;
+    public static void glBindVertexArray(uint array) { QGLFeature.VerifyFunc((nint)_glBindVertexArray); _glBindVertexArray(array); }
+    internal static delegate* unmanaged<uint, void> _glBindVertexArray = null;
     
-    public static void glDeleteVertexArrays(int n, uint* arrays) { QGLNativeAPI.Verify((nint)_glDeleteVertexArrays); _glDeleteVertexArrays(n, arrays); }
-    [QGLNativeAPI("glDeleteVertexArrays")] internal static delegate* unmanaged<int, uint*, void> _glDeleteVertexArrays = null;
+    public static void glDeleteVertexArrays(int n, uint* arrays) { QGLFeature.VerifyFunc((nint)_glDeleteVertexArrays); _glDeleteVertexArrays(n, arrays); }
+    internal static delegate* unmanaged<int, uint*, void> _glDeleteVertexArrays = null;
     
-    public static void glGenVertexArrays(int n, uint* arrays) { QGLNativeAPI.Verify((nint)_glGenVertexArrays); _glGenVertexArrays(n, arrays); }
-    [QGLNativeAPI("glGenVertexArrays")] internal static delegate* unmanaged<int, uint*, void> _glGenVertexArrays = null;
+    public static void glGenVertexArrays(int n, uint* arrays) { QGLFeature.VerifyFunc((nint)_glGenVertexArrays); _glGenVertexArrays(n, arrays); }
+    internal static delegate* unmanaged<int, uint*, void> _glGenVertexArrays = null;
     
-    public static bool glIsVertexArray(uint array) { QGLNativeAPI.Verify((nint)_glIsVertexArray); return _glIsVertexArray(array); }
-    [QGLNativeAPI("glIsVertexArray")] internal static delegate* unmanaged<uint, bool> _glIsVertexArray = null;
+    public static bool glIsVertexArray(uint array) { QGLFeature.VerifyFunc((nint)_glIsVertexArray); return _glIsVertexArray(array); }
+    internal static delegate* unmanaged<uint, bool> _glIsVertexArray = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glBindVertexArray = (delegate* unmanaged<uint, void>)QuickGL.GetGLProcAddress("glBindVertexArray");
+        _glDeleteVertexArrays = (delegate* unmanaged<int, uint*, void>)QuickGL.GetGLProcAddress("glDeleteVertexArrays");
+        _glGenVertexArrays = (delegate* unmanaged<int, uint*, void>)QuickGL.GetGLProcAddress("glGenVertexArrays");
+        _glIsVertexArray = (delegate* unmanaged<uint, bool>)QuickGL.GetGLProcAddress("glIsVertexArray");
+    }
+    
+    internal static void Unload()
+    {
+        _glBindVertexArray = null;
+        _glDeleteVertexArrays = null;
+        _glGenVertexArrays = null;
+        _glIsVertexArray = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_vertex_array_object", true, false);
 }

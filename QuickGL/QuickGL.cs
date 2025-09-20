@@ -20,7 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using QuickGLNS.Bindings;
@@ -33,7 +32,6 @@ namespace QuickGLNS;
 /// </summary>
 public static unsafe partial class QuickGL
 {
-    private const BindingFlags BINDING_FLAGS = BindingFlags.NonPublic | BindingFlags.Static;
     private static GLFWLoader glfwLoader;
     private static OpenALLoader openALLoader;
     internal static bool initialized;
@@ -76,20 +74,7 @@ public static unsafe partial class QuickGL
         if (initialized)
             throw new GLException("Already initialized");
         glfwLoader = new(winLibName, unixLibName);
-
-        foreach (FieldInfo field in typeof(GLFW).GetFields(BINDING_FLAGS))
-        {
-            QGLNativeAPI nativeAPI = field.GetCustomAttribute<QGLNativeAPI>();
-            if (nativeAPI == null) continue;
-            nint handle = glfwLoader.GetProcAddress(nativeAPI.Name);
-            if (handle == nint.Zero)
-            {
-                Destroy();
-                throw new GLException($"Could not find GLFW method: {nativeAPI.Name}");
-            }
-            field.SetValue(null, handle);
-        }
-
+        GLFW.Load();
         initialized = true;
         nativeAPILoader = GLFW._glfwGetProcAddress;
     }
@@ -129,37 +114,13 @@ public static unsafe partial class QuickGL
         if (!initialized)
             throw new GLException("Not initialized");
         openALLoader = new(winLibName, unixLibName);
-
-        foreach (FieldInfo field in typeof(AL).GetFields(BINDING_FLAGS))
-        {
-            QGLNativeAPI nativeAPI = field.GetCustomAttribute<QGLNativeAPI>();
-            if (nativeAPI == null) continue;
-            nint handle = openALLoader.GetProcAddress(nativeAPI.Name);
-            if (handle == nint.Zero)
-            {
-                Destroy();
-                throw new GLException($"Could not find AL method: {nativeAPI.Name}");
-            }
-            field.SetValue(null, handle);
-        }
-
-        foreach (FieldInfo field in typeof(ALC).GetFields(BINDING_FLAGS))
-        {
-            QGLNativeAPI nativeAPI = field.GetCustomAttribute<QGLNativeAPI>();
-            if (nativeAPI == null) continue;
-            nint handle = openALLoader.GetProcAddress(nativeAPI.Name);
-            if (handle == nint.Zero)
-            {
-                Destroy();
-                throw new GLException($"Could not find ALC method: {nativeAPI.Name}");
-            }
-            field.SetValue(null, handle);
-        }
+        AL.Load();
+        ALC.Load();
     }
 
     private static void ParseGLVersion()
     {
-        delegate* unmanaged<uint, byte*> glGetString = (delegate* unmanaged<uint, byte*>)GetProcAddress("glGetString");
+        delegate* unmanaged<uint, byte*> glGetString = (delegate* unmanaged<uint, byte*>)GetGLProcAddress("glGetString");
         if (glGetString == null)
             throw new GLException("Could not initialize OpenGL");
 
@@ -176,8 +137,8 @@ public static unsafe partial class QuickGL
 
         if (GLVersionMajor >= 3)
         {
-            delegate* unmanaged<uint, uint, byte*> glGetStringi = (delegate* unmanaged<uint, uint, byte*>)GetProcAddress("glGetStringi");
-            delegate* unmanaged<uint, int*, byte*> glGetIntegerv = (delegate* unmanaged<uint, int*, byte*>)GetProcAddress("glGetIntegerv");
+            delegate* unmanaged<uint, uint, byte*> glGetStringi = (delegate* unmanaged<uint, uint, byte*>)GetGLProcAddress("glGetStringi");
+            delegate* unmanaged<uint, int*, byte*> glGetIntegerv = (delegate* unmanaged<uint, int*, byte*>)GetGLProcAddress("glGetIntegerv");
             if (glGetStringi == null || glGetIntegerv == null)
                 throw new GLException("Could not figure out OpenGL extensions");
 
@@ -219,23 +180,10 @@ public static unsafe partial class QuickGL
             IsGLESContext = api == GLFW.GLFW_OPENGL_ES_API;
         }
 
-        foreach (Type type in Assembly.GetExecutingAssembly().GetTypes())
-        {
-            QGLFeature feature = type.GetCustomAttribute<QGLFeature>();
-            if (feature == null || !IsFeatureSupported(feature))
-                continue;
-
-            foreach (FieldInfo field in type.GetFields(BINDING_FLAGS))
-            {
-                QGLNativeAPI nativeAPI = field.GetCustomAttribute<QGLNativeAPI>();
-                if (nativeAPI == null) 
-                    continue;
-                field.SetValue(null, GetProcAddress(nativeAPI.Name));
-            }
-        }
+        GLBindingsManager.Load();
     }
 
-    private static bool IsFeatureSupported(QGLFeature feature)
+    internal static bool IsFeatureSupported(QGLFeature feature)
     {
         if (feature.IsGLES != IsGLESContext)
             return false;
@@ -268,7 +216,7 @@ public static unsafe partial class QuickGL
     /// </summary>
     /// <param name="name">the name of the function</param>
     /// <returns>the pointer to the native function</returns>
-    public static nint GetProcAddress(string name)
+    public static nint GetGLProcAddress(string name)
     {
         PerformContextChecks();
         nint handle;
@@ -277,44 +225,37 @@ public static unsafe partial class QuickGL
         return handle;
     }
 
+    internal static nint GetGLFWProcAddress(string name)
+    {
+        nint handle = glfwLoader.GetProcAddress(name);
+        if (handle == nint.Zero)
+        {
+            Console.Error.WriteLine($"[QuickGL] Could not find GLFW method: {name}");
+            return nint.Zero;
+        }
+        return handle;
+    }
+
+    internal static nint GetALProcAddress(string name)
+    {
+        nint handle = openALLoader.GetProcAddress(name);
+        if (handle == nint.Zero)
+        {
+            Console.Error.WriteLine($"[QuickGL] Could not find OpenAL method: {name}");
+            return nint.Zero;
+        }
+        return handle;
+    }
+
     /// <summary>
     /// Cleans up QuickGL and releases any OpenGL and GLFW functions
     /// </summary>
     public static void Destroy()
     {
-        foreach (Type type in Assembly.GetExecutingAssembly().GetTypes())
-        {
-            if (type.GetCustomAttribute<QGLFeature>() == null)
-                continue;
-
-            foreach (FieldInfo field in type.GetFields(BINDING_FLAGS))
-            {
-                QGLNativeAPI nativeAPI = field.GetCustomAttribute<QGLNativeAPI>();
-                if (nativeAPI == null) continue;
-                field.SetValue(null, nint.Zero);
-            }
-        }
-
-        foreach (FieldInfo field in typeof(GLFW).GetFields(BINDING_FLAGS))
-        {
-            QGLNativeAPI nativeAPI = field.GetCustomAttribute<QGLNativeAPI>();
-            if (nativeAPI == null) continue;
-            field.SetValue(null, nint.Zero);
-        }
-
-        foreach (FieldInfo field in typeof(AL).GetFields(BINDING_FLAGS))
-        {
-            QGLNativeAPI nativeAPI = field.GetCustomAttribute<QGLNativeAPI>();
-            if (nativeAPI == null) continue;
-            field.SetValue(null, nint.Zero);
-        }
-
-        foreach (FieldInfo field in typeof(ALC).GetFields(BINDING_FLAGS))
-        {
-            QGLNativeAPI nativeAPI = field.GetCustomAttribute<QGLNativeAPI>();
-            if (nativeAPI == null) continue;
-            field.SetValue(null, nint.Zero);
-        }
+        GLBindingsManager.Unload();
+        GLFW.Unload();
+        AL.Unload();
+        ALC.Unload();
 
         glfwLoader?.Dispose();
         glfwLoader = null;

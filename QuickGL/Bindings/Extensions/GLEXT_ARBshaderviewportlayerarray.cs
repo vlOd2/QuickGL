@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.690515
+// Bindings generated at 2025-09-20 18:58:19.984663
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_shader_viewport_layer_array", true, false)]
 public static unsafe class GLEXT_ARBshaderviewportlayerarray
 {
     #region Enums
@@ -33,4 +32,14 @@ public static unsafe class GLEXT_ARBshaderviewportlayerarray
     
     #region Commands
     #endregion
+    
+    internal static void Load()
+    {
+    }
+    
+    internal static void Unload()
+    {
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_shader_viewport_layer_array", true, false);
 }

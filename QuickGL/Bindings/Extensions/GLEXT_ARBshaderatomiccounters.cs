@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.661896
+// Bindings generated at 2025-09-20 18:58:19.959422
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_shader_atomic_counters", true, false)]
 public static unsafe class GLEXT_ARBshaderatomiccounters
 {
     #region Enums
@@ -61,7 +60,19 @@ public static unsafe class GLEXT_ARBshaderatomiccounters
     #endregion
     
     #region Commands
-    public static void glGetActiveAtomicCounterBufferiv(uint program, uint bufferIndex, uint pname, int* @params) { QGLNativeAPI.Verify((nint)_glGetActiveAtomicCounterBufferiv); _glGetActiveAtomicCounterBufferiv(program, bufferIndex, pname, @params); }
-    [QGLNativeAPI("glGetActiveAtomicCounterBufferiv")] internal static delegate* unmanaged<uint, uint, uint, int*, void> _glGetActiveAtomicCounterBufferiv = null;
+    public static void glGetActiveAtomicCounterBufferiv(uint program, uint bufferIndex, uint pname, int* @params) { QGLFeature.VerifyFunc((nint)_glGetActiveAtomicCounterBufferiv); _glGetActiveAtomicCounterBufferiv(program, bufferIndex, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, uint, int*, void> _glGetActiveAtomicCounterBufferiv = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glGetActiveAtomicCounterBufferiv = (delegate* unmanaged<uint, uint, uint, int*, void>)QuickGL.GetGLProcAddress("glGetActiveAtomicCounterBufferiv");
+    }
+    
+    internal static void Unload()
+    {
+        _glGetActiveAtomicCounterBufferiv = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_shader_atomic_counters", true, false);
 }

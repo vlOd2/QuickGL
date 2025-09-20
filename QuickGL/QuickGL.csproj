@@ -5,21 +5,12 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>disable</Nullable>
         <RootNamespace>QuickGLNS</RootNamespace>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<PublishAot>true</PublishAot>
+		<IsAotCompatible>true</IsAotCompatible>
     </PropertyGroup>
 
-    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    </PropertyGroup>
-
-    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    </PropertyGroup>
-
-    <ItemGroup>
-      <Folder Include="Bindings\" />
-    </ItemGroup>
-
-	<ItemGroup Condition="'$(QuickGLBundleLibs)' != 'false' And ('$(OS)' == 'Windows_NT' Or '$(TargetFramework)' == 'net9.0-windows')">
+	<ItemGroup Condition="'$(QuickGLBundleLibs)' != 'false' And ('$(OS)' == 'Windows_NT' Or '$(TargetFramework)' == 'net8.0-windows' Or '$(TargetFramework)' == 'net9.0-windows')">
 		<ContentWithTargetPath Include="Libs\glfw3.dll">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 			<TargetPath>glfw3.dll</TargetPath>

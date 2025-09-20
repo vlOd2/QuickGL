@@ -22,32 +22,53 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.553773
+// Bindings generated at 2025-09-20 18:58:19.912149
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_multi_bind", true, false)]
 public static unsafe class GLEXT_ARBmultibind
 {
     #region Enums
     #endregion
     
     #region Commands
-    public static void glBindBuffersBase(uint target, uint first, int count, uint* buffers) { QGLNativeAPI.Verify((nint)_glBindBuffersBase); _glBindBuffersBase(target, first, count, buffers); }
-    [QGLNativeAPI("glBindBuffersBase")] internal static delegate* unmanaged<uint, uint, int, uint*, void> _glBindBuffersBase = null;
+    public static void glBindBuffersBase(uint target, uint first, int count, uint* buffers) { QGLFeature.VerifyFunc((nint)_glBindBuffersBase); _glBindBuffersBase(target, first, count, buffers); }
+    internal static delegate* unmanaged<uint, uint, int, uint*, void> _glBindBuffersBase = null;
     
-    public static void glBindBuffersRange(uint target, uint first, int count, uint* buffers, nint* offsets, nint* sizes) { QGLNativeAPI.Verify((nint)_glBindBuffersRange); _glBindBuffersRange(target, first, count, buffers, offsets, sizes); }
-    [QGLNativeAPI("glBindBuffersRange")] internal static delegate* unmanaged<uint, uint, int, uint*, nint*, nint*, void> _glBindBuffersRange = null;
+    public static void glBindBuffersRange(uint target, uint first, int count, uint* buffers, nint* offsets, nint* sizes) { QGLFeature.VerifyFunc((nint)_glBindBuffersRange); _glBindBuffersRange(target, first, count, buffers, offsets, sizes); }
+    internal static delegate* unmanaged<uint, uint, int, uint*, nint*, nint*, void> _glBindBuffersRange = null;
     
-    public static void glBindTextures(uint first, int count, uint* textures) { QGLNativeAPI.Verify((nint)_glBindTextures); _glBindTextures(first, count, textures); }
-    [QGLNativeAPI("glBindTextures")] internal static delegate* unmanaged<uint, int, uint*, void> _glBindTextures = null;
+    public static void glBindTextures(uint first, int count, uint* textures) { QGLFeature.VerifyFunc((nint)_glBindTextures); _glBindTextures(first, count, textures); }
+    internal static delegate* unmanaged<uint, int, uint*, void> _glBindTextures = null;
     
-    public static void glBindSamplers(uint first, int count, uint* samplers) { QGLNativeAPI.Verify((nint)_glBindSamplers); _glBindSamplers(first, count, samplers); }
-    [QGLNativeAPI("glBindSamplers")] internal static delegate* unmanaged<uint, int, uint*, void> _glBindSamplers = null;
+    public static void glBindSamplers(uint first, int count, uint* samplers) { QGLFeature.VerifyFunc((nint)_glBindSamplers); _glBindSamplers(first, count, samplers); }
+    internal static delegate* unmanaged<uint, int, uint*, void> _glBindSamplers = null;
     
-    public static void glBindImageTextures(uint first, int count, uint* textures) { QGLNativeAPI.Verify((nint)_glBindImageTextures); _glBindImageTextures(first, count, textures); }
-    [QGLNativeAPI("glBindImageTextures")] internal static delegate* unmanaged<uint, int, uint*, void> _glBindImageTextures = null;
+    public static void glBindImageTextures(uint first, int count, uint* textures) { QGLFeature.VerifyFunc((nint)_glBindImageTextures); _glBindImageTextures(first, count, textures); }
+    internal static delegate* unmanaged<uint, int, uint*, void> _glBindImageTextures = null;
     
-    public static void glBindVertexBuffers(uint first, int count, uint* buffers, nint* offsets, int* strides) { QGLNativeAPI.Verify((nint)_glBindVertexBuffers); _glBindVertexBuffers(first, count, buffers, offsets, strides); }
-    [QGLNativeAPI("glBindVertexBuffers")] internal static delegate* unmanaged<uint, int, uint*, nint*, int*, void> _glBindVertexBuffers = null;
+    public static void glBindVertexBuffers(uint first, int count, uint* buffers, nint* offsets, int* strides) { QGLFeature.VerifyFunc((nint)_glBindVertexBuffers); _glBindVertexBuffers(first, count, buffers, offsets, strides); }
+    internal static delegate* unmanaged<uint, int, uint*, nint*, int*, void> _glBindVertexBuffers = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glBindBuffersBase = (delegate* unmanaged<uint, uint, int, uint*, void>)QuickGL.GetGLProcAddress("glBindBuffersBase");
+        _glBindBuffersRange = (delegate* unmanaged<uint, uint, int, uint*, nint*, nint*, void>)QuickGL.GetGLProcAddress("glBindBuffersRange");
+        _glBindTextures = (delegate* unmanaged<uint, int, uint*, void>)QuickGL.GetGLProcAddress("glBindTextures");
+        _glBindSamplers = (delegate* unmanaged<uint, int, uint*, void>)QuickGL.GetGLProcAddress("glBindSamplers");
+        _glBindImageTextures = (delegate* unmanaged<uint, int, uint*, void>)QuickGL.GetGLProcAddress("glBindImageTextures");
+        _glBindVertexBuffers = (delegate* unmanaged<uint, int, uint*, nint*, int*, void>)QuickGL.GetGLProcAddress("glBindVertexBuffers");
+    }
+    
+    internal static void Unload()
+    {
+        _glBindBuffersBase = null;
+        _glBindBuffersRange = null;
+        _glBindTextures = null;
+        _glBindSamplers = null;
+        _glBindImageTextures = null;
+        _glBindVertexBuffers = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_multi_bind", true, false);
 }

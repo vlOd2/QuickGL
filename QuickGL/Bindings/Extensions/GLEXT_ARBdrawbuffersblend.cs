@@ -22,26 +22,43 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.505549
+// Bindings generated at 2025-09-20 18:58:19.861725
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_draw_buffers_blend", true, false)]
 public static unsafe class GLEXT_ARBdrawbuffersblend
 {
     #region Enums
     #endregion
     
     #region Commands
-    public static void glBlendEquationiARB(uint buf, uint mode) { QGLNativeAPI.Verify((nint)_glBlendEquationiARB); _glBlendEquationiARB(buf, mode); }
-    [QGLNativeAPI("glBlendEquationiARB")] internal static delegate* unmanaged<uint, uint, void> _glBlendEquationiARB = null;
+    public static void glBlendEquationiARB(uint buf, uint mode) { QGLFeature.VerifyFunc((nint)_glBlendEquationiARB); _glBlendEquationiARB(buf, mode); }
+    internal static delegate* unmanaged<uint, uint, void> _glBlendEquationiARB = null;
     
-    public static void glBlendEquationSeparateiARB(uint buf, uint modeRGB, uint modeAlpha) { QGLNativeAPI.Verify((nint)_glBlendEquationSeparateiARB); _glBlendEquationSeparateiARB(buf, modeRGB, modeAlpha); }
-    [QGLNativeAPI("glBlendEquationSeparateiARB")] internal static delegate* unmanaged<uint, uint, uint, void> _glBlendEquationSeparateiARB = null;
+    public static void glBlendEquationSeparateiARB(uint buf, uint modeRGB, uint modeAlpha) { QGLFeature.VerifyFunc((nint)_glBlendEquationSeparateiARB); _glBlendEquationSeparateiARB(buf, modeRGB, modeAlpha); }
+    internal static delegate* unmanaged<uint, uint, uint, void> _glBlendEquationSeparateiARB = null;
     
-    public static void glBlendFunciARB(uint buf, uint src, uint dst) { QGLNativeAPI.Verify((nint)_glBlendFunciARB); _glBlendFunciARB(buf, src, dst); }
-    [QGLNativeAPI("glBlendFunciARB")] internal static delegate* unmanaged<uint, uint, uint, void> _glBlendFunciARB = null;
+    public static void glBlendFunciARB(uint buf, uint src, uint dst) { QGLFeature.VerifyFunc((nint)_glBlendFunciARB); _glBlendFunciARB(buf, src, dst); }
+    internal static delegate* unmanaged<uint, uint, uint, void> _glBlendFunciARB = null;
     
-    public static void glBlendFuncSeparateiARB(uint buf, uint srcRGB, uint dstRGB, uint srcAlpha, uint dstAlpha) { QGLNativeAPI.Verify((nint)_glBlendFuncSeparateiARB); _glBlendFuncSeparateiARB(buf, srcRGB, dstRGB, srcAlpha, dstAlpha); }
-    [QGLNativeAPI("glBlendFuncSeparateiARB")] internal static delegate* unmanaged<uint, uint, uint, uint, uint, void> _glBlendFuncSeparateiARB = null;
+    public static void glBlendFuncSeparateiARB(uint buf, uint srcRGB, uint dstRGB, uint srcAlpha, uint dstAlpha) { QGLFeature.VerifyFunc((nint)_glBlendFuncSeparateiARB); _glBlendFuncSeparateiARB(buf, srcRGB, dstRGB, srcAlpha, dstAlpha); }
+    internal static delegate* unmanaged<uint, uint, uint, uint, uint, void> _glBlendFuncSeparateiARB = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glBlendEquationiARB = (delegate* unmanaged<uint, uint, void>)QuickGL.GetGLProcAddress("glBlendEquationiARB");
+        _glBlendEquationSeparateiARB = (delegate* unmanaged<uint, uint, uint, void>)QuickGL.GetGLProcAddress("glBlendEquationSeparateiARB");
+        _glBlendFunciARB = (delegate* unmanaged<uint, uint, uint, void>)QuickGL.GetGLProcAddress("glBlendFunciARB");
+        _glBlendFuncSeparateiARB = (delegate* unmanaged<uint, uint, uint, uint, uint, void>)QuickGL.GetGLProcAddress("glBlendFuncSeparateiARB");
+    }
+    
+    internal static void Unload()
+    {
+        _glBlendEquationiARB = null;
+        _glBlendEquationSeparateiARB = null;
+        _glBlendFunciARB = null;
+        _glBlendFuncSeparateiARB = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_draw_buffers_blend", true, false);
 }

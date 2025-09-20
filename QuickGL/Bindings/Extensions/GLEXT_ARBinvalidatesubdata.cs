@@ -22,32 +22,53 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.548259
+// Bindings generated at 2025-09-20 18:58:19.906697
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_invalidate_subdata", true, false)]
 public static unsafe class GLEXT_ARBinvalidatesubdata
 {
     #region Enums
     #endregion
     
     #region Commands
-    public static void glInvalidateTexSubImage(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth) { QGLNativeAPI.Verify((nint)_glInvalidateTexSubImage); _glInvalidateTexSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth); }
-    [QGLNativeAPI("glInvalidateTexSubImage")] internal static delegate* unmanaged<uint, int, int, int, int, int, int, int, void> _glInvalidateTexSubImage = null;
+    public static void glInvalidateTexSubImage(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth) { QGLFeature.VerifyFunc((nint)_glInvalidateTexSubImage); _glInvalidateTexSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth); }
+    internal static delegate* unmanaged<uint, int, int, int, int, int, int, int, void> _glInvalidateTexSubImage = null;
     
-    public static void glInvalidateTexImage(uint texture, int level) { QGLNativeAPI.Verify((nint)_glInvalidateTexImage); _glInvalidateTexImage(texture, level); }
-    [QGLNativeAPI("glInvalidateTexImage")] internal static delegate* unmanaged<uint, int, void> _glInvalidateTexImage = null;
+    public static void glInvalidateTexImage(uint texture, int level) { QGLFeature.VerifyFunc((nint)_glInvalidateTexImage); _glInvalidateTexImage(texture, level); }
+    internal static delegate* unmanaged<uint, int, void> _glInvalidateTexImage = null;
     
-    public static void glInvalidateBufferSubData(uint buffer, nint offset, nint length) { QGLNativeAPI.Verify((nint)_glInvalidateBufferSubData); _glInvalidateBufferSubData(buffer, offset, length); }
-    [QGLNativeAPI("glInvalidateBufferSubData")] internal static delegate* unmanaged<uint, nint, nint, void> _glInvalidateBufferSubData = null;
+    public static void glInvalidateBufferSubData(uint buffer, nint offset, nint length) { QGLFeature.VerifyFunc((nint)_glInvalidateBufferSubData); _glInvalidateBufferSubData(buffer, offset, length); }
+    internal static delegate* unmanaged<uint, nint, nint, void> _glInvalidateBufferSubData = null;
     
-    public static void glInvalidateBufferData(uint buffer) { QGLNativeAPI.Verify((nint)_glInvalidateBufferData); _glInvalidateBufferData(buffer); }
-    [QGLNativeAPI("glInvalidateBufferData")] internal static delegate* unmanaged<uint, void> _glInvalidateBufferData = null;
+    public static void glInvalidateBufferData(uint buffer) { QGLFeature.VerifyFunc((nint)_glInvalidateBufferData); _glInvalidateBufferData(buffer); }
+    internal static delegate* unmanaged<uint, void> _glInvalidateBufferData = null;
     
-    public static void glInvalidateFramebuffer(uint target, int numAttachments, uint* attachments) { QGLNativeAPI.Verify((nint)_glInvalidateFramebuffer); _glInvalidateFramebuffer(target, numAttachments, attachments); }
-    [QGLNativeAPI("glInvalidateFramebuffer")] internal static delegate* unmanaged<uint, int, uint*, void> _glInvalidateFramebuffer = null;
+    public static void glInvalidateFramebuffer(uint target, int numAttachments, uint* attachments) { QGLFeature.VerifyFunc((nint)_glInvalidateFramebuffer); _glInvalidateFramebuffer(target, numAttachments, attachments); }
+    internal static delegate* unmanaged<uint, int, uint*, void> _glInvalidateFramebuffer = null;
     
-    public static void glInvalidateSubFramebuffer(uint target, int numAttachments, uint* attachments, int x, int y, int width, int height) { QGLNativeAPI.Verify((nint)_glInvalidateSubFramebuffer); _glInvalidateSubFramebuffer(target, numAttachments, attachments, x, y, width, height); }
-    [QGLNativeAPI("glInvalidateSubFramebuffer")] internal static delegate* unmanaged<uint, int, uint*, int, int, int, int, void> _glInvalidateSubFramebuffer = null;
+    public static void glInvalidateSubFramebuffer(uint target, int numAttachments, uint* attachments, int x, int y, int width, int height) { QGLFeature.VerifyFunc((nint)_glInvalidateSubFramebuffer); _glInvalidateSubFramebuffer(target, numAttachments, attachments, x, y, width, height); }
+    internal static delegate* unmanaged<uint, int, uint*, int, int, int, int, void> _glInvalidateSubFramebuffer = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glInvalidateTexSubImage = (delegate* unmanaged<uint, int, int, int, int, int, int, int, void>)QuickGL.GetGLProcAddress("glInvalidateTexSubImage");
+        _glInvalidateTexImage = (delegate* unmanaged<uint, int, void>)QuickGL.GetGLProcAddress("glInvalidateTexImage");
+        _glInvalidateBufferSubData = (delegate* unmanaged<uint, nint, nint, void>)QuickGL.GetGLProcAddress("glInvalidateBufferSubData");
+        _glInvalidateBufferData = (delegate* unmanaged<uint, void>)QuickGL.GetGLProcAddress("glInvalidateBufferData");
+        _glInvalidateFramebuffer = (delegate* unmanaged<uint, int, uint*, void>)QuickGL.GetGLProcAddress("glInvalidateFramebuffer");
+        _glInvalidateSubFramebuffer = (delegate* unmanaged<uint, int, uint*, int, int, int, int, void>)QuickGL.GetGLProcAddress("glInvalidateSubFramebuffer");
+    }
+    
+    internal static void Unload()
+    {
+        _glInvalidateTexSubImage = null;
+        _glInvalidateTexImage = null;
+        _glInvalidateBufferSubData = null;
+        _glInvalidateBufferData = null;
+        _glInvalidateFramebuffer = null;
+        _glInvalidateSubFramebuffer = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_invalidate_subdata", true, false);
 }

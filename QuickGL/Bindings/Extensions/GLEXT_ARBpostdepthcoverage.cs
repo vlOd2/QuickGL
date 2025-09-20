@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.568477
+// Bindings generated at 2025-09-20 18:58:19.935111
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_post_depth_coverage", true, false)]
 public static unsafe class GLEXT_ARBpostdepthcoverage
 {
     #region Enums
@@ -33,4 +32,14 @@ public static unsafe class GLEXT_ARBpostdepthcoverage
     
     #region Commands
     #endregion
+    
+    internal static void Load()
+    {
+    }
+    
+    internal static void Unload()
+    {
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_post_depth_coverage", true, false);
 }

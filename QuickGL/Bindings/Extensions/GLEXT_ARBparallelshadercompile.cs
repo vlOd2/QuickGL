@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.560649
+// Bindings generated at 2025-09-20 18:58:19.921489
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_parallel_shader_compile", true, false)]
 public static unsafe class GLEXT_ARBparallelshadercompile
 {
     #region Enums
@@ -34,7 +33,19 @@ public static unsafe class GLEXT_ARBparallelshadercompile
     #endregion
     
     #region Commands
-    public static void glMaxShaderCompilerThreadsARB(uint count) { QGLNativeAPI.Verify((nint)_glMaxShaderCompilerThreadsARB); _glMaxShaderCompilerThreadsARB(count); }
-    [QGLNativeAPI("glMaxShaderCompilerThreadsARB")] internal static delegate* unmanaged<uint, void> _glMaxShaderCompilerThreadsARB = null;
+    public static void glMaxShaderCompilerThreadsARB(uint count) { QGLFeature.VerifyFunc((nint)_glMaxShaderCompilerThreadsARB); _glMaxShaderCompilerThreadsARB(count); }
+    internal static delegate* unmanaged<uint, void> _glMaxShaderCompilerThreadsARB = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glMaxShaderCompilerThreadsARB = (delegate* unmanaged<uint, void>)QuickGL.GetGLProcAddress("glMaxShaderCompilerThreadsARB");
+    }
+    
+    internal static void Unload()
+    {
+        _glMaxShaderCompilerThreadsARB = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_parallel_shader_compile", true, false);
 }

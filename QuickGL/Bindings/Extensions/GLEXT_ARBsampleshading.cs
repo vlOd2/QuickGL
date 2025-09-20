@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.637141
+// Bindings generated at 2025-09-20 18:58:19.950181
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_sample_shading", true, false)]
 public static unsafe class GLEXT_ARBsampleshading
 {
     #region Enums
@@ -34,7 +33,19 @@ public static unsafe class GLEXT_ARBsampleshading
     #endregion
     
     #region Commands
-    public static void glMinSampleShadingARB(float value) { QGLNativeAPI.Verify((nint)_glMinSampleShadingARB); _glMinSampleShadingARB(value); }
-    [QGLNativeAPI("glMinSampleShadingARB")] internal static delegate* unmanaged<float, void> _glMinSampleShadingARB = null;
+    public static void glMinSampleShadingARB(float value) { QGLFeature.VerifyFunc((nint)_glMinSampleShadingARB); _glMinSampleShadingARB(value); }
+    internal static delegate* unmanaged<float, void> _glMinSampleShadingARB = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glMinSampleShadingARB = (delegate* unmanaged<float, void>)QuickGL.GetGLProcAddress("glMinSampleShadingARB");
+    }
+    
+    internal static void Unload()
+    {
+        _glMinSampleShadingARB = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_sample_shading", true, false);
 }

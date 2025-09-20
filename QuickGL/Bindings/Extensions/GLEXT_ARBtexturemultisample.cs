@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.743033
+// Bindings generated at 2025-09-20 18:58:20.055038
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_texture_multisample", true, false)]
 public static unsafe class GLEXT_ARBtexturemultisample
 {
     #region Enums
@@ -53,16 +52,34 @@ public static unsafe class GLEXT_ARBtexturemultisample
     #endregion
     
     #region Commands
-    public static void glTexImage2DMultisample(uint target, int samples, uint internalformat, int width, int height, bool fixedsamplelocations) { QGLNativeAPI.Verify((nint)_glTexImage2DMultisample); _glTexImage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations); }
-    [QGLNativeAPI("glTexImage2DMultisample")] internal static delegate* unmanaged<uint, int, uint, int, int, bool, void> _glTexImage2DMultisample = null;
+    public static void glTexImage2DMultisample(uint target, int samples, uint internalformat, int width, int height, bool fixedsamplelocations) { QGLFeature.VerifyFunc((nint)_glTexImage2DMultisample); _glTexImage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations); }
+    internal static delegate* unmanaged<uint, int, uint, int, int, bool, void> _glTexImage2DMultisample = null;
     
-    public static void glTexImage3DMultisample(uint target, int samples, uint internalformat, int width, int height, int depth, bool fixedsamplelocations) { QGLNativeAPI.Verify((nint)_glTexImage3DMultisample); _glTexImage3DMultisample(target, samples, internalformat, width, height, depth, fixedsamplelocations); }
-    [QGLNativeAPI("glTexImage3DMultisample")] internal static delegate* unmanaged<uint, int, uint, int, int, int, bool, void> _glTexImage3DMultisample = null;
+    public static void glTexImage3DMultisample(uint target, int samples, uint internalformat, int width, int height, int depth, bool fixedsamplelocations) { QGLFeature.VerifyFunc((nint)_glTexImage3DMultisample); _glTexImage3DMultisample(target, samples, internalformat, width, height, depth, fixedsamplelocations); }
+    internal static delegate* unmanaged<uint, int, uint, int, int, int, bool, void> _glTexImage3DMultisample = null;
     
-    public static void glGetMultisamplefv(uint pname, uint index, float* val) { QGLNativeAPI.Verify((nint)_glGetMultisamplefv); _glGetMultisamplefv(pname, index, val); }
-    [QGLNativeAPI("glGetMultisamplefv")] internal static delegate* unmanaged<uint, uint, float*, void> _glGetMultisamplefv = null;
+    public static void glGetMultisamplefv(uint pname, uint index, float* val) { QGLFeature.VerifyFunc((nint)_glGetMultisamplefv); _glGetMultisamplefv(pname, index, val); }
+    internal static delegate* unmanaged<uint, uint, float*, void> _glGetMultisamplefv = null;
     
-    public static void glSampleMaski(uint maskNumber, uint mask) { QGLNativeAPI.Verify((nint)_glSampleMaski); _glSampleMaski(maskNumber, mask); }
-    [QGLNativeAPI("glSampleMaski")] internal static delegate* unmanaged<uint, uint, void> _glSampleMaski = null;
+    public static void glSampleMaski(uint maskNumber, uint mask) { QGLFeature.VerifyFunc((nint)_glSampleMaski); _glSampleMaski(maskNumber, mask); }
+    internal static delegate* unmanaged<uint, uint, void> _glSampleMaski = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glTexImage2DMultisample = (delegate* unmanaged<uint, int, uint, int, int, bool, void>)QuickGL.GetGLProcAddress("glTexImage2DMultisample");
+        _glTexImage3DMultisample = (delegate* unmanaged<uint, int, uint, int, int, int, bool, void>)QuickGL.GetGLProcAddress("glTexImage3DMultisample");
+        _glGetMultisamplefv = (delegate* unmanaged<uint, uint, float*, void>)QuickGL.GetGLProcAddress("glGetMultisamplefv");
+        _glSampleMaski = (delegate* unmanaged<uint, uint, void>)QuickGL.GetGLProcAddress("glSampleMaski");
+    }
+    
+    internal static void Unload()
+    {
+        _glTexImage2DMultisample = null;
+        _glTexImage3DMultisample = null;
+        _glGetMultisamplefv = null;
+        _glSampleMaski = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_texture_multisample", true, false);
 }

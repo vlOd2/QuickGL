@@ -23,7 +23,7 @@
 using System.Runtime.InteropServices;
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:07.594637
+// Bindings generated at 2025-09-20 18:58:18.449159
 namespace QuickGLNS.Bindings;
 
 #region Callbacks
@@ -481,8 +481,8 @@ public static unsafe class GLFW
     #endregion
     
     #region Functions
-    public static int glfwInit() { QGLNativeAPI.Verify((nint)_glfwInit); return _glfwInit(); }
-    [QGLNativeAPI("glfwInit")] internal static delegate* unmanaged<int> _glfwInit = null;
+    public static int glfwInit() { QGLFeature.VerifyFunc((nint)_glfwInit); return _glfwInit(); }
+    internal static delegate* unmanaged<int> _glfwInit = null;
     
     /// <summary>
     /// Terminates the GLFW library.<br/>
@@ -499,8 +499,8 @@ public static unsafe class GLFW
     /// <br/>
     /// This function has no effect if GLFW is not initialized.<br/>
     /// </summary>
-    public static void glfwTerminate() { QGLNativeAPI.Verify((nint)_glfwTerminate); _glfwTerminate(); }
-    [QGLNativeAPI("glfwTerminate")] internal static delegate* unmanaged<void> _glfwTerminate = null;
+    public static void glfwTerminate() { QGLFeature.VerifyFunc((nint)_glfwTerminate); _glfwTerminate(); }
+    internal static delegate* unmanaged<void> _glfwTerminate = null;
     
     /// <summary>
     /// Sets the specified init hint to the desired value.<br/>
@@ -518,8 +518,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="hint">The <see cref="init_hints">init hint</see> to set.</param>
     /// <param name="value">The new value of the init hint.</param>
-    public static void glfwInitHint(int hint, int value) { QGLNativeAPI.Verify((nint)_glfwInitHint); _glfwInitHint(hint, value); }
-    [QGLNativeAPI("glfwInitHint")] internal static delegate* unmanaged<int, int, void> _glfwInitHint = null;
+    public static void glfwInitHint(int hint, int value) { QGLFeature.VerifyFunc((nint)_glfwInitHint); _glfwInitHint(hint, value); }
+    internal static delegate* unmanaged<int, int, void> _glfwInitHint = null;
     
     /// <summary>
     /// Sets the init allocator to the desired value.<br/>
@@ -533,8 +533,8 @@ public static unsafe class GLFW
     /// documentation for <see cref="GLFWallocatefun"/>, <see cref="GLFWreallocatefun"/> and <see cref="GLFWdeallocatefun"/> for details.<br/>
     /// </summary>
     /// <param name="allocator">The allocator to use at the next initialization, or<br/>`NULL` to use the default one.</param>
-    public static void glfwInitAllocator(GLFWallocator* allocator) { QGLNativeAPI.Verify((nint)_glfwInitAllocator); _glfwInitAllocator(allocator); }
-    [QGLNativeAPI("glfwInitAllocator")] internal static delegate* unmanaged<GLFWallocator*, void> _glfwInitAllocator = null;
+    public static void glfwInitAllocator(GLFWallocator* allocator) { QGLFeature.VerifyFunc((nint)_glfwInitAllocator); _glfwInitAllocator(allocator); }
+    internal static delegate* unmanaged<GLFWallocator*, void> _glfwInitAllocator = null;
     
     /// <summary>
     /// Sets the desired Vulkan `vkGetInstanceProcAddr` function.<br/>
@@ -558,8 +558,8 @@ public static unsafe class GLFW
     /// library is terminated and initialized again.<br/>
     /// </summary>
     /// <param name="loader">The address of the function to use, or `NULL`.</param>
-    public static void glfwInitVulkanLoader(nint loader) { QGLNativeAPI.Verify((nint)_glfwInitVulkanLoader); _glfwInitVulkanLoader(loader); }
-    [QGLNativeAPI("glfwInitVulkanLoader")] internal static delegate* unmanaged<nint, void> _glfwInitVulkanLoader = null;
+    public static void glfwInitVulkanLoader(nint loader) { QGLFeature.VerifyFunc((nint)_glfwInitVulkanLoader); _glfwInitVulkanLoader(loader); }
+    internal static delegate* unmanaged<nint, void> _glfwInitVulkanLoader = null;
     
     /// <summary>
     /// Retrieves the version of the GLFW library.<br/>
@@ -573,8 +573,8 @@ public static unsafe class GLFW
     /// <param name="major">Where to store the major version number, or `NULL`.</param>
     /// <param name="minor">Where to store the minor version number, or `NULL`.</param>
     /// <param name="rev">Where to store the revision number, or `NULL`.</param>
-    public static void glfwGetVersion(int* major, int* minor, int* rev) { QGLNativeAPI.Verify((nint)_glfwGetVersion); _glfwGetVersion(major, minor, rev); }
-    [QGLNativeAPI("glfwGetVersion")] internal static delegate* unmanaged<int*, int*, int*, void> _glfwGetVersion = null;
+    public static void glfwGetVersion(int* major, int* minor, int* rev) { QGLFeature.VerifyFunc((nint)_glfwGetVersion); _glfwGetVersion(major, minor, rev); }
+    internal static delegate* unmanaged<int*, int*, int*, void> _glfwGetVersion = null;
     
     /// <summary>
     /// Returns a string describing the compile-time configuration.<br/>
@@ -591,8 +591,8 @@ public static unsafe class GLFW
     /// <br/>
     /// __Do not use the version string__ to parse what platforms are supported.  The <see cref="glfwPlatformSupported"/> function lets you query platform support.<br/>
     /// </summary>
-    public static byte* glfwGetVersionString() { QGLNativeAPI.Verify((nint)_glfwGetVersionString); return _glfwGetVersionString(); }
-    [QGLNativeAPI("glfwGetVersionString")] internal static delegate* unmanaged<byte*> _glfwGetVersionString = null;
+    public static byte* glfwGetVersionString() { QGLFeature.VerifyFunc((nint)_glfwGetVersionString); return _glfwGetVersionString(); }
+    internal static delegate* unmanaged<byte*> _glfwGetVersionString = null;
     
     /// <summary>
     /// Returns and clears the last error for the calling thread.<br/>
@@ -604,8 +604,8 @@ public static unsafe class GLFW
     /// set to `NULL`.<br/>
     /// </summary>
     /// <param name="description">Where to store the error description pointer, or `NULL`.</param>
-    public static int glfwGetError(byte** description) { QGLNativeAPI.Verify((nint)_glfwGetError); return _glfwGetError(description); }
-    [QGLNativeAPI("glfwGetError")] internal static delegate* unmanaged<byte**, int> _glfwGetError = null;
+    public static int glfwGetError(byte** description) { QGLFeature.VerifyFunc((nint)_glfwGetError); return _glfwGetError(description); }
+    internal static delegate* unmanaged<byte**, int> _glfwGetError = null;
     
     /// <summary>
     /// Sets the error callback.<br/>
@@ -628,8 +628,8 @@ public static unsafe class GLFW
     /// terminated.<br/>
     /// </summary>
     /// <param name="callback">The new callback, or `NULL` to remove the currently set<br/>callback.</param>
-    public static nint glfwSetErrorCallback(GLFWerrorfun callback) { QGLNativeAPI.Verify((nint)_glfwSetErrorCallback); return _glfwSetErrorCallback(callback); }
-    [QGLNativeAPI("glfwSetErrorCallback")] internal static delegate* unmanaged<GLFWerrorfun, nint> _glfwSetErrorCallback = null;
+    public static nint glfwSetErrorCallback(GLFWerrorfun callback) { QGLFeature.VerifyFunc((nint)_glfwSetErrorCallback); return _glfwSetErrorCallback(callback); }
+    internal static delegate* unmanaged<GLFWerrorfun, nint> _glfwSetErrorCallback = null;
     
     /// <summary>
     /// Returns the currently selected platform.<br/>
@@ -638,8 +638,8 @@ public static unsafe class GLFW
     /// returned value will be one of `GLFW_PLATFORM_WIN32`, `GLFW_PLATFORM_COCOA`,<br/>
     /// `GLFW_PLATFORM_WAYLAND`, `GLFW_PLATFORM_X11` or `GLFW_PLATFORM_NULL`.<br/>
     /// </summary>
-    public static int glfwGetPlatform() { QGLNativeAPI.Verify((nint)_glfwGetPlatform); return _glfwGetPlatform(); }
-    [QGLNativeAPI("glfwGetPlatform")] internal static delegate* unmanaged<int> _glfwGetPlatform = null;
+    public static int glfwGetPlatform() { QGLFeature.VerifyFunc((nint)_glfwGetPlatform); return _glfwGetPlatform(); }
+    internal static delegate* unmanaged<int> _glfwGetPlatform = null;
     
     /// <summary>
     /// Returns whether the library includes support for the specified platform.<br/>
@@ -649,8 +649,8 @@ public static unsafe class GLFW
     /// `GLFW_PLATFORM_WAYLAND`, `GLFW_PLATFORM_X11` or `GLFW_PLATFORM_NULL`.<br/>
     /// </summary>
     /// <param name="platform">The platform to query.</param>
-    public static int glfwPlatformSupported(int platform) { QGLNativeAPI.Verify((nint)_glfwPlatformSupported); return _glfwPlatformSupported(platform); }
-    [QGLNativeAPI("glfwPlatformSupported")] internal static delegate* unmanaged<int, int> _glfwPlatformSupported = null;
+    public static int glfwPlatformSupported(int platform) { QGLFeature.VerifyFunc((nint)_glfwPlatformSupported); return _glfwPlatformSupported(platform); }
+    internal static delegate* unmanaged<int, int> _glfwPlatformSupported = null;
     
     /// <summary>
     /// Returns the currently connected monitors.<br/>
@@ -660,8 +660,8 @@ public static unsafe class GLFW
     /// monitors were found, this function returns `NULL`.<br/>
     /// </summary>
     /// <param name="count">Where to store the number of monitors in the returned<br/>array.  This is set to zero if an error occurred.</param>
-    public static nint glfwGetMonitors(int* count) { QGLNativeAPI.Verify((nint)_glfwGetMonitors); return _glfwGetMonitors(count); }
-    [QGLNativeAPI("glfwGetMonitors")] internal static delegate* unmanaged<int*, nint> _glfwGetMonitors = null;
+    public static nint glfwGetMonitors(int* count) { QGLFeature.VerifyFunc((nint)_glfwGetMonitors); return _glfwGetMonitors(count); }
+    internal static delegate* unmanaged<int*, nint> _glfwGetMonitors = null;
     
     /// <summary>
     /// Returns the primary monitor.<br/>
@@ -669,8 +669,8 @@ public static unsafe class GLFW
     /// This function returns the primary monitor.  This is usually the monitor<br/>
     /// where elements like the task bar or global menu bar are located.<br/>
     /// </summary>
-    public static nint glfwGetPrimaryMonitor() { QGLNativeAPI.Verify((nint)_glfwGetPrimaryMonitor); return _glfwGetPrimaryMonitor(); }
-    [QGLNativeAPI("glfwGetPrimaryMonitor")] internal static delegate* unmanaged<nint> _glfwGetPrimaryMonitor = null;
+    public static nint glfwGetPrimaryMonitor() { QGLFeature.VerifyFunc((nint)_glfwGetPrimaryMonitor); return _glfwGetPrimaryMonitor(); }
+    internal static delegate* unmanaged<nint> _glfwGetPrimaryMonitor = null;
     
     /// <summary>
     /// Returns the position of the monitor's viewport on the virtual screen.<br/>
@@ -684,8 +684,8 @@ public static unsafe class GLFW
     /// <param name="monitor">The monitor to query.</param>
     /// <param name="xpos">Where to store the monitor x-coordinate, or `NULL`.</param>
     /// <param name="ypos">Where to store the monitor y-coordinate, or `NULL`.</param>
-    public static void glfwGetMonitorPos(nint monitor, int* xpos, int* ypos) { QGLNativeAPI.Verify((nint)_glfwGetMonitorPos); _glfwGetMonitorPos(monitor, xpos, ypos); }
-    [QGLNativeAPI("glfwGetMonitorPos")] internal static delegate* unmanaged<nint, int*, int*, void> _glfwGetMonitorPos = null;
+    public static void glfwGetMonitorPos(nint monitor, int* xpos, int* ypos) { QGLFeature.VerifyFunc((nint)_glfwGetMonitorPos); _glfwGetMonitorPos(monitor, xpos, ypos); }
+    internal static delegate* unmanaged<nint, int*, int*, void> _glfwGetMonitorPos = null;
     
     /// <summary>
     /// Retrieves the work area of the monitor.<br/>
@@ -705,8 +705,8 @@ public static unsafe class GLFW
     /// <param name="ypos">Where to store the monitor y-coordinate, or `NULL`.</param>
     /// <param name="width">Where to store the monitor width, or `NULL`.</param>
     /// <param name="height">Where to store the monitor height, or `NULL`.</param>
-    public static void glfwGetMonitorWorkarea(nint monitor, int* xpos, int* ypos, int* width, int* height) { QGLNativeAPI.Verify((nint)_glfwGetMonitorWorkarea); _glfwGetMonitorWorkarea(monitor, xpos, ypos, width, height); }
-    [QGLNativeAPI("glfwGetMonitorWorkarea")] internal static delegate* unmanaged<nint, int*, int*, int*, int*, void> _glfwGetMonitorWorkarea = null;
+    public static void glfwGetMonitorWorkarea(nint monitor, int* xpos, int* ypos, int* width, int* height) { QGLFeature.VerifyFunc((nint)_glfwGetMonitorWorkarea); _glfwGetMonitorWorkarea(monitor, xpos, ypos, width, height); }
+    internal static delegate* unmanaged<nint, int*, int*, int*, int*, void> _glfwGetMonitorWorkarea = null;
     
     /// <summary>
     /// Returns the physical size of the monitor.<br/>
@@ -726,8 +726,8 @@ public static unsafe class GLFW
     /// <param name="monitor">The monitor to query.</param>
     /// <param name="widthMM">Where to store the width, in millimetres, of the<br/>monitor's display area, or `NULL`.</param>
     /// <param name="heightMM">Where to store the height, in millimetres, of the<br/>monitor's display area, or `NULL`.</param>
-    public static void glfwGetMonitorPhysicalSize(nint monitor, int* widthMM, int* heightMM) { QGLNativeAPI.Verify((nint)_glfwGetMonitorPhysicalSize); _glfwGetMonitorPhysicalSize(monitor, widthMM, heightMM); }
-    [QGLNativeAPI("glfwGetMonitorPhysicalSize")] internal static delegate* unmanaged<nint, int*, int*, void> _glfwGetMonitorPhysicalSize = null;
+    public static void glfwGetMonitorPhysicalSize(nint monitor, int* widthMM, int* heightMM) { QGLFeature.VerifyFunc((nint)_glfwGetMonitorPhysicalSize); _glfwGetMonitorPhysicalSize(monitor, widthMM, heightMM); }
+    internal static delegate* unmanaged<nint, int*, int*, void> _glfwGetMonitorPhysicalSize = null;
     
     /// <summary>
     /// Retrieves the content scale for the specified monitor.<br/>
@@ -747,8 +747,8 @@ public static unsafe class GLFW
     /// <param name="monitor">The monitor to query.</param>
     /// <param name="xscale">Where to store the x-axis content scale, or `NULL`.</param>
     /// <param name="yscale">Where to store the y-axis content scale, or `NULL`.</param>
-    public static void glfwGetMonitorContentScale(nint monitor, float* xscale, float* yscale) { QGLNativeAPI.Verify((nint)_glfwGetMonitorContentScale); _glfwGetMonitorContentScale(monitor, xscale, yscale); }
-    [QGLNativeAPI("glfwGetMonitorContentScale")] internal static delegate* unmanaged<nint, float*, float*, void> _glfwGetMonitorContentScale = null;
+    public static void glfwGetMonitorContentScale(nint monitor, float* xscale, float* yscale) { QGLFeature.VerifyFunc((nint)_glfwGetMonitorContentScale); _glfwGetMonitorContentScale(monitor, xscale, yscale); }
+    internal static delegate* unmanaged<nint, float*, float*, void> _glfwGetMonitorContentScale = null;
     
     /// <summary>
     /// Returns the name of the specified monitor.<br/>
@@ -758,8 +758,8 @@ public static unsafe class GLFW
     /// monitor and is not guaranteed to be unique among the connected monitors.<br/>
     /// </summary>
     /// <param name="monitor">The monitor to query.</param>
-    public static byte* glfwGetMonitorName(nint monitor) { QGLNativeAPI.Verify((nint)_glfwGetMonitorName); return _glfwGetMonitorName(monitor); }
-    [QGLNativeAPI("glfwGetMonitorName")] internal static delegate* unmanaged<nint, byte*> _glfwGetMonitorName = null;
+    public static byte* glfwGetMonitorName(nint monitor) { QGLFeature.VerifyFunc((nint)_glfwGetMonitorName); return _glfwGetMonitorName(monitor); }
+    internal static delegate* unmanaged<nint, byte*> _glfwGetMonitorName = null;
     
     /// <summary>
     /// Sets the user pointer of the specified monitor.<br/>
@@ -773,8 +773,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="monitor">The monitor whose pointer to set.</param>
     /// <param name="pointer">The new value.</param>
-    public static void glfwSetMonitorUserPointer(nint monitor, void* pointer) { QGLNativeAPI.Verify((nint)_glfwSetMonitorUserPointer); _glfwSetMonitorUserPointer(monitor, pointer); }
-    [QGLNativeAPI("glfwSetMonitorUserPointer")] internal static delegate* unmanaged<nint, void*, void> _glfwSetMonitorUserPointer = null;
+    public static void glfwSetMonitorUserPointer(nint monitor, void* pointer) { QGLFeature.VerifyFunc((nint)_glfwSetMonitorUserPointer); _glfwSetMonitorUserPointer(monitor, pointer); }
+    internal static delegate* unmanaged<nint, void*, void> _glfwSetMonitorUserPointer = null;
     
     /// <summary>
     /// Returns the user pointer of the specified monitor.<br/>
@@ -786,8 +786,8 @@ public static unsafe class GLFW
     /// that is being disconnected.<br/>
     /// </summary>
     /// <param name="monitor">The monitor whose pointer to return.</param>
-    public static void* glfwGetMonitorUserPointer(nint monitor) { QGLNativeAPI.Verify((nint)_glfwGetMonitorUserPointer); return _glfwGetMonitorUserPointer(monitor); }
-    [QGLNativeAPI("glfwGetMonitorUserPointer")] internal static delegate* unmanaged<nint, void*> _glfwGetMonitorUserPointer = null;
+    public static void* glfwGetMonitorUserPointer(nint monitor) { QGLFeature.VerifyFunc((nint)_glfwGetMonitorUserPointer); return _glfwGetMonitorUserPointer(monitor); }
+    internal static delegate* unmanaged<nint, void*> _glfwGetMonitorUserPointer = null;
     
     /// <summary>
     /// Sets the monitor configuration callback.<br/>
@@ -797,8 +797,8 @@ public static unsafe class GLFW
     /// disconnected from the system.<br/>
     /// </summary>
     /// <param name="callback">The new callback, or `NULL` to remove the currently set<br/>callback.</param>
-    public static nint glfwSetMonitorCallback(GLFWmonitorfun callback) { QGLNativeAPI.Verify((nint)_glfwSetMonitorCallback); return _glfwSetMonitorCallback(callback); }
-    [QGLNativeAPI("glfwSetMonitorCallback")] internal static delegate* unmanaged<GLFWmonitorfun, nint> _glfwSetMonitorCallback = null;
+    public static nint glfwSetMonitorCallback(GLFWmonitorfun callback) { QGLFeature.VerifyFunc((nint)_glfwSetMonitorCallback); return _glfwSetMonitorCallback(callback); }
+    internal static delegate* unmanaged<GLFWmonitorfun, nint> _glfwSetMonitorCallback = null;
     
     /// <summary>
     /// Returns the available video modes for the specified monitor.<br/>
@@ -811,8 +811,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="monitor">The monitor to query.</param>
     /// <param name="count">Where to store the number of video modes in the returned<br/>array.  This is set to zero if an error occurred.</param>
-    public static GLFWvidmode* glfwGetVideoModes(nint monitor, int* count) { QGLNativeAPI.Verify((nint)_glfwGetVideoModes); return _glfwGetVideoModes(monitor, count); }
-    [QGLNativeAPI("glfwGetVideoModes")] internal static delegate* unmanaged<nint, int*, GLFWvidmode*> _glfwGetVideoModes = null;
+    public static GLFWvidmode* glfwGetVideoModes(nint monitor, int* count) { QGLFeature.VerifyFunc((nint)_glfwGetVideoModes); return _glfwGetVideoModes(monitor, count); }
+    internal static delegate* unmanaged<nint, int*, GLFWvidmode*> _glfwGetVideoModes = null;
     
     /// <summary>
     /// Returns the current mode of the specified monitor.<br/>
@@ -822,8 +822,8 @@ public static unsafe class GLFW
     /// will depend on whether that window is iconified.<br/>
     /// </summary>
     /// <param name="monitor">The monitor to query.</param>
-    public static GLFWvidmode* glfwGetVideoMode(nint monitor) { QGLNativeAPI.Verify((nint)_glfwGetVideoMode); return _glfwGetVideoMode(monitor); }
-    [QGLNativeAPI("glfwGetVideoMode")] internal static delegate* unmanaged<nint, GLFWvidmode*> _glfwGetVideoMode = null;
+    public static GLFWvidmode* glfwGetVideoMode(nint monitor) { QGLFeature.VerifyFunc((nint)_glfwGetVideoMode); return _glfwGetVideoMode(monitor); }
+    internal static delegate* unmanaged<nint, GLFWvidmode*> _glfwGetVideoMode = null;
     
     /// <summary>
     /// Generates a gamma ramp and sets it for the specified monitor.<br/>
@@ -841,8 +841,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="monitor">The monitor whose gamma ramp to set.</param>
     /// <param name="gamma">The desired exponent.</param>
-    public static void glfwSetGamma(nint monitor, float gamma) { QGLNativeAPI.Verify((nint)_glfwSetGamma); _glfwSetGamma(monitor, gamma); }
-    [QGLNativeAPI("glfwSetGamma")] internal static delegate* unmanaged<nint, float, void> _glfwSetGamma = null;
+    public static void glfwSetGamma(nint monitor, float gamma) { QGLFeature.VerifyFunc((nint)_glfwSetGamma); _glfwSetGamma(monitor, gamma); }
+    internal static delegate* unmanaged<nint, float, void> _glfwSetGamma = null;
     
     /// <summary>
     /// Returns the current gamma ramp for the specified monitor.<br/>
@@ -850,8 +850,8 @@ public static unsafe class GLFW
     /// This function returns the current gamma ramp of the specified monitor.<br/>
     /// </summary>
     /// <param name="monitor">The monitor to query.</param>
-    public static GLFWgammaramp* glfwGetGammaRamp(nint monitor) { QGLNativeAPI.Verify((nint)_glfwGetGammaRamp); return _glfwGetGammaRamp(monitor); }
-    [QGLNativeAPI("glfwGetGammaRamp")] internal static delegate* unmanaged<nint, GLFWgammaramp*> _glfwGetGammaRamp = null;
+    public static GLFWgammaramp* glfwGetGammaRamp(nint monitor) { QGLFeature.VerifyFunc((nint)_glfwGetGammaRamp); return _glfwGetGammaRamp(monitor); }
+    internal static delegate* unmanaged<nint, GLFWgammaramp*> _glfwGetGammaRamp = null;
     
     /// <summary>
     /// Sets the current gamma ramp for the specified monitor.<br/>
@@ -869,8 +869,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="monitor">The monitor whose gamma ramp to set.</param>
     /// <param name="ramp">The gamma ramp to use.</param>
-    public static void glfwSetGammaRamp(nint monitor, GLFWgammaramp* ramp) { QGLNativeAPI.Verify((nint)_glfwSetGammaRamp); _glfwSetGammaRamp(monitor, ramp); }
-    [QGLNativeAPI("glfwSetGammaRamp")] internal static delegate* unmanaged<nint, GLFWgammaramp*, void> _glfwSetGammaRamp = null;
+    public static void glfwSetGammaRamp(nint monitor, GLFWgammaramp* ramp) { QGLFeature.VerifyFunc((nint)_glfwSetGammaRamp); _glfwSetGammaRamp(monitor, ramp); }
+    internal static delegate* unmanaged<nint, GLFWgammaramp*, void> _glfwSetGammaRamp = null;
     
     /// <summary>
     /// Resets all window hints to their default values.<br/>
@@ -878,8 +878,8 @@ public static unsafe class GLFW
     /// This function resets all window hints to their<br/>
     /// <see cref="window_hints_values">default values</see>.<br/>
     /// </summary>
-    public static void glfwDefaultWindowHints() { QGLNativeAPI.Verify((nint)_glfwDefaultWindowHints); _glfwDefaultWindowHints(); }
-    [QGLNativeAPI("glfwDefaultWindowHints")] internal static delegate* unmanaged<void> _glfwDefaultWindowHints = null;
+    public static void glfwDefaultWindowHints() { QGLFeature.VerifyFunc((nint)_glfwDefaultWindowHints); _glfwDefaultWindowHints(); }
+    internal static delegate* unmanaged<void> _glfwDefaultWindowHints = null;
     
     /// <summary>
     /// Sets the specified window hint to the desired value.<br/>
@@ -901,8 +901,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="hint">The <see cref="window_hints">window hint</see> to set.</param>
     /// <param name="value">The new value of the window hint.</param>
-    public static void glfwWindowHint(int hint, int value) { QGLNativeAPI.Verify((nint)_glfwWindowHint); _glfwWindowHint(hint, value); }
-    [QGLNativeAPI("glfwWindowHint")] internal static delegate* unmanaged<int, int, void> _glfwWindowHint = null;
+    public static void glfwWindowHint(int hint, int value) { QGLFeature.VerifyFunc((nint)_glfwWindowHint); _glfwWindowHint(hint, value); }
+    internal static delegate* unmanaged<int, int, void> _glfwWindowHint = null;
     
     /// <summary>
     /// Sets the specified window hint to the desired value.<br/>
@@ -924,8 +924,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="hint">The <see cref="window_hints">window hint</see> to set.</param>
     /// <param name="value">The new value of the window hint.</param>
-    public static void glfwWindowHintString(int hint, byte* value) { QGLNativeAPI.Verify((nint)_glfwWindowHintString); _glfwWindowHintString(hint, value); }
-    [QGLNativeAPI("glfwWindowHintString")] internal static delegate* unmanaged<int, byte*, void> _glfwWindowHintString = null;
+    public static void glfwWindowHintString(int hint, byte* value) { QGLFeature.VerifyFunc((nint)_glfwWindowHintString); _glfwWindowHintString(hint, value); }
+    internal static delegate* unmanaged<int, byte*, void> _glfwWindowHintString = null;
     
     /// <summary>
     /// Creates a window and its associated context.<br/>
@@ -982,8 +982,8 @@ public static unsafe class GLFW
     /// <param name="title">The initial, UTF-8 encoded window title.</param>
     /// <param name="monitor">The monitor to use for full screen mode, or `NULL` for<br/>windowed mode.</param>
     /// <param name="share">The window whose context to share resources with, or `NULL`<br/>to not share resources.</param>
-    public static nint glfwCreateWindow(int width, int height, byte* title, nint monitor, nint share) { QGLNativeAPI.Verify((nint)_glfwCreateWindow); return _glfwCreateWindow(width, height, title, monitor, share); }
-    [QGLNativeAPI("glfwCreateWindow")] internal static delegate* unmanaged<int, int, byte*, nint, nint, nint> _glfwCreateWindow = null;
+    public static nint glfwCreateWindow(int width, int height, byte* title, nint monitor, nint share) { QGLFeature.VerifyFunc((nint)_glfwCreateWindow); return _glfwCreateWindow(width, height, title, monitor, share); }
+    internal static delegate* unmanaged<int, int, byte*, nint, nint, nint> _glfwCreateWindow = null;
     
     /// <summary>
     /// Destroys the specified window and its context.<br/>
@@ -995,8 +995,8 @@ public static unsafe class GLFW
     /// detached before being destroyed.<br/>
     /// </summary>
     /// <param name="window">The window to destroy.</param>
-    public static void glfwDestroyWindow(nint window) { QGLNativeAPI.Verify((nint)_glfwDestroyWindow); _glfwDestroyWindow(window); }
-    [QGLNativeAPI("glfwDestroyWindow")] internal static delegate* unmanaged<nint, void> _glfwDestroyWindow = null;
+    public static void glfwDestroyWindow(nint window) { QGLFeature.VerifyFunc((nint)_glfwDestroyWindow); _glfwDestroyWindow(window); }
+    internal static delegate* unmanaged<nint, void> _glfwDestroyWindow = null;
     
     /// <summary>
     /// Checks the close flag of the specified window.<br/>
@@ -1004,8 +1004,8 @@ public static unsafe class GLFW
     /// This function returns the value of the close flag of the specified window.<br/>
     /// </summary>
     /// <param name="window">The window to query.</param>
-    public static int glfwWindowShouldClose(nint window) { QGLNativeAPI.Verify((nint)_glfwWindowShouldClose); return _glfwWindowShouldClose(window); }
-    [QGLNativeAPI("glfwWindowShouldClose")] internal static delegate* unmanaged<nint, int> _glfwWindowShouldClose = null;
+    public static int glfwWindowShouldClose(nint window) { QGLFeature.VerifyFunc((nint)_glfwWindowShouldClose); return _glfwWindowShouldClose(window); }
+    internal static delegate* unmanaged<nint, int> _glfwWindowShouldClose = null;
     
     /// <summary>
     /// Sets the close flag of the specified window.<br/>
@@ -1016,8 +1016,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="window">The window whose flag to change.</param>
     /// <param name="value">The new value.</param>
-    public static void glfwSetWindowShouldClose(nint window, int value) { QGLNativeAPI.Verify((nint)_glfwSetWindowShouldClose); _glfwSetWindowShouldClose(window, value); }
-    [QGLNativeAPI("glfwSetWindowShouldClose")] internal static delegate* unmanaged<nint, int, void> _glfwSetWindowShouldClose = null;
+    public static void glfwSetWindowShouldClose(nint window, int value) { QGLFeature.VerifyFunc((nint)_glfwSetWindowShouldClose); _glfwSetWindowShouldClose(window, value); }
+    internal static delegate* unmanaged<nint, int, void> _glfwSetWindowShouldClose = null;
     
     /// <summary>
     /// Returns the title of the specified window.<br/>
@@ -1027,8 +1027,8 @@ public static unsafe class GLFW
     /// or <see cref="glfwSetWindowTitle"/>.<br/>
     /// </summary>
     /// <param name="window">The window to query.</param>
-    public static byte* glfwGetWindowTitle(nint window) { QGLNativeAPI.Verify((nint)_glfwGetWindowTitle); return _glfwGetWindowTitle(window); }
-    [QGLNativeAPI("glfwGetWindowTitle")] internal static delegate* unmanaged<nint, byte*> _glfwGetWindowTitle = null;
+    public static byte* glfwGetWindowTitle(nint window) { QGLFeature.VerifyFunc((nint)_glfwGetWindowTitle); return _glfwGetWindowTitle(window); }
+    internal static delegate* unmanaged<nint, byte*> _glfwGetWindowTitle = null;
     
     /// <summary>
     /// Sets the title of the specified window.<br/>
@@ -1038,8 +1038,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="window">The window whose title to change.</param>
     /// <param name="title">The UTF-8 encoded window title.</param>
-    public static void glfwSetWindowTitle(nint window, byte* title) { QGLNativeAPI.Verify((nint)_glfwSetWindowTitle); _glfwSetWindowTitle(window, title); }
-    [QGLNativeAPI("glfwSetWindowTitle")] internal static delegate* unmanaged<nint, byte*, void> _glfwSetWindowTitle = null;
+    public static void glfwSetWindowTitle(nint window, byte* title) { QGLFeature.VerifyFunc((nint)_glfwSetWindowTitle); _glfwSetWindowTitle(window, title); }
+    internal static delegate* unmanaged<nint, byte*, void> _glfwSetWindowTitle = null;
     
     /// <summary>
     /// Sets the icon for the specified window.<br/>
@@ -1060,8 +1060,8 @@ public static unsafe class GLFW
     /// <param name="window">The window whose icon to set.</param>
     /// <param name="count">The number of images in the specified array, or zero to<br/>revert to the default window icon.</param>
     /// <param name="images">The images to create the icon from.  This is ignored if<br/>count is zero.</param>
-    public static void glfwSetWindowIcon(nint window, int count, GLFWimage* images) { QGLNativeAPI.Verify((nint)_glfwSetWindowIcon); _glfwSetWindowIcon(window, count, images); }
-    [QGLNativeAPI("glfwSetWindowIcon")] internal static delegate* unmanaged<nint, int, GLFWimage*, void> _glfwSetWindowIcon = null;
+    public static void glfwSetWindowIcon(nint window, int count, GLFWimage* images) { QGLFeature.VerifyFunc((nint)_glfwSetWindowIcon); _glfwSetWindowIcon(window, count, images); }
+    internal static delegate* unmanaged<nint, int, GLFWimage*, void> _glfwSetWindowIcon = null;
     
     /// <summary>
     /// Retrieves the position of the content area of the specified window.<br/>
@@ -1075,8 +1075,8 @@ public static unsafe class GLFW
     /// <param name="window">The window to query.</param>
     /// <param name="xpos">Where to store the x-coordinate of the upper-left corner of<br/>the content area, or `NULL`.</param>
     /// <param name="ypos">Where to store the y-coordinate of the upper-left corner of<br/>the content area, or `NULL`.</param>
-    public static void glfwGetWindowPos(nint window, int* xpos, int* ypos) { QGLNativeAPI.Verify((nint)_glfwGetWindowPos); _glfwGetWindowPos(window, xpos, ypos); }
-    [QGLNativeAPI("glfwGetWindowPos")] internal static delegate* unmanaged<nint, int*, int*, void> _glfwGetWindowPos = null;
+    public static void glfwGetWindowPos(nint window, int* xpos, int* ypos) { QGLFeature.VerifyFunc((nint)_glfwGetWindowPos); _glfwGetWindowPos(window, xpos, ypos); }
+    internal static delegate* unmanaged<nint, int*, int*, void> _glfwGetWindowPos = null;
     
     /// <summary>
     /// Sets the position of the content area of the specified window.<br/>
@@ -1094,8 +1094,8 @@ public static unsafe class GLFW
     /// <param name="window">The window to query.</param>
     /// <param name="xpos">The x-coordinate of the upper-left corner of the content area.</param>
     /// <param name="ypos">The y-coordinate of the upper-left corner of the content area.</param>
-    public static void glfwSetWindowPos(nint window, int xpos, int ypos) { QGLNativeAPI.Verify((nint)_glfwSetWindowPos); _glfwSetWindowPos(window, xpos, ypos); }
-    [QGLNativeAPI("glfwSetWindowPos")] internal static delegate* unmanaged<nint, int, int, void> _glfwSetWindowPos = null;
+    public static void glfwSetWindowPos(nint window, int xpos, int ypos) { QGLFeature.VerifyFunc((nint)_glfwSetWindowPos); _glfwSetWindowPos(window, xpos, ypos); }
+    internal static delegate* unmanaged<nint, int, int, void> _glfwSetWindowPos = null;
     
     /// <summary>
     /// Retrieves the size of the content area of the specified window.<br/>
@@ -1110,8 +1110,8 @@ public static unsafe class GLFW
     /// <param name="window">The window whose size to retrieve.</param>
     /// <param name="width">Where to store the width, in screen coordinates, of the<br/>content area, or `NULL`.</param>
     /// <param name="height">Where to store the height, in screen coordinates, of the<br/>content area, or `NULL`.</param>
-    public static void glfwGetWindowSize(nint window, int* width, int* height) { QGLNativeAPI.Verify((nint)_glfwGetWindowSize); _glfwGetWindowSize(window, width, height); }
-    [QGLNativeAPI("glfwGetWindowSize")] internal static delegate* unmanaged<nint, int*, int*, void> _glfwGetWindowSize = null;
+    public static void glfwGetWindowSize(nint window, int* width, int* height) { QGLFeature.VerifyFunc((nint)_glfwGetWindowSize); _glfwGetWindowSize(window, width, height); }
+    internal static delegate* unmanaged<nint, int*, int*, void> _glfwGetWindowSize = null;
     
     /// <summary>
     /// Sets the size limits of the specified window.<br/>
@@ -1132,8 +1132,8 @@ public static unsafe class GLFW
     /// <param name="minheight">The minimum height, in screen coordinates, of the<br/>content area, or `GLFW_DONT_CARE`.</param>
     /// <param name="maxwidth">The maximum width, in screen coordinates, of the content<br/>area, or `GLFW_DONT_CARE`.</param>
     /// <param name="maxheight">The maximum height, in screen coordinates, of the<br/>content area, or `GLFW_DONT_CARE`.</param>
-    public static void glfwSetWindowSizeLimits(nint window, int minwidth, int minheight, int maxwidth, int maxheight) { QGLNativeAPI.Verify((nint)_glfwSetWindowSizeLimits); _glfwSetWindowSizeLimits(window, minwidth, minheight, maxwidth, maxheight); }
-    [QGLNativeAPI("glfwSetWindowSizeLimits")] internal static delegate* unmanaged<nint, int, int, int, int, void> _glfwSetWindowSizeLimits = null;
+    public static void glfwSetWindowSizeLimits(nint window, int minwidth, int minheight, int maxwidth, int maxheight) { QGLFeature.VerifyFunc((nint)_glfwSetWindowSizeLimits); _glfwSetWindowSizeLimits(window, minwidth, minheight, maxwidth, maxheight); }
+    internal static delegate* unmanaged<nint, int, int, int, int, void> _glfwSetWindowSizeLimits = null;
     
     /// <summary>
     /// Sets the aspect ratio of the specified window.<br/>
@@ -1156,8 +1156,8 @@ public static unsafe class GLFW
     /// <param name="window">The window to set limits for.</param>
     /// <param name="numer">The numerator of the desired aspect ratio, or<br/>`GLFW_DONT_CARE`.</param>
     /// <param name="denom">The denominator of the desired aspect ratio, or<br/>`GLFW_DONT_CARE`.</param>
-    public static void glfwSetWindowAspectRatio(nint window, int numer, int denom) { QGLNativeAPI.Verify((nint)_glfwSetWindowAspectRatio); _glfwSetWindowAspectRatio(window, numer, denom); }
-    [QGLNativeAPI("glfwSetWindowAspectRatio")] internal static delegate* unmanaged<nint, int, int, void> _glfwSetWindowAspectRatio = null;
+    public static void glfwSetWindowAspectRatio(nint window, int numer, int denom) { QGLFeature.VerifyFunc((nint)_glfwSetWindowAspectRatio); _glfwSetWindowAspectRatio(window, numer, denom); }
+    internal static delegate* unmanaged<nint, int, int, void> _glfwSetWindowAspectRatio = null;
     
     /// <summary>
     /// Sets the size of the content area of the specified window.<br/>
@@ -1179,8 +1179,8 @@ public static unsafe class GLFW
     /// <param name="window">The window to resize.</param>
     /// <param name="width">The desired width, in screen coordinates, of the window<br/>content area.</param>
     /// <param name="height">The desired height, in screen coordinates, of the window<br/>content area.</param>
-    public static void glfwSetWindowSize(nint window, int width, int height) { QGLNativeAPI.Verify((nint)_glfwSetWindowSize); _glfwSetWindowSize(window, width, height); }
-    [QGLNativeAPI("glfwSetWindowSize")] internal static delegate* unmanaged<nint, int, int, void> _glfwSetWindowSize = null;
+    public static void glfwSetWindowSize(nint window, int width, int height) { QGLFeature.VerifyFunc((nint)_glfwSetWindowSize); _glfwSetWindowSize(window, width, height); }
+    internal static delegate* unmanaged<nint, int, int, void> _glfwSetWindowSize = null;
     
     /// <summary>
     /// Retrieves the size of the framebuffer of the specified window.<br/>
@@ -1195,8 +1195,8 @@ public static unsafe class GLFW
     /// <param name="window">The window whose framebuffer to query.</param>
     /// <param name="width">Where to store the width, in pixels, of the framebuffer,<br/>or `NULL`.</param>
     /// <param name="height">Where to store the height, in pixels, of the framebuffer,<br/>or `NULL`.</param>
-    public static void glfwGetFramebufferSize(nint window, int* width, int* height) { QGLNativeAPI.Verify((nint)_glfwGetFramebufferSize); _glfwGetFramebufferSize(window, width, height); }
-    [QGLNativeAPI("glfwGetFramebufferSize")] internal static delegate* unmanaged<nint, int*, int*, void> _glfwGetFramebufferSize = null;
+    public static void glfwGetFramebufferSize(nint window, int* width, int* height) { QGLFeature.VerifyFunc((nint)_glfwGetFramebufferSize); _glfwGetFramebufferSize(window, width, height); }
+    internal static delegate* unmanaged<nint, int*, int*, void> _glfwGetFramebufferSize = null;
     
     /// <summary>
     /// Retrieves the size of the frame of the window.<br/>
@@ -1218,8 +1218,8 @@ public static unsafe class GLFW
     /// <param name="top">Where to store the size, in screen coordinates, of the top<br/>edge of the window frame, or `NULL`.</param>
     /// <param name="right">Where to store the size, in screen coordinates, of the<br/>right edge of the window frame, or `NULL`.</param>
     /// <param name="bottom">Where to store the size, in screen coordinates, of the<br/>bottom edge of the window frame, or `NULL`.</param>
-    public static void glfwGetWindowFrameSize(nint window, int* left, int* top, int* right, int* bottom) { QGLNativeAPI.Verify((nint)_glfwGetWindowFrameSize); _glfwGetWindowFrameSize(window, left, top, right, bottom); }
-    [QGLNativeAPI("glfwGetWindowFrameSize")] internal static delegate* unmanaged<nint, int*, int*, int*, int*, void> _glfwGetWindowFrameSize = null;
+    public static void glfwGetWindowFrameSize(nint window, int* left, int* top, int* right, int* bottom) { QGLFeature.VerifyFunc((nint)_glfwGetWindowFrameSize); _glfwGetWindowFrameSize(window, left, top, right, bottom); }
+    internal static delegate* unmanaged<nint, int*, int*, int*, int*, void> _glfwGetWindowFrameSize = null;
     
     /// <summary>
     /// Retrieves the content scale for the specified window.<br/>
@@ -1239,8 +1239,8 @@ public static unsafe class GLFW
     /// <param name="window">The window to query.</param>
     /// <param name="xscale">Where to store the x-axis content scale, or `NULL`.</param>
     /// <param name="yscale">Where to store the y-axis content scale, or `NULL`.</param>
-    public static void glfwGetWindowContentScale(nint window, float* xscale, float* yscale) { QGLNativeAPI.Verify((nint)_glfwGetWindowContentScale); _glfwGetWindowContentScale(window, xscale, yscale); }
-    [QGLNativeAPI("glfwGetWindowContentScale")] internal static delegate* unmanaged<nint, float*, float*, void> _glfwGetWindowContentScale = null;
+    public static void glfwGetWindowContentScale(nint window, float* xscale, float* yscale) { QGLFeature.VerifyFunc((nint)_glfwGetWindowContentScale); _glfwGetWindowContentScale(window, xscale, yscale); }
+    internal static delegate* unmanaged<nint, float*, float*, void> _glfwGetWindowContentScale = null;
     
     /// <summary>
     /// Returns the opacity of the whole window.<br/>
@@ -1254,8 +1254,8 @@ public static unsafe class GLFW
     /// The initial opacity value for newly created windows is one.<br/>
     /// </summary>
     /// <param name="window">The window to query.</param>
-    public static float glfwGetWindowOpacity(nint window) { QGLNativeAPI.Verify((nint)_glfwGetWindowOpacity); return _glfwGetWindowOpacity(window); }
-    [QGLNativeAPI("glfwGetWindowOpacity")] internal static delegate* unmanaged<nint, float> _glfwGetWindowOpacity = null;
+    public static float glfwGetWindowOpacity(nint window) { QGLFeature.VerifyFunc((nint)_glfwGetWindowOpacity); return _glfwGetWindowOpacity(window); }
+    internal static delegate* unmanaged<nint, float> _glfwGetWindowOpacity = null;
     
     /// <summary>
     /// Sets the opacity of the whole window.<br/>
@@ -1272,8 +1272,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="window">The window to set the opacity for.</param>
     /// <param name="opacity">The desired opacity of the specified window.</param>
-    public static void glfwSetWindowOpacity(nint window, float opacity) { QGLNativeAPI.Verify((nint)_glfwSetWindowOpacity); _glfwSetWindowOpacity(window, opacity); }
-    [QGLNativeAPI("glfwSetWindowOpacity")] internal static delegate* unmanaged<nint, float, void> _glfwSetWindowOpacity = null;
+    public static void glfwSetWindowOpacity(nint window, float opacity) { QGLFeature.VerifyFunc((nint)_glfwSetWindowOpacity); _glfwSetWindowOpacity(window, opacity); }
+    internal static delegate* unmanaged<nint, float, void> _glfwSetWindowOpacity = null;
     
     /// <summary>
     /// Iconifies the specified window.<br/>
@@ -1287,8 +1287,8 @@ public static unsafe class GLFW
     /// when the window is restored.<br/>
     /// </summary>
     /// <param name="window">The window to iconify.</param>
-    public static void glfwIconifyWindow(nint window) { QGLNativeAPI.Verify((nint)_glfwIconifyWindow); _glfwIconifyWindow(window); }
-    [QGLNativeAPI("glfwIconifyWindow")] internal static delegate* unmanaged<nint, void> _glfwIconifyWindow = null;
+    public static void glfwIconifyWindow(nint window) { QGLFeature.VerifyFunc((nint)_glfwIconifyWindow); _glfwIconifyWindow(window); }
+    internal static delegate* unmanaged<nint, void> _glfwIconifyWindow = null;
     
     /// <summary>
     /// Restores the specified window.<br/>
@@ -1301,8 +1301,8 @@ public static unsafe class GLFW
     /// video mode is set again for its monitor when the window is restored.<br/>
     /// </summary>
     /// <param name="window">The window to restore.</param>
-    public static void glfwRestoreWindow(nint window) { QGLNativeAPI.Verify((nint)_glfwRestoreWindow); _glfwRestoreWindow(window); }
-    [QGLNativeAPI("glfwRestoreWindow")] internal static delegate* unmanaged<nint, void> _glfwRestoreWindow = null;
+    public static void glfwRestoreWindow(nint window) { QGLFeature.VerifyFunc((nint)_glfwRestoreWindow); _glfwRestoreWindow(window); }
+    internal static delegate* unmanaged<nint, void> _glfwRestoreWindow = null;
     
     /// <summary>
     /// Maximizes the specified window.<br/>
@@ -1313,8 +1313,8 @@ public static unsafe class GLFW
     /// If the specified window is a full screen window, this function does nothing.<br/>
     /// </summary>
     /// <param name="window">The window to maximize.</param>
-    public static void glfwMaximizeWindow(nint window) { QGLNativeAPI.Verify((nint)_glfwMaximizeWindow); _glfwMaximizeWindow(window); }
-    [QGLNativeAPI("glfwMaximizeWindow")] internal static delegate* unmanaged<nint, void> _glfwMaximizeWindow = null;
+    public static void glfwMaximizeWindow(nint window) { QGLFeature.VerifyFunc((nint)_glfwMaximizeWindow); _glfwMaximizeWindow(window); }
+    internal static delegate* unmanaged<nint, void> _glfwMaximizeWindow = null;
     
     /// <summary>
     /// Makes the specified window visible.<br/>
@@ -1329,8 +1329,8 @@ public static unsafe class GLFW
     /// behavior for an existing window with <see cref="glfwSetWindowAttrib"/>.<br/>
     /// </summary>
     /// <param name="window">The window to make visible.</param>
-    public static void glfwShowWindow(nint window) { QGLNativeAPI.Verify((nint)_glfwShowWindow); _glfwShowWindow(window); }
-    [QGLNativeAPI("glfwShowWindow")] internal static delegate* unmanaged<nint, void> _glfwShowWindow = null;
+    public static void glfwShowWindow(nint window) { QGLFeature.VerifyFunc((nint)_glfwShowWindow); _glfwShowWindow(window); }
+    internal static delegate* unmanaged<nint, void> _glfwShowWindow = null;
     
     /// <summary>
     /// Hides the specified window.<br/>
@@ -1340,8 +1340,8 @@ public static unsafe class GLFW
     /// nothing.<br/>
     /// </summary>
     /// <param name="window">The window to hide.</param>
-    public static void glfwHideWindow(nint window) { QGLNativeAPI.Verify((nint)_glfwHideWindow); _glfwHideWindow(window); }
-    [QGLNativeAPI("glfwHideWindow")] internal static delegate* unmanaged<nint, void> _glfwHideWindow = null;
+    public static void glfwHideWindow(nint window) { QGLFeature.VerifyFunc((nint)_glfwHideWindow); _glfwHideWindow(window); }
+    internal static delegate* unmanaged<nint, void> _glfwHideWindow = null;
     
     /// <summary>
     /// Brings the specified window to front and sets input focus.<br/>
@@ -1365,8 +1365,8 @@ public static unsafe class GLFW
     /// <see cref="window_attention">attention requests</see>.<br/>
     /// </summary>
     /// <param name="window">The window to give input focus.</param>
-    public static void glfwFocusWindow(nint window) { QGLNativeAPI.Verify((nint)_glfwFocusWindow); _glfwFocusWindow(window); }
-    [QGLNativeAPI("glfwFocusWindow")] internal static delegate* unmanaged<nint, void> _glfwFocusWindow = null;
+    public static void glfwFocusWindow(nint window) { QGLFeature.VerifyFunc((nint)_glfwFocusWindow); _glfwFocusWindow(window); }
+    internal static delegate* unmanaged<nint, void> _glfwFocusWindow = null;
     
     /// <summary>
     /// Requests user attention to the specified window.<br/>
@@ -1379,8 +1379,8 @@ public static unsafe class GLFW
     /// application, the system will end the request automatically.<br/>
     /// </summary>
     /// <param name="window">The window to request attention to.</param>
-    public static void glfwRequestWindowAttention(nint window) { QGLNativeAPI.Verify((nint)_glfwRequestWindowAttention); _glfwRequestWindowAttention(window); }
-    [QGLNativeAPI("glfwRequestWindowAttention")] internal static delegate* unmanaged<nint, void> _glfwRequestWindowAttention = null;
+    public static void glfwRequestWindowAttention(nint window) { QGLFeature.VerifyFunc((nint)_glfwRequestWindowAttention); _glfwRequestWindowAttention(window); }
+    internal static delegate* unmanaged<nint, void> _glfwRequestWindowAttention = null;
     
     /// <summary>
     /// Returns the monitor that the window uses for full screen mode.<br/>
@@ -1389,8 +1389,8 @@ public static unsafe class GLFW
     /// in full screen on.<br/>
     /// </summary>
     /// <param name="window">The window to query.</param>
-    public static nint glfwGetWindowMonitor(nint window) { QGLNativeAPI.Verify((nint)_glfwGetWindowMonitor); return _glfwGetWindowMonitor(window); }
-    [QGLNativeAPI("glfwGetWindowMonitor")] internal static delegate* unmanaged<nint, nint> _glfwGetWindowMonitor = null;
+    public static nint glfwGetWindowMonitor(nint window) { QGLFeature.VerifyFunc((nint)_glfwGetWindowMonitor); return _glfwGetWindowMonitor(window); }
+    internal static delegate* unmanaged<nint, nint> _glfwGetWindowMonitor = null;
     
     /// <summary>
     /// Sets the mode, monitor, video mode and placement of a window.<br/>
@@ -1420,8 +1420,8 @@ public static unsafe class GLFW
     /// <param name="width">The desired with, in screen coordinates, of the content<br/>area or video mode.</param>
     /// <param name="height">The desired height, in screen coordinates, of the content<br/>area or video mode.</param>
     /// <param name="refreshRate">The desired refresh rate, in Hz, of the video mode,<br/>or `GLFW_DONT_CARE`.</param>
-    public static void glfwSetWindowMonitor(nint window, nint monitor, int xpos, int ypos, int width, int height, int refreshRate) { QGLNativeAPI.Verify((nint)_glfwSetWindowMonitor); _glfwSetWindowMonitor(window, monitor, xpos, ypos, width, height, refreshRate); }
-    [QGLNativeAPI("glfwSetWindowMonitor")] internal static delegate* unmanaged<nint, nint, int, int, int, int, int, void> _glfwSetWindowMonitor = null;
+    public static void glfwSetWindowMonitor(nint window, nint monitor, int xpos, int ypos, int width, int height, int refreshRate) { QGLFeature.VerifyFunc((nint)_glfwSetWindowMonitor); _glfwSetWindowMonitor(window, monitor, xpos, ypos, width, height, refreshRate); }
+    internal static delegate* unmanaged<nint, nint, int, int, int, int, int, void> _glfwSetWindowMonitor = null;
     
     /// <summary>
     /// Returns an attribute of the specified window.<br/>
@@ -1431,8 +1431,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="window">The window to query.</param>
     /// <param name="attrib">The <see cref="window_attribs">window attribute</see> whose value to<br/>return.</param>
-    public static int glfwGetWindowAttrib(nint window, int attrib) { QGLNativeAPI.Verify((nint)_glfwGetWindowAttrib); return _glfwGetWindowAttrib(window, attrib); }
-    [QGLNativeAPI("glfwGetWindowAttrib")] internal static delegate* unmanaged<nint, int, int> _glfwGetWindowAttrib = null;
+    public static int glfwGetWindowAttrib(nint window, int attrib) { QGLFeature.VerifyFunc((nint)_glfwGetWindowAttrib); return _glfwGetWindowAttrib(window, attrib); }
+    internal static delegate* unmanaged<nint, int, int> _glfwGetWindowAttrib = null;
     
     /// <summary>
     /// Sets an attribute of the specified window.<br/>
@@ -1455,8 +1455,8 @@ public static unsafe class GLFW
     /// <param name="window">The window to set the attribute for.</param>
     /// <param name="attrib">A supported window attribute.</param>
     /// <param name="value">`GLFW_TRUE` or `GLFW_FALSE`.</param>
-    public static void glfwSetWindowAttrib(nint window, int attrib, int value) { QGLNativeAPI.Verify((nint)_glfwSetWindowAttrib); _glfwSetWindowAttrib(window, attrib, value); }
-    [QGLNativeAPI("glfwSetWindowAttrib")] internal static delegate* unmanaged<nint, int, int, void> _glfwSetWindowAttrib = null;
+    public static void glfwSetWindowAttrib(nint window, int attrib, int value) { QGLFeature.VerifyFunc((nint)_glfwSetWindowAttrib); _glfwSetWindowAttrib(window, attrib, value); }
+    internal static delegate* unmanaged<nint, int, int, void> _glfwSetWindowAttrib = null;
     
     /// <summary>
     /// Sets the user pointer of the specified window.<br/>
@@ -1467,8 +1467,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="window">The window whose pointer to set.</param>
     /// <param name="pointer">The new value.</param>
-    public static void glfwSetWindowUserPointer(nint window, void* pointer) { QGLNativeAPI.Verify((nint)_glfwSetWindowUserPointer); _glfwSetWindowUserPointer(window, pointer); }
-    [QGLNativeAPI("glfwSetWindowUserPointer")] internal static delegate* unmanaged<nint, void*, void> _glfwSetWindowUserPointer = null;
+    public static void glfwSetWindowUserPointer(nint window, void* pointer) { QGLFeature.VerifyFunc((nint)_glfwSetWindowUserPointer); _glfwSetWindowUserPointer(window, pointer); }
+    internal static delegate* unmanaged<nint, void*, void> _glfwSetWindowUserPointer = null;
     
     /// <summary>
     /// Returns the user pointer of the specified window.<br/>
@@ -1477,8 +1477,8 @@ public static unsafe class GLFW
     /// specified window.  The initial value is `NULL`.<br/>
     /// </summary>
     /// <param name="window">The window whose pointer to return.</param>
-    public static void* glfwGetWindowUserPointer(nint window) { QGLNativeAPI.Verify((nint)_glfwGetWindowUserPointer); return _glfwGetWindowUserPointer(window); }
-    [QGLNativeAPI("glfwGetWindowUserPointer")] internal static delegate* unmanaged<nint, void*> _glfwGetWindowUserPointer = null;
+    public static void* glfwGetWindowUserPointer(nint window) { QGLFeature.VerifyFunc((nint)_glfwGetWindowUserPointer); return _glfwGetWindowUserPointer(window); }
+    internal static delegate* unmanaged<nint, void*> _glfwGetWindowUserPointer = null;
     
     /// <summary>
     /// Sets the position callback for the specified window.<br/>
@@ -1490,8 +1490,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="window">The window whose callback to set.</param>
     /// <param name="callback">The new callback, or `NULL` to remove the currently set<br/>callback.</param>
-    public static nint glfwSetWindowPosCallback(nint window, GLFWwindowposfun callback) { QGLNativeAPI.Verify((nint)_glfwSetWindowPosCallback); return _glfwSetWindowPosCallback(window, callback); }
-    [QGLNativeAPI("glfwSetWindowPosCallback")] internal static delegate* unmanaged<nint, GLFWwindowposfun, nint> _glfwSetWindowPosCallback = null;
+    public static nint glfwSetWindowPosCallback(nint window, GLFWwindowposfun callback) { QGLFeature.VerifyFunc((nint)_glfwSetWindowPosCallback); return _glfwSetWindowPosCallback(window, callback); }
+    internal static delegate* unmanaged<nint, GLFWwindowposfun, nint> _glfwSetWindowPosCallback = null;
     
     /// <summary>
     /// Sets the size callback for the specified window.<br/>
@@ -1502,8 +1502,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="window">The window whose callback to set.</param>
     /// <param name="callback">The new callback, or `NULL` to remove the currently set<br/>callback.</param>
-    public static nint glfwSetWindowSizeCallback(nint window, GLFWwindowsizefun callback) { QGLNativeAPI.Verify((nint)_glfwSetWindowSizeCallback); return _glfwSetWindowSizeCallback(window, callback); }
-    [QGLNativeAPI("glfwSetWindowSizeCallback")] internal static delegate* unmanaged<nint, GLFWwindowsizefun, nint> _glfwSetWindowSizeCallback = null;
+    public static nint glfwSetWindowSizeCallback(nint window, GLFWwindowsizefun callback) { QGLFeature.VerifyFunc((nint)_glfwSetWindowSizeCallback); return _glfwSetWindowSizeCallback(window, callback); }
+    internal static delegate* unmanaged<nint, GLFWwindowsizefun, nint> _glfwSetWindowSizeCallback = null;
     
     /// <summary>
     /// Sets the close callback for the specified window.<br/>
@@ -1519,8 +1519,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="window">The window whose callback to set.</param>
     /// <param name="callback">The new callback, or `NULL` to remove the currently set<br/>callback.</param>
-    public static nint glfwSetWindowCloseCallback(nint window, GLFWwindowclosefun callback) { QGLNativeAPI.Verify((nint)_glfwSetWindowCloseCallback); return _glfwSetWindowCloseCallback(window, callback); }
-    [QGLNativeAPI("glfwSetWindowCloseCallback")] internal static delegate* unmanaged<nint, GLFWwindowclosefun, nint> _glfwSetWindowCloseCallback = null;
+    public static nint glfwSetWindowCloseCallback(nint window, GLFWwindowclosefun callback) { QGLFeature.VerifyFunc((nint)_glfwSetWindowCloseCallback); return _glfwSetWindowCloseCallback(window, callback); }
+    internal static delegate* unmanaged<nint, GLFWwindowclosefun, nint> _glfwSetWindowCloseCallback = null;
     
     /// <summary>
     /// Sets the refresh callback for the specified window.<br/>
@@ -1535,8 +1535,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="window">The window whose callback to set.</param>
     /// <param name="callback">The new callback, or `NULL` to remove the currently set<br/>callback.</param>
-    public static nint glfwSetWindowRefreshCallback(nint window, GLFWwindowrefreshfun callback) { QGLNativeAPI.Verify((nint)_glfwSetWindowRefreshCallback); return _glfwSetWindowRefreshCallback(window, callback); }
-    [QGLNativeAPI("glfwSetWindowRefreshCallback")] internal static delegate* unmanaged<nint, GLFWwindowrefreshfun, nint> _glfwSetWindowRefreshCallback = null;
+    public static nint glfwSetWindowRefreshCallback(nint window, GLFWwindowrefreshfun callback) { QGLFeature.VerifyFunc((nint)_glfwSetWindowRefreshCallback); return _glfwSetWindowRefreshCallback(window, callback); }
+    internal static delegate* unmanaged<nint, GLFWwindowrefreshfun, nint> _glfwSetWindowRefreshCallback = null;
     
     /// <summary>
     /// Sets the focus callback for the specified window.<br/>
@@ -1551,8 +1551,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="window">The window whose callback to set.</param>
     /// <param name="callback">The new callback, or `NULL` to remove the currently set<br/>callback.</param>
-    public static nint glfwSetWindowFocusCallback(nint window, GLFWwindowfocusfun callback) { QGLNativeAPI.Verify((nint)_glfwSetWindowFocusCallback); return _glfwSetWindowFocusCallback(window, callback); }
-    [QGLNativeAPI("glfwSetWindowFocusCallback")] internal static delegate* unmanaged<nint, GLFWwindowfocusfun, nint> _glfwSetWindowFocusCallback = null;
+    public static nint glfwSetWindowFocusCallback(nint window, GLFWwindowfocusfun callback) { QGLFeature.VerifyFunc((nint)_glfwSetWindowFocusCallback); return _glfwSetWindowFocusCallback(window, callback); }
+    internal static delegate* unmanaged<nint, GLFWwindowfocusfun, nint> _glfwSetWindowFocusCallback = null;
     
     /// <summary>
     /// Sets the iconify callback for the specified window.<br/>
@@ -1562,8 +1562,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="window">The window whose callback to set.</param>
     /// <param name="callback">The new callback, or `NULL` to remove the currently set<br/>callback.</param>
-    public static nint glfwSetWindowIconifyCallback(nint window, GLFWwindowiconifyfun callback) { QGLNativeAPI.Verify((nint)_glfwSetWindowIconifyCallback); return _glfwSetWindowIconifyCallback(window, callback); }
-    [QGLNativeAPI("glfwSetWindowIconifyCallback")] internal static delegate* unmanaged<nint, GLFWwindowiconifyfun, nint> _glfwSetWindowIconifyCallback = null;
+    public static nint glfwSetWindowIconifyCallback(nint window, GLFWwindowiconifyfun callback) { QGLFeature.VerifyFunc((nint)_glfwSetWindowIconifyCallback); return _glfwSetWindowIconifyCallback(window, callback); }
+    internal static delegate* unmanaged<nint, GLFWwindowiconifyfun, nint> _glfwSetWindowIconifyCallback = null;
     
     /// <summary>
     /// Sets the maximize callback for the specified window.<br/>
@@ -1573,8 +1573,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="window">The window whose callback to set.</param>
     /// <param name="callback">The new callback, or `NULL` to remove the currently set<br/>callback.</param>
-    public static nint glfwSetWindowMaximizeCallback(nint window, GLFWwindowmaximizefun callback) { QGLNativeAPI.Verify((nint)_glfwSetWindowMaximizeCallback); return _glfwSetWindowMaximizeCallback(window, callback); }
-    [QGLNativeAPI("glfwSetWindowMaximizeCallback")] internal static delegate* unmanaged<nint, GLFWwindowmaximizefun, nint> _glfwSetWindowMaximizeCallback = null;
+    public static nint glfwSetWindowMaximizeCallback(nint window, GLFWwindowmaximizefun callback) { QGLFeature.VerifyFunc((nint)_glfwSetWindowMaximizeCallback); return _glfwSetWindowMaximizeCallback(window, callback); }
+    internal static delegate* unmanaged<nint, GLFWwindowmaximizefun, nint> _glfwSetWindowMaximizeCallback = null;
     
     /// <summary>
     /// Sets the framebuffer resize callback for the specified window.<br/>
@@ -1584,8 +1584,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="window">The window whose callback to set.</param>
     /// <param name="callback">The new callback, or `NULL` to remove the currently set<br/>callback.</param>
-    public static nint glfwSetFramebufferSizeCallback(nint window, GLFWframebuffersizefun callback) { QGLNativeAPI.Verify((nint)_glfwSetFramebufferSizeCallback); return _glfwSetFramebufferSizeCallback(window, callback); }
-    [QGLNativeAPI("glfwSetFramebufferSizeCallback")] internal static delegate* unmanaged<nint, GLFWframebuffersizefun, nint> _glfwSetFramebufferSizeCallback = null;
+    public static nint glfwSetFramebufferSizeCallback(nint window, GLFWframebuffersizefun callback) { QGLFeature.VerifyFunc((nint)_glfwSetFramebufferSizeCallback); return _glfwSetFramebufferSizeCallback(window, callback); }
+    internal static delegate* unmanaged<nint, GLFWframebuffersizefun, nint> _glfwSetFramebufferSizeCallback = null;
     
     /// <summary>
     /// Sets the window content scale callback for the specified window.<br/>
@@ -1595,8 +1595,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="window">The window whose callback to set.</param>
     /// <param name="callback">The new callback, or `NULL` to remove the currently set<br/>callback.</param>
-    public static nint glfwSetWindowContentScaleCallback(nint window, GLFWwindowcontentscalefun callback) { QGLNativeAPI.Verify((nint)_glfwSetWindowContentScaleCallback); return _glfwSetWindowContentScaleCallback(window, callback); }
-    [QGLNativeAPI("glfwSetWindowContentScaleCallback")] internal static delegate* unmanaged<nint, GLFWwindowcontentscalefun, nint> _glfwSetWindowContentScaleCallback = null;
+    public static nint glfwSetWindowContentScaleCallback(nint window, GLFWwindowcontentscalefun callback) { QGLFeature.VerifyFunc((nint)_glfwSetWindowContentScaleCallback); return _glfwSetWindowContentScaleCallback(window, callback); }
+    internal static delegate* unmanaged<nint, GLFWwindowcontentscalefun, nint> _glfwSetWindowContentScaleCallback = null;
     
     /// <summary>
     /// Processes all pending events.<br/>
@@ -1620,8 +1620,8 @@ public static unsafe class GLFW
     /// <br/>
     /// Event processing is not required for joystick input to work.<br/>
     /// </summary>
-    public static void glfwPollEvents() { QGLNativeAPI.Verify((nint)_glfwPollEvents); _glfwPollEvents(); }
-    [QGLNativeAPI("glfwPollEvents")] internal static delegate* unmanaged<void> _glfwPollEvents = null;
+    public static void glfwPollEvents() { QGLFeature.VerifyFunc((nint)_glfwPollEvents); _glfwPollEvents(); }
+    internal static delegate* unmanaged<void> _glfwPollEvents = null;
     
     /// <summary>
     /// Waits until events are queued and processes them.<br/>
@@ -1652,8 +1652,8 @@ public static unsafe class GLFW
     /// <br/>
     /// Event processing is not required for joystick input to work.<br/>
     /// </summary>
-    public static void glfwWaitEvents() { QGLNativeAPI.Verify((nint)_glfwWaitEvents); _glfwWaitEvents(); }
-    [QGLNativeAPI("glfwWaitEvents")] internal static delegate* unmanaged<void> _glfwWaitEvents = null;
+    public static void glfwWaitEvents() { QGLFeature.VerifyFunc((nint)_glfwWaitEvents); _glfwWaitEvents(); }
+    internal static delegate* unmanaged<void> _glfwWaitEvents = null;
     
     /// <summary>
     /// Waits with timeout until events are queued and processes them.<br/>
@@ -1686,8 +1686,8 @@ public static unsafe class GLFW
     /// Event processing is not required for joystick input to work.<br/>
     /// </summary>
     /// <param name="timeout">The maximum amount of time, in seconds, to wait.</param>
-    public static void glfwWaitEventsTimeout(double timeout) { QGLNativeAPI.Verify((nint)_glfwWaitEventsTimeout); _glfwWaitEventsTimeout(timeout); }
-    [QGLNativeAPI("glfwWaitEventsTimeout")] internal static delegate* unmanaged<double, void> _glfwWaitEventsTimeout = null;
+    public static void glfwWaitEventsTimeout(double timeout) { QGLFeature.VerifyFunc((nint)_glfwWaitEventsTimeout); _glfwWaitEventsTimeout(timeout); }
+    internal static delegate* unmanaged<double, void> _glfwWaitEventsTimeout = null;
     
     /// <summary>
     /// Posts an empty event to the event queue.<br/>
@@ -1695,8 +1695,8 @@ public static unsafe class GLFW
     /// This function posts an empty event from the current thread to the event<br/>
     /// queue, causing <see cref="glfwWaitEvents"/> or <see cref="glfwWaitEventsTimeout"/> to return.<br/>
     /// </summary>
-    public static void glfwPostEmptyEvent() { QGLNativeAPI.Verify((nint)_glfwPostEmptyEvent); _glfwPostEmptyEvent(); }
-    [QGLNativeAPI("glfwPostEmptyEvent")] internal static delegate* unmanaged<void> _glfwPostEmptyEvent = null;
+    public static void glfwPostEmptyEvent() { QGLFeature.VerifyFunc((nint)_glfwPostEmptyEvent); _glfwPostEmptyEvent(); }
+    internal static delegate* unmanaged<void> _glfwPostEmptyEvent = null;
     
     /// <summary>
     /// Returns the value of an input option for the specified window.<br/>
@@ -1708,8 +1708,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="window">The window to query.</param>
     /// <param name="mode">One of `GLFW_CURSOR`, `GLFW_STICKY_KEYS`,<br/>`GLFW_STICKY_MOUSE_BUTTONS`, `GLFW_LOCK_KEY_MODS` or<br/>`GLFW_RAW_MOUSE_MOTION`.</param>
-    public static int glfwGetInputMode(nint window, int mode) { QGLNativeAPI.Verify((nint)_glfwGetInputMode); return _glfwGetInputMode(window, mode); }
-    [QGLNativeAPI("glfwGetInputMode")] internal static delegate* unmanaged<nint, int, int> _glfwGetInputMode = null;
+    public static int glfwGetInputMode(nint window, int mode) { QGLFeature.VerifyFunc((nint)_glfwGetInputMode); return _glfwGetInputMode(window, mode); }
+    internal static delegate* unmanaged<nint, int, int> _glfwGetInputMode = null;
     
     /// <summary>
     /// Sets an input option for the specified window.<br/>
@@ -1763,8 +1763,8 @@ public static unsafe class GLFW
     /// <param name="window">The window whose input mode to set.</param>
     /// <param name="mode">One of `GLFW_CURSOR`, `GLFW_STICKY_KEYS`,<br/>`GLFW_STICKY_MOUSE_BUTTONS`, `GLFW_LOCK_KEY_MODS` or<br/>`GLFW_RAW_MOUSE_MOTION`.</param>
     /// <param name="value">The new value of the specified input mode.</param>
-    public static void glfwSetInputMode(nint window, int mode, int value) { QGLNativeAPI.Verify((nint)_glfwSetInputMode); _glfwSetInputMode(window, mode, value); }
-    [QGLNativeAPI("glfwSetInputMode")] internal static delegate* unmanaged<nint, int, int, void> _glfwSetInputMode = null;
+    public static void glfwSetInputMode(nint window, int mode, int value) { QGLFeature.VerifyFunc((nint)_glfwSetInputMode); _glfwSetInputMode(window, mode, value); }
+    internal static delegate* unmanaged<nint, int, int, void> _glfwSetInputMode = null;
     
     /// <summary>
     /// Returns whether raw mouse motion is supported.<br/>
@@ -1780,8 +1780,8 @@ public static unsafe class GLFW
     /// while raw motion is better for controlling for example a 3D camera.  Because<br/>
     /// of this, raw mouse motion is only provided when the cursor is disabled.<br/>
     /// </summary>
-    public static int glfwRawMouseMotionSupported() { QGLNativeAPI.Verify((nint)_glfwRawMouseMotionSupported); return _glfwRawMouseMotionSupported(); }
-    [QGLNativeAPI("glfwRawMouseMotionSupported")] internal static delegate* unmanaged<int> _glfwRawMouseMotionSupported = null;
+    public static int glfwRawMouseMotionSupported() { QGLFeature.VerifyFunc((nint)_glfwRawMouseMotionSupported); return _glfwRawMouseMotionSupported(); }
+    internal static delegate* unmanaged<int> _glfwRawMouseMotionSupported = null;
     
     /// <summary>
     /// Returns the layout-specific name of the specified printable key.<br/>
@@ -1831,8 +1831,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="key">The key to query, or `GLFW_KEY_UNKNOWN`.</param>
     /// <param name="scancode">The scancode of the key to query.</param>
-    public static byte* glfwGetKeyName(int key, int scancode) { QGLNativeAPI.Verify((nint)_glfwGetKeyName); return _glfwGetKeyName(key, scancode); }
-    [QGLNativeAPI("glfwGetKeyName")] internal static delegate* unmanaged<int, int, byte*> _glfwGetKeyName = null;
+    public static byte* glfwGetKeyName(int key, int scancode) { QGLFeature.VerifyFunc((nint)_glfwGetKeyName); return _glfwGetKeyName(key, scancode); }
+    internal static delegate* unmanaged<int, int, byte*> _glfwGetKeyName = null;
     
     /// <summary>
     /// Returns the platform-specific scancode of the specified key.<br/>
@@ -1845,8 +1845,8 @@ public static unsafe class GLFW
     /// and generate a <see cref="GLFW_INVALID_ENUM"/> error.<br/>
     /// </summary>
     /// <param name="key">Any <see cref="keys">key token</see>.</param>
-    public static int glfwGetKeyScancode(int key) { QGLNativeAPI.Verify((nint)_glfwGetKeyScancode); return _glfwGetKeyScancode(key); }
-    [QGLNativeAPI("glfwGetKeyScancode")] internal static delegate* unmanaged<int, int> _glfwGetKeyScancode = null;
+    public static int glfwGetKeyScancode(int key) { QGLFeature.VerifyFunc((nint)_glfwGetKeyScancode); return _glfwGetKeyScancode(key); }
+    internal static delegate* unmanaged<int, int> _glfwGetKeyScancode = null;
     
     /// <summary>
     /// Returns the last reported state of a keyboard key for the specified<br/>
@@ -1871,8 +1871,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="window">The desired window.</param>
     /// <param name="key">The desired <see cref="keys">keyboard key</see>.  `GLFW_KEY_UNKNOWN` is<br/>not a valid key for this function.</param>
-    public static int glfwGetKey(nint window, int key) { QGLNativeAPI.Verify((nint)_glfwGetKey); return _glfwGetKey(window, key); }
-    [QGLNativeAPI("glfwGetKey")] internal static delegate* unmanaged<nint, int, int> _glfwGetKey = null;
+    public static int glfwGetKey(nint window, int key) { QGLFeature.VerifyFunc((nint)_glfwGetKey); return _glfwGetKey(window, key); }
+    internal static delegate* unmanaged<nint, int, int> _glfwGetKey = null;
     
     /// <summary>
     /// Returns the last reported state of a mouse button for the specified<br/>
@@ -1891,8 +1891,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="window">The desired window.</param>
     /// <param name="button">The desired <see cref="buttons">mouse button token</see>.</param>
-    public static int glfwGetMouseButton(nint window, int button) { QGLNativeAPI.Verify((nint)_glfwGetMouseButton); return _glfwGetMouseButton(window, button); }
-    [QGLNativeAPI("glfwGetMouseButton")] internal static delegate* unmanaged<nint, int, int> _glfwGetMouseButton = null;
+    public static int glfwGetMouseButton(nint window, int button) { QGLFeature.VerifyFunc((nint)_glfwGetMouseButton); return _glfwGetMouseButton(window, button); }
+    internal static delegate* unmanaged<nint, int, int> _glfwGetMouseButton = null;
     
     /// <summary>
     /// Retrieves the position of the cursor relative to the content area of<br/>
@@ -1916,8 +1916,8 @@ public static unsafe class GLFW
     /// <param name="window">The desired window.</param>
     /// <param name="xpos">Where to store the cursor x-coordinate, relative to the<br/>left edge of the content area, or `NULL`.</param>
     /// <param name="ypos">Where to store the cursor y-coordinate, relative to the to<br/>top edge of the content area, or `NULL`.</param>
-    public static void glfwGetCursorPos(nint window, double* xpos, double* ypos) { QGLNativeAPI.Verify((nint)_glfwGetCursorPos); _glfwGetCursorPos(window, xpos, ypos); }
-    [QGLNativeAPI("glfwGetCursorPos")] internal static delegate* unmanaged<nint, double*, double*, void> _glfwGetCursorPos = null;
+    public static void glfwGetCursorPos(nint window, double* xpos, double* ypos) { QGLFeature.VerifyFunc((nint)_glfwGetCursorPos); _glfwGetCursorPos(window, xpos, ypos); }
+    internal static delegate* unmanaged<nint, double*, double*, void> _glfwGetCursorPos = null;
     
     /// <summary>
     /// Sets the position of the cursor, relative to the content area of the<br/>
@@ -1940,8 +1940,8 @@ public static unsafe class GLFW
     /// <param name="window">The desired window.</param>
     /// <param name="xpos">The desired x-coordinate, relative to the left edge of the<br/>content area.</param>
     /// <param name="ypos">The desired y-coordinate, relative to the top edge of the<br/>content area.</param>
-    public static void glfwSetCursorPos(nint window, double xpos, double ypos) { QGLNativeAPI.Verify((nint)_glfwSetCursorPos); _glfwSetCursorPos(window, xpos, ypos); }
-    [QGLNativeAPI("glfwSetCursorPos")] internal static delegate* unmanaged<nint, double, double, void> _glfwSetCursorPos = null;
+    public static void glfwSetCursorPos(nint window, double xpos, double ypos) { QGLFeature.VerifyFunc((nint)_glfwSetCursorPos); _glfwSetCursorPos(window, xpos, ypos); }
+    internal static delegate* unmanaged<nint, double, double, void> _glfwSetCursorPos = null;
     
     /// <summary>
     /// Creates a custom cursor.<br/>
@@ -1960,8 +1960,8 @@ public static unsafe class GLFW
     /// <param name="image">The desired cursor image.</param>
     /// <param name="xhot">The desired x-coordinate, in pixels, of the cursor hotspot.</param>
     /// <param name="yhot">The desired y-coordinate, in pixels, of the cursor hotspot.</param>
-    public static nint glfwCreateCursor(GLFWimage* image, int xhot, int yhot) { QGLNativeAPI.Verify((nint)_glfwCreateCursor); return _glfwCreateCursor(image, xhot, yhot); }
-    [QGLNativeAPI("glfwCreateCursor")] internal static delegate* unmanaged<GLFWimage*, int, int, nint> _glfwCreateCursor = null;
+    public static nint glfwCreateCursor(GLFWimage* image, int xhot, int yhot) { QGLFeature.VerifyFunc((nint)_glfwCreateCursor); return _glfwCreateCursor(image, xhot, yhot); }
+    internal static delegate* unmanaged<GLFWimage*, int, int, nint> _glfwCreateCursor = null;
     
     /// <summary>
     /// Creates a cursor with a standard shape.<br/>
@@ -1993,8 +1993,8 @@ public static unsafe class GLFW
     /// If the requested shape is not available, this function emits a <see cref="GLFW_CURSOR_UNAVAILABLE"/> error and returns `NULL`.<br/>
     /// </summary>
     /// <param name="shape">One of the <see cref="shapes">standard shapes</see>.</param>
-    public static nint glfwCreateStandardCursor(int shape) { QGLNativeAPI.Verify((nint)_glfwCreateStandardCursor); return _glfwCreateStandardCursor(shape); }
-    [QGLNativeAPI("glfwCreateStandardCursor")] internal static delegate* unmanaged<int, nint> _glfwCreateStandardCursor = null;
+    public static nint glfwCreateStandardCursor(int shape) { QGLFeature.VerifyFunc((nint)_glfwCreateStandardCursor); return _glfwCreateStandardCursor(shape); }
+    internal static delegate* unmanaged<int, nint> _glfwCreateStandardCursor = null;
     
     /// <summary>
     /// Destroys a cursor.<br/>
@@ -2005,8 +2005,8 @@ public static unsafe class GLFW
     /// reverted to the default cursor.  This does not affect the cursor mode.<br/>
     /// </summary>
     /// <param name="cursor">The cursor object to destroy.</param>
-    public static void glfwDestroyCursor(nint cursor) { QGLNativeAPI.Verify((nint)_glfwDestroyCursor); _glfwDestroyCursor(cursor); }
-    [QGLNativeAPI("glfwDestroyCursor")] internal static delegate* unmanaged<nint, void> _glfwDestroyCursor = null;
+    public static void glfwDestroyCursor(nint cursor) { QGLFeature.VerifyFunc((nint)_glfwDestroyCursor); _glfwDestroyCursor(cursor); }
+    internal static delegate* unmanaged<nint, void> _glfwDestroyCursor = null;
     
     /// <summary>
     /// Sets the cursor for the window.<br/>
@@ -2021,8 +2021,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="window">The window to set the cursor for.</param>
     /// <param name="cursor">The cursor to set, or `NULL` to switch back to the default<br/>arrow cursor.</param>
-    public static void glfwSetCursor(nint window, nint cursor) { QGLNativeAPI.Verify((nint)_glfwSetCursor); _glfwSetCursor(window, cursor); }
-    [QGLNativeAPI("glfwSetCursor")] internal static delegate* unmanaged<nint, nint, void> _glfwSetCursor = null;
+    public static void glfwSetCursor(nint window, nint cursor) { QGLFeature.VerifyFunc((nint)_glfwSetCursor); _glfwSetCursor(window, cursor); }
+    internal static delegate* unmanaged<nint, nint, void> _glfwSetCursor = null;
     
     /// <summary>
     /// Sets the key callback.<br/>
@@ -2051,8 +2051,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="window">The window whose callback to set.</param>
     /// <param name="callback">The new key callback, or `NULL` to remove the currently<br/>set callback.</param>
-    public static nint glfwSetKeyCallback(nint window, GLFWkeyfun callback) { QGLNativeAPI.Verify((nint)_glfwSetKeyCallback); return _glfwSetKeyCallback(window, callback); }
-    [QGLNativeAPI("glfwSetKeyCallback")] internal static delegate* unmanaged<nint, GLFWkeyfun, nint> _glfwSetKeyCallback = null;
+    public static nint glfwSetKeyCallback(nint window, GLFWkeyfun callback) { QGLFeature.VerifyFunc((nint)_glfwSetKeyCallback); return _glfwSetKeyCallback(window, callback); }
+    internal static delegate* unmanaged<nint, GLFWkeyfun, nint> _glfwSetKeyCallback = null;
     
     /// <summary>
     /// Sets the Unicode character callback.<br/>
@@ -2074,8 +2074,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="window">The window whose callback to set.</param>
     /// <param name="callback">The new callback, or `NULL` to remove the currently set<br/>callback.</param>
-    public static nint glfwSetCharCallback(nint window, GLFWcharfun callback) { QGLNativeAPI.Verify((nint)_glfwSetCharCallback); return _glfwSetCharCallback(window, callback); }
-    [QGLNativeAPI("glfwSetCharCallback")] internal static delegate* unmanaged<nint, GLFWcharfun, nint> _glfwSetCharCallback = null;
+    public static nint glfwSetCharCallback(nint window, GLFWcharfun callback) { QGLFeature.VerifyFunc((nint)_glfwSetCharCallback); return _glfwSetCharCallback(window, callback); }
+    internal static delegate* unmanaged<nint, GLFWcharfun, nint> _glfwSetCharCallback = null;
     
     /// <summary>
     /// Sets the Unicode character with modifiers callback.<br/>
@@ -2095,8 +2095,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="window">The window whose callback to set.</param>
     /// <param name="callback">The new callback, or `NULL` to remove the currently set<br/>callback.</param>
-    public static nint glfwSetCharModsCallback(nint window, GLFWcharmodsfun callback) { QGLNativeAPI.Verify((nint)_glfwSetCharModsCallback); return _glfwSetCharModsCallback(window, callback); }
-    [QGLNativeAPI("glfwSetCharModsCallback")] internal static delegate* unmanaged<nint, GLFWcharmodsfun, nint> _glfwSetCharModsCallback = null;
+    public static nint glfwSetCharModsCallback(nint window, GLFWcharmodsfun callback) { QGLFeature.VerifyFunc((nint)_glfwSetCharModsCallback); return _glfwSetCharModsCallback(window, callback); }
+    internal static delegate* unmanaged<nint, GLFWcharmodsfun, nint> _glfwSetCharModsCallback = null;
     
     /// <summary>
     /// Sets the mouse button callback.<br/>
@@ -2117,8 +2117,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="window">The window whose callback to set.</param>
     /// <param name="callback">The new callback, or `NULL` to remove the currently set<br/>callback.</param>
-    public static nint glfwSetMouseButtonCallback(nint window, GLFWmousebuttonfun callback) { QGLNativeAPI.Verify((nint)_glfwSetMouseButtonCallback); return _glfwSetMouseButtonCallback(window, callback); }
-    [QGLNativeAPI("glfwSetMouseButtonCallback")] internal static delegate* unmanaged<nint, GLFWmousebuttonfun, nint> _glfwSetMouseButtonCallback = null;
+    public static nint glfwSetMouseButtonCallback(nint window, GLFWmousebuttonfun callback) { QGLFeature.VerifyFunc((nint)_glfwSetMouseButtonCallback); return _glfwSetMouseButtonCallback(window, callback); }
+    internal static delegate* unmanaged<nint, GLFWmousebuttonfun, nint> _glfwSetMouseButtonCallback = null;
     
     /// <summary>
     /// Sets the cursor position callback.<br/>
@@ -2130,8 +2130,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="window">The window whose callback to set.</param>
     /// <param name="callback">The new callback, or `NULL` to remove the currently set<br/>callback.</param>
-    public static nint glfwSetCursorPosCallback(nint window, GLFWcursorposfun callback) { QGLNativeAPI.Verify((nint)_glfwSetCursorPosCallback); return _glfwSetCursorPosCallback(window, callback); }
-    [QGLNativeAPI("glfwSetCursorPosCallback")] internal static delegate* unmanaged<nint, GLFWcursorposfun, nint> _glfwSetCursorPosCallback = null;
+    public static nint glfwSetCursorPosCallback(nint window, GLFWcursorposfun callback) { QGLFeature.VerifyFunc((nint)_glfwSetCursorPosCallback); return _glfwSetCursorPosCallback(window, callback); }
+    internal static delegate* unmanaged<nint, GLFWcursorposfun, nint> _glfwSetCursorPosCallback = null;
     
     /// <summary>
     /// Sets the cursor enter/leave callback.<br/>
@@ -2142,8 +2142,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="window">The window whose callback to set.</param>
     /// <param name="callback">The new callback, or `NULL` to remove the currently set<br/>callback.</param>
-    public static nint glfwSetCursorEnterCallback(nint window, GLFWcursorenterfun callback) { QGLNativeAPI.Verify((nint)_glfwSetCursorEnterCallback); return _glfwSetCursorEnterCallback(window, callback); }
-    [QGLNativeAPI("glfwSetCursorEnterCallback")] internal static delegate* unmanaged<nint, GLFWcursorenterfun, nint> _glfwSetCursorEnterCallback = null;
+    public static nint glfwSetCursorEnterCallback(nint window, GLFWcursorenterfun callback) { QGLFeature.VerifyFunc((nint)_glfwSetCursorEnterCallback); return _glfwSetCursorEnterCallback(window, callback); }
+    internal static delegate* unmanaged<nint, GLFWcursorenterfun, nint> _glfwSetCursorEnterCallback = null;
     
     /// <summary>
     /// Sets the scroll callback.<br/>
@@ -2157,8 +2157,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="window">The window whose callback to set.</param>
     /// <param name="callback">The new scroll callback, or `NULL` to remove the<br/>currently set callback.</param>
-    public static nint glfwSetScrollCallback(nint window, GLFWscrollfun callback) { QGLNativeAPI.Verify((nint)_glfwSetScrollCallback); return _glfwSetScrollCallback(window, callback); }
-    [QGLNativeAPI("glfwSetScrollCallback")] internal static delegate* unmanaged<nint, GLFWscrollfun, nint> _glfwSetScrollCallback = null;
+    public static nint glfwSetScrollCallback(nint window, GLFWscrollfun callback) { QGLFeature.VerifyFunc((nint)_glfwSetScrollCallback); return _glfwSetScrollCallback(window, callback); }
+    internal static delegate* unmanaged<nint, GLFWscrollfun, nint> _glfwSetScrollCallback = null;
     
     /// <summary>
     /// Sets the path drop callback.<br/>
@@ -2173,8 +2173,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="window">The window whose callback to set.</param>
     /// <param name="callback">The new file drop callback, or `NULL` to remove the<br/>currently set callback.</param>
-    public static nint glfwSetDropCallback(nint window, GLFWdropfun callback) { QGLNativeAPI.Verify((nint)_glfwSetDropCallback); return _glfwSetDropCallback(window, callback); }
-    [QGLNativeAPI("glfwSetDropCallback")] internal static delegate* unmanaged<nint, GLFWdropfun, nint> _glfwSetDropCallback = null;
+    public static nint glfwSetDropCallback(nint window, GLFWdropfun callback) { QGLFeature.VerifyFunc((nint)_glfwSetDropCallback); return _glfwSetDropCallback(window, callback); }
+    internal static delegate* unmanaged<nint, GLFWdropfun, nint> _glfwSetDropCallback = null;
     
     /// <summary>
     /// Returns whether the specified joystick is present.<br/>
@@ -2186,8 +2186,8 @@ public static unsafe class GLFW
     /// work.<br/>
     /// </summary>
     /// <param name="jid">The <see cref="joysticks">joystick</see> to query.</param>
-    public static int glfwJoystickPresent(int jid) { QGLNativeAPI.Verify((nint)_glfwJoystickPresent); return _glfwJoystickPresent(jid); }
-    [QGLNativeAPI("glfwJoystickPresent")] internal static delegate* unmanaged<int, int> _glfwJoystickPresent = null;
+    public static int glfwJoystickPresent(int jid) { QGLFeature.VerifyFunc((nint)_glfwJoystickPresent); return _glfwJoystickPresent(jid); }
+    internal static delegate* unmanaged<int, int> _glfwJoystickPresent = null;
     
     /// <summary>
     /// Returns the values of all axes of the specified joystick.<br/>
@@ -2201,8 +2201,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="jid">The <see cref="joysticks">joystick</see> to query.</param>
     /// <param name="count">Where to store the number of axis values in the returned<br/>array.  This is set to zero if the joystick is not present or an error<br/>occurred.</param>
-    public static float* glfwGetJoystickAxes(int jid, int* count) { QGLNativeAPI.Verify((nint)_glfwGetJoystickAxes); return _glfwGetJoystickAxes(jid, count); }
-    [QGLNativeAPI("glfwGetJoystickAxes")] internal static delegate* unmanaged<int, int*, float*> _glfwGetJoystickAxes = null;
+    public static float* glfwGetJoystickAxes(int jid, int* count) { QGLFeature.VerifyFunc((nint)_glfwGetJoystickAxes); return _glfwGetJoystickAxes(jid, count); }
+    internal static delegate* unmanaged<int, int*, float*> _glfwGetJoystickAxes = null;
     
     /// <summary>
     /// Returns the state of all buttons of the specified joystick.<br/>
@@ -2221,8 +2221,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="jid">The <see cref="joysticks">joystick</see> to query.</param>
     /// <param name="count">Where to store the number of button states in the returned<br/>array.  This is set to zero if the joystick is not present or an error<br/>occurred.</param>
-    public static byte* glfwGetJoystickButtons(int jid, int* count) { QGLNativeAPI.Verify((nint)_glfwGetJoystickButtons); return _glfwGetJoystickButtons(jid, count); }
-    [QGLNativeAPI("glfwGetJoystickButtons")] internal static delegate* unmanaged<int, int*, byte*> _glfwGetJoystickButtons = null;
+    public static byte* glfwGetJoystickButtons(int jid, int* count) { QGLFeature.VerifyFunc((nint)_glfwGetJoystickButtons); return _glfwGetJoystickButtons(jid, count); }
+    internal static delegate* unmanaged<int, int*, byte*> _glfwGetJoystickButtons = null;
     
     /// <summary>
     /// Returns the state of all hats of the specified joystick.<br/>
@@ -2248,8 +2248,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="jid">The <see cref="joysticks">joystick</see> to query.</param>
     /// <param name="count">Where to store the number of hat states in the returned<br/>array.  This is set to zero if the joystick is not present or an error<br/>occurred.</param>
-    public static byte* glfwGetJoystickHats(int jid, int* count) { QGLNativeAPI.Verify((nint)_glfwGetJoystickHats); return _glfwGetJoystickHats(jid, count); }
-    [QGLNativeAPI("glfwGetJoystickHats")] internal static delegate* unmanaged<int, int*, byte*> _glfwGetJoystickHats = null;
+    public static byte* glfwGetJoystickHats(int jid, int* count) { QGLFeature.VerifyFunc((nint)_glfwGetJoystickHats); return _glfwGetJoystickHats(jid, count); }
+    internal static delegate* unmanaged<int, int*, byte*> _glfwGetJoystickHats = null;
     
     /// <summary>
     /// Returns the name of the specified joystick.<br/>
@@ -2263,8 +2263,8 @@ public static unsafe class GLFW
     /// <see cref="glfwJoystickPresent"/>.<br/>
     /// </summary>
     /// <param name="jid">The <see cref="joysticks">joystick</see> to query.</param>
-    public static byte* glfwGetJoystickName(int jid) { QGLNativeAPI.Verify((nint)_glfwGetJoystickName); return _glfwGetJoystickName(jid); }
-    [QGLNativeAPI("glfwGetJoystickName")] internal static delegate* unmanaged<int, byte*> _glfwGetJoystickName = null;
+    public static byte* glfwGetJoystickName(int jid) { QGLFeature.VerifyFunc((nint)_glfwGetJoystickName); return _glfwGetJoystickName(jid); }
+    internal static delegate* unmanaged<int, byte*> _glfwGetJoystickName = null;
     
     /// <summary>
     /// Returns the SDL compatible GUID of the specified joystick.<br/>
@@ -2288,8 +2288,8 @@ public static unsafe class GLFW
     /// depending on what hardware information the platform specific APIs provide.<br/>
     /// </summary>
     /// <param name="jid">The <see cref="joysticks">joystick</see> to query.</param>
-    public static byte* glfwGetJoystickGUID(int jid) { QGLNativeAPI.Verify((nint)_glfwGetJoystickGUID); return _glfwGetJoystickGUID(jid); }
-    [QGLNativeAPI("glfwGetJoystickGUID")] internal static delegate* unmanaged<int, byte*> _glfwGetJoystickGUID = null;
+    public static byte* glfwGetJoystickGUID(int jid) { QGLFeature.VerifyFunc((nint)_glfwGetJoystickGUID); return _glfwGetJoystickGUID(jid); }
+    internal static delegate* unmanaged<int, byte*> _glfwGetJoystickGUID = null;
     
     /// <summary>
     /// Sets the user pointer of the specified joystick.<br/>
@@ -2303,8 +2303,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="jid">The joystick whose pointer to set.</param>
     /// <param name="pointer">The new value.</param>
-    public static void glfwSetJoystickUserPointer(int jid, void* pointer) { QGLNativeAPI.Verify((nint)_glfwSetJoystickUserPointer); _glfwSetJoystickUserPointer(jid, pointer); }
-    [QGLNativeAPI("glfwSetJoystickUserPointer")] internal static delegate* unmanaged<int, void*, void> _glfwSetJoystickUserPointer = null;
+    public static void glfwSetJoystickUserPointer(int jid, void* pointer) { QGLFeature.VerifyFunc((nint)_glfwSetJoystickUserPointer); _glfwSetJoystickUserPointer(jid, pointer); }
+    internal static delegate* unmanaged<int, void*, void> _glfwSetJoystickUserPointer = null;
     
     /// <summary>
     /// Returns the user pointer of the specified joystick.<br/>
@@ -2316,8 +2316,8 @@ public static unsafe class GLFW
     /// that is being disconnected.<br/>
     /// </summary>
     /// <param name="jid">The joystick whose pointer to return.</param>
-    public static void* glfwGetJoystickUserPointer(int jid) { QGLNativeAPI.Verify((nint)_glfwGetJoystickUserPointer); return _glfwGetJoystickUserPointer(jid); }
-    [QGLNativeAPI("glfwGetJoystickUserPointer")] internal static delegate* unmanaged<int, void*> _glfwGetJoystickUserPointer = null;
+    public static void* glfwGetJoystickUserPointer(int jid) { QGLFeature.VerifyFunc((nint)_glfwGetJoystickUserPointer); return _glfwGetJoystickUserPointer(jid); }
+    internal static delegate* unmanaged<int, void*> _glfwGetJoystickUserPointer = null;
     
     /// <summary>
     /// Returns whether the specified joystick has a gamepad mapping.<br/>
@@ -2331,8 +2331,8 @@ public static unsafe class GLFW
     /// whether it has a mapping.<br/>
     /// </summary>
     /// <param name="jid">The <see cref="joysticks">joystick</see> to query.</param>
-    public static int glfwJoystickIsGamepad(int jid) { QGLNativeAPI.Verify((nint)_glfwJoystickIsGamepad); return _glfwJoystickIsGamepad(jid); }
-    [QGLNativeAPI("glfwJoystickIsGamepad")] internal static delegate* unmanaged<int, int> _glfwJoystickIsGamepad = null;
+    public static int glfwJoystickIsGamepad(int jid) { QGLFeature.VerifyFunc((nint)_glfwJoystickIsGamepad); return _glfwJoystickIsGamepad(jid); }
+    internal static delegate* unmanaged<int, int> _glfwJoystickIsGamepad = null;
     
     /// <summary>
     /// Sets the joystick configuration callback.<br/>
@@ -2348,8 +2348,8 @@ public static unsafe class GLFW
     /// returns if the joystick is not present.<br/>
     /// </summary>
     /// <param name="callback">The new callback, or `NULL` to remove the currently set<br/>callback.</param>
-    public static nint glfwSetJoystickCallback(GLFWjoystickfun callback) { QGLNativeAPI.Verify((nint)_glfwSetJoystickCallback); return _glfwSetJoystickCallback(callback); }
-    [QGLNativeAPI("glfwSetJoystickCallback")] internal static delegate* unmanaged<GLFWjoystickfun, nint> _glfwSetJoystickCallback = null;
+    public static nint glfwSetJoystickCallback(GLFWjoystickfun callback) { QGLFeature.VerifyFunc((nint)_glfwSetJoystickCallback); return _glfwSetJoystickCallback(callback); }
+    internal static delegate* unmanaged<GLFWjoystickfun, nint> _glfwSetJoystickCallback = null;
     
     /// <summary>
     /// Adds the specified SDL_GameControllerDB gamepad mappings.<br/>
@@ -2368,8 +2368,8 @@ public static unsafe class GLFW
     /// default.<br/>
     /// </summary>
     /// <param name="string">The string containing the gamepad mappings.</param>
-    public static int glfwUpdateGamepadMappings(byte* @string) { QGLNativeAPI.Verify((nint)_glfwUpdateGamepadMappings); return _glfwUpdateGamepadMappings(@string); }
-    [QGLNativeAPI("glfwUpdateGamepadMappings")] internal static delegate* unmanaged<byte*, int> _glfwUpdateGamepadMappings = null;
+    public static int glfwUpdateGamepadMappings(byte* @string) { QGLFeature.VerifyFunc((nint)_glfwUpdateGamepadMappings); return _glfwUpdateGamepadMappings(@string); }
+    internal static delegate* unmanaged<byte*, int> _glfwUpdateGamepadMappings = null;
     
     /// <summary>
     /// Returns the human-readable gamepad name for the specified joystick.<br/>
@@ -2383,8 +2383,8 @@ public static unsafe class GLFW
     /// whether it has a mapping.<br/>
     /// </summary>
     /// <param name="jid">The <see cref="joysticks">joystick</see> to query.</param>
-    public static byte* glfwGetGamepadName(int jid) { QGLNativeAPI.Verify((nint)_glfwGetGamepadName); return _glfwGetGamepadName(jid); }
-    [QGLNativeAPI("glfwGetGamepadName")] internal static delegate* unmanaged<int, byte*> _glfwGetGamepadName = null;
+    public static byte* glfwGetGamepadName(int jid) { QGLFeature.VerifyFunc((nint)_glfwGetGamepadName); return _glfwGetGamepadName(jid); }
+    internal static delegate* unmanaged<int, byte*> _glfwGetGamepadName = null;
     
     /// <summary>
     /// Retrieves the state of the specified joystick remapped as a gamepad.<br/>
@@ -2405,8 +2405,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="jid">The <see cref="joysticks">joystick</see> to query.</param>
     /// <param name="state">The gamepad input state of the joystick.</param>
-    public static int glfwGetGamepadState(int jid, GLFWgamepadstate* state) { QGLNativeAPI.Verify((nint)_glfwGetGamepadState); return _glfwGetGamepadState(jid, state); }
-    [QGLNativeAPI("glfwGetGamepadState")] internal static delegate* unmanaged<int, GLFWgamepadstate*, int> _glfwGetGamepadState = null;
+    public static int glfwGetGamepadState(int jid, GLFWgamepadstate* state) { QGLFeature.VerifyFunc((nint)_glfwGetGamepadState); return _glfwGetGamepadState(jid, state); }
+    internal static delegate* unmanaged<int, GLFWgamepadstate*, int> _glfwGetGamepadState = null;
     
     /// <summary>
     /// Sets the clipboard to the specified string.<br/>
@@ -2416,8 +2416,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="window">Deprecated.  Any valid window or `NULL`.</param>
     /// <param name="string">A UTF-8 encoded string.</param>
-    public static void glfwSetClipboardString(nint window, byte* @string) { QGLNativeAPI.Verify((nint)_glfwSetClipboardString); _glfwSetClipboardString(window, @string); }
-    [QGLNativeAPI("glfwSetClipboardString")] internal static delegate* unmanaged<nint, byte*, void> _glfwSetClipboardString = null;
+    public static void glfwSetClipboardString(nint window, byte* @string) { QGLFeature.VerifyFunc((nint)_glfwSetClipboardString); _glfwSetClipboardString(window, @string); }
+    internal static delegate* unmanaged<nint, byte*, void> _glfwSetClipboardString = null;
     
     /// <summary>
     /// Returns the contents of the clipboard as a string.<br/>
@@ -2427,8 +2427,8 @@ public static unsafe class GLFW
     /// if its contents cannot be converted, `NULL` is returned and a <see cref="GLFW_FORMAT_UNAVAILABLE"/> error is generated.<br/>
     /// </summary>
     /// <param name="window">Deprecated.  Any valid window or `NULL`.</param>
-    public static byte* glfwGetClipboardString(nint window) { QGLNativeAPI.Verify((nint)_glfwGetClipboardString); return _glfwGetClipboardString(window); }
-    [QGLNativeAPI("glfwGetClipboardString")] internal static delegate* unmanaged<nint, byte*> _glfwGetClipboardString = null;
+    public static byte* glfwGetClipboardString(nint window) { QGLFeature.VerifyFunc((nint)_glfwGetClipboardString); return _glfwGetClipboardString(window); }
+    internal static delegate* unmanaged<nint, byte*> _glfwGetClipboardString = null;
     
     /// <summary>
     /// Returns the GLFW time.<br/>
@@ -2443,8 +2443,8 @@ public static unsafe class GLFW
     /// of a few micro- or nanoseconds.  It uses the highest-resolution monotonic<br/>
     /// time source on each operating system.<br/>
     /// </summary>
-    public static double glfwGetTime() { QGLNativeAPI.Verify((nint)_glfwGetTime); return _glfwGetTime(); }
-    [QGLNativeAPI("glfwGetTime")] internal static delegate* unmanaged<double> _glfwGetTime = null;
+    public static double glfwGetTime() { QGLFeature.VerifyFunc((nint)_glfwGetTime); return _glfwGetTime(); }
+    internal static delegate* unmanaged<double> _glfwGetTime = null;
     
     /// <summary>
     /// Sets the GLFW time.<br/>
@@ -2456,8 +2456,8 @@ public static unsafe class GLFW
     /// This function and <see cref="glfwGetTime"/> are helper functions on top of <see cref="glfwGetTimerFrequency"/> and <see cref="glfwGetTimerValue"/>.<br/>
     /// </summary>
     /// <param name="time">The new value, in seconds.</param>
-    public static void glfwSetTime(double time) { QGLNativeAPI.Verify((nint)_glfwSetTime); _glfwSetTime(time); }
-    [QGLNativeAPI("glfwSetTime")] internal static delegate* unmanaged<double, void> _glfwSetTime = null;
+    public static void glfwSetTime(double time) { QGLFeature.VerifyFunc((nint)_glfwSetTime); _glfwSetTime(time); }
+    internal static delegate* unmanaged<double, void> _glfwSetTime = null;
     
     /// <summary>
     /// Returns the current value of the raw timer.<br/>
@@ -2465,16 +2465,16 @@ public static unsafe class GLFW
     /// This function returns the current value of the raw timer, measured in<br/>
     /// 1&nbsp;/&nbsp;frequency seconds.  To get the frequency, call <see cref="glfwGetTimerFrequency"/>.<br/>
     /// </summary>
-    public static ulong glfwGetTimerValue() { QGLNativeAPI.Verify((nint)_glfwGetTimerValue); return _glfwGetTimerValue(); }
-    [QGLNativeAPI("glfwGetTimerValue")] internal static delegate* unmanaged<ulong> _glfwGetTimerValue = null;
+    public static ulong glfwGetTimerValue() { QGLFeature.VerifyFunc((nint)_glfwGetTimerValue); return _glfwGetTimerValue(); }
+    internal static delegate* unmanaged<ulong> _glfwGetTimerValue = null;
     
     /// <summary>
     /// Returns the frequency, in Hz, of the raw timer.<br/>
     /// <br/>
     /// This function returns the frequency, in Hz, of the raw timer.<br/>
     /// </summary>
-    public static ulong glfwGetTimerFrequency() { QGLNativeAPI.Verify((nint)_glfwGetTimerFrequency); return _glfwGetTimerFrequency(); }
-    [QGLNativeAPI("glfwGetTimerFrequency")] internal static delegate* unmanaged<ulong> _glfwGetTimerFrequency = null;
+    public static ulong glfwGetTimerFrequency() { QGLFeature.VerifyFunc((nint)_glfwGetTimerFrequency); return _glfwGetTimerFrequency(); }
+    internal static delegate* unmanaged<ulong> _glfwGetTimerFrequency = null;
     
     /// <summary>
     /// Makes the context of the specified window current for the calling<br/>
@@ -2502,8 +2502,8 @@ public static unsafe class GLFW
     /// error.<br/>
     /// </summary>
     /// <param name="window">The window whose context to make current, or `NULL` to<br/>detach the current context.</param>
-    public static void glfwMakeContextCurrent(nint window) { QGLNativeAPI.Verify((nint)_glfwMakeContextCurrent); _glfwMakeContextCurrent(window); }
-    [QGLNativeAPI("glfwMakeContextCurrent")] internal static delegate* unmanaged<nint, void> _glfwMakeContextCurrent = null;
+    public static void glfwMakeContextCurrent(nint window) { QGLFeature.VerifyFunc((nint)_glfwMakeContextCurrent); _glfwMakeContextCurrent(window); }
+    internal static delegate* unmanaged<nint, void> _glfwMakeContextCurrent = null;
     
     /// <summary>
     /// Returns the window whose context is current on the calling thread.<br/>
@@ -2511,8 +2511,8 @@ public static unsafe class GLFW
     /// This function returns the window whose OpenGL or OpenGL ES context is<br/>
     /// current on the calling thread.<br/>
     /// </summary>
-    public static nint glfwGetCurrentContext() { QGLNativeAPI.Verify((nint)_glfwGetCurrentContext); return _glfwGetCurrentContext(); }
-    [QGLNativeAPI("glfwGetCurrentContext")] internal static delegate* unmanaged<nint> _glfwGetCurrentContext = null;
+    public static nint glfwGetCurrentContext() { QGLFeature.VerifyFunc((nint)_glfwGetCurrentContext); return _glfwGetCurrentContext(); }
+    internal static delegate* unmanaged<nint> _glfwGetCurrentContext = null;
     
     /// <summary>
     /// Swaps the front and back buffers of the specified window.<br/>
@@ -2530,8 +2530,8 @@ public static unsafe class GLFW
     /// see `vkQueuePresentKHR` instead.<br/>
     /// </summary>
     /// <param name="window">The window whose buffers to swap.</param>
-    public static void glfwSwapBuffers(nint window) { QGLNativeAPI.Verify((nint)_glfwSwapBuffers); _glfwSwapBuffers(window); }
-    [QGLNativeAPI("glfwSwapBuffers")] internal static delegate* unmanaged<nint, void> _glfwSwapBuffers = null;
+    public static void glfwSwapBuffers(nint window) { QGLFeature.VerifyFunc((nint)_glfwSwapBuffers); _glfwSwapBuffers(window); }
+    internal static delegate* unmanaged<nint, void> _glfwSwapBuffers = null;
     
     /// <summary>
     /// Sets the swap interval for the current context.<br/>
@@ -2553,8 +2553,8 @@ public static unsafe class GLFW
     /// see the present mode of your swapchain instead.<br/>
     /// </summary>
     /// <param name="interval">The minimum number of screen updates to wait for<br/>until the buffers are swapped by <see cref="glfwSwapBuffers"/>.</param>
-    public static void glfwSwapInterval(int interval) { QGLNativeAPI.Verify((nint)_glfwSwapInterval); _glfwSwapInterval(interval); }
-    [QGLNativeAPI("glfwSwapInterval")] internal static delegate* unmanaged<int, void> _glfwSwapInterval = null;
+    public static void glfwSwapInterval(int interval) { QGLFeature.VerifyFunc((nint)_glfwSwapInterval); _glfwSwapInterval(interval); }
+    internal static delegate* unmanaged<int, void> _glfwSwapInterval = null;
     
     /// <summary>
     /// Returns whether the specified extension is available.<br/>
@@ -2576,8 +2576,8 @@ public static unsafe class GLFW
     /// and `vkEnumerateDeviceExtensionProperties` instead.<br/>
     /// </summary>
     /// <param name="extension">The ASCII encoded name of the extension.</param>
-    public static int glfwExtensionSupported(byte* extension) { QGLNativeAPI.Verify((nint)_glfwExtensionSupported); return _glfwExtensionSupported(extension); }
-    [QGLNativeAPI("glfwExtensionSupported")] internal static delegate* unmanaged<byte*, int> _glfwExtensionSupported = null;
+    public static int glfwExtensionSupported(byte* extension) { QGLFeature.VerifyFunc((nint)_glfwExtensionSupported); return _glfwExtensionSupported(extension); }
+    internal static delegate* unmanaged<byte*, int> _glfwExtensionSupported = null;
     
     /// <summary>
     /// Returns the address of the specified function for the current<br/>
@@ -2595,8 +2595,8 @@ public static unsafe class GLFW
     /// `vkGetDeviceProcAddr` instead.<br/>
     /// </summary>
     /// <param name="procname">The ASCII encoded name of the function.</param>
-    public static nint glfwGetProcAddress(byte* procname) { QGLNativeAPI.Verify((nint)_glfwGetProcAddress); return _glfwGetProcAddress(procname); }
-    [QGLNativeAPI("glfwGetProcAddress")] internal static delegate* unmanaged<byte*, nint> _glfwGetProcAddress = null;
+    public static nint glfwGetProcAddress(byte* procname) { QGLFeature.VerifyFunc((nint)_glfwGetProcAddress); return _glfwGetProcAddress(procname); }
+    internal static delegate* unmanaged<byte*, nint> _glfwGetProcAddress = null;
     
     /// <summary>
     /// Returns whether the Vulkan loader and an ICD have been found.<br/>
@@ -2609,8 +2609,8 @@ public static unsafe class GLFW
     /// surface creation are available and <see cref="glfwGetPhysicalDevicePresentationSupport"/> to<br/>
     /// check whether a queue family of a physical device supports image presentation.<br/>
     /// </summary>
-    public static int glfwVulkanSupported() { QGLNativeAPI.Verify((nint)_glfwVulkanSupported); return _glfwVulkanSupported(); }
-    [QGLNativeAPI("glfwVulkanSupported")] internal static delegate* unmanaged<int> _glfwVulkanSupported = null;
+    public static int glfwVulkanSupported() { QGLFeature.VerifyFunc((nint)_glfwVulkanSupported); return _glfwVulkanSupported(); }
+    internal static delegate* unmanaged<int> _glfwVulkanSupported = null;
     
     /// <summary>
     /// Returns the Vulkan instance extensions required by GLFW.<br/>
@@ -2630,8 +2630,8 @@ public static unsafe class GLFW
     /// for off-screen rendering and compute work.<br/>
     /// </summary>
     /// <param name="count">Where to store the number of extensions in the returned<br/>array.  This is set to zero if an error occurred.</param>
-    public static byte** glfwGetRequiredInstanceExtensions(uint* count) { QGLNativeAPI.Verify((nint)_glfwGetRequiredInstanceExtensions); return _glfwGetRequiredInstanceExtensions(count); }
-    [QGLNativeAPI("glfwGetRequiredInstanceExtensions")] internal static delegate* unmanaged<uint*, byte**> _glfwGetRequiredInstanceExtensions = null;
+    public static byte** glfwGetRequiredInstanceExtensions(uint* count) { QGLFeature.VerifyFunc((nint)_glfwGetRequiredInstanceExtensions); return _glfwGetRequiredInstanceExtensions(count); }
+    internal static delegate* unmanaged<uint*, byte**> _glfwGetRequiredInstanceExtensions = null;
     
     /// <summary>
     /// Returns the address of the specified Vulkan instance function.<br/>
@@ -2655,8 +2655,8 @@ public static unsafe class GLFW
     /// </summary>
     /// <param name="instance">The Vulkan instance to query, or `NULL` to retrieve<br/>functions related to instance creation.</param>
     /// <param name="procname">The ASCII encoded name of the function.</param>
-    public static nint glfwGetInstanceProcAddress(nint instance, byte* procname) { QGLNativeAPI.Verify((nint)_glfwGetInstanceProcAddress); return _glfwGetInstanceProcAddress(instance, procname); }
-    [QGLNativeAPI("glfwGetInstanceProcAddress")] internal static delegate* unmanaged<nint, byte*, nint> _glfwGetInstanceProcAddress = null;
+    public static nint glfwGetInstanceProcAddress(nint instance, byte* procname) { QGLFeature.VerifyFunc((nint)_glfwGetInstanceProcAddress); return _glfwGetInstanceProcAddress(instance, procname); }
+    internal static delegate* unmanaged<nint, byte*, nint> _glfwGetInstanceProcAddress = null;
     
     /// <summary>
     /// Returns whether the specified queue family can present images.<br/>
@@ -2674,8 +2674,8 @@ public static unsafe class GLFW
     /// <param name="instance">The instance that the physical device belongs to.</param>
     /// <param name="device">The physical device that the queue family belongs to.</param>
     /// <param name="queuefamily">The index of the queue family to query.</param>
-    public static int glfwGetPhysicalDevicePresentationSupport(nint instance, nint device, uint queuefamily) { QGLNativeAPI.Verify((nint)_glfwGetPhysicalDevicePresentationSupport); return _glfwGetPhysicalDevicePresentationSupport(instance, device, queuefamily); }
-    [QGLNativeAPI("glfwGetPhysicalDevicePresentationSupport")] internal static delegate* unmanaged<nint, nint, uint, int> _glfwGetPhysicalDevicePresentationSupport = null;
+    public static int glfwGetPhysicalDevicePresentationSupport(nint instance, nint device, uint queuefamily) { QGLFeature.VerifyFunc((nint)_glfwGetPhysicalDevicePresentationSupport); return _glfwGetPhysicalDevicePresentationSupport(instance, device, queuefamily); }
+    internal static delegate* unmanaged<nint, nint, uint, int> _glfwGetPhysicalDevicePresentationSupport = null;
     
     /// <summary>
     /// Creates a Vulkan surface for the specified window.<br/>
@@ -2706,7 +2706,264 @@ public static unsafe class GLFW
     /// <param name="window">The window to create the surface for.</param>
     /// <param name="allocator">The allocator to use, or `NULL` to use the default<br/>allocator.</param>
     /// <param name="surface">Where to store the handle of the surface.  This is set<br/>to `VK_NULL_HANDLE` if an error occurred.</param>
-    public static nint glfwCreateWindowSurface(nint instance, nint window, nint* allocator, nint* surface) { QGLNativeAPI.Verify((nint)_glfwCreateWindowSurface); return _glfwCreateWindowSurface(instance, window, allocator, surface); }
-    [QGLNativeAPI("glfwCreateWindowSurface")] internal static delegate* unmanaged<nint, nint, nint*, nint*, nint> _glfwCreateWindowSurface = null;
+    public static nint glfwCreateWindowSurface(nint instance, nint window, nint* allocator, nint* surface) { QGLFeature.VerifyFunc((nint)_glfwCreateWindowSurface); return _glfwCreateWindowSurface(instance, window, allocator, surface); }
+    internal static delegate* unmanaged<nint, nint, nint*, nint*, nint> _glfwCreateWindowSurface = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glfwInit = (delegate* unmanaged<int>)QuickGL.GetGLFWProcAddress("glfwInit");
+        _glfwTerminate = (delegate* unmanaged<void>)QuickGL.GetGLFWProcAddress("glfwTerminate");
+        _glfwInitHint = (delegate* unmanaged<int, int, void>)QuickGL.GetGLFWProcAddress("glfwInitHint");
+        _glfwInitAllocator = (delegate* unmanaged<GLFWallocator*, void>)QuickGL.GetGLFWProcAddress("glfwInitAllocator");
+        _glfwInitVulkanLoader = (delegate* unmanaged<nint, void>)QuickGL.GetGLFWProcAddress("glfwInitVulkanLoader");
+        _glfwGetVersion = (delegate* unmanaged<int*, int*, int*, void>)QuickGL.GetGLFWProcAddress("glfwGetVersion");
+        _glfwGetVersionString = (delegate* unmanaged<byte*>)QuickGL.GetGLFWProcAddress("glfwGetVersionString");
+        _glfwGetError = (delegate* unmanaged<byte**, int>)QuickGL.GetGLFWProcAddress("glfwGetError");
+        _glfwSetErrorCallback = (delegate* unmanaged<GLFWerrorfun, nint>)QuickGL.GetGLFWProcAddress("glfwSetErrorCallback");
+        _glfwGetPlatform = (delegate* unmanaged<int>)QuickGL.GetGLFWProcAddress("glfwGetPlatform");
+        _glfwPlatformSupported = (delegate* unmanaged<int, int>)QuickGL.GetGLFWProcAddress("glfwPlatformSupported");
+        _glfwGetMonitors = (delegate* unmanaged<int*, nint>)QuickGL.GetGLFWProcAddress("glfwGetMonitors");
+        _glfwGetPrimaryMonitor = (delegate* unmanaged<nint>)QuickGL.GetGLFWProcAddress("glfwGetPrimaryMonitor");
+        _glfwGetMonitorPos = (delegate* unmanaged<nint, int*, int*, void>)QuickGL.GetGLFWProcAddress("glfwGetMonitorPos");
+        _glfwGetMonitorWorkarea = (delegate* unmanaged<nint, int*, int*, int*, int*, void>)QuickGL.GetGLFWProcAddress("glfwGetMonitorWorkarea");
+        _glfwGetMonitorPhysicalSize = (delegate* unmanaged<nint, int*, int*, void>)QuickGL.GetGLFWProcAddress("glfwGetMonitorPhysicalSize");
+        _glfwGetMonitorContentScale = (delegate* unmanaged<nint, float*, float*, void>)QuickGL.GetGLFWProcAddress("glfwGetMonitorContentScale");
+        _glfwGetMonitorName = (delegate* unmanaged<nint, byte*>)QuickGL.GetGLFWProcAddress("glfwGetMonitorName");
+        _glfwSetMonitorUserPointer = (delegate* unmanaged<nint, void*, void>)QuickGL.GetGLFWProcAddress("glfwSetMonitorUserPointer");
+        _glfwGetMonitorUserPointer = (delegate* unmanaged<nint, void*>)QuickGL.GetGLFWProcAddress("glfwGetMonitorUserPointer");
+        _glfwSetMonitorCallback = (delegate* unmanaged<GLFWmonitorfun, nint>)QuickGL.GetGLFWProcAddress("glfwSetMonitorCallback");
+        _glfwGetVideoModes = (delegate* unmanaged<nint, int*, GLFWvidmode*>)QuickGL.GetGLFWProcAddress("glfwGetVideoModes");
+        _glfwGetVideoMode = (delegate* unmanaged<nint, GLFWvidmode*>)QuickGL.GetGLFWProcAddress("glfwGetVideoMode");
+        _glfwSetGamma = (delegate* unmanaged<nint, float, void>)QuickGL.GetGLFWProcAddress("glfwSetGamma");
+        _glfwGetGammaRamp = (delegate* unmanaged<nint, GLFWgammaramp*>)QuickGL.GetGLFWProcAddress("glfwGetGammaRamp");
+        _glfwSetGammaRamp = (delegate* unmanaged<nint, GLFWgammaramp*, void>)QuickGL.GetGLFWProcAddress("glfwSetGammaRamp");
+        _glfwDefaultWindowHints = (delegate* unmanaged<void>)QuickGL.GetGLFWProcAddress("glfwDefaultWindowHints");
+        _glfwWindowHint = (delegate* unmanaged<int, int, void>)QuickGL.GetGLFWProcAddress("glfwWindowHint");
+        _glfwWindowHintString = (delegate* unmanaged<int, byte*, void>)QuickGL.GetGLFWProcAddress("glfwWindowHintString");
+        _glfwCreateWindow = (delegate* unmanaged<int, int, byte*, nint, nint, nint>)QuickGL.GetGLFWProcAddress("glfwCreateWindow");
+        _glfwDestroyWindow = (delegate* unmanaged<nint, void>)QuickGL.GetGLFWProcAddress("glfwDestroyWindow");
+        _glfwWindowShouldClose = (delegate* unmanaged<nint, int>)QuickGL.GetGLFWProcAddress("glfwWindowShouldClose");
+        _glfwSetWindowShouldClose = (delegate* unmanaged<nint, int, void>)QuickGL.GetGLFWProcAddress("glfwSetWindowShouldClose");
+        _glfwGetWindowTitle = (delegate* unmanaged<nint, byte*>)QuickGL.GetGLFWProcAddress("glfwGetWindowTitle");
+        _glfwSetWindowTitle = (delegate* unmanaged<nint, byte*, void>)QuickGL.GetGLFWProcAddress("glfwSetWindowTitle");
+        _glfwSetWindowIcon = (delegate* unmanaged<nint, int, GLFWimage*, void>)QuickGL.GetGLFWProcAddress("glfwSetWindowIcon");
+        _glfwGetWindowPos = (delegate* unmanaged<nint, int*, int*, void>)QuickGL.GetGLFWProcAddress("glfwGetWindowPos");
+        _glfwSetWindowPos = (delegate* unmanaged<nint, int, int, void>)QuickGL.GetGLFWProcAddress("glfwSetWindowPos");
+        _glfwGetWindowSize = (delegate* unmanaged<nint, int*, int*, void>)QuickGL.GetGLFWProcAddress("glfwGetWindowSize");
+        _glfwSetWindowSizeLimits = (delegate* unmanaged<nint, int, int, int, int, void>)QuickGL.GetGLFWProcAddress("glfwSetWindowSizeLimits");
+        _glfwSetWindowAspectRatio = (delegate* unmanaged<nint, int, int, void>)QuickGL.GetGLFWProcAddress("glfwSetWindowAspectRatio");
+        _glfwSetWindowSize = (delegate* unmanaged<nint, int, int, void>)QuickGL.GetGLFWProcAddress("glfwSetWindowSize");
+        _glfwGetFramebufferSize = (delegate* unmanaged<nint, int*, int*, void>)QuickGL.GetGLFWProcAddress("glfwGetFramebufferSize");
+        _glfwGetWindowFrameSize = (delegate* unmanaged<nint, int*, int*, int*, int*, void>)QuickGL.GetGLFWProcAddress("glfwGetWindowFrameSize");
+        _glfwGetWindowContentScale = (delegate* unmanaged<nint, float*, float*, void>)QuickGL.GetGLFWProcAddress("glfwGetWindowContentScale");
+        _glfwGetWindowOpacity = (delegate* unmanaged<nint, float>)QuickGL.GetGLFWProcAddress("glfwGetWindowOpacity");
+        _glfwSetWindowOpacity = (delegate* unmanaged<nint, float, void>)QuickGL.GetGLFWProcAddress("glfwSetWindowOpacity");
+        _glfwIconifyWindow = (delegate* unmanaged<nint, void>)QuickGL.GetGLFWProcAddress("glfwIconifyWindow");
+        _glfwRestoreWindow = (delegate* unmanaged<nint, void>)QuickGL.GetGLFWProcAddress("glfwRestoreWindow");
+        _glfwMaximizeWindow = (delegate* unmanaged<nint, void>)QuickGL.GetGLFWProcAddress("glfwMaximizeWindow");
+        _glfwShowWindow = (delegate* unmanaged<nint, void>)QuickGL.GetGLFWProcAddress("glfwShowWindow");
+        _glfwHideWindow = (delegate* unmanaged<nint, void>)QuickGL.GetGLFWProcAddress("glfwHideWindow");
+        _glfwFocusWindow = (delegate* unmanaged<nint, void>)QuickGL.GetGLFWProcAddress("glfwFocusWindow");
+        _glfwRequestWindowAttention = (delegate* unmanaged<nint, void>)QuickGL.GetGLFWProcAddress("glfwRequestWindowAttention");
+        _glfwGetWindowMonitor = (delegate* unmanaged<nint, nint>)QuickGL.GetGLFWProcAddress("glfwGetWindowMonitor");
+        _glfwSetWindowMonitor = (delegate* unmanaged<nint, nint, int, int, int, int, int, void>)QuickGL.GetGLFWProcAddress("glfwSetWindowMonitor");
+        _glfwGetWindowAttrib = (delegate* unmanaged<nint, int, int>)QuickGL.GetGLFWProcAddress("glfwGetWindowAttrib");
+        _glfwSetWindowAttrib = (delegate* unmanaged<nint, int, int, void>)QuickGL.GetGLFWProcAddress("glfwSetWindowAttrib");
+        _glfwSetWindowUserPointer = (delegate* unmanaged<nint, void*, void>)QuickGL.GetGLFWProcAddress("glfwSetWindowUserPointer");
+        _glfwGetWindowUserPointer = (delegate* unmanaged<nint, void*>)QuickGL.GetGLFWProcAddress("glfwGetWindowUserPointer");
+        _glfwSetWindowPosCallback = (delegate* unmanaged<nint, GLFWwindowposfun, nint>)QuickGL.GetGLFWProcAddress("glfwSetWindowPosCallback");
+        _glfwSetWindowSizeCallback = (delegate* unmanaged<nint, GLFWwindowsizefun, nint>)QuickGL.GetGLFWProcAddress("glfwSetWindowSizeCallback");
+        _glfwSetWindowCloseCallback = (delegate* unmanaged<nint, GLFWwindowclosefun, nint>)QuickGL.GetGLFWProcAddress("glfwSetWindowCloseCallback");
+        _glfwSetWindowRefreshCallback = (delegate* unmanaged<nint, GLFWwindowrefreshfun, nint>)QuickGL.GetGLFWProcAddress("glfwSetWindowRefreshCallback");
+        _glfwSetWindowFocusCallback = (delegate* unmanaged<nint, GLFWwindowfocusfun, nint>)QuickGL.GetGLFWProcAddress("glfwSetWindowFocusCallback");
+        _glfwSetWindowIconifyCallback = (delegate* unmanaged<nint, GLFWwindowiconifyfun, nint>)QuickGL.GetGLFWProcAddress("glfwSetWindowIconifyCallback");
+        _glfwSetWindowMaximizeCallback = (delegate* unmanaged<nint, GLFWwindowmaximizefun, nint>)QuickGL.GetGLFWProcAddress("glfwSetWindowMaximizeCallback");
+        _glfwSetFramebufferSizeCallback = (delegate* unmanaged<nint, GLFWframebuffersizefun, nint>)QuickGL.GetGLFWProcAddress("glfwSetFramebufferSizeCallback");
+        _glfwSetWindowContentScaleCallback = (delegate* unmanaged<nint, GLFWwindowcontentscalefun, nint>)QuickGL.GetGLFWProcAddress("glfwSetWindowContentScaleCallback");
+        _glfwPollEvents = (delegate* unmanaged<void>)QuickGL.GetGLFWProcAddress("glfwPollEvents");
+        _glfwWaitEvents = (delegate* unmanaged<void>)QuickGL.GetGLFWProcAddress("glfwWaitEvents");
+        _glfwWaitEventsTimeout = (delegate* unmanaged<double, void>)QuickGL.GetGLFWProcAddress("glfwWaitEventsTimeout");
+        _glfwPostEmptyEvent = (delegate* unmanaged<void>)QuickGL.GetGLFWProcAddress("glfwPostEmptyEvent");
+        _glfwGetInputMode = (delegate* unmanaged<nint, int, int>)QuickGL.GetGLFWProcAddress("glfwGetInputMode");
+        _glfwSetInputMode = (delegate* unmanaged<nint, int, int, void>)QuickGL.GetGLFWProcAddress("glfwSetInputMode");
+        _glfwRawMouseMotionSupported = (delegate* unmanaged<int>)QuickGL.GetGLFWProcAddress("glfwRawMouseMotionSupported");
+        _glfwGetKeyName = (delegate* unmanaged<int, int, byte*>)QuickGL.GetGLFWProcAddress("glfwGetKeyName");
+        _glfwGetKeyScancode = (delegate* unmanaged<int, int>)QuickGL.GetGLFWProcAddress("glfwGetKeyScancode");
+        _glfwGetKey = (delegate* unmanaged<nint, int, int>)QuickGL.GetGLFWProcAddress("glfwGetKey");
+        _glfwGetMouseButton = (delegate* unmanaged<nint, int, int>)QuickGL.GetGLFWProcAddress("glfwGetMouseButton");
+        _glfwGetCursorPos = (delegate* unmanaged<nint, double*, double*, void>)QuickGL.GetGLFWProcAddress("glfwGetCursorPos");
+        _glfwSetCursorPos = (delegate* unmanaged<nint, double, double, void>)QuickGL.GetGLFWProcAddress("glfwSetCursorPos");
+        _glfwCreateCursor = (delegate* unmanaged<GLFWimage*, int, int, nint>)QuickGL.GetGLFWProcAddress("glfwCreateCursor");
+        _glfwCreateStandardCursor = (delegate* unmanaged<int, nint>)QuickGL.GetGLFWProcAddress("glfwCreateStandardCursor");
+        _glfwDestroyCursor = (delegate* unmanaged<nint, void>)QuickGL.GetGLFWProcAddress("glfwDestroyCursor");
+        _glfwSetCursor = (delegate* unmanaged<nint, nint, void>)QuickGL.GetGLFWProcAddress("glfwSetCursor");
+        _glfwSetKeyCallback = (delegate* unmanaged<nint, GLFWkeyfun, nint>)QuickGL.GetGLFWProcAddress("glfwSetKeyCallback");
+        _glfwSetCharCallback = (delegate* unmanaged<nint, GLFWcharfun, nint>)QuickGL.GetGLFWProcAddress("glfwSetCharCallback");
+        _glfwSetCharModsCallback = (delegate* unmanaged<nint, GLFWcharmodsfun, nint>)QuickGL.GetGLFWProcAddress("glfwSetCharModsCallback");
+        _glfwSetMouseButtonCallback = (delegate* unmanaged<nint, GLFWmousebuttonfun, nint>)QuickGL.GetGLFWProcAddress("glfwSetMouseButtonCallback");
+        _glfwSetCursorPosCallback = (delegate* unmanaged<nint, GLFWcursorposfun, nint>)QuickGL.GetGLFWProcAddress("glfwSetCursorPosCallback");
+        _glfwSetCursorEnterCallback = (delegate* unmanaged<nint, GLFWcursorenterfun, nint>)QuickGL.GetGLFWProcAddress("glfwSetCursorEnterCallback");
+        _glfwSetScrollCallback = (delegate* unmanaged<nint, GLFWscrollfun, nint>)QuickGL.GetGLFWProcAddress("glfwSetScrollCallback");
+        _glfwSetDropCallback = (delegate* unmanaged<nint, GLFWdropfun, nint>)QuickGL.GetGLFWProcAddress("glfwSetDropCallback");
+        _glfwJoystickPresent = (delegate* unmanaged<int, int>)QuickGL.GetGLFWProcAddress("glfwJoystickPresent");
+        _glfwGetJoystickAxes = (delegate* unmanaged<int, int*, float*>)QuickGL.GetGLFWProcAddress("glfwGetJoystickAxes");
+        _glfwGetJoystickButtons = (delegate* unmanaged<int, int*, byte*>)QuickGL.GetGLFWProcAddress("glfwGetJoystickButtons");
+        _glfwGetJoystickHats = (delegate* unmanaged<int, int*, byte*>)QuickGL.GetGLFWProcAddress("glfwGetJoystickHats");
+        _glfwGetJoystickName = (delegate* unmanaged<int, byte*>)QuickGL.GetGLFWProcAddress("glfwGetJoystickName");
+        _glfwGetJoystickGUID = (delegate* unmanaged<int, byte*>)QuickGL.GetGLFWProcAddress("glfwGetJoystickGUID");
+        _glfwSetJoystickUserPointer = (delegate* unmanaged<int, void*, void>)QuickGL.GetGLFWProcAddress("glfwSetJoystickUserPointer");
+        _glfwGetJoystickUserPointer = (delegate* unmanaged<int, void*>)QuickGL.GetGLFWProcAddress("glfwGetJoystickUserPointer");
+        _glfwJoystickIsGamepad = (delegate* unmanaged<int, int>)QuickGL.GetGLFWProcAddress("glfwJoystickIsGamepad");
+        _glfwSetJoystickCallback = (delegate* unmanaged<GLFWjoystickfun, nint>)QuickGL.GetGLFWProcAddress("glfwSetJoystickCallback");
+        _glfwUpdateGamepadMappings = (delegate* unmanaged<byte*, int>)QuickGL.GetGLFWProcAddress("glfwUpdateGamepadMappings");
+        _glfwGetGamepadName = (delegate* unmanaged<int, byte*>)QuickGL.GetGLFWProcAddress("glfwGetGamepadName");
+        _glfwGetGamepadState = (delegate* unmanaged<int, GLFWgamepadstate*, int>)QuickGL.GetGLFWProcAddress("glfwGetGamepadState");
+        _glfwSetClipboardString = (delegate* unmanaged<nint, byte*, void>)QuickGL.GetGLFWProcAddress("glfwSetClipboardString");
+        _glfwGetClipboardString = (delegate* unmanaged<nint, byte*>)QuickGL.GetGLFWProcAddress("glfwGetClipboardString");
+        _glfwGetTime = (delegate* unmanaged<double>)QuickGL.GetGLFWProcAddress("glfwGetTime");
+        _glfwSetTime = (delegate* unmanaged<double, void>)QuickGL.GetGLFWProcAddress("glfwSetTime");
+        _glfwGetTimerValue = (delegate* unmanaged<ulong>)QuickGL.GetGLFWProcAddress("glfwGetTimerValue");
+        _glfwGetTimerFrequency = (delegate* unmanaged<ulong>)QuickGL.GetGLFWProcAddress("glfwGetTimerFrequency");
+        _glfwMakeContextCurrent = (delegate* unmanaged<nint, void>)QuickGL.GetGLFWProcAddress("glfwMakeContextCurrent");
+        _glfwGetCurrentContext = (delegate* unmanaged<nint>)QuickGL.GetGLFWProcAddress("glfwGetCurrentContext");
+        _glfwSwapBuffers = (delegate* unmanaged<nint, void>)QuickGL.GetGLFWProcAddress("glfwSwapBuffers");
+        _glfwSwapInterval = (delegate* unmanaged<int, void>)QuickGL.GetGLFWProcAddress("glfwSwapInterval");
+        _glfwExtensionSupported = (delegate* unmanaged<byte*, int>)QuickGL.GetGLFWProcAddress("glfwExtensionSupported");
+        _glfwGetProcAddress = (delegate* unmanaged<byte*, nint>)QuickGL.GetGLFWProcAddress("glfwGetProcAddress");
+        _glfwVulkanSupported = (delegate* unmanaged<int>)QuickGL.GetGLFWProcAddress("glfwVulkanSupported");
+        _glfwGetRequiredInstanceExtensions = (delegate* unmanaged<uint*, byte**>)QuickGL.GetGLFWProcAddress("glfwGetRequiredInstanceExtensions");
+        _glfwGetInstanceProcAddress = (delegate* unmanaged<nint, byte*, nint>)QuickGL.GetGLFWProcAddress("glfwGetInstanceProcAddress");
+        _glfwGetPhysicalDevicePresentationSupport = (delegate* unmanaged<nint, nint, uint, int>)QuickGL.GetGLFWProcAddress("glfwGetPhysicalDevicePresentationSupport");
+        _glfwCreateWindowSurface = (delegate* unmanaged<nint, nint, nint*, nint*, nint>)QuickGL.GetGLFWProcAddress("glfwCreateWindowSurface");
+    }
+    
+    internal static void Unload()
+    {
+        _glfwInit = null;
+        _glfwTerminate = null;
+        _glfwInitHint = null;
+        _glfwInitAllocator = null;
+        _glfwInitVulkanLoader = null;
+        _glfwGetVersion = null;
+        _glfwGetVersionString = null;
+        _glfwGetError = null;
+        _glfwSetErrorCallback = null;
+        _glfwGetPlatform = null;
+        _glfwPlatformSupported = null;
+        _glfwGetMonitors = null;
+        _glfwGetPrimaryMonitor = null;
+        _glfwGetMonitorPos = null;
+        _glfwGetMonitorWorkarea = null;
+        _glfwGetMonitorPhysicalSize = null;
+        _glfwGetMonitorContentScale = null;
+        _glfwGetMonitorName = null;
+        _glfwSetMonitorUserPointer = null;
+        _glfwGetMonitorUserPointer = null;
+        _glfwSetMonitorCallback = null;
+        _glfwGetVideoModes = null;
+        _glfwGetVideoMode = null;
+        _glfwSetGamma = null;
+        _glfwGetGammaRamp = null;
+        _glfwSetGammaRamp = null;
+        _glfwDefaultWindowHints = null;
+        _glfwWindowHint = null;
+        _glfwWindowHintString = null;
+        _glfwCreateWindow = null;
+        _glfwDestroyWindow = null;
+        _glfwWindowShouldClose = null;
+        _glfwSetWindowShouldClose = null;
+        _glfwGetWindowTitle = null;
+        _glfwSetWindowTitle = null;
+        _glfwSetWindowIcon = null;
+        _glfwGetWindowPos = null;
+        _glfwSetWindowPos = null;
+        _glfwGetWindowSize = null;
+        _glfwSetWindowSizeLimits = null;
+        _glfwSetWindowAspectRatio = null;
+        _glfwSetWindowSize = null;
+        _glfwGetFramebufferSize = null;
+        _glfwGetWindowFrameSize = null;
+        _glfwGetWindowContentScale = null;
+        _glfwGetWindowOpacity = null;
+        _glfwSetWindowOpacity = null;
+        _glfwIconifyWindow = null;
+        _glfwRestoreWindow = null;
+        _glfwMaximizeWindow = null;
+        _glfwShowWindow = null;
+        _glfwHideWindow = null;
+        _glfwFocusWindow = null;
+        _glfwRequestWindowAttention = null;
+        _glfwGetWindowMonitor = null;
+        _glfwSetWindowMonitor = null;
+        _glfwGetWindowAttrib = null;
+        _glfwSetWindowAttrib = null;
+        _glfwSetWindowUserPointer = null;
+        _glfwGetWindowUserPointer = null;
+        _glfwSetWindowPosCallback = null;
+        _glfwSetWindowSizeCallback = null;
+        _glfwSetWindowCloseCallback = null;
+        _glfwSetWindowRefreshCallback = null;
+        _glfwSetWindowFocusCallback = null;
+        _glfwSetWindowIconifyCallback = null;
+        _glfwSetWindowMaximizeCallback = null;
+        _glfwSetFramebufferSizeCallback = null;
+        _glfwSetWindowContentScaleCallback = null;
+        _glfwPollEvents = null;
+        _glfwWaitEvents = null;
+        _glfwWaitEventsTimeout = null;
+        _glfwPostEmptyEvent = null;
+        _glfwGetInputMode = null;
+        _glfwSetInputMode = null;
+        _glfwRawMouseMotionSupported = null;
+        _glfwGetKeyName = null;
+        _glfwGetKeyScancode = null;
+        _glfwGetKey = null;
+        _glfwGetMouseButton = null;
+        _glfwGetCursorPos = null;
+        _glfwSetCursorPos = null;
+        _glfwCreateCursor = null;
+        _glfwCreateStandardCursor = null;
+        _glfwDestroyCursor = null;
+        _glfwSetCursor = null;
+        _glfwSetKeyCallback = null;
+        _glfwSetCharCallback = null;
+        _glfwSetCharModsCallback = null;
+        _glfwSetMouseButtonCallback = null;
+        _glfwSetCursorPosCallback = null;
+        _glfwSetCursorEnterCallback = null;
+        _glfwSetScrollCallback = null;
+        _glfwSetDropCallback = null;
+        _glfwJoystickPresent = null;
+        _glfwGetJoystickAxes = null;
+        _glfwGetJoystickButtons = null;
+        _glfwGetJoystickHats = null;
+        _glfwGetJoystickName = null;
+        _glfwGetJoystickGUID = null;
+        _glfwSetJoystickUserPointer = null;
+        _glfwGetJoystickUserPointer = null;
+        _glfwJoystickIsGamepad = null;
+        _glfwSetJoystickCallback = null;
+        _glfwUpdateGamepadMappings = null;
+        _glfwGetGamepadName = null;
+        _glfwGetGamepadState = null;
+        _glfwSetClipboardString = null;
+        _glfwGetClipboardString = null;
+        _glfwGetTime = null;
+        _glfwSetTime = null;
+        _glfwGetTimerValue = null;
+        _glfwGetTimerFrequency = null;
+        _glfwMakeContextCurrent = null;
+        _glfwGetCurrentContext = null;
+        _glfwSwapBuffers = null;
+        _glfwSwapInterval = null;
+        _glfwExtensionSupported = null;
+        _glfwGetProcAddress = null;
+        _glfwVulkanSupported = null;
+        _glfwGetRequiredInstanceExtensions = null;
+        _glfwGetInstanceProcAddress = null;
+        _glfwGetPhysicalDevicePresentationSupport = null;
+        _glfwCreateWindowSurface = null;
+    }
+    
 }

@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.722776
+// Bindings generated at 2025-09-20 18:58:20.025567
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_texture_compression_bptc", true, false)]
 public static unsafe class GLEXT_ARBtexturecompressionbptc
 {
     #region Enums
@@ -37,4 +36,14 @@ public static unsafe class GLEXT_ARBtexturecompressionbptc
     
     #region Commands
     #endregion
+    
+    internal static void Load()
+    {
+    }
+    
+    internal static void Unload()
+    {
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_texture_compression_bptc", true, false);
 }

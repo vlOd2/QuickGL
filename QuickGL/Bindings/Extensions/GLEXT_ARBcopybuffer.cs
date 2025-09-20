@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.492229
+// Bindings generated at 2025-09-20 18:58:19.841293
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_copy_buffer", true, false)]
 public static unsafe class GLEXT_ARBcopybuffer
 {
     #region Enums
@@ -34,7 +33,19 @@ public static unsafe class GLEXT_ARBcopybuffer
     #endregion
     
     #region Commands
-    public static void glCopyBufferSubData(uint readTarget, uint writeTarget, nint readOffset, nint writeOffset, nint size) { QGLNativeAPI.Verify((nint)_glCopyBufferSubData); _glCopyBufferSubData(readTarget, writeTarget, readOffset, writeOffset, size); }
-    [QGLNativeAPI("glCopyBufferSubData")] internal static delegate* unmanaged<uint, uint, nint, nint, nint, void> _glCopyBufferSubData = null;
+    public static void glCopyBufferSubData(uint readTarget, uint writeTarget, nint readOffset, nint writeOffset, nint size) { QGLFeature.VerifyFunc((nint)_glCopyBufferSubData); _glCopyBufferSubData(readTarget, writeTarget, readOffset, writeOffset, size); }
+    internal static delegate* unmanaged<uint, uint, nint, nint, nint, void> _glCopyBufferSubData = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glCopyBufferSubData = (delegate* unmanaged<uint, uint, nint, nint, nint, void>)QuickGL.GetGLProcAddress("glCopyBufferSubData");
+    }
+    
+    internal static void Unload()
+    {
+        _glCopyBufferSubData = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_copy_buffer", true, false);
 }

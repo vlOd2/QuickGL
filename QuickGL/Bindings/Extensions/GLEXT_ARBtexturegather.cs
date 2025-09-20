@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.739913
+// Bindings generated at 2025-09-20 18:58:20.049092
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_texture_gather", true, false)]
 public static unsafe class GLEXT_ARBtexturegather
 {
     #region Enums
@@ -36,4 +35,14 @@ public static unsafe class GLEXT_ARBtexturegather
     
     #region Commands
     #endregion
+    
+    internal static void Load()
+    {
+    }
+    
+    internal static void Unload()
+    {
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_texture_gather", true, false);
 }

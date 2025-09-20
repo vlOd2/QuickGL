@@ -22,20 +22,33 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.763741
+// Bindings generated at 2025-09-20 18:58:20.108700
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_transform_feedback_instanced", true, false)]
 public static unsafe class GLEXT_ARBtransformfeedbackinstanced
 {
     #region Enums
     #endregion
     
     #region Commands
-    public static void glDrawTransformFeedbackInstanced(uint mode, uint id, int instancecount) { QGLNativeAPI.Verify((nint)_glDrawTransformFeedbackInstanced); _glDrawTransformFeedbackInstanced(mode, id, instancecount); }
-    [QGLNativeAPI("glDrawTransformFeedbackInstanced")] internal static delegate* unmanaged<uint, uint, int, void> _glDrawTransformFeedbackInstanced = null;
+    public static void glDrawTransformFeedbackInstanced(uint mode, uint id, int instancecount) { QGLFeature.VerifyFunc((nint)_glDrawTransformFeedbackInstanced); _glDrawTransformFeedbackInstanced(mode, id, instancecount); }
+    internal static delegate* unmanaged<uint, uint, int, void> _glDrawTransformFeedbackInstanced = null;
     
-    public static void glDrawTransformFeedbackStreamInstanced(uint mode, uint id, uint stream, int instancecount) { QGLNativeAPI.Verify((nint)_glDrawTransformFeedbackStreamInstanced); _glDrawTransformFeedbackStreamInstanced(mode, id, stream, instancecount); }
-    [QGLNativeAPI("glDrawTransformFeedbackStreamInstanced")] internal static delegate* unmanaged<uint, uint, uint, int, void> _glDrawTransformFeedbackStreamInstanced = null;
+    public static void glDrawTransformFeedbackStreamInstanced(uint mode, uint id, uint stream, int instancecount) { QGLFeature.VerifyFunc((nint)_glDrawTransformFeedbackStreamInstanced); _glDrawTransformFeedbackStreamInstanced(mode, id, stream, instancecount); }
+    internal static delegate* unmanaged<uint, uint, uint, int, void> _glDrawTransformFeedbackStreamInstanced = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glDrawTransformFeedbackInstanced = (delegate* unmanaged<uint, uint, int, void>)QuickGL.GetGLProcAddress("glDrawTransformFeedbackInstanced");
+        _glDrawTransformFeedbackStreamInstanced = (delegate* unmanaged<uint, uint, uint, int, void>)QuickGL.GetGLProcAddress("glDrawTransformFeedbackStreamInstanced");
+    }
+    
+    internal static void Unload()
+    {
+        _glDrawTransformFeedbackInstanced = null;
+        _glDrawTransformFeedbackStreamInstanced = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_transform_feedback_instanced", true, false);
 }

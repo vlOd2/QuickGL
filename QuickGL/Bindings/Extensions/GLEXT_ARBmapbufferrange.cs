@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.550702
+// Bindings generated at 2025-09-20 18:58:19.908614
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_map_buffer_range", true, false)]
 public static unsafe class GLEXT_ARBmapbufferrange
 {
     #region Enums
@@ -38,10 +37,24 @@ public static unsafe class GLEXT_ARBmapbufferrange
     #endregion
     
     #region Commands
-    public static void* glMapBufferRange(uint target, nint offset, nint length, uint access) { QGLNativeAPI.Verify((nint)_glMapBufferRange); return _glMapBufferRange(target, offset, length, access); }
-    [QGLNativeAPI("glMapBufferRange")] internal static delegate* unmanaged<uint, nint, nint, uint, void*> _glMapBufferRange = null;
+    public static void* glMapBufferRange(uint target, nint offset, nint length, uint access) { QGLFeature.VerifyFunc((nint)_glMapBufferRange); return _glMapBufferRange(target, offset, length, access); }
+    internal static delegate* unmanaged<uint, nint, nint, uint, void*> _glMapBufferRange = null;
     
-    public static void glFlushMappedBufferRange(uint target, nint offset, nint length) { QGLNativeAPI.Verify((nint)_glFlushMappedBufferRange); _glFlushMappedBufferRange(target, offset, length); }
-    [QGLNativeAPI("glFlushMappedBufferRange")] internal static delegate* unmanaged<uint, nint, nint, void> _glFlushMappedBufferRange = null;
+    public static void glFlushMappedBufferRange(uint target, nint offset, nint length) { QGLFeature.VerifyFunc((nint)_glFlushMappedBufferRange); _glFlushMappedBufferRange(target, offset, length); }
+    internal static delegate* unmanaged<uint, nint, nint, void> _glFlushMappedBufferRange = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glMapBufferRange = (delegate* unmanaged<uint, nint, nint, uint, void*>)QuickGL.GetGLProcAddress("glMapBufferRange");
+        _glFlushMappedBufferRange = (delegate* unmanaged<uint, nint, nint, void>)QuickGL.GetGLProcAddress("glFlushMappedBufferRange");
+    }
+    
+    internal static void Unload()
+    {
+        _glMapBufferRange = null;
+        _glFlushMappedBufferRange = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_map_buffer_range", true, false);
 }

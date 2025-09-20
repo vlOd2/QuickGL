@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.478068
+// Bindings generated at 2025-09-20 18:58:19.822720
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_blend_func_extended", true, false)]
 public static unsafe class GLEXT_ARBblendfuncextended
 {
     #region Enums
@@ -37,10 +36,24 @@ public static unsafe class GLEXT_ARBblendfuncextended
     #endregion
     
     #region Commands
-    public static void glBindFragDataLocationIndexed(uint program, uint colorNumber, uint index, byte* name) { QGLNativeAPI.Verify((nint)_glBindFragDataLocationIndexed); _glBindFragDataLocationIndexed(program, colorNumber, index, name); }
-    [QGLNativeAPI("glBindFragDataLocationIndexed")] internal static delegate* unmanaged<uint, uint, uint, byte*, void> _glBindFragDataLocationIndexed = null;
+    public static void glBindFragDataLocationIndexed(uint program, uint colorNumber, uint index, byte* name) { QGLFeature.VerifyFunc((nint)_glBindFragDataLocationIndexed); _glBindFragDataLocationIndexed(program, colorNumber, index, name); }
+    internal static delegate* unmanaged<uint, uint, uint, byte*, void> _glBindFragDataLocationIndexed = null;
     
-    public static int glGetFragDataIndex(uint program, byte* name) { QGLNativeAPI.Verify((nint)_glGetFragDataIndex); return _glGetFragDataIndex(program, name); }
-    [QGLNativeAPI("glGetFragDataIndex")] internal static delegate* unmanaged<uint, byte*, int> _glGetFragDataIndex = null;
+    public static int glGetFragDataIndex(uint program, byte* name) { QGLFeature.VerifyFunc((nint)_glGetFragDataIndex); return _glGetFragDataIndex(program, name); }
+    internal static delegate* unmanaged<uint, byte*, int> _glGetFragDataIndex = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glBindFragDataLocationIndexed = (delegate* unmanaged<uint, uint, uint, byte*, void>)QuickGL.GetGLProcAddress("glBindFragDataLocationIndexed");
+        _glGetFragDataIndex = (delegate* unmanaged<uint, byte*, int>)QuickGL.GetGLProcAddress("glGetFragDataIndex");
+    }
+    
+    internal static void Unload()
+    {
+        _glBindFragDataLocationIndexed = null;
+        _glGetFragDataIndex = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_blend_func_extended", true, false);
 }

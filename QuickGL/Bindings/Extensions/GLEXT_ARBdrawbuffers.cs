@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.504463
+// Bindings generated at 2025-09-20 18:58:19.860310
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_draw_buffers", true, false)]
 public static unsafe class GLEXT_ARBdrawbuffers
 {
     #region Enums
@@ -49,7 +48,19 @@ public static unsafe class GLEXT_ARBdrawbuffers
     #endregion
     
     #region Commands
-    public static void glDrawBuffersARB(int n, uint* bufs) { QGLNativeAPI.Verify((nint)_glDrawBuffersARB); _glDrawBuffersARB(n, bufs); }
-    [QGLNativeAPI("glDrawBuffersARB")] internal static delegate* unmanaged<int, uint*, void> _glDrawBuffersARB = null;
+    public static void glDrawBuffersARB(int n, uint* bufs) { QGLFeature.VerifyFunc((nint)_glDrawBuffersARB); _glDrawBuffersARB(n, bufs); }
+    internal static delegate* unmanaged<int, uint*, void> _glDrawBuffersARB = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glDrawBuffersARB = (delegate* unmanaged<int, uint*, void>)QuickGL.GetGLProcAddress("glDrawBuffersARB");
+    }
+    
+    internal static void Unload()
+    {
+        _glDrawBuffersARB = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_draw_buffers", true, false);
 }

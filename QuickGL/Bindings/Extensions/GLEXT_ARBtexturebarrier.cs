@@ -22,17 +22,28 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.711847
+// Bindings generated at 2025-09-20 18:58:20.018317
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_texture_barrier", true, false)]
 public static unsafe class GLEXT_ARBtexturebarrier
 {
     #region Enums
     #endregion
     
     #region Commands
-    public static void glTextureBarrier() { QGLNativeAPI.Verify((nint)_glTextureBarrier); _glTextureBarrier(); }
-    [QGLNativeAPI("glTextureBarrier")] internal static delegate* unmanaged<void> _glTextureBarrier = null;
+    public static void glTextureBarrier() { QGLFeature.VerifyFunc((nint)_glTextureBarrier); _glTextureBarrier(); }
+    internal static delegate* unmanaged<void> _glTextureBarrier = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glTextureBarrier = (delegate* unmanaged<void>)QuickGL.GetGLProcAddress("glTextureBarrier");
+    }
+    
+    internal static void Unload()
+    {
+        _glTextureBarrier = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_texture_barrier", true, false);
 }

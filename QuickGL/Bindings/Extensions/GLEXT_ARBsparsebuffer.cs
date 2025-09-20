@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.698224
+// Bindings generated at 2025-09-20 18:58:20.000979
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_sparse_buffer", true, false)]
 public static unsafe class GLEXT_ARBsparsebuffer
 {
     #region Enums
@@ -34,13 +33,29 @@ public static unsafe class GLEXT_ARBsparsebuffer
     #endregion
     
     #region Commands
-    public static void glBufferPageCommitmentARB(uint target, nint offset, nint size, bool commit) { QGLNativeAPI.Verify((nint)_glBufferPageCommitmentARB); _glBufferPageCommitmentARB(target, offset, size, commit); }
-    [QGLNativeAPI("glBufferPageCommitmentARB")] internal static delegate* unmanaged<uint, nint, nint, bool, void> _glBufferPageCommitmentARB = null;
+    public static void glBufferPageCommitmentARB(uint target, nint offset, nint size, bool commit) { QGLFeature.VerifyFunc((nint)_glBufferPageCommitmentARB); _glBufferPageCommitmentARB(target, offset, size, commit); }
+    internal static delegate* unmanaged<uint, nint, nint, bool, void> _glBufferPageCommitmentARB = null;
     
-    public static void glNamedBufferPageCommitmentEXT(uint buffer, nint offset, nint size, bool commit) { QGLNativeAPI.Verify((nint)_glNamedBufferPageCommitmentEXT); _glNamedBufferPageCommitmentEXT(buffer, offset, size, commit); }
-    [QGLNativeAPI("glNamedBufferPageCommitmentEXT")] internal static delegate* unmanaged<uint, nint, nint, bool, void> _glNamedBufferPageCommitmentEXT = null;
+    public static void glNamedBufferPageCommitmentEXT(uint buffer, nint offset, nint size, bool commit) { QGLFeature.VerifyFunc((nint)_glNamedBufferPageCommitmentEXT); _glNamedBufferPageCommitmentEXT(buffer, offset, size, commit); }
+    internal static delegate* unmanaged<uint, nint, nint, bool, void> _glNamedBufferPageCommitmentEXT = null;
     
-    public static void glNamedBufferPageCommitmentARB(uint buffer, nint offset, nint size, bool commit) { QGLNativeAPI.Verify((nint)_glNamedBufferPageCommitmentARB); _glNamedBufferPageCommitmentARB(buffer, offset, size, commit); }
-    [QGLNativeAPI("glNamedBufferPageCommitmentARB")] internal static delegate* unmanaged<uint, nint, nint, bool, void> _glNamedBufferPageCommitmentARB = null;
+    public static void glNamedBufferPageCommitmentARB(uint buffer, nint offset, nint size, bool commit) { QGLFeature.VerifyFunc((nint)_glNamedBufferPageCommitmentARB); _glNamedBufferPageCommitmentARB(buffer, offset, size, commit); }
+    internal static delegate* unmanaged<uint, nint, nint, bool, void> _glNamedBufferPageCommitmentARB = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glBufferPageCommitmentARB = (delegate* unmanaged<uint, nint, nint, bool, void>)QuickGL.GetGLProcAddress("glBufferPageCommitmentARB");
+        _glNamedBufferPageCommitmentEXT = (delegate* unmanaged<uint, nint, nint, bool, void>)QuickGL.GetGLProcAddress("glNamedBufferPageCommitmentEXT");
+        _glNamedBufferPageCommitmentARB = (delegate* unmanaged<uint, nint, nint, bool, void>)QuickGL.GetGLProcAddress("glNamedBufferPageCommitmentARB");
+    }
+    
+    internal static void Unload()
+    {
+        _glBufferPageCommitmentARB = null;
+        _glNamedBufferPageCommitmentEXT = null;
+        _glNamedBufferPageCommitmentARB = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_sparse_buffer", true, false);
 }

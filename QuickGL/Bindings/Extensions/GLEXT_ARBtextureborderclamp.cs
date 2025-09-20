@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.712644
+// Bindings generated at 2025-09-20 18:58:20.019573
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_texture_border_clamp", true, false)]
 public static unsafe class GLEXT_ARBtextureborderclamp
 {
     #region Enums
@@ -34,4 +33,14 @@ public static unsafe class GLEXT_ARBtextureborderclamp
     
     #region Commands
     #endregion
+    
+    internal static void Load()
+    {
+    }
+    
+    internal static void Unload()
+    {
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_texture_border_clamp", true, false);
 }

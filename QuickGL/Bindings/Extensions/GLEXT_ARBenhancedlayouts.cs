@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.509115
+// Bindings generated at 2025-09-20 18:58:19.867850
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_enhanced_layouts", true, false)]
 public static unsafe class GLEXT_ARBenhancedlayouts
 {
     #region Enums
@@ -37,4 +36,14 @@ public static unsafe class GLEXT_ARBenhancedlayouts
     
     #region Commands
     #endregion
+    
+    internal static void Load()
+    {
+    }
+    
+    internal static void Unload()
+    {
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_enhanced_layouts", true, false);
 }

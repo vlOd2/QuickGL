@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.546312
+// Bindings generated at 2025-09-20 18:58:19.904422
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_internalformat_query", true, false)]
 public static unsafe class GLEXT_ARBinternalformatquery
 {
     #region Enums
@@ -33,7 +32,19 @@ public static unsafe class GLEXT_ARBinternalformatquery
     #endregion
     
     #region Commands
-    public static void glGetInternalformativ(uint target, uint internalformat, uint pname, int count, int* @params) { QGLNativeAPI.Verify((nint)_glGetInternalformativ); _glGetInternalformativ(target, internalformat, pname, count, @params); }
-    [QGLNativeAPI("glGetInternalformativ")] internal static delegate* unmanaged<uint, uint, uint, int, int*, void> _glGetInternalformativ = null;
+    public static void glGetInternalformativ(uint target, uint internalformat, uint pname, int count, int* @params) { QGLFeature.VerifyFunc((nint)_glGetInternalformativ); _glGetInternalformativ(target, internalformat, pname, count, @params); }
+    internal static delegate* unmanaged<uint, uint, uint, int, int*, void> _glGetInternalformativ = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glGetInternalformativ = (delegate* unmanaged<uint, uint, uint, int, int*, void>)QuickGL.GetGLProcAddress("glGetInternalformativ");
+    }
+    
+    internal static void Unload()
+    {
+        _glGetInternalformativ = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_internalformat_query", true, false);
 }

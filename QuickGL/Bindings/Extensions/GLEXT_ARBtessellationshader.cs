@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.710826
+// Bindings generated at 2025-09-20 18:58:20.015970
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_tessellation_shader", true, false)]
 public static unsafe class GLEXT_ARBtessellationshader
 {
     #region Enums
@@ -69,10 +68,24 @@ public static unsafe class GLEXT_ARBtessellationshader
     #endregion
     
     #region Commands
-    public static void glPatchParameteri(uint pname, int value) { QGLNativeAPI.Verify((nint)_glPatchParameteri); _glPatchParameteri(pname, value); }
-    [QGLNativeAPI("glPatchParameteri")] internal static delegate* unmanaged<uint, int, void> _glPatchParameteri = null;
+    public static void glPatchParameteri(uint pname, int value) { QGLFeature.VerifyFunc((nint)_glPatchParameteri); _glPatchParameteri(pname, value); }
+    internal static delegate* unmanaged<uint, int, void> _glPatchParameteri = null;
     
-    public static void glPatchParameterfv(uint pname, float* values) { QGLNativeAPI.Verify((nint)_glPatchParameterfv); _glPatchParameterfv(pname, values); }
-    [QGLNativeAPI("glPatchParameterfv")] internal static delegate* unmanaged<uint, float*, void> _glPatchParameterfv = null;
+    public static void glPatchParameterfv(uint pname, float* values) { QGLFeature.VerifyFunc((nint)_glPatchParameterfv); _glPatchParameterfv(pname, values); }
+    internal static delegate* unmanaged<uint, float*, void> _glPatchParameterfv = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glPatchParameteri = (delegate* unmanaged<uint, int, void>)QuickGL.GetGLProcAddress("glPatchParameteri");
+        _glPatchParameterfv = (delegate* unmanaged<uint, float*, void>)QuickGL.GetGLProcAddress("glPatchParameterfv");
+    }
+    
+    internal static void Unload()
+    {
+        _glPatchParameteri = null;
+        _glPatchParameterfv = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_tessellation_shader", true, false);
 }

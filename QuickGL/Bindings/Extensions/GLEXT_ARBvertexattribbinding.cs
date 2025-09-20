@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.776407
+// Bindings generated at 2025-09-20 18:58:20.126595
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_vertex_attrib_binding", true, false)]
 public static unsafe class GLEXT_ARBvertexattribbinding
 {
     #region Enums
@@ -39,22 +38,44 @@ public static unsafe class GLEXT_ARBvertexattribbinding
     #endregion
     
     #region Commands
-    public static void glBindVertexBuffer(uint bindingindex, uint buffer, nint offset, int stride) { QGLNativeAPI.Verify((nint)_glBindVertexBuffer); _glBindVertexBuffer(bindingindex, buffer, offset, stride); }
-    [QGLNativeAPI("glBindVertexBuffer")] internal static delegate* unmanaged<uint, uint, nint, int, void> _glBindVertexBuffer = null;
+    public static void glBindVertexBuffer(uint bindingindex, uint buffer, nint offset, int stride) { QGLFeature.VerifyFunc((nint)_glBindVertexBuffer); _glBindVertexBuffer(bindingindex, buffer, offset, stride); }
+    internal static delegate* unmanaged<uint, uint, nint, int, void> _glBindVertexBuffer = null;
     
-    public static void glVertexAttribFormat(uint attribindex, int size, uint type, bool normalized, uint relativeoffset) { QGLNativeAPI.Verify((nint)_glVertexAttribFormat); _glVertexAttribFormat(attribindex, size, type, normalized, relativeoffset); }
-    [QGLNativeAPI("glVertexAttribFormat")] internal static delegate* unmanaged<uint, int, uint, bool, uint, void> _glVertexAttribFormat = null;
+    public static void glVertexAttribFormat(uint attribindex, int size, uint type, bool normalized, uint relativeoffset) { QGLFeature.VerifyFunc((nint)_glVertexAttribFormat); _glVertexAttribFormat(attribindex, size, type, normalized, relativeoffset); }
+    internal static delegate* unmanaged<uint, int, uint, bool, uint, void> _glVertexAttribFormat = null;
     
-    public static void glVertexAttribIFormat(uint attribindex, int size, uint type, uint relativeoffset) { QGLNativeAPI.Verify((nint)_glVertexAttribIFormat); _glVertexAttribIFormat(attribindex, size, type, relativeoffset); }
-    [QGLNativeAPI("glVertexAttribIFormat")] internal static delegate* unmanaged<uint, int, uint, uint, void> _glVertexAttribIFormat = null;
+    public static void glVertexAttribIFormat(uint attribindex, int size, uint type, uint relativeoffset) { QGLFeature.VerifyFunc((nint)_glVertexAttribIFormat); _glVertexAttribIFormat(attribindex, size, type, relativeoffset); }
+    internal static delegate* unmanaged<uint, int, uint, uint, void> _glVertexAttribIFormat = null;
     
-    public static void glVertexAttribLFormat(uint attribindex, int size, uint type, uint relativeoffset) { QGLNativeAPI.Verify((nint)_glVertexAttribLFormat); _glVertexAttribLFormat(attribindex, size, type, relativeoffset); }
-    [QGLNativeAPI("glVertexAttribLFormat")] internal static delegate* unmanaged<uint, int, uint, uint, void> _glVertexAttribLFormat = null;
+    public static void glVertexAttribLFormat(uint attribindex, int size, uint type, uint relativeoffset) { QGLFeature.VerifyFunc((nint)_glVertexAttribLFormat); _glVertexAttribLFormat(attribindex, size, type, relativeoffset); }
+    internal static delegate* unmanaged<uint, int, uint, uint, void> _glVertexAttribLFormat = null;
     
-    public static void glVertexAttribBinding(uint attribindex, uint bindingindex) { QGLNativeAPI.Verify((nint)_glVertexAttribBinding); _glVertexAttribBinding(attribindex, bindingindex); }
-    [QGLNativeAPI("glVertexAttribBinding")] internal static delegate* unmanaged<uint, uint, void> _glVertexAttribBinding = null;
+    public static void glVertexAttribBinding(uint attribindex, uint bindingindex) { QGLFeature.VerifyFunc((nint)_glVertexAttribBinding); _glVertexAttribBinding(attribindex, bindingindex); }
+    internal static delegate* unmanaged<uint, uint, void> _glVertexAttribBinding = null;
     
-    public static void glVertexBindingDivisor(uint bindingindex, uint divisor) { QGLNativeAPI.Verify((nint)_glVertexBindingDivisor); _glVertexBindingDivisor(bindingindex, divisor); }
-    [QGLNativeAPI("glVertexBindingDivisor")] internal static delegate* unmanaged<uint, uint, void> _glVertexBindingDivisor = null;
+    public static void glVertexBindingDivisor(uint bindingindex, uint divisor) { QGLFeature.VerifyFunc((nint)_glVertexBindingDivisor); _glVertexBindingDivisor(bindingindex, divisor); }
+    internal static delegate* unmanaged<uint, uint, void> _glVertexBindingDivisor = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glBindVertexBuffer = (delegate* unmanaged<uint, uint, nint, int, void>)QuickGL.GetGLProcAddress("glBindVertexBuffer");
+        _glVertexAttribFormat = (delegate* unmanaged<uint, int, uint, bool, uint, void>)QuickGL.GetGLProcAddress("glVertexAttribFormat");
+        _glVertexAttribIFormat = (delegate* unmanaged<uint, int, uint, uint, void>)QuickGL.GetGLProcAddress("glVertexAttribIFormat");
+        _glVertexAttribLFormat = (delegate* unmanaged<uint, int, uint, uint, void>)QuickGL.GetGLProcAddress("glVertexAttribLFormat");
+        _glVertexAttribBinding = (delegate* unmanaged<uint, uint, void>)QuickGL.GetGLProcAddress("glVertexAttribBinding");
+        _glVertexBindingDivisor = (delegate* unmanaged<uint, uint, void>)QuickGL.GetGLProcAddress("glVertexBindingDivisor");
+    }
+    
+    internal static void Unload()
+    {
+        _glBindVertexBuffer = null;
+        _glVertexAttribFormat = null;
+        _glVertexAttribIFormat = null;
+        _glVertexAttribLFormat = null;
+        _glVertexAttribBinding = null;
+        _glVertexBindingDivisor = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_vertex_attrib_binding", true, false);
 }

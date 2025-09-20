@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.752453
+// Bindings generated at 2025-09-20 18:58:20.068742
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_texture_rgb10_a2ui", true, false)]
 public static unsafe class GLEXT_ARBtexturergb10a2ui
 {
     #region Enums
@@ -34,4 +33,14 @@ public static unsafe class GLEXT_ARBtexturergb10a2ui
     
     #region Commands
     #endregion
+    
+    internal static void Load()
+    {
+    }
+    
+    internal static void Unload()
+    {
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_texture_rgb10_a2ui", true, false);
 }

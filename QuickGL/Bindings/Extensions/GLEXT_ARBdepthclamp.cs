@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.496327
+// Bindings generated at 2025-09-20 18:58:19.851028
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_depth_clamp", true, false)]
 public static unsafe class GLEXT_ARBdepthclamp
 {
     #region Enums
@@ -34,4 +33,14 @@ public static unsafe class GLEXT_ARBdepthclamp
     
     #region Commands
     #endregion
+    
+    internal static void Load()
+    {
+    }
+    
+    internal static void Unload()
+    {
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_depth_clamp", true, false);
 }

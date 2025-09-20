@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.779305
+// Bindings generated at 2025-09-20 18:58:20.131782
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_vertex_buffer_object", true, false)]
 public static unsafe class GLEXT_ARBvertexbufferobject
 {
     #region Enums
@@ -63,37 +62,69 @@ public static unsafe class GLEXT_ARBvertexbufferobject
     #endregion
     
     #region Commands
-    public static void glBindBufferARB(uint target, uint buffer) { QGLNativeAPI.Verify((nint)_glBindBufferARB); _glBindBufferARB(target, buffer); }
-    [QGLNativeAPI("glBindBufferARB")] internal static delegate* unmanaged<uint, uint, void> _glBindBufferARB = null;
+    public static void glBindBufferARB(uint target, uint buffer) { QGLFeature.VerifyFunc((nint)_glBindBufferARB); _glBindBufferARB(target, buffer); }
+    internal static delegate* unmanaged<uint, uint, void> _glBindBufferARB = null;
     
-    public static void glDeleteBuffersARB(int n, uint* buffers) { QGLNativeAPI.Verify((nint)_glDeleteBuffersARB); _glDeleteBuffersARB(n, buffers); }
-    [QGLNativeAPI("glDeleteBuffersARB")] internal static delegate* unmanaged<int, uint*, void> _glDeleteBuffersARB = null;
+    public static void glDeleteBuffersARB(int n, uint* buffers) { QGLFeature.VerifyFunc((nint)_glDeleteBuffersARB); _glDeleteBuffersARB(n, buffers); }
+    internal static delegate* unmanaged<int, uint*, void> _glDeleteBuffersARB = null;
     
-    public static void glGenBuffersARB(int n, uint* buffers) { QGLNativeAPI.Verify((nint)_glGenBuffersARB); _glGenBuffersARB(n, buffers); }
-    [QGLNativeAPI("glGenBuffersARB")] internal static delegate* unmanaged<int, uint*, void> _glGenBuffersARB = null;
+    public static void glGenBuffersARB(int n, uint* buffers) { QGLFeature.VerifyFunc((nint)_glGenBuffersARB); _glGenBuffersARB(n, buffers); }
+    internal static delegate* unmanaged<int, uint*, void> _glGenBuffersARB = null;
     
-    public static bool glIsBufferARB(uint buffer) { QGLNativeAPI.Verify((nint)_glIsBufferARB); return _glIsBufferARB(buffer); }
-    [QGLNativeAPI("glIsBufferARB")] internal static delegate* unmanaged<uint, bool> _glIsBufferARB = null;
+    public static bool glIsBufferARB(uint buffer) { QGLFeature.VerifyFunc((nint)_glIsBufferARB); return _glIsBufferARB(buffer); }
+    internal static delegate* unmanaged<uint, bool> _glIsBufferARB = null;
     
-    public static void glBufferDataARB(uint target, nint size, void* data, uint usage) { QGLNativeAPI.Verify((nint)_glBufferDataARB); _glBufferDataARB(target, size, data, usage); }
-    [QGLNativeAPI("glBufferDataARB")] internal static delegate* unmanaged<uint, nint, void*, uint, void> _glBufferDataARB = null;
+    public static void glBufferDataARB(uint target, nint size, void* data, uint usage) { QGLFeature.VerifyFunc((nint)_glBufferDataARB); _glBufferDataARB(target, size, data, usage); }
+    internal static delegate* unmanaged<uint, nint, void*, uint, void> _glBufferDataARB = null;
     
-    public static void glBufferSubDataARB(uint target, nint offset, nint size, void* data) { QGLNativeAPI.Verify((nint)_glBufferSubDataARB); _glBufferSubDataARB(target, offset, size, data); }
-    [QGLNativeAPI("glBufferSubDataARB")] internal static delegate* unmanaged<uint, nint, nint, void*, void> _glBufferSubDataARB = null;
+    public static void glBufferSubDataARB(uint target, nint offset, nint size, void* data) { QGLFeature.VerifyFunc((nint)_glBufferSubDataARB); _glBufferSubDataARB(target, offset, size, data); }
+    internal static delegate* unmanaged<uint, nint, nint, void*, void> _glBufferSubDataARB = null;
     
-    public static void glGetBufferSubDataARB(uint target, nint offset, nint size, void* data) { QGLNativeAPI.Verify((nint)_glGetBufferSubDataARB); _glGetBufferSubDataARB(target, offset, size, data); }
-    [QGLNativeAPI("glGetBufferSubDataARB")] internal static delegate* unmanaged<uint, nint, nint, void*, void> _glGetBufferSubDataARB = null;
+    public static void glGetBufferSubDataARB(uint target, nint offset, nint size, void* data) { QGLFeature.VerifyFunc((nint)_glGetBufferSubDataARB); _glGetBufferSubDataARB(target, offset, size, data); }
+    internal static delegate* unmanaged<uint, nint, nint, void*, void> _glGetBufferSubDataARB = null;
     
-    public static void* glMapBufferARB(uint target, uint access) { QGLNativeAPI.Verify((nint)_glMapBufferARB); return _glMapBufferARB(target, access); }
-    [QGLNativeAPI("glMapBufferARB")] internal static delegate* unmanaged<uint, uint, void*> _glMapBufferARB = null;
+    public static void* glMapBufferARB(uint target, uint access) { QGLFeature.VerifyFunc((nint)_glMapBufferARB); return _glMapBufferARB(target, access); }
+    internal static delegate* unmanaged<uint, uint, void*> _glMapBufferARB = null;
     
-    public static bool glUnmapBufferARB(uint target) { QGLNativeAPI.Verify((nint)_glUnmapBufferARB); return _glUnmapBufferARB(target); }
-    [QGLNativeAPI("glUnmapBufferARB")] internal static delegate* unmanaged<uint, bool> _glUnmapBufferARB = null;
+    public static bool glUnmapBufferARB(uint target) { QGLFeature.VerifyFunc((nint)_glUnmapBufferARB); return _glUnmapBufferARB(target); }
+    internal static delegate* unmanaged<uint, bool> _glUnmapBufferARB = null;
     
-    public static void glGetBufferParameterivARB(uint target, uint pname, int* @params) { QGLNativeAPI.Verify((nint)_glGetBufferParameterivARB); _glGetBufferParameterivARB(target, pname, @params); }
-    [QGLNativeAPI("glGetBufferParameterivARB")] internal static delegate* unmanaged<uint, uint, int*, void> _glGetBufferParameterivARB = null;
+    public static void glGetBufferParameterivARB(uint target, uint pname, int* @params) { QGLFeature.VerifyFunc((nint)_glGetBufferParameterivARB); _glGetBufferParameterivARB(target, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, int*, void> _glGetBufferParameterivARB = null;
     
-    public static void glGetBufferPointervARB(uint target, uint pname, void** @params) { QGLNativeAPI.Verify((nint)_glGetBufferPointervARB); _glGetBufferPointervARB(target, pname, @params); }
-    [QGLNativeAPI("glGetBufferPointervARB")] internal static delegate* unmanaged<uint, uint, void**, void> _glGetBufferPointervARB = null;
+    public static void glGetBufferPointervARB(uint target, uint pname, void** @params) { QGLFeature.VerifyFunc((nint)_glGetBufferPointervARB); _glGetBufferPointervARB(target, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, void**, void> _glGetBufferPointervARB = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glBindBufferARB = (delegate* unmanaged<uint, uint, void>)QuickGL.GetGLProcAddress("glBindBufferARB");
+        _glDeleteBuffersARB = (delegate* unmanaged<int, uint*, void>)QuickGL.GetGLProcAddress("glDeleteBuffersARB");
+        _glGenBuffersARB = (delegate* unmanaged<int, uint*, void>)QuickGL.GetGLProcAddress("glGenBuffersARB");
+        _glIsBufferARB = (delegate* unmanaged<uint, bool>)QuickGL.GetGLProcAddress("glIsBufferARB");
+        _glBufferDataARB = (delegate* unmanaged<uint, nint, void*, uint, void>)QuickGL.GetGLProcAddress("glBufferDataARB");
+        _glBufferSubDataARB = (delegate* unmanaged<uint, nint, nint, void*, void>)QuickGL.GetGLProcAddress("glBufferSubDataARB");
+        _glGetBufferSubDataARB = (delegate* unmanaged<uint, nint, nint, void*, void>)QuickGL.GetGLProcAddress("glGetBufferSubDataARB");
+        _glMapBufferARB = (delegate* unmanaged<uint, uint, void*>)QuickGL.GetGLProcAddress("glMapBufferARB");
+        _glUnmapBufferARB = (delegate* unmanaged<uint, bool>)QuickGL.GetGLProcAddress("glUnmapBufferARB");
+        _glGetBufferParameterivARB = (delegate* unmanaged<uint, uint, int*, void>)QuickGL.GetGLProcAddress("glGetBufferParameterivARB");
+        _glGetBufferPointervARB = (delegate* unmanaged<uint, uint, void**, void>)QuickGL.GetGLProcAddress("glGetBufferPointervARB");
+    }
+    
+    internal static void Unload()
+    {
+        _glBindBufferARB = null;
+        _glDeleteBuffersARB = null;
+        _glGenBuffersARB = null;
+        _glIsBufferARB = null;
+        _glBufferDataARB = null;
+        _glBufferSubDataARB = null;
+        _glGetBufferSubDataARB = null;
+        _glMapBufferARB = null;
+        _glUnmapBufferARB = null;
+        _glGetBufferParameterivARB = null;
+        _glGetBufferPointervARB = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_vertex_buffer_object", true, false);
 }

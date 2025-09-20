@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.561819
+// Bindings generated at 2025-09-20 18:58:19.922605
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_pipeline_statistics_query", true, false)]
 public static unsafe class GLEXT_ARBpipelinestatisticsquery
 {
     #region Enums
@@ -44,4 +43,14 @@ public static unsafe class GLEXT_ARBpipelinestatisticsquery
     
     #region Commands
     #endregion
+    
+    internal static void Load()
+    {
+    }
+    
+    internal static void Unload()
+    {
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_pipeline_statistics_query", true, false);
 }

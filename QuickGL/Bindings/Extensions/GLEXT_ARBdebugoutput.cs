@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.494649
+// Bindings generated at 2025-09-20 18:58:19.845476
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_debug_output", true, false)]
 public static unsafe class GLEXT_ARBdebugoutput
 {
     #region Enums
@@ -54,16 +53,34 @@ public static unsafe class GLEXT_ARBdebugoutput
     #endregion
     
     #region Commands
-    public static void glDebugMessageControlARB(uint source, uint type, uint severity, int count, uint* ids, bool enabled) { QGLNativeAPI.Verify((nint)_glDebugMessageControlARB); _glDebugMessageControlARB(source, type, severity, count, ids, enabled); }
-    [QGLNativeAPI("glDebugMessageControlARB")] internal static delegate* unmanaged<uint, uint, uint, int, uint*, bool, void> _glDebugMessageControlARB = null;
+    public static void glDebugMessageControlARB(uint source, uint type, uint severity, int count, uint* ids, bool enabled) { QGLFeature.VerifyFunc((nint)_glDebugMessageControlARB); _glDebugMessageControlARB(source, type, severity, count, ids, enabled); }
+    internal static delegate* unmanaged<uint, uint, uint, int, uint*, bool, void> _glDebugMessageControlARB = null;
     
-    public static void glDebugMessageInsertARB(uint source, uint type, uint id, uint severity, int length, byte* buf) { QGLNativeAPI.Verify((nint)_glDebugMessageInsertARB); _glDebugMessageInsertARB(source, type, id, severity, length, buf); }
-    [QGLNativeAPI("glDebugMessageInsertARB")] internal static delegate* unmanaged<uint, uint, uint, uint, int, byte*, void> _glDebugMessageInsertARB = null;
+    public static void glDebugMessageInsertARB(uint source, uint type, uint id, uint severity, int length, byte* buf) { QGLFeature.VerifyFunc((nint)_glDebugMessageInsertARB); _glDebugMessageInsertARB(source, type, id, severity, length, buf); }
+    internal static delegate* unmanaged<uint, uint, uint, uint, int, byte*, void> _glDebugMessageInsertARB = null;
     
-    public static void glDebugMessageCallbackARB(nint callback, void* userParam) { QGLNativeAPI.Verify((nint)_glDebugMessageCallbackARB); _glDebugMessageCallbackARB(callback, userParam); }
-    [QGLNativeAPI("glDebugMessageCallbackARB")] internal static delegate* unmanaged<nint, void*, void> _glDebugMessageCallbackARB = null;
+    public static void glDebugMessageCallbackARB(nint callback, void* userParam) { QGLFeature.VerifyFunc((nint)_glDebugMessageCallbackARB); _glDebugMessageCallbackARB(callback, userParam); }
+    internal static delegate* unmanaged<nint, void*, void> _glDebugMessageCallbackARB = null;
     
-    public static uint glGetDebugMessageLogARB(uint count, int bufSize, uint* sources, uint* types, uint* ids, uint* severities, int* lengths, byte* messageLog) { QGLNativeAPI.Verify((nint)_glGetDebugMessageLogARB); return _glGetDebugMessageLogARB(count, bufSize, sources, types, ids, severities, lengths, messageLog); }
-    [QGLNativeAPI("glGetDebugMessageLogARB")] internal static delegate* unmanaged<uint, int, uint*, uint*, uint*, uint*, int*, byte*, uint> _glGetDebugMessageLogARB = null;
+    public static uint glGetDebugMessageLogARB(uint count, int bufSize, uint* sources, uint* types, uint* ids, uint* severities, int* lengths, byte* messageLog) { QGLFeature.VerifyFunc((nint)_glGetDebugMessageLogARB); return _glGetDebugMessageLogARB(count, bufSize, sources, types, ids, severities, lengths, messageLog); }
+    internal static delegate* unmanaged<uint, int, uint*, uint*, uint*, uint*, int*, byte*, uint> _glGetDebugMessageLogARB = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glDebugMessageControlARB = (delegate* unmanaged<uint, uint, uint, int, uint*, bool, void>)QuickGL.GetGLProcAddress("glDebugMessageControlARB");
+        _glDebugMessageInsertARB = (delegate* unmanaged<uint, uint, uint, uint, int, byte*, void>)QuickGL.GetGLProcAddress("glDebugMessageInsertARB");
+        _glDebugMessageCallbackARB = (delegate* unmanaged<nint, void*, void>)QuickGL.GetGLProcAddress("glDebugMessageCallbackARB");
+        _glGetDebugMessageLogARB = (delegate* unmanaged<uint, int, uint*, uint*, uint*, uint*, int*, byte*, uint>)QuickGL.GetGLProcAddress("glGetDebugMessageLogARB");
+    }
+    
+    internal static void Unload()
+    {
+        _glDebugMessageControlARB = null;
+        _glDebugMessageInsertARB = null;
+        _glDebugMessageCallbackARB = null;
+        _glGetDebugMessageLogARB = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_debug_output", true, false);
 }

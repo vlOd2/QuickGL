@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.680469
+// Bindings generated at 2025-09-20 18:58:19.974704
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_shader_stencil_export", true, false)]
 public static unsafe class GLEXT_ARBshaderstencilexport
 {
     #region Enums
@@ -33,4 +32,14 @@ public static unsafe class GLEXT_ARBshaderstencilexport
     
     #region Commands
     #endregion
+    
+    internal static void Load()
+    {
+    }
+    
+    internal static void Unload()
+    {
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_shader_stencil_export", true, false);
 }

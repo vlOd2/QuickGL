@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.543840
+// Bindings generated at 2025-09-20 18:58:19.902287
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_indirect_parameters", true, false)]
 public static unsafe class GLEXT_ARBindirectparameters
 {
     #region Enums
@@ -34,10 +33,24 @@ public static unsafe class GLEXT_ARBindirectparameters
     #endregion
     
     #region Commands
-    public static void glMultiDrawArraysIndirectCountARB(uint mode, void* indirect, nint drawcount, int maxdrawcount, int stride) { QGLNativeAPI.Verify((nint)_glMultiDrawArraysIndirectCountARB); _glMultiDrawArraysIndirectCountARB(mode, indirect, drawcount, maxdrawcount, stride); }
-    [QGLNativeAPI("glMultiDrawArraysIndirectCountARB")] internal static delegate* unmanaged<uint, void*, nint, int, int, void> _glMultiDrawArraysIndirectCountARB = null;
+    public static void glMultiDrawArraysIndirectCountARB(uint mode, void* indirect, nint drawcount, int maxdrawcount, int stride) { QGLFeature.VerifyFunc((nint)_glMultiDrawArraysIndirectCountARB); _glMultiDrawArraysIndirectCountARB(mode, indirect, drawcount, maxdrawcount, stride); }
+    internal static delegate* unmanaged<uint, void*, nint, int, int, void> _glMultiDrawArraysIndirectCountARB = null;
     
-    public static void glMultiDrawElementsIndirectCountARB(uint mode, uint type, void* indirect, nint drawcount, int maxdrawcount, int stride) { QGLNativeAPI.Verify((nint)_glMultiDrawElementsIndirectCountARB); _glMultiDrawElementsIndirectCountARB(mode, type, indirect, drawcount, maxdrawcount, stride); }
-    [QGLNativeAPI("glMultiDrawElementsIndirectCountARB")] internal static delegate* unmanaged<uint, uint, void*, nint, int, int, void> _glMultiDrawElementsIndirectCountARB = null;
+    public static void glMultiDrawElementsIndirectCountARB(uint mode, uint type, void* indirect, nint drawcount, int maxdrawcount, int stride) { QGLFeature.VerifyFunc((nint)_glMultiDrawElementsIndirectCountARB); _glMultiDrawElementsIndirectCountARB(mode, type, indirect, drawcount, maxdrawcount, stride); }
+    internal static delegate* unmanaged<uint, uint, void*, nint, int, int, void> _glMultiDrawElementsIndirectCountARB = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glMultiDrawArraysIndirectCountARB = (delegate* unmanaged<uint, void*, nint, int, int, void>)QuickGL.GetGLProcAddress("glMultiDrawArraysIndirectCountARB");
+        _glMultiDrawElementsIndirectCountARB = (delegate* unmanaged<uint, uint, void*, nint, int, int, void>)QuickGL.GetGLProcAddress("glMultiDrawElementsIndirectCountARB");
+    }
+    
+    internal static void Unload()
+    {
+        _glMultiDrawArraysIndirectCountARB = null;
+        _glMultiDrawElementsIndirectCountARB = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_indirect_parameters", true, false);
 }

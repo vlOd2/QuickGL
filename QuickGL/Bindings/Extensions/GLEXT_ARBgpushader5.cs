@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.533002
+// Bindings generated at 2025-09-20 18:58:19.890857
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_gpu_shader5", true, false)]
 public static unsafe class GLEXT_ARBgpushader5
 {
     #region Enums
@@ -39,4 +38,14 @@ public static unsafe class GLEXT_ARBgpushader5
     
     #region Commands
     #endregion
+    
+    internal static void Load()
+    {
+    }
+    
+    internal static void Unload()
+    {
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_gpu_shader5", true, false);
 }

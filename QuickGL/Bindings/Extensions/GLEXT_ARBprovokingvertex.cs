@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.571287
+// Bindings generated at 2025-09-20 18:58:19.937756
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_provoking_vertex", true, false)]
 public static unsafe class GLEXT_ARBprovokingvertex
 {
     #region Enums
@@ -36,7 +35,19 @@ public static unsafe class GLEXT_ARBprovokingvertex
     #endregion
     
     #region Commands
-    public static void glProvokingVertex(uint mode) { QGLNativeAPI.Verify((nint)_glProvokingVertex); _glProvokingVertex(mode); }
-    [QGLNativeAPI("glProvokingVertex")] internal static delegate* unmanaged<uint, void> _glProvokingVertex = null;
+    public static void glProvokingVertex(uint mode) { QGLFeature.VerifyFunc((nint)_glProvokingVertex); _glProvokingVertex(mode); }
+    internal static delegate* unmanaged<uint, void> _glProvokingVertex = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glProvokingVertex = (delegate* unmanaged<uint, void>)QuickGL.GetGLProcAddress("glProvokingVertex");
+    }
+    
+    internal static void Unload()
+    {
+        _glProvokingVertex = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_provoking_vertex", true, false);
 }

@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.513248
+// Bindings generated at 2025-09-20 18:58:19.875838
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_fragment_program", true, false)]
 public static unsafe class GLEXT_ARBfragmentprogram
 {
     #region Enums
@@ -110,61 +109,109 @@ public static unsafe class GLEXT_ARBfragmentprogram
     #endregion
     
     #region Commands
-    public static void glProgramStringARB(uint target, uint format, int len, void* @string) { QGLNativeAPI.Verify((nint)_glProgramStringARB); _glProgramStringARB(target, format, len, @string); }
-    [QGLNativeAPI("glProgramStringARB")] internal static delegate* unmanaged<uint, uint, int, void*, void> _glProgramStringARB = null;
+    public static void glProgramStringARB(uint target, uint format, int len, void* @string) { QGLFeature.VerifyFunc((nint)_glProgramStringARB); _glProgramStringARB(target, format, len, @string); }
+    internal static delegate* unmanaged<uint, uint, int, void*, void> _glProgramStringARB = null;
     
-    public static void glBindProgramARB(uint target, uint program) { QGLNativeAPI.Verify((nint)_glBindProgramARB); _glBindProgramARB(target, program); }
-    [QGLNativeAPI("glBindProgramARB")] internal static delegate* unmanaged<uint, uint, void> _glBindProgramARB = null;
+    public static void glBindProgramARB(uint target, uint program) { QGLFeature.VerifyFunc((nint)_glBindProgramARB); _glBindProgramARB(target, program); }
+    internal static delegate* unmanaged<uint, uint, void> _glBindProgramARB = null;
     
-    public static void glDeleteProgramsARB(int n, uint* programs) { QGLNativeAPI.Verify((nint)_glDeleteProgramsARB); _glDeleteProgramsARB(n, programs); }
-    [QGLNativeAPI("glDeleteProgramsARB")] internal static delegate* unmanaged<int, uint*, void> _glDeleteProgramsARB = null;
+    public static void glDeleteProgramsARB(int n, uint* programs) { QGLFeature.VerifyFunc((nint)_glDeleteProgramsARB); _glDeleteProgramsARB(n, programs); }
+    internal static delegate* unmanaged<int, uint*, void> _glDeleteProgramsARB = null;
     
-    public static void glGenProgramsARB(int n, uint* programs) { QGLNativeAPI.Verify((nint)_glGenProgramsARB); _glGenProgramsARB(n, programs); }
-    [QGLNativeAPI("glGenProgramsARB")] internal static delegate* unmanaged<int, uint*, void> _glGenProgramsARB = null;
+    public static void glGenProgramsARB(int n, uint* programs) { QGLFeature.VerifyFunc((nint)_glGenProgramsARB); _glGenProgramsARB(n, programs); }
+    internal static delegate* unmanaged<int, uint*, void> _glGenProgramsARB = null;
     
-    public static void glProgramEnvParameter4dARB(uint target, uint index, double x, double y, double z, double w) { QGLNativeAPI.Verify((nint)_glProgramEnvParameter4dARB); _glProgramEnvParameter4dARB(target, index, x, y, z, w); }
-    [QGLNativeAPI("glProgramEnvParameter4dARB")] internal static delegate* unmanaged<uint, uint, double, double, double, double, void> _glProgramEnvParameter4dARB = null;
+    public static void glProgramEnvParameter4dARB(uint target, uint index, double x, double y, double z, double w) { QGLFeature.VerifyFunc((nint)_glProgramEnvParameter4dARB); _glProgramEnvParameter4dARB(target, index, x, y, z, w); }
+    internal static delegate* unmanaged<uint, uint, double, double, double, double, void> _glProgramEnvParameter4dARB = null;
     
-    public static void glProgramEnvParameter4dvARB(uint target, uint index, double* @params) { QGLNativeAPI.Verify((nint)_glProgramEnvParameter4dvARB); _glProgramEnvParameter4dvARB(target, index, @params); }
-    [QGLNativeAPI("glProgramEnvParameter4dvARB")] internal static delegate* unmanaged<uint, uint, double*, void> _glProgramEnvParameter4dvARB = null;
+    public static void glProgramEnvParameter4dvARB(uint target, uint index, double* @params) { QGLFeature.VerifyFunc((nint)_glProgramEnvParameter4dvARB); _glProgramEnvParameter4dvARB(target, index, @params); }
+    internal static delegate* unmanaged<uint, uint, double*, void> _glProgramEnvParameter4dvARB = null;
     
-    public static void glProgramEnvParameter4fARB(uint target, uint index, float x, float y, float z, float w) { QGLNativeAPI.Verify((nint)_glProgramEnvParameter4fARB); _glProgramEnvParameter4fARB(target, index, x, y, z, w); }
-    [QGLNativeAPI("glProgramEnvParameter4fARB")] internal static delegate* unmanaged<uint, uint, float, float, float, float, void> _glProgramEnvParameter4fARB = null;
+    public static void glProgramEnvParameter4fARB(uint target, uint index, float x, float y, float z, float w) { QGLFeature.VerifyFunc((nint)_glProgramEnvParameter4fARB); _glProgramEnvParameter4fARB(target, index, x, y, z, w); }
+    internal static delegate* unmanaged<uint, uint, float, float, float, float, void> _glProgramEnvParameter4fARB = null;
     
-    public static void glProgramEnvParameter4fvARB(uint target, uint index, float* @params) { QGLNativeAPI.Verify((nint)_glProgramEnvParameter4fvARB); _glProgramEnvParameter4fvARB(target, index, @params); }
-    [QGLNativeAPI("glProgramEnvParameter4fvARB")] internal static delegate* unmanaged<uint, uint, float*, void> _glProgramEnvParameter4fvARB = null;
+    public static void glProgramEnvParameter4fvARB(uint target, uint index, float* @params) { QGLFeature.VerifyFunc((nint)_glProgramEnvParameter4fvARB); _glProgramEnvParameter4fvARB(target, index, @params); }
+    internal static delegate* unmanaged<uint, uint, float*, void> _glProgramEnvParameter4fvARB = null;
     
-    public static void glProgramLocalParameter4dARB(uint target, uint index, double x, double y, double z, double w) { QGLNativeAPI.Verify((nint)_glProgramLocalParameter4dARB); _glProgramLocalParameter4dARB(target, index, x, y, z, w); }
-    [QGLNativeAPI("glProgramLocalParameter4dARB")] internal static delegate* unmanaged<uint, uint, double, double, double, double, void> _glProgramLocalParameter4dARB = null;
+    public static void glProgramLocalParameter4dARB(uint target, uint index, double x, double y, double z, double w) { QGLFeature.VerifyFunc((nint)_glProgramLocalParameter4dARB); _glProgramLocalParameter4dARB(target, index, x, y, z, w); }
+    internal static delegate* unmanaged<uint, uint, double, double, double, double, void> _glProgramLocalParameter4dARB = null;
     
-    public static void glProgramLocalParameter4dvARB(uint target, uint index, double* @params) { QGLNativeAPI.Verify((nint)_glProgramLocalParameter4dvARB); _glProgramLocalParameter4dvARB(target, index, @params); }
-    [QGLNativeAPI("glProgramLocalParameter4dvARB")] internal static delegate* unmanaged<uint, uint, double*, void> _glProgramLocalParameter4dvARB = null;
+    public static void glProgramLocalParameter4dvARB(uint target, uint index, double* @params) { QGLFeature.VerifyFunc((nint)_glProgramLocalParameter4dvARB); _glProgramLocalParameter4dvARB(target, index, @params); }
+    internal static delegate* unmanaged<uint, uint, double*, void> _glProgramLocalParameter4dvARB = null;
     
-    public static void glProgramLocalParameter4fARB(uint target, uint index, float x, float y, float z, float w) { QGLNativeAPI.Verify((nint)_glProgramLocalParameter4fARB); _glProgramLocalParameter4fARB(target, index, x, y, z, w); }
-    [QGLNativeAPI("glProgramLocalParameter4fARB")] internal static delegate* unmanaged<uint, uint, float, float, float, float, void> _glProgramLocalParameter4fARB = null;
+    public static void glProgramLocalParameter4fARB(uint target, uint index, float x, float y, float z, float w) { QGLFeature.VerifyFunc((nint)_glProgramLocalParameter4fARB); _glProgramLocalParameter4fARB(target, index, x, y, z, w); }
+    internal static delegate* unmanaged<uint, uint, float, float, float, float, void> _glProgramLocalParameter4fARB = null;
     
-    public static void glProgramLocalParameter4fvARB(uint target, uint index, float* @params) { QGLNativeAPI.Verify((nint)_glProgramLocalParameter4fvARB); _glProgramLocalParameter4fvARB(target, index, @params); }
-    [QGLNativeAPI("glProgramLocalParameter4fvARB")] internal static delegate* unmanaged<uint, uint, float*, void> _glProgramLocalParameter4fvARB = null;
+    public static void glProgramLocalParameter4fvARB(uint target, uint index, float* @params) { QGLFeature.VerifyFunc((nint)_glProgramLocalParameter4fvARB); _glProgramLocalParameter4fvARB(target, index, @params); }
+    internal static delegate* unmanaged<uint, uint, float*, void> _glProgramLocalParameter4fvARB = null;
     
-    public static void glGetProgramEnvParameterdvARB(uint target, uint index, double* @params) { QGLNativeAPI.Verify((nint)_glGetProgramEnvParameterdvARB); _glGetProgramEnvParameterdvARB(target, index, @params); }
-    [QGLNativeAPI("glGetProgramEnvParameterdvARB")] internal static delegate* unmanaged<uint, uint, double*, void> _glGetProgramEnvParameterdvARB = null;
+    public static void glGetProgramEnvParameterdvARB(uint target, uint index, double* @params) { QGLFeature.VerifyFunc((nint)_glGetProgramEnvParameterdvARB); _glGetProgramEnvParameterdvARB(target, index, @params); }
+    internal static delegate* unmanaged<uint, uint, double*, void> _glGetProgramEnvParameterdvARB = null;
     
-    public static void glGetProgramEnvParameterfvARB(uint target, uint index, float* @params) { QGLNativeAPI.Verify((nint)_glGetProgramEnvParameterfvARB); _glGetProgramEnvParameterfvARB(target, index, @params); }
-    [QGLNativeAPI("glGetProgramEnvParameterfvARB")] internal static delegate* unmanaged<uint, uint, float*, void> _glGetProgramEnvParameterfvARB = null;
+    public static void glGetProgramEnvParameterfvARB(uint target, uint index, float* @params) { QGLFeature.VerifyFunc((nint)_glGetProgramEnvParameterfvARB); _glGetProgramEnvParameterfvARB(target, index, @params); }
+    internal static delegate* unmanaged<uint, uint, float*, void> _glGetProgramEnvParameterfvARB = null;
     
-    public static void glGetProgramLocalParameterdvARB(uint target, uint index, double* @params) { QGLNativeAPI.Verify((nint)_glGetProgramLocalParameterdvARB); _glGetProgramLocalParameterdvARB(target, index, @params); }
-    [QGLNativeAPI("glGetProgramLocalParameterdvARB")] internal static delegate* unmanaged<uint, uint, double*, void> _glGetProgramLocalParameterdvARB = null;
+    public static void glGetProgramLocalParameterdvARB(uint target, uint index, double* @params) { QGLFeature.VerifyFunc((nint)_glGetProgramLocalParameterdvARB); _glGetProgramLocalParameterdvARB(target, index, @params); }
+    internal static delegate* unmanaged<uint, uint, double*, void> _glGetProgramLocalParameterdvARB = null;
     
-    public static void glGetProgramLocalParameterfvARB(uint target, uint index, float* @params) { QGLNativeAPI.Verify((nint)_glGetProgramLocalParameterfvARB); _glGetProgramLocalParameterfvARB(target, index, @params); }
-    [QGLNativeAPI("glGetProgramLocalParameterfvARB")] internal static delegate* unmanaged<uint, uint, float*, void> _glGetProgramLocalParameterfvARB = null;
+    public static void glGetProgramLocalParameterfvARB(uint target, uint index, float* @params) { QGLFeature.VerifyFunc((nint)_glGetProgramLocalParameterfvARB); _glGetProgramLocalParameterfvARB(target, index, @params); }
+    internal static delegate* unmanaged<uint, uint, float*, void> _glGetProgramLocalParameterfvARB = null;
     
-    public static void glGetProgramivARB(uint target, uint pname, int* @params) { QGLNativeAPI.Verify((nint)_glGetProgramivARB); _glGetProgramivARB(target, pname, @params); }
-    [QGLNativeAPI("glGetProgramivARB")] internal static delegate* unmanaged<uint, uint, int*, void> _glGetProgramivARB = null;
+    public static void glGetProgramivARB(uint target, uint pname, int* @params) { QGLFeature.VerifyFunc((nint)_glGetProgramivARB); _glGetProgramivARB(target, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, int*, void> _glGetProgramivARB = null;
     
-    public static void glGetProgramStringARB(uint target, uint pname, void* @string) { QGLNativeAPI.Verify((nint)_glGetProgramStringARB); _glGetProgramStringARB(target, pname, @string); }
-    [QGLNativeAPI("glGetProgramStringARB")] internal static delegate* unmanaged<uint, uint, void*, void> _glGetProgramStringARB = null;
+    public static void glGetProgramStringARB(uint target, uint pname, void* @string) { QGLFeature.VerifyFunc((nint)_glGetProgramStringARB); _glGetProgramStringARB(target, pname, @string); }
+    internal static delegate* unmanaged<uint, uint, void*, void> _glGetProgramStringARB = null;
     
-    public static bool glIsProgramARB(uint program) { QGLNativeAPI.Verify((nint)_glIsProgramARB); return _glIsProgramARB(program); }
-    [QGLNativeAPI("glIsProgramARB")] internal static delegate* unmanaged<uint, bool> _glIsProgramARB = null;
+    public static bool glIsProgramARB(uint program) { QGLFeature.VerifyFunc((nint)_glIsProgramARB); return _glIsProgramARB(program); }
+    internal static delegate* unmanaged<uint, bool> _glIsProgramARB = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glProgramStringARB = (delegate* unmanaged<uint, uint, int, void*, void>)QuickGL.GetGLProcAddress("glProgramStringARB");
+        _glBindProgramARB = (delegate* unmanaged<uint, uint, void>)QuickGL.GetGLProcAddress("glBindProgramARB");
+        _glDeleteProgramsARB = (delegate* unmanaged<int, uint*, void>)QuickGL.GetGLProcAddress("glDeleteProgramsARB");
+        _glGenProgramsARB = (delegate* unmanaged<int, uint*, void>)QuickGL.GetGLProcAddress("glGenProgramsARB");
+        _glProgramEnvParameter4dARB = (delegate* unmanaged<uint, uint, double, double, double, double, void>)QuickGL.GetGLProcAddress("glProgramEnvParameter4dARB");
+        _glProgramEnvParameter4dvARB = (delegate* unmanaged<uint, uint, double*, void>)QuickGL.GetGLProcAddress("glProgramEnvParameter4dvARB");
+        _glProgramEnvParameter4fARB = (delegate* unmanaged<uint, uint, float, float, float, float, void>)QuickGL.GetGLProcAddress("glProgramEnvParameter4fARB");
+        _glProgramEnvParameter4fvARB = (delegate* unmanaged<uint, uint, float*, void>)QuickGL.GetGLProcAddress("glProgramEnvParameter4fvARB");
+        _glProgramLocalParameter4dARB = (delegate* unmanaged<uint, uint, double, double, double, double, void>)QuickGL.GetGLProcAddress("glProgramLocalParameter4dARB");
+        _glProgramLocalParameter4dvARB = (delegate* unmanaged<uint, uint, double*, void>)QuickGL.GetGLProcAddress("glProgramLocalParameter4dvARB");
+        _glProgramLocalParameter4fARB = (delegate* unmanaged<uint, uint, float, float, float, float, void>)QuickGL.GetGLProcAddress("glProgramLocalParameter4fARB");
+        _glProgramLocalParameter4fvARB = (delegate* unmanaged<uint, uint, float*, void>)QuickGL.GetGLProcAddress("glProgramLocalParameter4fvARB");
+        _glGetProgramEnvParameterdvARB = (delegate* unmanaged<uint, uint, double*, void>)QuickGL.GetGLProcAddress("glGetProgramEnvParameterdvARB");
+        _glGetProgramEnvParameterfvARB = (delegate* unmanaged<uint, uint, float*, void>)QuickGL.GetGLProcAddress("glGetProgramEnvParameterfvARB");
+        _glGetProgramLocalParameterdvARB = (delegate* unmanaged<uint, uint, double*, void>)QuickGL.GetGLProcAddress("glGetProgramLocalParameterdvARB");
+        _glGetProgramLocalParameterfvARB = (delegate* unmanaged<uint, uint, float*, void>)QuickGL.GetGLProcAddress("glGetProgramLocalParameterfvARB");
+        _glGetProgramivARB = (delegate* unmanaged<uint, uint, int*, void>)QuickGL.GetGLProcAddress("glGetProgramivARB");
+        _glGetProgramStringARB = (delegate* unmanaged<uint, uint, void*, void>)QuickGL.GetGLProcAddress("glGetProgramStringARB");
+        _glIsProgramARB = (delegate* unmanaged<uint, bool>)QuickGL.GetGLProcAddress("glIsProgramARB");
+    }
+    
+    internal static void Unload()
+    {
+        _glProgramStringARB = null;
+        _glBindProgramARB = null;
+        _glDeleteProgramsARB = null;
+        _glGenProgramsARB = null;
+        _glProgramEnvParameter4dARB = null;
+        _glProgramEnvParameter4dvARB = null;
+        _glProgramEnvParameter4fARB = null;
+        _glProgramEnvParameter4fvARB = null;
+        _glProgramLocalParameter4dARB = null;
+        _glProgramLocalParameter4dvARB = null;
+        _glProgramLocalParameter4fARB = null;
+        _glProgramLocalParameter4fvARB = null;
+        _glGetProgramEnvParameterdvARB = null;
+        _glGetProgramEnvParameterfvARB = null;
+        _glGetProgramLocalParameterdvARB = null;
+        _glGetProgramLocalParameterfvARB = null;
+        _glGetProgramivARB = null;
+        _glGetProgramStringARB = null;
+        _glIsProgramARB = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_fragment_program", true, false);
 }

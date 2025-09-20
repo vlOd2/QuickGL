@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.404077
+// Bindings generated at 2025-09-20 18:58:19.729695
 namespace QuickGLNS.Bindings;
 
-[QGLFeature("GL_VERSION_1_1", false, false)]
 public static unsafe class GL11
 {
     #region Enums
@@ -136,94 +135,164 @@ public static unsafe class GL11
     #endregion
     
     #region Commands
-    public static void glDrawArrays(uint mode, int first, int count) { QGLNativeAPI.Verify((nint)_glDrawArrays); _glDrawArrays(mode, first, count); }
-    [QGLNativeAPI("glDrawArrays")] internal static delegate* unmanaged<uint, int, int, void> _glDrawArrays = null;
+    public static void glDrawArrays(uint mode, int first, int count) { QGLFeature.VerifyFunc((nint)_glDrawArrays); _glDrawArrays(mode, first, count); }
+    internal static delegate* unmanaged<uint, int, int, void> _glDrawArrays = null;
     
-    public static void glDrawElements(uint mode, int count, uint type, void* indices) { QGLNativeAPI.Verify((nint)_glDrawElements); _glDrawElements(mode, count, type, indices); }
-    [QGLNativeAPI("glDrawElements")] internal static delegate* unmanaged<uint, int, uint, void*, void> _glDrawElements = null;
+    public static void glDrawElements(uint mode, int count, uint type, void* indices) { QGLFeature.VerifyFunc((nint)_glDrawElements); _glDrawElements(mode, count, type, indices); }
+    internal static delegate* unmanaged<uint, int, uint, void*, void> _glDrawElements = null;
     
-    public static void glGetPointerv(uint pname, void** @params) { QGLNativeAPI.Verify((nint)_glGetPointerv); _glGetPointerv(pname, @params); }
-    [QGLNativeAPI("glGetPointerv")] internal static delegate* unmanaged<uint, void**, void> _glGetPointerv = null;
+    public static void glGetPointerv(uint pname, void** @params) { QGLFeature.VerifyFunc((nint)_glGetPointerv); _glGetPointerv(pname, @params); }
+    internal static delegate* unmanaged<uint, void**, void> _glGetPointerv = null;
     
-    public static void glPolygonOffset(float factor, float units) { QGLNativeAPI.Verify((nint)_glPolygonOffset); _glPolygonOffset(factor, units); }
-    [QGLNativeAPI("glPolygonOffset")] internal static delegate* unmanaged<float, float, void> _glPolygonOffset = null;
+    public static void glPolygonOffset(float factor, float units) { QGLFeature.VerifyFunc((nint)_glPolygonOffset); _glPolygonOffset(factor, units); }
+    internal static delegate* unmanaged<float, float, void> _glPolygonOffset = null;
     
-    public static void glCopyTexImage1D(uint target, int level, uint internalformat, int x, int y, int width, int border) { QGLNativeAPI.Verify((nint)_glCopyTexImage1D); _glCopyTexImage1D(target, level, internalformat, x, y, width, border); }
-    [QGLNativeAPI("glCopyTexImage1D")] internal static delegate* unmanaged<uint, int, uint, int, int, int, int, void> _glCopyTexImage1D = null;
+    public static void glCopyTexImage1D(uint target, int level, uint internalformat, int x, int y, int width, int border) { QGLFeature.VerifyFunc((nint)_glCopyTexImage1D); _glCopyTexImage1D(target, level, internalformat, x, y, width, border); }
+    internal static delegate* unmanaged<uint, int, uint, int, int, int, int, void> _glCopyTexImage1D = null;
     
-    public static void glCopyTexImage2D(uint target, int level, uint internalformat, int x, int y, int width, int height, int border) { QGLNativeAPI.Verify((nint)_glCopyTexImage2D); _glCopyTexImage2D(target, level, internalformat, x, y, width, height, border); }
-    [QGLNativeAPI("glCopyTexImage2D")] internal static delegate* unmanaged<uint, int, uint, int, int, int, int, int, void> _glCopyTexImage2D = null;
+    public static void glCopyTexImage2D(uint target, int level, uint internalformat, int x, int y, int width, int height, int border) { QGLFeature.VerifyFunc((nint)_glCopyTexImage2D); _glCopyTexImage2D(target, level, internalformat, x, y, width, height, border); }
+    internal static delegate* unmanaged<uint, int, uint, int, int, int, int, int, void> _glCopyTexImage2D = null;
     
-    public static void glCopyTexSubImage1D(uint target, int level, int xoffset, int x, int y, int width) { QGLNativeAPI.Verify((nint)_glCopyTexSubImage1D); _glCopyTexSubImage1D(target, level, xoffset, x, y, width); }
-    [QGLNativeAPI("glCopyTexSubImage1D")] internal static delegate* unmanaged<uint, int, int, int, int, int, void> _glCopyTexSubImage1D = null;
+    public static void glCopyTexSubImage1D(uint target, int level, int xoffset, int x, int y, int width) { QGLFeature.VerifyFunc((nint)_glCopyTexSubImage1D); _glCopyTexSubImage1D(target, level, xoffset, x, y, width); }
+    internal static delegate* unmanaged<uint, int, int, int, int, int, void> _glCopyTexSubImage1D = null;
     
-    public static void glCopyTexSubImage2D(uint target, int level, int xoffset, int yoffset, int x, int y, int width, int height) { QGLNativeAPI.Verify((nint)_glCopyTexSubImage2D); _glCopyTexSubImage2D(target, level, xoffset, yoffset, x, y, width, height); }
-    [QGLNativeAPI("glCopyTexSubImage2D")] internal static delegate* unmanaged<uint, int, int, int, int, int, int, int, void> _glCopyTexSubImage2D = null;
+    public static void glCopyTexSubImage2D(uint target, int level, int xoffset, int yoffset, int x, int y, int width, int height) { QGLFeature.VerifyFunc((nint)_glCopyTexSubImage2D); _glCopyTexSubImage2D(target, level, xoffset, yoffset, x, y, width, height); }
+    internal static delegate* unmanaged<uint, int, int, int, int, int, int, int, void> _glCopyTexSubImage2D = null;
     
-    public static void glTexSubImage1D(uint target, int level, int xoffset, int width, uint format, uint type, void* pixels) { QGLNativeAPI.Verify((nint)_glTexSubImage1D); _glTexSubImage1D(target, level, xoffset, width, format, type, pixels); }
-    [QGLNativeAPI("glTexSubImage1D")] internal static delegate* unmanaged<uint, int, int, int, uint, uint, void*, void> _glTexSubImage1D = null;
+    public static void glTexSubImage1D(uint target, int level, int xoffset, int width, uint format, uint type, void* pixels) { QGLFeature.VerifyFunc((nint)_glTexSubImage1D); _glTexSubImage1D(target, level, xoffset, width, format, type, pixels); }
+    internal static delegate* unmanaged<uint, int, int, int, uint, uint, void*, void> _glTexSubImage1D = null;
     
-    public static void glTexSubImage2D(uint target, int level, int xoffset, int yoffset, int width, int height, uint format, uint type, void* pixels) { QGLNativeAPI.Verify((nint)_glTexSubImage2D); _glTexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixels); }
-    [QGLNativeAPI("glTexSubImage2D")] internal static delegate* unmanaged<uint, int, int, int, int, int, uint, uint, void*, void> _glTexSubImage2D = null;
+    public static void glTexSubImage2D(uint target, int level, int xoffset, int yoffset, int width, int height, uint format, uint type, void* pixels) { QGLFeature.VerifyFunc((nint)_glTexSubImage2D); _glTexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixels); }
+    internal static delegate* unmanaged<uint, int, int, int, int, int, uint, uint, void*, void> _glTexSubImage2D = null;
     
-    public static void glBindTexture(uint target, uint texture) { QGLNativeAPI.Verify((nint)_glBindTexture); _glBindTexture(target, texture); }
-    [QGLNativeAPI("glBindTexture")] internal static delegate* unmanaged<uint, uint, void> _glBindTexture = null;
+    public static void glBindTexture(uint target, uint texture) { QGLFeature.VerifyFunc((nint)_glBindTexture); _glBindTexture(target, texture); }
+    internal static delegate* unmanaged<uint, uint, void> _glBindTexture = null;
     
-    public static void glDeleteTextures(int n, uint* textures) { QGLNativeAPI.Verify((nint)_glDeleteTextures); _glDeleteTextures(n, textures); }
-    [QGLNativeAPI("glDeleteTextures")] internal static delegate* unmanaged<int, uint*, void> _glDeleteTextures = null;
+    public static void glDeleteTextures(int n, uint* textures) { QGLFeature.VerifyFunc((nint)_glDeleteTextures); _glDeleteTextures(n, textures); }
+    internal static delegate* unmanaged<int, uint*, void> _glDeleteTextures = null;
     
-    public static void glGenTextures(int n, uint* textures) { QGLNativeAPI.Verify((nint)_glGenTextures); _glGenTextures(n, textures); }
-    [QGLNativeAPI("glGenTextures")] internal static delegate* unmanaged<int, uint*, void> _glGenTextures = null;
+    public static void glGenTextures(int n, uint* textures) { QGLFeature.VerifyFunc((nint)_glGenTextures); _glGenTextures(n, textures); }
+    internal static delegate* unmanaged<int, uint*, void> _glGenTextures = null;
     
-    public static bool glIsTexture(uint texture) { QGLNativeAPI.Verify((nint)_glIsTexture); return _glIsTexture(texture); }
-    [QGLNativeAPI("glIsTexture")] internal static delegate* unmanaged<uint, bool> _glIsTexture = null;
+    public static bool glIsTexture(uint texture) { QGLFeature.VerifyFunc((nint)_glIsTexture); return _glIsTexture(texture); }
+    internal static delegate* unmanaged<uint, bool> _glIsTexture = null;
     
-    public static void glArrayElement(int i) { QGLNativeAPI.Verify((nint)_glArrayElement); _glArrayElement(i); }
-    [QGLNativeAPI("glArrayElement")] internal static delegate* unmanaged<int, void> _glArrayElement = null;
+    public static void glArrayElement(int i) { QGLFeature.VerifyFunc((nint)_glArrayElement); _glArrayElement(i); }
+    internal static delegate* unmanaged<int, void> _glArrayElement = null;
     
-    public static void glColorPointer(int size, uint type, int stride, void* pointer) { QGLNativeAPI.Verify((nint)_glColorPointer); _glColorPointer(size, type, stride, pointer); }
-    [QGLNativeAPI("glColorPointer")] internal static delegate* unmanaged<int, uint, int, void*, void> _glColorPointer = null;
+    public static void glColorPointer(int size, uint type, int stride, void* pointer) { QGLFeature.VerifyFunc((nint)_glColorPointer); _glColorPointer(size, type, stride, pointer); }
+    internal static delegate* unmanaged<int, uint, int, void*, void> _glColorPointer = null;
     
-    public static void glDisableClientState(uint array) { QGLNativeAPI.Verify((nint)_glDisableClientState); _glDisableClientState(array); }
-    [QGLNativeAPI("glDisableClientState")] internal static delegate* unmanaged<uint, void> _glDisableClientState = null;
+    public static void glDisableClientState(uint array) { QGLFeature.VerifyFunc((nint)_glDisableClientState); _glDisableClientState(array); }
+    internal static delegate* unmanaged<uint, void> _glDisableClientState = null;
     
-    public static void glEdgeFlagPointer(int stride, void* pointer) { QGLNativeAPI.Verify((nint)_glEdgeFlagPointer); _glEdgeFlagPointer(stride, pointer); }
-    [QGLNativeAPI("glEdgeFlagPointer")] internal static delegate* unmanaged<int, void*, void> _glEdgeFlagPointer = null;
+    public static void glEdgeFlagPointer(int stride, void* pointer) { QGLFeature.VerifyFunc((nint)_glEdgeFlagPointer); _glEdgeFlagPointer(stride, pointer); }
+    internal static delegate* unmanaged<int, void*, void> _glEdgeFlagPointer = null;
     
-    public static void glEnableClientState(uint array) { QGLNativeAPI.Verify((nint)_glEnableClientState); _glEnableClientState(array); }
-    [QGLNativeAPI("glEnableClientState")] internal static delegate* unmanaged<uint, void> _glEnableClientState = null;
+    public static void glEnableClientState(uint array) { QGLFeature.VerifyFunc((nint)_glEnableClientState); _glEnableClientState(array); }
+    internal static delegate* unmanaged<uint, void> _glEnableClientState = null;
     
-    public static void glIndexPointer(uint type, int stride, void* pointer) { QGLNativeAPI.Verify((nint)_glIndexPointer); _glIndexPointer(type, stride, pointer); }
-    [QGLNativeAPI("glIndexPointer")] internal static delegate* unmanaged<uint, int, void*, void> _glIndexPointer = null;
+    public static void glIndexPointer(uint type, int stride, void* pointer) { QGLFeature.VerifyFunc((nint)_glIndexPointer); _glIndexPointer(type, stride, pointer); }
+    internal static delegate* unmanaged<uint, int, void*, void> _glIndexPointer = null;
     
-    public static void glInterleavedArrays(uint format, int stride, void* pointer) { QGLNativeAPI.Verify((nint)_glInterleavedArrays); _glInterleavedArrays(format, stride, pointer); }
-    [QGLNativeAPI("glInterleavedArrays")] internal static delegate* unmanaged<uint, int, void*, void> _glInterleavedArrays = null;
+    public static void glInterleavedArrays(uint format, int stride, void* pointer) { QGLFeature.VerifyFunc((nint)_glInterleavedArrays); _glInterleavedArrays(format, stride, pointer); }
+    internal static delegate* unmanaged<uint, int, void*, void> _glInterleavedArrays = null;
     
-    public static void glNormalPointer(uint type, int stride, void* pointer) { QGLNativeAPI.Verify((nint)_glNormalPointer); _glNormalPointer(type, stride, pointer); }
-    [QGLNativeAPI("glNormalPointer")] internal static delegate* unmanaged<uint, int, void*, void> _glNormalPointer = null;
+    public static void glNormalPointer(uint type, int stride, void* pointer) { QGLFeature.VerifyFunc((nint)_glNormalPointer); _glNormalPointer(type, stride, pointer); }
+    internal static delegate* unmanaged<uint, int, void*, void> _glNormalPointer = null;
     
-    public static void glTexCoordPointer(int size, uint type, int stride, void* pointer) { QGLNativeAPI.Verify((nint)_glTexCoordPointer); _glTexCoordPointer(size, type, stride, pointer); }
-    [QGLNativeAPI("glTexCoordPointer")] internal static delegate* unmanaged<int, uint, int, void*, void> _glTexCoordPointer = null;
+    public static void glTexCoordPointer(int size, uint type, int stride, void* pointer) { QGLFeature.VerifyFunc((nint)_glTexCoordPointer); _glTexCoordPointer(size, type, stride, pointer); }
+    internal static delegate* unmanaged<int, uint, int, void*, void> _glTexCoordPointer = null;
     
-    public static void glVertexPointer(int size, uint type, int stride, void* pointer) { QGLNativeAPI.Verify((nint)_glVertexPointer); _glVertexPointer(size, type, stride, pointer); }
-    [QGLNativeAPI("glVertexPointer")] internal static delegate* unmanaged<int, uint, int, void*, void> _glVertexPointer = null;
+    public static void glVertexPointer(int size, uint type, int stride, void* pointer) { QGLFeature.VerifyFunc((nint)_glVertexPointer); _glVertexPointer(size, type, stride, pointer); }
+    internal static delegate* unmanaged<int, uint, int, void*, void> _glVertexPointer = null;
     
-    public static bool glAreTexturesResident(int n, uint* textures, bool* residences) { QGLNativeAPI.Verify((nint)_glAreTexturesResident); return _glAreTexturesResident(n, textures, residences); }
-    [QGLNativeAPI("glAreTexturesResident")] internal static delegate* unmanaged<int, uint*, bool*, bool> _glAreTexturesResident = null;
+    public static bool glAreTexturesResident(int n, uint* textures, bool* residences) { QGLFeature.VerifyFunc((nint)_glAreTexturesResident); return _glAreTexturesResident(n, textures, residences); }
+    internal static delegate* unmanaged<int, uint*, bool*, bool> _glAreTexturesResident = null;
     
-    public static void glPrioritizeTextures(int n, uint* textures, float* priorities) { QGLNativeAPI.Verify((nint)_glPrioritizeTextures); _glPrioritizeTextures(n, textures, priorities); }
-    [QGLNativeAPI("glPrioritizeTextures")] internal static delegate* unmanaged<int, uint*, float*, void> _glPrioritizeTextures = null;
+    public static void glPrioritizeTextures(int n, uint* textures, float* priorities) { QGLFeature.VerifyFunc((nint)_glPrioritizeTextures); _glPrioritizeTextures(n, textures, priorities); }
+    internal static delegate* unmanaged<int, uint*, float*, void> _glPrioritizeTextures = null;
     
-    public static void glIndexub(byte c) { QGLNativeAPI.Verify((nint)_glIndexub); _glIndexub(c); }
-    [QGLNativeAPI("glIndexub")] internal static delegate* unmanaged<byte, void> _glIndexub = null;
+    public static void glIndexub(byte c) { QGLFeature.VerifyFunc((nint)_glIndexub); _glIndexub(c); }
+    internal static delegate* unmanaged<byte, void> _glIndexub = null;
     
-    public static void glIndexubv(byte* c) { QGLNativeAPI.Verify((nint)_glIndexubv); _glIndexubv(c); }
-    [QGLNativeAPI("glIndexubv")] internal static delegate* unmanaged<byte*, void> _glIndexubv = null;
+    public static void glIndexubv(byte* c) { QGLFeature.VerifyFunc((nint)_glIndexubv); _glIndexubv(c); }
+    internal static delegate* unmanaged<byte*, void> _glIndexubv = null;
     
-    public static void glPopClientAttrib() { QGLNativeAPI.Verify((nint)_glPopClientAttrib); _glPopClientAttrib(); }
-    [QGLNativeAPI("glPopClientAttrib")] internal static delegate* unmanaged<void> _glPopClientAttrib = null;
+    public static void glPopClientAttrib() { QGLFeature.VerifyFunc((nint)_glPopClientAttrib); _glPopClientAttrib(); }
+    internal static delegate* unmanaged<void> _glPopClientAttrib = null;
     
-    public static void glPushClientAttrib(uint mask) { QGLNativeAPI.Verify((nint)_glPushClientAttrib); _glPushClientAttrib(mask); }
-    [QGLNativeAPI("glPushClientAttrib")] internal static delegate* unmanaged<uint, void> _glPushClientAttrib = null;
+    public static void glPushClientAttrib(uint mask) { QGLFeature.VerifyFunc((nint)_glPushClientAttrib); _glPushClientAttrib(mask); }
+    internal static delegate* unmanaged<uint, void> _glPushClientAttrib = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glDrawArrays = (delegate* unmanaged<uint, int, int, void>)QuickGL.GetGLProcAddress("glDrawArrays");
+        _glDrawElements = (delegate* unmanaged<uint, int, uint, void*, void>)QuickGL.GetGLProcAddress("glDrawElements");
+        _glGetPointerv = (delegate* unmanaged<uint, void**, void>)QuickGL.GetGLProcAddress("glGetPointerv");
+        _glPolygonOffset = (delegate* unmanaged<float, float, void>)QuickGL.GetGLProcAddress("glPolygonOffset");
+        _glCopyTexImage1D = (delegate* unmanaged<uint, int, uint, int, int, int, int, void>)QuickGL.GetGLProcAddress("glCopyTexImage1D");
+        _glCopyTexImage2D = (delegate* unmanaged<uint, int, uint, int, int, int, int, int, void>)QuickGL.GetGLProcAddress("glCopyTexImage2D");
+        _glCopyTexSubImage1D = (delegate* unmanaged<uint, int, int, int, int, int, void>)QuickGL.GetGLProcAddress("glCopyTexSubImage1D");
+        _glCopyTexSubImage2D = (delegate* unmanaged<uint, int, int, int, int, int, int, int, void>)QuickGL.GetGLProcAddress("glCopyTexSubImage2D");
+        _glTexSubImage1D = (delegate* unmanaged<uint, int, int, int, uint, uint, void*, void>)QuickGL.GetGLProcAddress("glTexSubImage1D");
+        _glTexSubImage2D = (delegate* unmanaged<uint, int, int, int, int, int, uint, uint, void*, void>)QuickGL.GetGLProcAddress("glTexSubImage2D");
+        _glBindTexture = (delegate* unmanaged<uint, uint, void>)QuickGL.GetGLProcAddress("glBindTexture");
+        _glDeleteTextures = (delegate* unmanaged<int, uint*, void>)QuickGL.GetGLProcAddress("glDeleteTextures");
+        _glGenTextures = (delegate* unmanaged<int, uint*, void>)QuickGL.GetGLProcAddress("glGenTextures");
+        _glIsTexture = (delegate* unmanaged<uint, bool>)QuickGL.GetGLProcAddress("glIsTexture");
+        _glArrayElement = (delegate* unmanaged<int, void>)QuickGL.GetGLProcAddress("glArrayElement");
+        _glColorPointer = (delegate* unmanaged<int, uint, int, void*, void>)QuickGL.GetGLProcAddress("glColorPointer");
+        _glDisableClientState = (delegate* unmanaged<uint, void>)QuickGL.GetGLProcAddress("glDisableClientState");
+        _glEdgeFlagPointer = (delegate* unmanaged<int, void*, void>)QuickGL.GetGLProcAddress("glEdgeFlagPointer");
+        _glEnableClientState = (delegate* unmanaged<uint, void>)QuickGL.GetGLProcAddress("glEnableClientState");
+        _glIndexPointer = (delegate* unmanaged<uint, int, void*, void>)QuickGL.GetGLProcAddress("glIndexPointer");
+        _glInterleavedArrays = (delegate* unmanaged<uint, int, void*, void>)QuickGL.GetGLProcAddress("glInterleavedArrays");
+        _glNormalPointer = (delegate* unmanaged<uint, int, void*, void>)QuickGL.GetGLProcAddress("glNormalPointer");
+        _glTexCoordPointer = (delegate* unmanaged<int, uint, int, void*, void>)QuickGL.GetGLProcAddress("glTexCoordPointer");
+        _glVertexPointer = (delegate* unmanaged<int, uint, int, void*, void>)QuickGL.GetGLProcAddress("glVertexPointer");
+        _glAreTexturesResident = (delegate* unmanaged<int, uint*, bool*, bool>)QuickGL.GetGLProcAddress("glAreTexturesResident");
+        _glPrioritizeTextures = (delegate* unmanaged<int, uint*, float*, void>)QuickGL.GetGLProcAddress("glPrioritizeTextures");
+        _glIndexub = (delegate* unmanaged<byte, void>)QuickGL.GetGLProcAddress("glIndexub");
+        _glIndexubv = (delegate* unmanaged<byte*, void>)QuickGL.GetGLProcAddress("glIndexubv");
+        _glPopClientAttrib = (delegate* unmanaged<void>)QuickGL.GetGLProcAddress("glPopClientAttrib");
+        _glPushClientAttrib = (delegate* unmanaged<uint, void>)QuickGL.GetGLProcAddress("glPushClientAttrib");
+    }
+    
+    internal static void Unload()
+    {
+        _glDrawArrays = null;
+        _glDrawElements = null;
+        _glGetPointerv = null;
+        _glPolygonOffset = null;
+        _glCopyTexImage1D = null;
+        _glCopyTexImage2D = null;
+        _glCopyTexSubImage1D = null;
+        _glCopyTexSubImage2D = null;
+        _glTexSubImage1D = null;
+        _glTexSubImage2D = null;
+        _glBindTexture = null;
+        _glDeleteTextures = null;
+        _glGenTextures = null;
+        _glIsTexture = null;
+        _glArrayElement = null;
+        _glColorPointer = null;
+        _glDisableClientState = null;
+        _glEdgeFlagPointer = null;
+        _glEnableClientState = null;
+        _glIndexPointer = null;
+        _glInterleavedArrays = null;
+        _glNormalPointer = null;
+        _glTexCoordPointer = null;
+        _glVertexPointer = null;
+        _glAreTexturesResident = null;
+        _glPrioritizeTextures = null;
+        _glIndexub = null;
+        _glIndexubv = null;
+        _glPopClientAttrib = null;
+        _glPushClientAttrib = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_VERSION_1_1", false, false);
 }

@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.525575
+// Bindings generated at 2025-09-20 18:58:19.883525
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_framebuffer_object", true, false)]
 public static unsafe class GLEXT_ARBframebufferobject
 {
     #region Enums
@@ -105,64 +104,114 @@ public static unsafe class GLEXT_ARBframebufferobject
     #endregion
     
     #region Commands
-    public static bool glIsRenderbuffer(uint renderbuffer) { QGLNativeAPI.Verify((nint)_glIsRenderbuffer); return _glIsRenderbuffer(renderbuffer); }
-    [QGLNativeAPI("glIsRenderbuffer")] internal static delegate* unmanaged<uint, bool> _glIsRenderbuffer = null;
+    public static bool glIsRenderbuffer(uint renderbuffer) { QGLFeature.VerifyFunc((nint)_glIsRenderbuffer); return _glIsRenderbuffer(renderbuffer); }
+    internal static delegate* unmanaged<uint, bool> _glIsRenderbuffer = null;
     
-    public static void glBindRenderbuffer(uint target, uint renderbuffer) { QGLNativeAPI.Verify((nint)_glBindRenderbuffer); _glBindRenderbuffer(target, renderbuffer); }
-    [QGLNativeAPI("glBindRenderbuffer")] internal static delegate* unmanaged<uint, uint, void> _glBindRenderbuffer = null;
+    public static void glBindRenderbuffer(uint target, uint renderbuffer) { QGLFeature.VerifyFunc((nint)_glBindRenderbuffer); _glBindRenderbuffer(target, renderbuffer); }
+    internal static delegate* unmanaged<uint, uint, void> _glBindRenderbuffer = null;
     
-    public static void glDeleteRenderbuffers(int n, uint* renderbuffers) { QGLNativeAPI.Verify((nint)_glDeleteRenderbuffers); _glDeleteRenderbuffers(n, renderbuffers); }
-    [QGLNativeAPI("glDeleteRenderbuffers")] internal static delegate* unmanaged<int, uint*, void> _glDeleteRenderbuffers = null;
+    public static void glDeleteRenderbuffers(int n, uint* renderbuffers) { QGLFeature.VerifyFunc((nint)_glDeleteRenderbuffers); _glDeleteRenderbuffers(n, renderbuffers); }
+    internal static delegate* unmanaged<int, uint*, void> _glDeleteRenderbuffers = null;
     
-    public static void glGenRenderbuffers(int n, uint* renderbuffers) { QGLNativeAPI.Verify((nint)_glGenRenderbuffers); _glGenRenderbuffers(n, renderbuffers); }
-    [QGLNativeAPI("glGenRenderbuffers")] internal static delegate* unmanaged<int, uint*, void> _glGenRenderbuffers = null;
+    public static void glGenRenderbuffers(int n, uint* renderbuffers) { QGLFeature.VerifyFunc((nint)_glGenRenderbuffers); _glGenRenderbuffers(n, renderbuffers); }
+    internal static delegate* unmanaged<int, uint*, void> _glGenRenderbuffers = null;
     
-    public static void glRenderbufferStorage(uint target, uint internalformat, int width, int height) { QGLNativeAPI.Verify((nint)_glRenderbufferStorage); _glRenderbufferStorage(target, internalformat, width, height); }
-    [QGLNativeAPI("glRenderbufferStorage")] internal static delegate* unmanaged<uint, uint, int, int, void> _glRenderbufferStorage = null;
+    public static void glRenderbufferStorage(uint target, uint internalformat, int width, int height) { QGLFeature.VerifyFunc((nint)_glRenderbufferStorage); _glRenderbufferStorage(target, internalformat, width, height); }
+    internal static delegate* unmanaged<uint, uint, int, int, void> _glRenderbufferStorage = null;
     
-    public static void glGetRenderbufferParameteriv(uint target, uint pname, int* @params) { QGLNativeAPI.Verify((nint)_glGetRenderbufferParameteriv); _glGetRenderbufferParameteriv(target, pname, @params); }
-    [QGLNativeAPI("glGetRenderbufferParameteriv")] internal static delegate* unmanaged<uint, uint, int*, void> _glGetRenderbufferParameteriv = null;
+    public static void glGetRenderbufferParameteriv(uint target, uint pname, int* @params) { QGLFeature.VerifyFunc((nint)_glGetRenderbufferParameteriv); _glGetRenderbufferParameteriv(target, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, int*, void> _glGetRenderbufferParameteriv = null;
     
-    public static bool glIsFramebuffer(uint framebuffer) { QGLNativeAPI.Verify((nint)_glIsFramebuffer); return _glIsFramebuffer(framebuffer); }
-    [QGLNativeAPI("glIsFramebuffer")] internal static delegate* unmanaged<uint, bool> _glIsFramebuffer = null;
+    public static bool glIsFramebuffer(uint framebuffer) { QGLFeature.VerifyFunc((nint)_glIsFramebuffer); return _glIsFramebuffer(framebuffer); }
+    internal static delegate* unmanaged<uint, bool> _glIsFramebuffer = null;
     
-    public static void glBindFramebuffer(uint target, uint framebuffer) { QGLNativeAPI.Verify((nint)_glBindFramebuffer); _glBindFramebuffer(target, framebuffer); }
-    [QGLNativeAPI("glBindFramebuffer")] internal static delegate* unmanaged<uint, uint, void> _glBindFramebuffer = null;
+    public static void glBindFramebuffer(uint target, uint framebuffer) { QGLFeature.VerifyFunc((nint)_glBindFramebuffer); _glBindFramebuffer(target, framebuffer); }
+    internal static delegate* unmanaged<uint, uint, void> _glBindFramebuffer = null;
     
-    public static void glDeleteFramebuffers(int n, uint* framebuffers) { QGLNativeAPI.Verify((nint)_glDeleteFramebuffers); _glDeleteFramebuffers(n, framebuffers); }
-    [QGLNativeAPI("glDeleteFramebuffers")] internal static delegate* unmanaged<int, uint*, void> _glDeleteFramebuffers = null;
+    public static void glDeleteFramebuffers(int n, uint* framebuffers) { QGLFeature.VerifyFunc((nint)_glDeleteFramebuffers); _glDeleteFramebuffers(n, framebuffers); }
+    internal static delegate* unmanaged<int, uint*, void> _glDeleteFramebuffers = null;
     
-    public static void glGenFramebuffers(int n, uint* framebuffers) { QGLNativeAPI.Verify((nint)_glGenFramebuffers); _glGenFramebuffers(n, framebuffers); }
-    [QGLNativeAPI("glGenFramebuffers")] internal static delegate* unmanaged<int, uint*, void> _glGenFramebuffers = null;
+    public static void glGenFramebuffers(int n, uint* framebuffers) { QGLFeature.VerifyFunc((nint)_glGenFramebuffers); _glGenFramebuffers(n, framebuffers); }
+    internal static delegate* unmanaged<int, uint*, void> _glGenFramebuffers = null;
     
-    public static uint glCheckFramebufferStatus(uint target) { QGLNativeAPI.Verify((nint)_glCheckFramebufferStatus); return _glCheckFramebufferStatus(target); }
-    [QGLNativeAPI("glCheckFramebufferStatus")] internal static delegate* unmanaged<uint, uint> _glCheckFramebufferStatus = null;
+    public static uint glCheckFramebufferStatus(uint target) { QGLFeature.VerifyFunc((nint)_glCheckFramebufferStatus); return _glCheckFramebufferStatus(target); }
+    internal static delegate* unmanaged<uint, uint> _glCheckFramebufferStatus = null;
     
-    public static void glFramebufferTexture1D(uint target, uint attachment, uint textarget, uint texture, int level) { QGLNativeAPI.Verify((nint)_glFramebufferTexture1D); _glFramebufferTexture1D(target, attachment, textarget, texture, level); }
-    [QGLNativeAPI("glFramebufferTexture1D")] internal static delegate* unmanaged<uint, uint, uint, uint, int, void> _glFramebufferTexture1D = null;
+    public static void glFramebufferTexture1D(uint target, uint attachment, uint textarget, uint texture, int level) { QGLFeature.VerifyFunc((nint)_glFramebufferTexture1D); _glFramebufferTexture1D(target, attachment, textarget, texture, level); }
+    internal static delegate* unmanaged<uint, uint, uint, uint, int, void> _glFramebufferTexture1D = null;
     
-    public static void glFramebufferTexture2D(uint target, uint attachment, uint textarget, uint texture, int level) { QGLNativeAPI.Verify((nint)_glFramebufferTexture2D); _glFramebufferTexture2D(target, attachment, textarget, texture, level); }
-    [QGLNativeAPI("glFramebufferTexture2D")] internal static delegate* unmanaged<uint, uint, uint, uint, int, void> _glFramebufferTexture2D = null;
+    public static void glFramebufferTexture2D(uint target, uint attachment, uint textarget, uint texture, int level) { QGLFeature.VerifyFunc((nint)_glFramebufferTexture2D); _glFramebufferTexture2D(target, attachment, textarget, texture, level); }
+    internal static delegate* unmanaged<uint, uint, uint, uint, int, void> _glFramebufferTexture2D = null;
     
-    public static void glFramebufferTexture3D(uint target, uint attachment, uint textarget, uint texture, int level, int zoffset) { QGLNativeAPI.Verify((nint)_glFramebufferTexture3D); _glFramebufferTexture3D(target, attachment, textarget, texture, level, zoffset); }
-    [QGLNativeAPI("glFramebufferTexture3D")] internal static delegate* unmanaged<uint, uint, uint, uint, int, int, void> _glFramebufferTexture3D = null;
+    public static void glFramebufferTexture3D(uint target, uint attachment, uint textarget, uint texture, int level, int zoffset) { QGLFeature.VerifyFunc((nint)_glFramebufferTexture3D); _glFramebufferTexture3D(target, attachment, textarget, texture, level, zoffset); }
+    internal static delegate* unmanaged<uint, uint, uint, uint, int, int, void> _glFramebufferTexture3D = null;
     
-    public static void glFramebufferRenderbuffer(uint target, uint attachment, uint renderbuffertarget, uint renderbuffer) { QGLNativeAPI.Verify((nint)_glFramebufferRenderbuffer); _glFramebufferRenderbuffer(target, attachment, renderbuffertarget, renderbuffer); }
-    [QGLNativeAPI("glFramebufferRenderbuffer")] internal static delegate* unmanaged<uint, uint, uint, uint, void> _glFramebufferRenderbuffer = null;
+    public static void glFramebufferRenderbuffer(uint target, uint attachment, uint renderbuffertarget, uint renderbuffer) { QGLFeature.VerifyFunc((nint)_glFramebufferRenderbuffer); _glFramebufferRenderbuffer(target, attachment, renderbuffertarget, renderbuffer); }
+    internal static delegate* unmanaged<uint, uint, uint, uint, void> _glFramebufferRenderbuffer = null;
     
-    public static void glGetFramebufferAttachmentParameteriv(uint target, uint attachment, uint pname, int* @params) { QGLNativeAPI.Verify((nint)_glGetFramebufferAttachmentParameteriv); _glGetFramebufferAttachmentParameteriv(target, attachment, pname, @params); }
-    [QGLNativeAPI("glGetFramebufferAttachmentParameteriv")] internal static delegate* unmanaged<uint, uint, uint, int*, void> _glGetFramebufferAttachmentParameteriv = null;
+    public static void glGetFramebufferAttachmentParameteriv(uint target, uint attachment, uint pname, int* @params) { QGLFeature.VerifyFunc((nint)_glGetFramebufferAttachmentParameteriv); _glGetFramebufferAttachmentParameteriv(target, attachment, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, uint, int*, void> _glGetFramebufferAttachmentParameteriv = null;
     
-    public static void glGenerateMipmap(uint target) { QGLNativeAPI.Verify((nint)_glGenerateMipmap); _glGenerateMipmap(target); }
-    [QGLNativeAPI("glGenerateMipmap")] internal static delegate* unmanaged<uint, void> _glGenerateMipmap = null;
+    public static void glGenerateMipmap(uint target) { QGLFeature.VerifyFunc((nint)_glGenerateMipmap); _glGenerateMipmap(target); }
+    internal static delegate* unmanaged<uint, void> _glGenerateMipmap = null;
     
-    public static void glBlitFramebuffer(int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, uint mask, uint filter) { QGLNativeAPI.Verify((nint)_glBlitFramebuffer); _glBlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter); }
-    [QGLNativeAPI("glBlitFramebuffer")] internal static delegate* unmanaged<int, int, int, int, int, int, int, int, uint, uint, void> _glBlitFramebuffer = null;
+    public static void glBlitFramebuffer(int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, uint mask, uint filter) { QGLFeature.VerifyFunc((nint)_glBlitFramebuffer); _glBlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter); }
+    internal static delegate* unmanaged<int, int, int, int, int, int, int, int, uint, uint, void> _glBlitFramebuffer = null;
     
-    public static void glRenderbufferStorageMultisample(uint target, int samples, uint internalformat, int width, int height) { QGLNativeAPI.Verify((nint)_glRenderbufferStorageMultisample); _glRenderbufferStorageMultisample(target, samples, internalformat, width, height); }
-    [QGLNativeAPI("glRenderbufferStorageMultisample")] internal static delegate* unmanaged<uint, int, uint, int, int, void> _glRenderbufferStorageMultisample = null;
+    public static void glRenderbufferStorageMultisample(uint target, int samples, uint internalformat, int width, int height) { QGLFeature.VerifyFunc((nint)_glRenderbufferStorageMultisample); _glRenderbufferStorageMultisample(target, samples, internalformat, width, height); }
+    internal static delegate* unmanaged<uint, int, uint, int, int, void> _glRenderbufferStorageMultisample = null;
     
-    public static void glFramebufferTextureLayer(uint target, uint attachment, uint texture, int level, int layer) { QGLNativeAPI.Verify((nint)_glFramebufferTextureLayer); _glFramebufferTextureLayer(target, attachment, texture, level, layer); }
-    [QGLNativeAPI("glFramebufferTextureLayer")] internal static delegate* unmanaged<uint, uint, uint, int, int, void> _glFramebufferTextureLayer = null;
+    public static void glFramebufferTextureLayer(uint target, uint attachment, uint texture, int level, int layer) { QGLFeature.VerifyFunc((nint)_glFramebufferTextureLayer); _glFramebufferTextureLayer(target, attachment, texture, level, layer); }
+    internal static delegate* unmanaged<uint, uint, uint, int, int, void> _glFramebufferTextureLayer = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glIsRenderbuffer = (delegate* unmanaged<uint, bool>)QuickGL.GetGLProcAddress("glIsRenderbuffer");
+        _glBindRenderbuffer = (delegate* unmanaged<uint, uint, void>)QuickGL.GetGLProcAddress("glBindRenderbuffer");
+        _glDeleteRenderbuffers = (delegate* unmanaged<int, uint*, void>)QuickGL.GetGLProcAddress("glDeleteRenderbuffers");
+        _glGenRenderbuffers = (delegate* unmanaged<int, uint*, void>)QuickGL.GetGLProcAddress("glGenRenderbuffers");
+        _glRenderbufferStorage = (delegate* unmanaged<uint, uint, int, int, void>)QuickGL.GetGLProcAddress("glRenderbufferStorage");
+        _glGetRenderbufferParameteriv = (delegate* unmanaged<uint, uint, int*, void>)QuickGL.GetGLProcAddress("glGetRenderbufferParameteriv");
+        _glIsFramebuffer = (delegate* unmanaged<uint, bool>)QuickGL.GetGLProcAddress("glIsFramebuffer");
+        _glBindFramebuffer = (delegate* unmanaged<uint, uint, void>)QuickGL.GetGLProcAddress("glBindFramebuffer");
+        _glDeleteFramebuffers = (delegate* unmanaged<int, uint*, void>)QuickGL.GetGLProcAddress("glDeleteFramebuffers");
+        _glGenFramebuffers = (delegate* unmanaged<int, uint*, void>)QuickGL.GetGLProcAddress("glGenFramebuffers");
+        _glCheckFramebufferStatus = (delegate* unmanaged<uint, uint>)QuickGL.GetGLProcAddress("glCheckFramebufferStatus");
+        _glFramebufferTexture1D = (delegate* unmanaged<uint, uint, uint, uint, int, void>)QuickGL.GetGLProcAddress("glFramebufferTexture1D");
+        _glFramebufferTexture2D = (delegate* unmanaged<uint, uint, uint, uint, int, void>)QuickGL.GetGLProcAddress("glFramebufferTexture2D");
+        _glFramebufferTexture3D = (delegate* unmanaged<uint, uint, uint, uint, int, int, void>)QuickGL.GetGLProcAddress("glFramebufferTexture3D");
+        _glFramebufferRenderbuffer = (delegate* unmanaged<uint, uint, uint, uint, void>)QuickGL.GetGLProcAddress("glFramebufferRenderbuffer");
+        _glGetFramebufferAttachmentParameteriv = (delegate* unmanaged<uint, uint, uint, int*, void>)QuickGL.GetGLProcAddress("glGetFramebufferAttachmentParameteriv");
+        _glGenerateMipmap = (delegate* unmanaged<uint, void>)QuickGL.GetGLProcAddress("glGenerateMipmap");
+        _glBlitFramebuffer = (delegate* unmanaged<int, int, int, int, int, int, int, int, uint, uint, void>)QuickGL.GetGLProcAddress("glBlitFramebuffer");
+        _glRenderbufferStorageMultisample = (delegate* unmanaged<uint, int, uint, int, int, void>)QuickGL.GetGLProcAddress("glRenderbufferStorageMultisample");
+        _glFramebufferTextureLayer = (delegate* unmanaged<uint, uint, uint, int, int, void>)QuickGL.GetGLProcAddress("glFramebufferTextureLayer");
+    }
+    
+    internal static void Unload()
+    {
+        _glIsRenderbuffer = null;
+        _glBindRenderbuffer = null;
+        _glDeleteRenderbuffers = null;
+        _glGenRenderbuffers = null;
+        _glRenderbufferStorage = null;
+        _glGetRenderbufferParameteriv = null;
+        _glIsFramebuffer = null;
+        _glBindFramebuffer = null;
+        _glDeleteFramebuffers = null;
+        _glGenFramebuffers = null;
+        _glCheckFramebufferStatus = null;
+        _glFramebufferTexture1D = null;
+        _glFramebufferTexture2D = null;
+        _glFramebufferTexture3D = null;
+        _glFramebufferRenderbuffer = null;
+        _glGetFramebufferAttachmentParameteriv = null;
+        _glGenerateMipmap = null;
+        _glBlitFramebuffer = null;
+        _glRenderbufferStorageMultisample = null;
+        _glFramebufferTextureLayer = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_framebuffer_object", true, false);
 }

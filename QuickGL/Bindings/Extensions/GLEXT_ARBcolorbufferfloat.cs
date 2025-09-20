@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.483628
+// Bindings generated at 2025-09-20 18:58:19.833599
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_color_buffer_float", true, false)]
 public static unsafe class GLEXT_ARBcolorbufferfloat
 {
     #region Enums
@@ -37,7 +36,19 @@ public static unsafe class GLEXT_ARBcolorbufferfloat
     #endregion
     
     #region Commands
-    public static void glClampColorARB(uint target, uint clamp) { QGLNativeAPI.Verify((nint)_glClampColorARB); _glClampColorARB(target, clamp); }
-    [QGLNativeAPI("glClampColorARB")] internal static delegate* unmanaged<uint, uint, void> _glClampColorARB = null;
+    public static void glClampColorARB(uint target, uint clamp) { QGLFeature.VerifyFunc((nint)_glClampColorARB); _glClampColorARB(target, clamp); }
+    internal static delegate* unmanaged<uint, uint, void> _glClampColorARB = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glClampColorARB = (delegate* unmanaged<uint, uint, void>)QuickGL.GetGLProcAddress("glClampColorARB");
+    }
+    
+    internal static void Unload()
+    {
+        _glClampColorARB = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_color_buffer_float", true, false);
 }

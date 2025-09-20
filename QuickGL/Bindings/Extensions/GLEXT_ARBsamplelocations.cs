@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.615030
+// Bindings generated at 2025-09-20 18:58:19.947115
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_sample_locations", true, false)]
 public static unsafe class GLEXT_ARBsamplelocations
 {
     #region Enums
@@ -40,13 +39,29 @@ public static unsafe class GLEXT_ARBsamplelocations
     #endregion
     
     #region Commands
-    public static void glFramebufferSampleLocationsfvARB(uint target, uint start, int count, float* v) { QGLNativeAPI.Verify((nint)_glFramebufferSampleLocationsfvARB); _glFramebufferSampleLocationsfvARB(target, start, count, v); }
-    [QGLNativeAPI("glFramebufferSampleLocationsfvARB")] internal static delegate* unmanaged<uint, uint, int, float*, void> _glFramebufferSampleLocationsfvARB = null;
+    public static void glFramebufferSampleLocationsfvARB(uint target, uint start, int count, float* v) { QGLFeature.VerifyFunc((nint)_glFramebufferSampleLocationsfvARB); _glFramebufferSampleLocationsfvARB(target, start, count, v); }
+    internal static delegate* unmanaged<uint, uint, int, float*, void> _glFramebufferSampleLocationsfvARB = null;
     
-    public static void glNamedFramebufferSampleLocationsfvARB(uint framebuffer, uint start, int count, float* v) { QGLNativeAPI.Verify((nint)_glNamedFramebufferSampleLocationsfvARB); _glNamedFramebufferSampleLocationsfvARB(framebuffer, start, count, v); }
-    [QGLNativeAPI("glNamedFramebufferSampleLocationsfvARB")] internal static delegate* unmanaged<uint, uint, int, float*, void> _glNamedFramebufferSampleLocationsfvARB = null;
+    public static void glNamedFramebufferSampleLocationsfvARB(uint framebuffer, uint start, int count, float* v) { QGLFeature.VerifyFunc((nint)_glNamedFramebufferSampleLocationsfvARB); _glNamedFramebufferSampleLocationsfvARB(framebuffer, start, count, v); }
+    internal static delegate* unmanaged<uint, uint, int, float*, void> _glNamedFramebufferSampleLocationsfvARB = null;
     
-    public static void glEvaluateDepthValuesARB() { QGLNativeAPI.Verify((nint)_glEvaluateDepthValuesARB); _glEvaluateDepthValuesARB(); }
-    [QGLNativeAPI("glEvaluateDepthValuesARB")] internal static delegate* unmanaged<void> _glEvaluateDepthValuesARB = null;
+    public static void glEvaluateDepthValuesARB() { QGLFeature.VerifyFunc((nint)_glEvaluateDepthValuesARB); _glEvaluateDepthValuesARB(); }
+    internal static delegate* unmanaged<void> _glEvaluateDepthValuesARB = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glFramebufferSampleLocationsfvARB = (delegate* unmanaged<uint, uint, int, float*, void>)QuickGL.GetGLProcAddress("glFramebufferSampleLocationsfvARB");
+        _glNamedFramebufferSampleLocationsfvARB = (delegate* unmanaged<uint, uint, int, float*, void>)QuickGL.GetGLProcAddress("glNamedFramebufferSampleLocationsfvARB");
+        _glEvaluateDepthValuesARB = (delegate* unmanaged<void>)QuickGL.GetGLProcAddress("glEvaluateDepthValuesARB");
+    }
+    
+    internal static void Unload()
+    {
+        _glFramebufferSampleLocationsfvARB = null;
+        _glNamedFramebufferSampleLocationsfvARB = null;
+        _glEvaluateDepthValuesARB = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_sample_locations", true, false);
 }

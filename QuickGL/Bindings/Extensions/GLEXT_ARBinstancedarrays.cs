@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.544804
+// Bindings generated at 2025-09-20 18:58:19.903324
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_instanced_arrays", true, false)]
 public static unsafe class GLEXT_ARBinstancedarrays
 {
     #region Enums
@@ -33,7 +32,19 @@ public static unsafe class GLEXT_ARBinstancedarrays
     #endregion
     
     #region Commands
-    public static void glVertexAttribDivisorARB(uint index, uint divisor) { QGLNativeAPI.Verify((nint)_glVertexAttribDivisorARB); _glVertexAttribDivisorARB(index, divisor); }
-    [QGLNativeAPI("glVertexAttribDivisorARB")] internal static delegate* unmanaged<uint, uint, void> _glVertexAttribDivisorARB = null;
+    public static void glVertexAttribDivisorARB(uint index, uint divisor) { QGLFeature.VerifyFunc((nint)_glVertexAttribDivisorARB); _glVertexAttribDivisorARB(index, divisor); }
+    internal static delegate* unmanaged<uint, uint, void> _glVertexAttribDivisorARB = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glVertexAttribDivisorARB = (delegate* unmanaged<uint, uint, void>)QuickGL.GetGLProcAddress("glVertexAttribDivisorARB");
+    }
+    
+    internal static void Unload()
+    {
+        _glVertexAttribDivisorARB = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_instanced_arrays", true, false);
 }

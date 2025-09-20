@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.552491
+// Bindings generated at 2025-09-20 18:58:19.910172
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_matrix_palette", true, false)]
 public static unsafe class GLEXT_ARBmatrixpalette
 {
     #region Enums
@@ -42,19 +41,39 @@ public static unsafe class GLEXT_ARBmatrixpalette
     #endregion
     
     #region Commands
-    public static void glCurrentPaletteMatrixARB(int index) { QGLNativeAPI.Verify((nint)_glCurrentPaletteMatrixARB); _glCurrentPaletteMatrixARB(index); }
-    [QGLNativeAPI("glCurrentPaletteMatrixARB")] internal static delegate* unmanaged<int, void> _glCurrentPaletteMatrixARB = null;
+    public static void glCurrentPaletteMatrixARB(int index) { QGLFeature.VerifyFunc((nint)_glCurrentPaletteMatrixARB); _glCurrentPaletteMatrixARB(index); }
+    internal static delegate* unmanaged<int, void> _glCurrentPaletteMatrixARB = null;
     
-    public static void glMatrixIndexubvARB(int size, byte* indices) { QGLNativeAPI.Verify((nint)_glMatrixIndexubvARB); _glMatrixIndexubvARB(size, indices); }
-    [QGLNativeAPI("glMatrixIndexubvARB")] internal static delegate* unmanaged<int, byte*, void> _glMatrixIndexubvARB = null;
+    public static void glMatrixIndexubvARB(int size, byte* indices) { QGLFeature.VerifyFunc((nint)_glMatrixIndexubvARB); _glMatrixIndexubvARB(size, indices); }
+    internal static delegate* unmanaged<int, byte*, void> _glMatrixIndexubvARB = null;
     
-    public static void glMatrixIndexusvARB(int size, ushort* indices) { QGLNativeAPI.Verify((nint)_glMatrixIndexusvARB); _glMatrixIndexusvARB(size, indices); }
-    [QGLNativeAPI("glMatrixIndexusvARB")] internal static delegate* unmanaged<int, ushort*, void> _glMatrixIndexusvARB = null;
+    public static void glMatrixIndexusvARB(int size, ushort* indices) { QGLFeature.VerifyFunc((nint)_glMatrixIndexusvARB); _glMatrixIndexusvARB(size, indices); }
+    internal static delegate* unmanaged<int, ushort*, void> _glMatrixIndexusvARB = null;
     
-    public static void glMatrixIndexuivARB(int size, uint* indices) { QGLNativeAPI.Verify((nint)_glMatrixIndexuivARB); _glMatrixIndexuivARB(size, indices); }
-    [QGLNativeAPI("glMatrixIndexuivARB")] internal static delegate* unmanaged<int, uint*, void> _glMatrixIndexuivARB = null;
+    public static void glMatrixIndexuivARB(int size, uint* indices) { QGLFeature.VerifyFunc((nint)_glMatrixIndexuivARB); _glMatrixIndexuivARB(size, indices); }
+    internal static delegate* unmanaged<int, uint*, void> _glMatrixIndexuivARB = null;
     
-    public static void glMatrixIndexPointerARB(int size, uint type, int stride, void* pointer) { QGLNativeAPI.Verify((nint)_glMatrixIndexPointerARB); _glMatrixIndexPointerARB(size, type, stride, pointer); }
-    [QGLNativeAPI("glMatrixIndexPointerARB")] internal static delegate* unmanaged<int, uint, int, void*, void> _glMatrixIndexPointerARB = null;
+    public static void glMatrixIndexPointerARB(int size, uint type, int stride, void* pointer) { QGLFeature.VerifyFunc((nint)_glMatrixIndexPointerARB); _glMatrixIndexPointerARB(size, type, stride, pointer); }
+    internal static delegate* unmanaged<int, uint, int, void*, void> _glMatrixIndexPointerARB = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glCurrentPaletteMatrixARB = (delegate* unmanaged<int, void>)QuickGL.GetGLProcAddress("glCurrentPaletteMatrixARB");
+        _glMatrixIndexubvARB = (delegate* unmanaged<int, byte*, void>)QuickGL.GetGLProcAddress("glMatrixIndexubvARB");
+        _glMatrixIndexusvARB = (delegate* unmanaged<int, ushort*, void>)QuickGL.GetGLProcAddress("glMatrixIndexusvARB");
+        _glMatrixIndexuivARB = (delegate* unmanaged<int, uint*, void>)QuickGL.GetGLProcAddress("glMatrixIndexuivARB");
+        _glMatrixIndexPointerARB = (delegate* unmanaged<int, uint, int, void*, void>)QuickGL.GetGLProcAddress("glMatrixIndexPointerARB");
+    }
+    
+    internal static void Unload()
+    {
+        _glCurrentPaletteMatrixARB = null;
+        _glMatrixIndexubvARB = null;
+        _glMatrixIndexusvARB = null;
+        _glMatrixIndexuivARB = null;
+        _glMatrixIndexPointerARB = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_matrix_palette", true, false);
 }

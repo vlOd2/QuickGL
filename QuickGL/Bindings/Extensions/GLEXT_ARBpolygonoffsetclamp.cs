@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.566727
+// Bindings generated at 2025-09-20 18:58:19.931152
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_polygon_offset_clamp", true, false)]
 public static unsafe class GLEXT_ARBpolygonoffsetclamp
 {
     #region Enums
@@ -33,7 +32,19 @@ public static unsafe class GLEXT_ARBpolygonoffsetclamp
     #endregion
     
     #region Commands
-    public static void glPolygonOffsetClamp(float factor, float units, float clamp) { QGLNativeAPI.Verify((nint)_glPolygonOffsetClamp); _glPolygonOffsetClamp(factor, units, clamp); }
-    [QGLNativeAPI("glPolygonOffsetClamp")] internal static delegate* unmanaged<float, float, float, void> _glPolygonOffsetClamp = null;
+    public static void glPolygonOffsetClamp(float factor, float units, float clamp) { QGLFeature.VerifyFunc((nint)_glPolygonOffsetClamp); _glPolygonOffsetClamp(factor, units, clamp); }
+    internal static delegate* unmanaged<float, float, float, void> _glPolygonOffsetClamp = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glPolygonOffsetClamp = (delegate* unmanaged<float, float, float, void>)QuickGL.GetGLProcAddress("glPolygonOffsetClamp");
+    }
+    
+    internal static void Unload()
+    {
+        _glPolygonOffsetClamp = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_polygon_offset_clamp", true, false);
 }

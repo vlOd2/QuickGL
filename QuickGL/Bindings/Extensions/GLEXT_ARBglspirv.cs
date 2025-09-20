@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.532021
+// Bindings generated at 2025-09-20 18:58:19.890008
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_gl_spirv", true, false)]
 public static unsafe class GLEXT_ARBglspirv
 {
     #region Enums
@@ -34,7 +33,19 @@ public static unsafe class GLEXT_ARBglspirv
     #endregion
     
     #region Commands
-    public static void glSpecializeShaderARB(uint shader, byte* pEntryPoint, uint numSpecializationConstants, uint* pConstantIndex, uint* pConstantValue) { QGLNativeAPI.Verify((nint)_glSpecializeShaderARB); _glSpecializeShaderARB(shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue); }
-    [QGLNativeAPI("glSpecializeShaderARB")] internal static delegate* unmanaged<uint, byte*, uint, uint*, uint*, void> _glSpecializeShaderARB = null;
+    public static void glSpecializeShaderARB(uint shader, byte* pEntryPoint, uint numSpecializationConstants, uint* pConstantIndex, uint* pConstantValue) { QGLFeature.VerifyFunc((nint)_glSpecializeShaderARB); _glSpecializeShaderARB(shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue); }
+    internal static delegate* unmanaged<uint, byte*, uint, uint*, uint*, void> _glSpecializeShaderARB = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glSpecializeShaderARB = (delegate* unmanaged<uint, byte*, uint, uint*, uint*, void>)QuickGL.GetGLProcAddress("glSpecializeShaderARB");
+    }
+    
+    internal static void Unload()
+    {
+        _glSpecializeShaderARB = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_gl_spirv", true, false);
 }

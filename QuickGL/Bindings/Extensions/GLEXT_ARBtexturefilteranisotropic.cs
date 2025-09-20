@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.731545
+// Bindings generated at 2025-09-20 18:58:20.041305
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_texture_filter_anisotropic", true, false)]
 public static unsafe class GLEXT_ARBtexturefilteranisotropic
 {
     #region Enums
@@ -35,4 +34,14 @@ public static unsafe class GLEXT_ARBtexturefilteranisotropic
     
     #region Commands
     #endregion
+    
+    internal static void Load()
+    {
+    }
+    
+    internal static void Unload()
+    {
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_texture_filter_anisotropic", true, false);
 }

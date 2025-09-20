@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.507468
+// Bindings generated at 2025-09-20 18:58:19.865973
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_draw_indirect", true, false)]
 public static unsafe class GLEXT_ARBdrawindirect
 {
     #region Enums
@@ -34,10 +33,24 @@ public static unsafe class GLEXT_ARBdrawindirect
     #endregion
     
     #region Commands
-    public static void glDrawArraysIndirect(uint mode, void* indirect) { QGLNativeAPI.Verify((nint)_glDrawArraysIndirect); _glDrawArraysIndirect(mode, indirect); }
-    [QGLNativeAPI("glDrawArraysIndirect")] internal static delegate* unmanaged<uint, void*, void> _glDrawArraysIndirect = null;
+    public static void glDrawArraysIndirect(uint mode, void* indirect) { QGLFeature.VerifyFunc((nint)_glDrawArraysIndirect); _glDrawArraysIndirect(mode, indirect); }
+    internal static delegate* unmanaged<uint, void*, void> _glDrawArraysIndirect = null;
     
-    public static void glDrawElementsIndirect(uint mode, uint type, void* indirect) { QGLNativeAPI.Verify((nint)_glDrawElementsIndirect); _glDrawElementsIndirect(mode, type, indirect); }
-    [QGLNativeAPI("glDrawElementsIndirect")] internal static delegate* unmanaged<uint, uint, void*, void> _glDrawElementsIndirect = null;
+    public static void glDrawElementsIndirect(uint mode, uint type, void* indirect) { QGLFeature.VerifyFunc((nint)_glDrawElementsIndirect); _glDrawElementsIndirect(mode, type, indirect); }
+    internal static delegate* unmanaged<uint, uint, void*, void> _glDrawElementsIndirect = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glDrawArraysIndirect = (delegate* unmanaged<uint, void*, void>)QuickGL.GetGLProcAddress("glDrawArraysIndirect");
+        _glDrawElementsIndirect = (delegate* unmanaged<uint, uint, void*, void>)QuickGL.GetGLProcAddress("glDrawElementsIndirect");
+    }
+    
+    internal static void Unload()
+    {
+        _glDrawArraysIndirect = null;
+        _glDrawElementsIndirect = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_draw_indirect", true, false);
 }

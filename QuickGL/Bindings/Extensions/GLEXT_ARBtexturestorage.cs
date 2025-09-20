@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.756082
+// Bindings generated at 2025-09-20 18:58:20.088517
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_texture_storage", true, false)]
 public static unsafe class GLEXT_ARBtexturestorage
 {
     #region Enums
@@ -33,13 +32,29 @@ public static unsafe class GLEXT_ARBtexturestorage
     #endregion
     
     #region Commands
-    public static void glTexStorage1D(uint target, int levels, uint internalformat, int width) { QGLNativeAPI.Verify((nint)_glTexStorage1D); _glTexStorage1D(target, levels, internalformat, width); }
-    [QGLNativeAPI("glTexStorage1D")] internal static delegate* unmanaged<uint, int, uint, int, void> _glTexStorage1D = null;
+    public static void glTexStorage1D(uint target, int levels, uint internalformat, int width) { QGLFeature.VerifyFunc((nint)_glTexStorage1D); _glTexStorage1D(target, levels, internalformat, width); }
+    internal static delegate* unmanaged<uint, int, uint, int, void> _glTexStorage1D = null;
     
-    public static void glTexStorage2D(uint target, int levels, uint internalformat, int width, int height) { QGLNativeAPI.Verify((nint)_glTexStorage2D); _glTexStorage2D(target, levels, internalformat, width, height); }
-    [QGLNativeAPI("glTexStorage2D")] internal static delegate* unmanaged<uint, int, uint, int, int, void> _glTexStorage2D = null;
+    public static void glTexStorage2D(uint target, int levels, uint internalformat, int width, int height) { QGLFeature.VerifyFunc((nint)_glTexStorage2D); _glTexStorage2D(target, levels, internalformat, width, height); }
+    internal static delegate* unmanaged<uint, int, uint, int, int, void> _glTexStorage2D = null;
     
-    public static void glTexStorage3D(uint target, int levels, uint internalformat, int width, int height, int depth) { QGLNativeAPI.Verify((nint)_glTexStorage3D); _glTexStorage3D(target, levels, internalformat, width, height, depth); }
-    [QGLNativeAPI("glTexStorage3D")] internal static delegate* unmanaged<uint, int, uint, int, int, int, void> _glTexStorage3D = null;
+    public static void glTexStorage3D(uint target, int levels, uint internalformat, int width, int height, int depth) { QGLFeature.VerifyFunc((nint)_glTexStorage3D); _glTexStorage3D(target, levels, internalformat, width, height, depth); }
+    internal static delegate* unmanaged<uint, int, uint, int, int, int, void> _glTexStorage3D = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glTexStorage1D = (delegate* unmanaged<uint, int, uint, int, void>)QuickGL.GetGLProcAddress("glTexStorage1D");
+        _glTexStorage2D = (delegate* unmanaged<uint, int, uint, int, int, void>)QuickGL.GetGLProcAddress("glTexStorage2D");
+        _glTexStorage3D = (delegate* unmanaged<uint, int, uint, int, int, int, void>)QuickGL.GetGLProcAddress("glTexStorage3D");
+    }
+    
+    internal static void Unload()
+    {
+        _glTexStorage1D = null;
+        _glTexStorage2D = null;
+        _glTexStorage3D = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_texture_storage", true, false);
 }

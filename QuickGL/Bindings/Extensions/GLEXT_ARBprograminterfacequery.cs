@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.570121
+// Bindings generated at 2025-09-20 18:58:19.936154
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_program_interface_query", true, false)]
 public static unsafe class GLEXT_ARBprograminterfacequery
 {
     #region Enums
@@ -82,22 +81,44 @@ public static unsafe class GLEXT_ARBprograminterfacequery
     #endregion
     
     #region Commands
-    public static void glGetProgramInterfaceiv(uint program, uint programInterface, uint pname, int* @params) { QGLNativeAPI.Verify((nint)_glGetProgramInterfaceiv); _glGetProgramInterfaceiv(program, programInterface, pname, @params); }
-    [QGLNativeAPI("glGetProgramInterfaceiv")] internal static delegate* unmanaged<uint, uint, uint, int*, void> _glGetProgramInterfaceiv = null;
+    public static void glGetProgramInterfaceiv(uint program, uint programInterface, uint pname, int* @params) { QGLFeature.VerifyFunc((nint)_glGetProgramInterfaceiv); _glGetProgramInterfaceiv(program, programInterface, pname, @params); }
+    internal static delegate* unmanaged<uint, uint, uint, int*, void> _glGetProgramInterfaceiv = null;
     
-    public static uint glGetProgramResourceIndex(uint program, uint programInterface, byte* name) { QGLNativeAPI.Verify((nint)_glGetProgramResourceIndex); return _glGetProgramResourceIndex(program, programInterface, name); }
-    [QGLNativeAPI("glGetProgramResourceIndex")] internal static delegate* unmanaged<uint, uint, byte*, uint> _glGetProgramResourceIndex = null;
+    public static uint glGetProgramResourceIndex(uint program, uint programInterface, byte* name) { QGLFeature.VerifyFunc((nint)_glGetProgramResourceIndex); return _glGetProgramResourceIndex(program, programInterface, name); }
+    internal static delegate* unmanaged<uint, uint, byte*, uint> _glGetProgramResourceIndex = null;
     
-    public static void glGetProgramResourceName(uint program, uint programInterface, uint index, int bufSize, int* length, byte* name) { QGLNativeAPI.Verify((nint)_glGetProgramResourceName); _glGetProgramResourceName(program, programInterface, index, bufSize, length, name); }
-    [QGLNativeAPI("glGetProgramResourceName")] internal static delegate* unmanaged<uint, uint, uint, int, int*, byte*, void> _glGetProgramResourceName = null;
+    public static void glGetProgramResourceName(uint program, uint programInterface, uint index, int bufSize, int* length, byte* name) { QGLFeature.VerifyFunc((nint)_glGetProgramResourceName); _glGetProgramResourceName(program, programInterface, index, bufSize, length, name); }
+    internal static delegate* unmanaged<uint, uint, uint, int, int*, byte*, void> _glGetProgramResourceName = null;
     
-    public static void glGetProgramResourceiv(uint program, uint programInterface, uint index, int propCount, uint* props, int count, int* length, int* @params) { QGLNativeAPI.Verify((nint)_glGetProgramResourceiv); _glGetProgramResourceiv(program, programInterface, index, propCount, props, count, length, @params); }
-    [QGLNativeAPI("glGetProgramResourceiv")] internal static delegate* unmanaged<uint, uint, uint, int, uint*, int, int*, int*, void> _glGetProgramResourceiv = null;
+    public static void glGetProgramResourceiv(uint program, uint programInterface, uint index, int propCount, uint* props, int count, int* length, int* @params) { QGLFeature.VerifyFunc((nint)_glGetProgramResourceiv); _glGetProgramResourceiv(program, programInterface, index, propCount, props, count, length, @params); }
+    internal static delegate* unmanaged<uint, uint, uint, int, uint*, int, int*, int*, void> _glGetProgramResourceiv = null;
     
-    public static int glGetProgramResourceLocation(uint program, uint programInterface, byte* name) { QGLNativeAPI.Verify((nint)_glGetProgramResourceLocation); return _glGetProgramResourceLocation(program, programInterface, name); }
-    [QGLNativeAPI("glGetProgramResourceLocation")] internal static delegate* unmanaged<uint, uint, byte*, int> _glGetProgramResourceLocation = null;
+    public static int glGetProgramResourceLocation(uint program, uint programInterface, byte* name) { QGLFeature.VerifyFunc((nint)_glGetProgramResourceLocation); return _glGetProgramResourceLocation(program, programInterface, name); }
+    internal static delegate* unmanaged<uint, uint, byte*, int> _glGetProgramResourceLocation = null;
     
-    public static int glGetProgramResourceLocationIndex(uint program, uint programInterface, byte* name) { QGLNativeAPI.Verify((nint)_glGetProgramResourceLocationIndex); return _glGetProgramResourceLocationIndex(program, programInterface, name); }
-    [QGLNativeAPI("glGetProgramResourceLocationIndex")] internal static delegate* unmanaged<uint, uint, byte*, int> _glGetProgramResourceLocationIndex = null;
+    public static int glGetProgramResourceLocationIndex(uint program, uint programInterface, byte* name) { QGLFeature.VerifyFunc((nint)_glGetProgramResourceLocationIndex); return _glGetProgramResourceLocationIndex(program, programInterface, name); }
+    internal static delegate* unmanaged<uint, uint, byte*, int> _glGetProgramResourceLocationIndex = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glGetProgramInterfaceiv = (delegate* unmanaged<uint, uint, uint, int*, void>)QuickGL.GetGLProcAddress("glGetProgramInterfaceiv");
+        _glGetProgramResourceIndex = (delegate* unmanaged<uint, uint, byte*, uint>)QuickGL.GetGLProcAddress("glGetProgramResourceIndex");
+        _glGetProgramResourceName = (delegate* unmanaged<uint, uint, uint, int, int*, byte*, void>)QuickGL.GetGLProcAddress("glGetProgramResourceName");
+        _glGetProgramResourceiv = (delegate* unmanaged<uint, uint, uint, int, uint*, int, int*, int*, void>)QuickGL.GetGLProcAddress("glGetProgramResourceiv");
+        _glGetProgramResourceLocation = (delegate* unmanaged<uint, uint, byte*, int>)QuickGL.GetGLProcAddress("glGetProgramResourceLocation");
+        _glGetProgramResourceLocationIndex = (delegate* unmanaged<uint, uint, byte*, int>)QuickGL.GetGLProcAddress("glGetProgramResourceLocationIndex");
+    }
+    
+    internal static void Unload()
+    {
+        _glGetProgramInterfaceiv = null;
+        _glGetProgramResourceIndex = null;
+        _glGetProgramResourceName = null;
+        _glGetProgramResourceiv = null;
+        _glGetProgramResourceLocation = null;
+        _glGetProgramResourceLocationIndex = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_program_interface_query", true, false);
 }

@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.528425
+// Bindings generated at 2025-09-20 18:58:19.886841
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_geometry_shader4", true, false)]
 public static unsafe class GLEXT_ARBgeometryshader4
 {
     #region Enums
@@ -52,16 +51,34 @@ public static unsafe class GLEXT_ARBgeometryshader4
     #endregion
     
     #region Commands
-    public static void glProgramParameteriARB(uint program, uint pname, int value) { QGLNativeAPI.Verify((nint)_glProgramParameteriARB); _glProgramParameteriARB(program, pname, value); }
-    [QGLNativeAPI("glProgramParameteriARB")] internal static delegate* unmanaged<uint, uint, int, void> _glProgramParameteriARB = null;
+    public static void glProgramParameteriARB(uint program, uint pname, int value) { QGLFeature.VerifyFunc((nint)_glProgramParameteriARB); _glProgramParameteriARB(program, pname, value); }
+    internal static delegate* unmanaged<uint, uint, int, void> _glProgramParameteriARB = null;
     
-    public static void glFramebufferTextureARB(uint target, uint attachment, uint texture, int level) { QGLNativeAPI.Verify((nint)_glFramebufferTextureARB); _glFramebufferTextureARB(target, attachment, texture, level); }
-    [QGLNativeAPI("glFramebufferTextureARB")] internal static delegate* unmanaged<uint, uint, uint, int, void> _glFramebufferTextureARB = null;
+    public static void glFramebufferTextureARB(uint target, uint attachment, uint texture, int level) { QGLFeature.VerifyFunc((nint)_glFramebufferTextureARB); _glFramebufferTextureARB(target, attachment, texture, level); }
+    internal static delegate* unmanaged<uint, uint, uint, int, void> _glFramebufferTextureARB = null;
     
-    public static void glFramebufferTextureLayerARB(uint target, uint attachment, uint texture, int level, int layer) { QGLNativeAPI.Verify((nint)_glFramebufferTextureLayerARB); _glFramebufferTextureLayerARB(target, attachment, texture, level, layer); }
-    [QGLNativeAPI("glFramebufferTextureLayerARB")] internal static delegate* unmanaged<uint, uint, uint, int, int, void> _glFramebufferTextureLayerARB = null;
+    public static void glFramebufferTextureLayerARB(uint target, uint attachment, uint texture, int level, int layer) { QGLFeature.VerifyFunc((nint)_glFramebufferTextureLayerARB); _glFramebufferTextureLayerARB(target, attachment, texture, level, layer); }
+    internal static delegate* unmanaged<uint, uint, uint, int, int, void> _glFramebufferTextureLayerARB = null;
     
-    public static void glFramebufferTextureFaceARB(uint target, uint attachment, uint texture, int level, uint face) { QGLNativeAPI.Verify((nint)_glFramebufferTextureFaceARB); _glFramebufferTextureFaceARB(target, attachment, texture, level, face); }
-    [QGLNativeAPI("glFramebufferTextureFaceARB")] internal static delegate* unmanaged<uint, uint, uint, int, uint, void> _glFramebufferTextureFaceARB = null;
+    public static void glFramebufferTextureFaceARB(uint target, uint attachment, uint texture, int level, uint face) { QGLFeature.VerifyFunc((nint)_glFramebufferTextureFaceARB); _glFramebufferTextureFaceARB(target, attachment, texture, level, face); }
+    internal static delegate* unmanaged<uint, uint, uint, int, uint, void> _glFramebufferTextureFaceARB = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glProgramParameteriARB = (delegate* unmanaged<uint, uint, int, void>)QuickGL.GetGLProcAddress("glProgramParameteriARB");
+        _glFramebufferTextureARB = (delegate* unmanaged<uint, uint, uint, int, void>)QuickGL.GetGLProcAddress("glFramebufferTextureARB");
+        _glFramebufferTextureLayerARB = (delegate* unmanaged<uint, uint, uint, int, int, void>)QuickGL.GetGLProcAddress("glFramebufferTextureLayerARB");
+        _glFramebufferTextureFaceARB = (delegate* unmanaged<uint, uint, uint, int, uint, void>)QuickGL.GetGLProcAddress("glFramebufferTextureFaceARB");
+    }
+    
+    internal static void Unload()
+    {
+        _glProgramParameteriARB = null;
+        _glFramebufferTextureARB = null;
+        _glFramebufferTextureLayerARB = null;
+        _glFramebufferTextureFaceARB = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_geometry_shader4", true, false);
 }

@@ -22,20 +22,33 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.480900
+// Bindings generated at 2025-09-20 18:58:19.828514
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_clear_buffer_object", true, false)]
 public static unsafe class GLEXT_ARBclearbufferobject
 {
     #region Enums
     #endregion
     
     #region Commands
-    public static void glClearBufferData(uint target, uint internalformat, uint format, uint type, void* data) { QGLNativeAPI.Verify((nint)_glClearBufferData); _glClearBufferData(target, internalformat, format, type, data); }
-    [QGLNativeAPI("glClearBufferData")] internal static delegate* unmanaged<uint, uint, uint, uint, void*, void> _glClearBufferData = null;
+    public static void glClearBufferData(uint target, uint internalformat, uint format, uint type, void* data) { QGLFeature.VerifyFunc((nint)_glClearBufferData); _glClearBufferData(target, internalformat, format, type, data); }
+    internal static delegate* unmanaged<uint, uint, uint, uint, void*, void> _glClearBufferData = null;
     
-    public static void glClearBufferSubData(uint target, uint internalformat, nint offset, nint size, uint format, uint type, void* data) { QGLNativeAPI.Verify((nint)_glClearBufferSubData); _glClearBufferSubData(target, internalformat, offset, size, format, type, data); }
-    [QGLNativeAPI("glClearBufferSubData")] internal static delegate* unmanaged<uint, uint, nint, nint, uint, uint, void*, void> _glClearBufferSubData = null;
+    public static void glClearBufferSubData(uint target, uint internalformat, nint offset, nint size, uint format, uint type, void* data) { QGLFeature.VerifyFunc((nint)_glClearBufferSubData); _glClearBufferSubData(target, internalformat, offset, size, format, type, data); }
+    internal static delegate* unmanaged<uint, uint, nint, nint, uint, uint, void*, void> _glClearBufferSubData = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glClearBufferData = (delegate* unmanaged<uint, uint, uint, uint, void*, void>)QuickGL.GetGLProcAddress("glClearBufferData");
+        _glClearBufferSubData = (delegate* unmanaged<uint, uint, nint, nint, uint, uint, void*, void>)QuickGL.GetGLProcAddress("glClearBufferSubData");
+    }
+    
+    internal static void Unload()
+    {
+        _glClearBufferData = null;
+        _glClearBufferSubData = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_clear_buffer_object", true, false);
 }

@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.472551
+// Bindings generated at 2025-09-20 18:58:19.816190
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_ES3_1_compatibility", true, false)]
 public static unsafe class GLEXT_ARBES31compatibility
 {
     #region Enums
@@ -33,7 +32,19 @@ public static unsafe class GLEXT_ARBES31compatibility
     #endregion
     
     #region Commands
-    public static void glMemoryBarrierByRegion(uint barriers) { QGLNativeAPI.Verify((nint)_glMemoryBarrierByRegion); _glMemoryBarrierByRegion(barriers); }
-    [QGLNativeAPI("glMemoryBarrierByRegion")] internal static delegate* unmanaged<uint, void> _glMemoryBarrierByRegion = null;
+    public static void glMemoryBarrierByRegion(uint barriers) { QGLFeature.VerifyFunc((nint)_glMemoryBarrierByRegion); _glMemoryBarrierByRegion(barriers); }
+    internal static delegate* unmanaged<uint, void> _glMemoryBarrierByRegion = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glMemoryBarrierByRegion = (delegate* unmanaged<uint, void>)QuickGL.GetGLProcAddress("glMemoryBarrierByRegion");
+    }
+    
+    internal static void Unload()
+    {
+        _glMemoryBarrierByRegion = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_ES3_1_compatibility", true, false);
 }

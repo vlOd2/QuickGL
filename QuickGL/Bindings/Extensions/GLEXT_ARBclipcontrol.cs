@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.482501
+// Bindings generated at 2025-09-20 18:58:19.832568
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_clip_control", true, false)]
 public static unsafe class GLEXT_ARBclipcontrol
 {
     #region Enums
@@ -38,7 +37,19 @@ public static unsafe class GLEXT_ARBclipcontrol
     #endregion
     
     #region Commands
-    public static void glClipControl(uint origin, uint depth) { QGLNativeAPI.Verify((nint)_glClipControl); _glClipControl(origin, depth); }
-    [QGLNativeAPI("glClipControl")] internal static delegate* unmanaged<uint, uint, void> _glClipControl = null;
+    public static void glClipControl(uint origin, uint depth) { QGLFeature.VerifyFunc((nint)_glClipControl); _glClipControl(origin, depth); }
+    internal static delegate* unmanaged<uint, uint, void> _glClipControl = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glClipControl = (delegate* unmanaged<uint, uint, void>)QuickGL.GetGLProcAddress("glClipControl");
+    }
+    
+    internal static void Unload()
+    {
+        _glClipControl = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_clip_control", true, false);
 }

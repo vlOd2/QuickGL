@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.529588
+// Bindings generated at 2025-09-20 18:58:19.887948
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_get_program_binary", true, false)]
 public static unsafe class GLEXT_ARBgetprogrambinary
 {
     #region Enums
@@ -36,13 +35,29 @@ public static unsafe class GLEXT_ARBgetprogrambinary
     #endregion
     
     #region Commands
-    public static void glGetProgramBinary(uint program, int bufSize, int* length, uint* binaryFormat, void* binary) { QGLNativeAPI.Verify((nint)_glGetProgramBinary); _glGetProgramBinary(program, bufSize, length, binaryFormat, binary); }
-    [QGLNativeAPI("glGetProgramBinary")] internal static delegate* unmanaged<uint, int, int*, uint*, void*, void> _glGetProgramBinary = null;
+    public static void glGetProgramBinary(uint program, int bufSize, int* length, uint* binaryFormat, void* binary) { QGLFeature.VerifyFunc((nint)_glGetProgramBinary); _glGetProgramBinary(program, bufSize, length, binaryFormat, binary); }
+    internal static delegate* unmanaged<uint, int, int*, uint*, void*, void> _glGetProgramBinary = null;
     
-    public static void glProgramBinary(uint program, uint binaryFormat, void* binary, int length) { QGLNativeAPI.Verify((nint)_glProgramBinary); _glProgramBinary(program, binaryFormat, binary, length); }
-    [QGLNativeAPI("glProgramBinary")] internal static delegate* unmanaged<uint, uint, void*, int, void> _glProgramBinary = null;
+    public static void glProgramBinary(uint program, uint binaryFormat, void* binary, int length) { QGLFeature.VerifyFunc((nint)_glProgramBinary); _glProgramBinary(program, binaryFormat, binary, length); }
+    internal static delegate* unmanaged<uint, uint, void*, int, void> _glProgramBinary = null;
     
-    public static void glProgramParameteri(uint program, uint pname, int value) { QGLNativeAPI.Verify((nint)_glProgramParameteri); _glProgramParameteri(program, pname, value); }
-    [QGLNativeAPI("glProgramParameteri")] internal static delegate* unmanaged<uint, uint, int, void> _glProgramParameteri = null;
+    public static void glProgramParameteri(uint program, uint pname, int value) { QGLFeature.VerifyFunc((nint)_glProgramParameteri); _glProgramParameteri(program, pname, value); }
+    internal static delegate* unmanaged<uint, uint, int, void> _glProgramParameteri = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glGetProgramBinary = (delegate* unmanaged<uint, int, int*, uint*, void*, void>)QuickGL.GetGLProcAddress("glGetProgramBinary");
+        _glProgramBinary = (delegate* unmanaged<uint, uint, void*, int, void>)QuickGL.GetGLProcAddress("glProgramBinary");
+        _glProgramParameteri = (delegate* unmanaged<uint, uint, int, void>)QuickGL.GetGLProcAddress("glProgramParameteri");
+    }
+    
+    internal static void Unload()
+    {
+        _glGetProgramBinary = null;
+        _glProgramBinary = null;
+        _glProgramParameteri = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_get_program_binary", true, false);
 }

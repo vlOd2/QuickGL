@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.479699
+// Bindings generated at 2025-09-20 18:58:19.825931
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_cl_event", true, false)]
 public static unsafe class GLEXT_ARBclevent
 {
     #region Enums
@@ -34,7 +33,19 @@ public static unsafe class GLEXT_ARBclevent
     #endregion
     
     #region Commands
-    public static nint glCreateSyncFromCLeventARB(nint* context, nint* @event, uint flags) { QGLNativeAPI.Verify((nint)_glCreateSyncFromCLeventARB); return _glCreateSyncFromCLeventARB(context, @event, flags); }
-    [QGLNativeAPI("glCreateSyncFromCLeventARB")] internal static delegate* unmanaged<nint*, nint*, uint, nint> _glCreateSyncFromCLeventARB = null;
+    public static nint glCreateSyncFromCLeventARB(nint* context, nint* @event, uint flags) { QGLFeature.VerifyFunc((nint)_glCreateSyncFromCLeventARB); return _glCreateSyncFromCLeventARB(context, @event, flags); }
+    internal static delegate* unmanaged<nint*, nint*, uint, nint> _glCreateSyncFromCLeventARB = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glCreateSyncFromCLeventARB = (delegate* unmanaged<nint*, nint*, uint, nint>)QuickGL.GetGLProcAddress("glCreateSyncFromCLeventARB");
+    }
+    
+    internal static void Unload()
+    {
+        _glCreateSyncFromCLeventARB = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_cl_event", true, false);
 }

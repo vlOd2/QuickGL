@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.691375
+// Bindings generated at 2025-09-20 18:58:19.985477
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_shading_language_100", true, false)]
 public static unsafe class GLEXT_ARBshadinglanguage100
 {
     #region Enums
@@ -34,4 +33,14 @@ public static unsafe class GLEXT_ARBshadinglanguage100
     
     #region Commands
     #endregion
+    
+    internal static void Load()
+    {
+    }
+    
+    internal static void Unload()
+    {
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_shading_language_100", true, false);
 }

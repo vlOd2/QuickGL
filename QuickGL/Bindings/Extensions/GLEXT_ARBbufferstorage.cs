@@ -22,10 +22,9 @@
 
 using QuickGLNS.Internal;
 
-// Bindings generated at 2025-08-30 15:45:08.478833
+// Bindings generated at 2025-09-20 18:58:19.824742
 namespace QuickGLNS.Bindings.Extensions;
 
-[QGLFeature("GL_ARB_buffer_storage", true, false)]
 public static unsafe class GLEXT_ARBbufferstorage
 {
     #region Enums
@@ -41,7 +40,19 @@ public static unsafe class GLEXT_ARBbufferstorage
     #endregion
     
     #region Commands
-    public static void glBufferStorage(uint target, nint size, void* data, uint flags) { QGLNativeAPI.Verify((nint)_glBufferStorage); _glBufferStorage(target, size, data, flags); }
-    [QGLNativeAPI("glBufferStorage")] internal static delegate* unmanaged<uint, nint, void*, uint, void> _glBufferStorage = null;
+    public static void glBufferStorage(uint target, nint size, void* data, uint flags) { QGLFeature.VerifyFunc((nint)_glBufferStorage); _glBufferStorage(target, size, data, flags); }
+    internal static delegate* unmanaged<uint, nint, void*, uint, void> _glBufferStorage = null;
      #endregion
+    
+    internal static void Load()
+    {
+        _glBufferStorage = (delegate* unmanaged<uint, nint, void*, uint, void>)QuickGL.GetGLProcAddress("glBufferStorage");
+    }
+    
+    internal static void Unload()
+    {
+        _glBufferStorage = null;
+    }
+    
+    internal static QGLFeature FeatureInfo => new("GL_ARB_buffer_storage", true, false);
 }

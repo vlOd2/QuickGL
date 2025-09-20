@@ -22,8 +22,7 @@
 
 namespace QuickGLNS.Internal;
 
-[AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
-internal class QGLFeature : Attribute
+internal class QGLFeature
 {
     public string Name { get; private set; }
     public bool IsExtension { get; private set; }
@@ -34,5 +33,11 @@ internal class QGLFeature : Attribute
         Name = name;
         IsExtension = isExt;
         IsGLES = isGLES;
+    }
+
+    public static void VerifyFunc(nint funcPtr)
+    {
+        if (funcPtr == 0)
+            throw new InvalidOperationException("API has not been loaded");
     }
 }
