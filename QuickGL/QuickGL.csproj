@@ -22,4 +22,8 @@
 		</ContentWithTargetPath>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Bindings\" />
+	</ItemGroup>
+
 </Project>
