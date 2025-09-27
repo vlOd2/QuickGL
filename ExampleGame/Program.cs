@@ -48,7 +48,7 @@ public unsafe class Program
             resultColor = vec4(fragColor, 1.0F);
         }
     ";
-    private nint window;
+    private GLFWwindow* window;
     private int width;
     private int height;
     // Need to keep a reference otherwise the GC will collect it
@@ -64,7 +64,7 @@ public unsafe class Program
         uint shader = glCreateShader(type);
         using QGLString str = new(source);
         byte* ptr = str;
-        glShaderSource(shader, 1, &ptr, (int*)0);
+        glShaderSource(shader, 1, (nint)(&ptr), (int*)0);
         glCompileShader(shader);
 
         int compileStatus = 0;
@@ -103,7 +103,7 @@ public unsafe class Program
         return program;
     }
 
-    private void WindowResized(nint _, int width, int height)
+    private void WindowResized(GLFWwindow* _, int width, int height)
     {
         Console.WriteLine($"Resized to {width}x{height}");
         glViewport(0, 0, width, height);
@@ -130,8 +130,8 @@ public unsafe class Program
         width = 640;
         height = 480;
         QGLString str = new("QuickGL - Example Game");
-        window = glfwCreateWindow(width, height, str, 0, 0);
-        if (window == 0) throw new Exception("Failed to create window");
+        window = glfwCreateWindow(width, height, str, null, null);
+        if (window == null) throw new Exception("Failed to create window");
         glfwSetWindowSizeCallback(window, sizeCallback = WindowResized);
         glfwSwapInterval(0);
         str.Dispose();
@@ -223,12 +223,12 @@ public unsafe class Program
         ReadOnlySpan<float> data = [
             // Vertices         Colors
             -0.5F, -0.5F, -2.0F, 1.0F, 0.0F, 0.0F,
-                0.5F, -0.5F, -2.0F,  0.0F, 1.0F, 0.0F,
-                0.0F, 0.5F, -2.0F,   0.0F, 0.0F, 1.0F,
+            0.5F, -0.5F, -2.0F,  0.0F, 1.0F, 0.0F,
+            0.0F, 0.5F, -2.0F,   0.0F, 0.0F, 1.0F,
 
-                -0.5F, -0.5F, -2.0F, 1.0F, 0.0F, 0.0F,
-                0.0F, 0.5F, -2.0F,   0.0F, 0.0F, 1.0F,
-                0.5F, -0.5F, -2.0F,  0.0F, 1.0F, 0.0F
+            -0.5F, -0.5F, -2.0F, 1.0F, 0.0F, 0.0F,
+            0.0F, 0.5F, -2.0F,   0.0F, 0.0F, 1.0F,
+            0.5F, -0.5F, -2.0F,  0.0F, 1.0F, 0.0F
         ];
 
         uint vao = 0;

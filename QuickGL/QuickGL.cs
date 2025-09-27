@@ -21,6 +21,7 @@
 // SOFTWARE.
 
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using QuickGLNS.Bindings;
 using QuickGLNS.Internal;
@@ -36,7 +37,7 @@ public static unsafe partial class QuickGL
     private static OpenALLoader openALLoader;
     internal static bool initialized;
     internal static bool doNotUseGLFW;
-    internal static delegate* unmanaged<byte*, nint> nativeAPILoader;
+    internal static delegate* unmanaged<byte*, GLFWglproc> nativeAPILoader;
     #region Context properties
     /// <summary>
     /// Indicates if QuickGL has been initialized
@@ -85,7 +86,7 @@ public static unsafe partial class QuickGL
     /// </summary>
     /// <param name="gles">is the current context for gles</param>
     /// <param name="loader">the function called to load OpenGL functions from</param>
-    public static void InitNoGLFW(bool gles, delegate* unmanaged<byte*, nint> loader)
+    public static void InitNoGLFW(bool gles, delegate* unmanaged<byte*, GLFWglproc> loader)
     {
         if (initialized)
             throw new GLException("Already initialized");
@@ -99,7 +100,7 @@ public static unsafe partial class QuickGL
     {
         if (!initialized)
             throw new GLException("Not initialized");
-        if (!doNotUseGLFW && GLFW.glfwGetCurrentContext() == 0)
+        if (!doNotUseGLFW && GLFW.glfwGetCurrentContext() == null)
             throw new GLException("No OpenGL context found");
     }
 
@@ -175,7 +176,7 @@ public static unsafe partial class QuickGL
 
         if (!doNotUseGLFW)
         {
-            nint window = GLFW.glfwGetCurrentContext();
+            GLFWwindow* window = GLFW.glfwGetCurrentContext();
             int api = GLFW.glfwGetWindowAttrib(window, GLFW.GLFW_CLIENT_API);
             IsGLESContext = api == GLFW.GLFW_OPENGL_ES_API;
         }
@@ -221,7 +222,7 @@ public static unsafe partial class QuickGL
         PerformContextChecks();
         nint handle;
         using (QGLString str = new(name))
-            handle = nativeAPILoader(str);
+            handle = Marshal.GetFunctionPointerForDelegate(nativeAPILoader(str));
         return handle;
     }
 

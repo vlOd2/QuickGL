@@ -20,6 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+using QuickGLNS.Bindings;
 using QuickGLNS.Internal;
 
 namespace QuickGLNS;
@@ -27,14 +28,14 @@ namespace QuickGLNS;
 /// <summary>
 /// Easy to use, optional, input wrapper for GLFW
 /// </summary>
-public static class Input
+public static unsafe class Input
 {
     private static Dictionary<nint, IMouse> mouse = [];
     private static Dictionary<nint, IKeyboard> keyboard = [];
 
-    private static void EnsureCreated(nint window)
+    private static void EnsureCreated(GLFWwindow* window)
     {
-        if (mouse.ContainsKey(window) && keyboard.ContainsKey(window))
+        if (mouse.ContainsKey((nint)window) && keyboard.ContainsKey((nint)window))
             return;
         throw new ArgumentException("Window does not have an input system");
     }
@@ -44,18 +45,18 @@ public static class Input
     /// </summary>
     /// <param name="window">the window</param>
     /// <exception cref="ArgumentException">if an input system is already assigned</exception>
-    public static void Create(nint window)
+    public static void Create(GLFWwindow* window)
     {
         if (!QuickGL.initialized)
             throw new GLException("QuickGL not initialized");
         if (QuickGL.doNotUseGLFW)
             throw new InvalidOperationException("QuickGL initialized without GLFW");
-        if (mouse.ContainsKey(window) && keyboard.ContainsKey(window))
+        if (mouse.ContainsKey((nint)window) && keyboard.ContainsKey((nint)window))
             throw new ArgumentException("Window already has an input system");
-        mouse[window] = new Mouse();
-        mouse[window].Init(window);
-        keyboard[window] = new Keyboard();
-        keyboard[window].Init(window);
+        mouse[(nint)window] = new Mouse();
+        mouse[(nint)window].Init(window);
+        keyboard[(nint)window] = new Keyboard();
+        keyboard[(nint)window].Init(window);
     }
 
     /// <summary>
@@ -90,10 +91,10 @@ public static class Input
     /// <param name="window">the window</param>
     /// <returns>the mouse</returns>
     /// <exception cref="ArgumentException">if an input system is not assigned</exception>
-    public static IMouse GetMouse(nint window)
+    public static IMouse GetMouse(GLFWwindow* window)
     {
         EnsureCreated(window);
-        return mouse[window];
+        return mouse[(nint)window];
     }
 
     /// <summary>
@@ -102,23 +103,23 @@ public static class Input
     /// <param name="window">the window</param>
     /// <returns>the keyboard</returns>
     /// <exception cref="ArgumentException">if an input system is not assigned</exception>
-    public static IKeyboard GetKeyboard(nint window)
+    public static IKeyboard GetKeyboard(GLFWwindow* window)
     {
         EnsureCreated(window);
-        return keyboard[window];
+        return keyboard[(nint)window];
     }
 
     /// <summary>
     /// Destroys the input system allocated for the given window
     /// </summary>
     /// <param name="window">the window</param>
-    public static void Destroy(nint window)
+    public static void Destroy(GLFWwindow* window)
     {
-        if (mouse.ContainsKey(window))
-            mouse[window].Dispose();
-        if (keyboard.ContainsKey(window))
-            keyboard[window].Dispose();
-        mouse.Remove(window);
-        keyboard.Remove(window);
+        if (mouse.ContainsKey((nint)window))
+            mouse[(nint)window].Dispose();
+        if (keyboard.ContainsKey((nint)window))
+            keyboard[(nint)window].Dispose();
+        mouse.Remove((nint)window);
+        keyboard.Remove((nint)window);
     }
 }

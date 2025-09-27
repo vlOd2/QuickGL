@@ -27,7 +27,7 @@ namespace QuickGLNS.Internal;
 
 internal unsafe class Mouse : IMouse
 {
-    private nint window;
+    private GLFWwindow* window;
     private GLFWcursorposfun positionCallback;
     private GLFWmousebuttonfun buttonCallback;
     private GLFWscrollfun scrollCallback;
@@ -84,7 +84,7 @@ internal unsafe class Mouse : IMouse
         public bool Valid;
     }
 
-    public void Init(nint window)
+    public void Init(GLFWwindow* window)
     {
         this.window = window;
         if (glfwRawMouseMotionSupported() != GLFW_FALSE)
@@ -94,7 +94,7 @@ internal unsafe class Mouse : IMouse
         glfwSetScrollCallback(window, scrollCallback = ScrollCallback);
     }
 
-    private void PositionCallback(nint _, double xpos, double ypos)
+    private void PositionCallback(GLFWwindow* _, double xpos, double ypos)
     {
         int x = (int)xpos;
         int y = (int)ypos;
@@ -114,7 +114,7 @@ internal unsafe class Mouse : IMouse
         yo = y;
     }
 
-    private void ButtonCallback(nint _, int button, int action, int mods)
+    private void ButtonCallback(GLFWwindow* _, int button, int action, int mods)
     {
         lock (eventLock)
         {
@@ -128,8 +128,7 @@ internal unsafe class Mouse : IMouse
         }
     }
 
-    private void ScrollCallback(nint _, double xoffset, double yoffset)
-        => wheel += (int)yoffset;
+    private void ScrollCallback(GLFWwindow* _, double xoffset, double yoffset) => wheel += (int)yoffset;
 
     public bool Next()
     {

@@ -20,12 +20,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+using QuickGLNS.Bindings;
+
 namespace QuickGLNS;
 
 /// <summary>
 /// Simple event-queue based keyboard for GLFW
 /// </summary>
-public interface IKeyboard : IDisposable
+public unsafe interface IKeyboard : IDisposable
 {
     #region Event properties
     /// <summary>
@@ -52,7 +54,7 @@ public interface IKeyboard : IDisposable
     bool AllowRepeatEvents { get; set; }
     #endregion
 
-    void Init(nint window);
+    void Init(GLFWwindow* window);
 
     /// <summary>
     /// De-queues the next event<br/>

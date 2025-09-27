@@ -20,12 +20,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+using QuickGLNS.Bindings;
+
 namespace QuickGLNS;
 
 /// <summary>
 /// Simple event-queue based mouse for GLFW
 /// </summary>
-public interface IMouse : IDisposable
+public unsafe interface IMouse : IDisposable
 {
     #region General properties
     /// <summary>
@@ -64,7 +66,7 @@ public interface IMouse : IDisposable
     /// </summary>
     bool Captured { get; set; }
 
-    void Init(nint window);
+    void Init(GLFWwindow* window);
 
     /// <summary>
     /// De-queues the next event<br/>

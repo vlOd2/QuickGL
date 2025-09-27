@@ -60,7 +60,7 @@ internal unsafe class Keyboard : IKeyboard
         { GLFW_KEY_LEFT, "LEFT" },
         { GLFW_KEY_RIGHT, "RIGHT" }
     };
-    private nint window;
+    private GLFWwindow* window;
     private bool fallbackKeyEvent;
     private GLFWkeyfun keyCallback;
     private GLFWcharfun charCallback;
@@ -84,7 +84,7 @@ internal unsafe class Keyboard : IKeyboard
         public bool Valid;
     }
 
-    public void Init(nint window)
+    public void Init(GLFWwindow* window)
     {
         this.window = window;
         fallbackKeyEvent = glfwGetPlatform() == GLFW_PLATFORM_X11;
@@ -163,7 +163,7 @@ internal unsafe class Keyboard : IKeyboard
         return c;
     }
 
-    private void KeyCallback(nint _, int key, int scancode, int action, int mods)
+    private void KeyCallback(GLFWwindow* _, int key, int scancode, int action, int mods)
     {
         lock (pendingEvents)
         {
@@ -196,7 +196,7 @@ internal unsafe class Keyboard : IKeyboard
         }
     }
 
-    private void CharCallback(nint _, uint code)
+    private void CharCallback(GLFWwindow* _, uint code)
     {
         if (fallbackKeyEvent)
             return;
