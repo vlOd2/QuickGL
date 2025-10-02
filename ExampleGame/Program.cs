@@ -64,7 +64,7 @@ public unsafe class Program
         uint shader = glCreateShader(type);
         using QGLString str = new(source);
         byte* ptr = str;
-        glShaderSource(shader, 1, (nint)(&ptr), (int*)0);
+        glShaderSource(shader, 1, &ptr, (int*)0);
         glCompileShader(shader);
 
         int compileStatus = 0;
@@ -156,8 +156,7 @@ public unsafe class Program
             throw new Exception("Required OpenGL version is not available");
     }
 
-    private static float ToRad(float deg)
-        => deg * ((float)Math.PI / 180);
+    private static float ToRad(float deg) => deg * ((float)Math.PI / 180);
 
     private void MoveCamera(float xa, float za, float speed)
     {

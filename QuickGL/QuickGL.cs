@@ -222,7 +222,12 @@ public static unsafe partial class QuickGL
         PerformContextChecks();
         nint handle;
         using (QGLString str = new(name))
-            handle = Marshal.GetFunctionPointerForDelegate(nativeAPILoader(str));
+        {
+            GLFWglproc proc = nativeAPILoader(str);
+            if (proc == null)
+                return 0;
+            handle = Marshal.GetFunctionPointerForDelegate(proc);
+        }
         return handle;
     }
 
