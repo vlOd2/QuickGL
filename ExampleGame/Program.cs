@@ -133,13 +133,13 @@ public unsafe class Program
         window = glfwCreateWindow(width, height, str, null, null);
         if (window == null) throw new Exception("Failed to create window");
         glfwSetWindowSizeCallback(window, sizeCallback = WindowResized);
-        glfwSwapInterval(0);
         str.Dispose();
 
         glfwMakeContextCurrent(window);
         QuickGL.LoadGL();
         Input.Create(window);
         Input.GetMouse(window).Captured = true;
+        glfwSwapInterval(0);
 
         str = new(glGetString(GL_VENDOR));
         Console.WriteLine($"Vendor: {str}");

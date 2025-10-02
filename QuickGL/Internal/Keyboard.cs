@@ -21,6 +21,7 @@
 // SOFTWARE.
 
 using QuickGLNS.Bindings;
+using System.Collections.Concurrent;
 using System.Runtime.InteropServices;
 using System.Text;
 using static QuickGLNS.Bindings.GLFW;
@@ -60,14 +61,16 @@ internal unsafe class Keyboard : IKeyboard
         { GLFW_KEY_LEFT, "LEFT" },
         { GLFW_KEY_RIGHT, "RIGHT" }
     };
+    private bool disposed;
     private GLFWwindow* window;
     private bool fallbackKeyEvent;
     private GLFWkeyfun keyCallback;
     private GLFWcharfun charCallback;
     private readonly Dictionary<int, bool> keys = [];
     // Events that are not yet ready to be handled
+    private readonly object pendingEventLock = new();
     private KeyEvent* pendingEvent;
-    private readonly Queue<nint> pendingEvents = [];
+    private readonly ConcurrentQueue<nint> pendingEvents = [];
     // Fully filled events ready to be handled
     private KeyEvent currentEvent;
     private readonly Queue<KeyEvent> events = [];
@@ -100,6 +103,7 @@ internal unsafe class Keyboard : IKeyboard
         }
     }
 
+    #region Char utils
     private static char GetCharCodepoint(uint code)
     {
         if (!Rune.TryCreate(code, out Rune rune))
@@ -162,10 +166,13 @@ internal unsafe class Keyboard : IKeyboard
 
         return c;
     }
+    #endregion
 
     private void KeyCallback(GLFWwindow* _, int key, int scancode, int action, int mods)
     {
-        lock (pendingEvents)
+        if (disposed)
+            return;
+        lock (pendingEventLock)
         {
             bool prevState = keys.ContainsKey(key) && keys[key];
             bool state = action == GLFW_PRESS || action == GLFW_REPEAT;
@@ -198,9 +205,9 @@ internal unsafe class Keyboard : IKeyboard
 
     private void CharCallback(GLFWwindow* _, uint code)
     {
-        if (fallbackKeyEvent)
+        if (disposed || fallbackKeyEvent)
             return;
-        lock (pendingEvents)
+        lock (pendingEventLock)
         {
             if (pendingEvent != null && pendingEvent->Character == 0)
                 pendingEvent->Character = GetCharCodepoint(code);
@@ -212,15 +219,18 @@ internal unsafe class Keyboard : IKeyboard
 
     public bool Next()
     {
-        lock (pendingEvents)
+        if (disposed)
+            return false;
+
+        lock (pendingEventLock)
         {
-            while (pendingEvents.Count > 0)
+            while (!pendingEvents.IsEmpty)
             {
-                KeyEvent* ptr = (KeyEvent*)pendingEvents.Dequeue();
-                if (ptr == null)
+                KeyEvent* @event = pendingEvents.TryDequeue(out nint ptr) ? (KeyEvent*)ptr : null;
+                if (@event == null)
                     continue;
-                events.Enqueue(*ptr);
-                NativeMemory.Free(ptr);
+                events.Enqueue(*@event);
+                NativeMemory.Free(@event);
             }
         }
 
@@ -254,24 +264,26 @@ internal unsafe class Keyboard : IKeyboard
 
     public void Dispose()
     {
-        lock (pendingEvents)
+        if (disposed)
+            return;
+        disposed = true;
+
+        glfwSetKeyCallback(window, null);
+        glfwSetCharCallback(window, null);
+        keyCallback = null;
+        charCallback = null;
+        window = null;
+
+        lock (pendingEventLock)
         {
-            if (pendingEvent != null)
-            {
-                NativeMemory.Free(pendingEvent);
-                pendingEvent = null;
-            }
-            foreach (nint ptr in pendingEvents) 
+            nint[] ptrs = [.. pendingEvents];
+            pendingEvents.Clear();
+            foreach (nint ptr in ptrs)
             {
                 if (ptr == 0)
                     continue;
                 NativeMemory.Free((KeyEvent*)ptr);
             }
-            pendingEvents.Clear();
         }
-        glfwSetKeyCallback(window, null);
-        glfwSetCharCallback(window, null);
-        keyCallback = null;
-        charCallback = null;
     }
 }

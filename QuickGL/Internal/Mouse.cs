@@ -20,6 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+using System.Collections.Concurrent;
 using QuickGLNS.Bindings;
 using static QuickGLNS.Bindings.GLFW;
 
@@ -32,8 +33,7 @@ internal unsafe class Mouse : IMouse
     private GLFWmousebuttonfun buttonCallback;
     private GLFWscrollfun scrollCallback;
     private readonly bool[] buttons = new bool[GLFW_MOUSE_BUTTON_LAST];
-    private readonly Queue<MouseButtonEvent> events = [];
-    private readonly object eventLock = new();
+    private readonly ConcurrentQueue<MouseButtonEvent> events = [];
     private MouseButtonEvent currentEvent;
     private int xo;
     private int yo;
@@ -116,45 +116,42 @@ internal unsafe class Mouse : IMouse
 
     private void ButtonCallback(GLFWwindow* _, int button, int action, int mods)
     {
-        lock (eventLock)
+        buttons[button] = action == GLFW_PRESS;
+        events.Enqueue(new()
         {
-            buttons[button] = action == GLFW_PRESS;
-            events.Enqueue(new()
-            {
-                Button = button,
-                State = buttons[button],
-                Valid = true
-            });
-        }
+            Button = button,
+            State = buttons[button],
+            Valid = true
+        });
     }
 
     private void ScrollCallback(GLFWwindow* _, double xoffset, double yoffset) => wheel += (int)yoffset;
 
     public bool Next()
     {
-        lock (eventLock)
+        if (events.IsEmpty)
         {
-            if (events.Count == 0)
-            {
-                currentEvent.Valid = false;
-                return false;
-            }
-            while (events.Count > 0 && !(currentEvent = events.Dequeue()).Valid) ;
-            if (events.Count == 0 && !currentEvent.Valid)
-                return false;
-            return true;
+            currentEvent.Valid = false;
+            return false;
         }
+        while (!events.IsEmpty && (!events.TryDequeue(out currentEvent) || !currentEvent.Valid)) ;
+        if (events.IsEmpty && !currentEvent.Valid)
+            return false;
+        return true;
     }
 
     public bool GetState(int button) => buttons[button];
 
     public void Dispose()
     {
+        if (window == null)
+            return;
         glfwSetCursorPosCallback(window, null);
         glfwSetMouseButtonCallback(window, null);
         glfwSetScrollCallback(window, null);
         positionCallback = null;
         buttonCallback = null;
         scrollCallback = null;
+        window = null;
     }
 }

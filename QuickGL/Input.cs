@@ -30,8 +30,8 @@ namespace QuickGLNS;
 /// </summary>
 public static unsafe class Input
 {
-    private static Dictionary<nint, IMouse> mouse = [];
-    private static Dictionary<nint, IKeyboard> keyboard = [];
+    private static readonly Dictionary<nint, IMouse> mouse = [];
+    private static readonly Dictionary<nint, IKeyboard> keyboard = [];
 
     private static void EnsureCreated(GLFWwindow* window)
     {
