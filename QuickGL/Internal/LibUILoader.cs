@@ -25,63 +25,38 @@ using System.Runtime.InteropServices;
 namespace QuickGLNS.Internal;
 
 // TODO: Merge all loaders into one common one
-internal class OpenALLoader
+internal class LibUILoader
 {
-    private const string WIN_LIB_NAME = "OpenAL32.dll";
-    private static readonly string[] UNIX_LIB_NAMES = [ "libopenal.so.1", "libopenal.so", "libopenal.so.0" ];
+    private const string WIN_LIB_NAME = "libui.dll";
+    private const string UNIX_LIB_NAME = "libui.so";
     private nint handle;
 
-    public OpenALLoader(string winLibName = null, string unixLibName = null)
+    public LibUILoader(string winLibName = null, string unixLibName = null)
     {
         winLibName ??= WIN_LIB_NAME;
-
-        if (!OperatingSystem.IsWindows() && !OperatingSystem.IsLinux())
-            throw new PlatformNotSupportedException();
-
-        if (OperatingSystem.IsWindows())
+        unixLibName ??= UNIX_LIB_NAME;
+        string libName;
+        switch (Environment.OSVersion.Platform)
         {
-            try
-            {
-                handle = NativeLibrary.Load(winLibName);
-            }
-            catch (Exception ex)
-            {
-                Console.Error.WriteLine(ex);
-            }
-            if (handle == nint.Zero)
-                throw new GLException($"Failed to load OpenAL library: {winLibName}");
-            return;
+            case PlatformID.Win32NT:
+                libName = winLibName;
+                break;
+            case PlatformID.Unix:
+                libName = unixLibName;
+                break;
+            default:
+                throw new PlatformNotSupportedException();
         }
-
-        if (unixLibName != null)
+        try
         {
-            try 
-            {
-                handle = NativeLibrary.Load(unixLibName);
-            }
-            catch (Exception ex)
-            {
-                Console.Error.WriteLine(ex);
-            }
-            if (handle == nint.Zero)
-                throw new GLException($"Failed to load OpenAL library: {unixLibName}");
-            return;
+            handle = NativeLibrary.Load(libName);
         }
-
-        foreach (string libName in UNIX_LIB_NAMES)
+        catch (Exception ex)
         {
-            try
-            {
-                handle = NativeLibrary.Load(libName);
-            }
-            catch (Exception ex)
-            {
-                Console.Error.WriteLine(ex);
-            }
-            if (handle != nint.Zero)
-                return;
+            Console.Error.WriteLine(ex);
         }
-        throw new GLException($"Failed to locate OpenAL library");
+        if (handle == nint.Zero)
+            throw new GLException($"Failed to load LibUI library: {libName}");
     }
 
     public nint GetProcAddress(string name)
@@ -90,7 +65,7 @@ internal class OpenALLoader
         {
             return NativeLibrary.GetExport(handle, name);
         }
-        catch
+        catch 
         {
             return 0;
         }

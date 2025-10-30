@@ -10,15 +10,17 @@
 		<IsAotCompatible>true</IsAotCompatible>
     </PropertyGroup>
 
-	<ItemGroup Condition="'$(QuickGLBundleLibs)' != 'false' And ('$(OS)' == 'Windows_NT' Or '$(TargetFramework)' == 'net8.0-windows' Or '$(TargetFramework)' == 'net9.0-windows')">
+	<ItemGroup Condition="'$(QuickGLBundleGLLib)' != 'false' And ('$(OS)' == 'Windows_NT' Or '$(TargetFramework)' == 'net8.0-windows' Or '$(TargetFramework)' == 'net9.0-windows')">
 		<ContentWithTargetPath Include="Libs\glfw3.dll">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 			<TargetPath>glfw3.dll</TargetPath>
 		</ContentWithTargetPath>
+	</ItemGroup>
 
-		<ContentWithTargetPath Include="Libs\OpenAL32.dll">
+	<ItemGroup Condition="'$(QuickGLBundleLUILib)' != 'false' And ('$(OS)' == 'Windows_NT' Or '$(TargetFramework)' == 'net8.0-windows' Or '$(TargetFramework)' == 'net9.0-windows')">
+		<ContentWithTargetPath Include="Libs\libui.dll">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-			<TargetPath>OpenAL32.dll</TargetPath>
+			<TargetPath>libui.dll</TargetPath>
 		</ContentWithTargetPath>
 	</ItemGroup>
 

@@ -20,7 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using QuickGLNS.Bindings;
@@ -28,17 +27,16 @@ using QuickGLNS.Internal;
 
 namespace QuickGLNS;
 
-/// <summary>
-/// Class to load and manage GLFW, OpenGL with additional utilities
-/// </summary>
 public static unsafe partial class QuickGL
 {
     private static GLFWLoader glfwLoader;
-    private static OpenALLoader openALLoader;
+    private static OpenALLoader alLoader;
+    private static LibUILoader libUILoader;
     internal static bool initialized;
     internal static bool doNotUseGLFW;
-    internal static delegate* unmanaged<byte*, GLFWglproc> nativeAPILoader;
-    #region Context properties
+    internal static delegate* unmanaged<byte*, GLFWglproc> glLoader;
+
+    #region Properties
     /// <summary>
     /// Indicates if QuickGL has been initialized
     /// </summary>
@@ -77,23 +75,24 @@ public static unsafe partial class QuickGL
         glfwLoader = new(winLibName, unixLibName);
         GLFW.Load();
         initialized = true;
-        nativeAPILoader = GLFW._glfwGetProcAddress;
+        glLoader = GLFW._glfwGetProcAddress;
     }
 
     /// <summary>
-    /// Initializes QuickGL without GLFW<br/>
-    /// NOTE: This mode is not recommended and will not receive support
+    /// Initializes QuickGL for use without GLFW<br/>
+    /// You may omit a loader if you do not want to use OpenGL<br/>
+    /// This function is useful when using other windowing libraries or if you want to only use LibUI
     /// </summary>
+    /// <param name="loader">the OpenGL function loader, or null</param>
     /// <param name="gles">is the current context for gles</param>
-    /// <param name="loader">the function called to load OpenGL functions from</param>
-    public static void InitNoGLFW(bool gles, delegate* unmanaged<byte*, GLFWglproc> loader)
+    public static void InitRaw(delegate* unmanaged<byte*, GLFWglproc> loader, bool gles = false)
     {
         if (initialized)
             throw new GLException("Already initialized");
         initialized = true;
         doNotUseGLFW = true;
         IsGLESContext = gles;
-        nativeAPILoader = loader;
+        glLoader = loader;
     }
 
     private static void PerformContextChecks()
@@ -102,6 +101,28 @@ public static unsafe partial class QuickGL
             throw new GLException("Not initialized");
         if (!doNotUseGLFW && GLFW.glfwGetCurrentContext() == null)
             throw new GLException("No OpenGL context found");
+    }
+
+    /// <summary>
+    /// Loads OpenGL/GLES functions<br/>
+    /// NOTE: You must have an active OpenGL/GLES context, see <see cref="GLFW.glfwMakeContextCurrent"/>
+    /// </summary>
+    /// <exception cref="GLException"></exception>
+    public static void LoadGL()
+    {
+        PerformContextChecks();
+        if (glLoader == null)
+            throw new GLException("Invalid GL loader function");
+
+        ParseGLVersion();
+        if (!doNotUseGLFW)
+        {
+            GLFWwindow* window = GLFW.glfwGetCurrentContext();
+            int api = GLFW.glfwGetWindowAttrib(window, GLFW.GLFW_CLIENT_API);
+            IsGLESContext = api == GLFW.GLFW_OPENGL_ES_API;
+        }
+
+        GLBindingsManager.Load();
     }
 
     /// <summary>
@@ -114,11 +135,26 @@ public static unsafe partial class QuickGL
     {
         if (!initialized)
             throw new GLException("Not initialized");
-        openALLoader = new(winLibName, unixLibName);
+        alLoader = new(winLibName, unixLibName);
         AL.Load();
         ALC.Load();
     }
 
+    /// <summary>
+    /// Loads LibUI functions
+    /// </summary>
+    /// <param name="winLibName">the LibUI library name to use on Windows platforms, null for default</param>
+    /// <param name="unixLibName">the LibUI library name to use on Unix platforms, null for default</param>
+    /// <exception cref="GLException"></exception>
+    public static void LoadLibUI(string winLibName = null, string unixLibName = null)
+    {
+        if (!initialized)
+            throw new GLException("Not initialized");
+        libUILoader = new(winLibName, unixLibName);
+        LibUI.Load();
+    }
+
+    #region GL context helpers
     private static void ParseGLVersion()
     {
         delegate* unmanaged<uint, byte*> glGetString = (delegate* unmanaged<uint, byte*>)GetGLProcAddress("glGetString");
@@ -164,26 +200,6 @@ public static unsafe partial class QuickGL
         }
     }
 
-    /// <summary>
-    /// Loads OpenGL/GLES functions<br/>
-    /// NOTE: You must have an active OpenGL/GLES context, see <see cref="GLFW.glfwMakeContextCurrent"/>
-    /// </summary>
-    /// <exception cref="GLException"></exception>
-    public static void LoadGL()
-    {
-        PerformContextChecks();
-        ParseGLVersion();
-
-        if (!doNotUseGLFW)
-        {
-            GLFWwindow* window = GLFW.glfwGetCurrentContext();
-            int api = GLFW.glfwGetWindowAttrib(window, GLFW.GLFW_CLIENT_API);
-            IsGLESContext = api == GLFW.GLFW_OPENGL_ES_API;
-        }
-
-        GLBindingsManager.Load();
-    }
-
     internal static bool IsFeatureSupported(QGLFeature feature)
     {
         if (feature.IsGLES != IsGLESContext)
@@ -210,7 +226,9 @@ public static unsafe partial class QuickGL
         PerformContextChecks();
         return GLVersionMajor > major || (GLVersionMajor == major && GLVersionMinor >= minor);
     }
+    #endregion
 
+    #region Proc address
     /// <summary>
     /// Gets the native pointer to an OpenGL function<br />
     /// Attempting to resolve invalid/unavailable functions will return an undefined value
@@ -220,10 +238,12 @@ public static unsafe partial class QuickGL
     public static nint GetGLProcAddress(string name)
     {
         PerformContextChecks();
+        if (glLoader == null)
+            throw new GLException("Invalid GL loader function");
         nint handle;
         using (QGLString str = new(name))
         {
-            GLFWglproc proc = nativeAPILoader(str);
+            GLFWglproc proc = glLoader(str);
             if (proc == null)
                 return 0;
             handle = Marshal.GetFunctionPointerForDelegate(proc);
@@ -244,7 +264,7 @@ public static unsafe partial class QuickGL
 
     internal static nint GetALProcAddress(string name)
     {
-        nint handle = openALLoader.GetProcAddress(name);
+        nint handle = alLoader.GetProcAddress(name);
         if (handle == nint.Zero)
         {
             Console.Error.WriteLine($"[QuickGL] Could not find OpenAL method: {name}");
@@ -253,8 +273,20 @@ public static unsafe partial class QuickGL
         return handle;
     }
 
+    internal static nint GetLibUIProcAddress(string name)
+    {
+        nint handle = libUILoader.GetProcAddress(name);
+        if (handle == nint.Zero)
+        {
+            Console.Error.WriteLine($"[QuickGL] Could not find LibUI method: {name}");
+            return nint.Zero;
+        }
+        return handle;
+    }
+    #endregion
+
     /// <summary>
-    /// Cleans up QuickGL and releases any OpenGL and GLFW functions
+    /// Cleans up QuickGL and releases any unmanaged resources
     /// </summary>
     public static void Destroy()
     {
@@ -262,29 +294,19 @@ public static unsafe partial class QuickGL
         GLFW.Unload();
         AL.Unload();
         ALC.Unload();
+        LibUI.Unload();
 
         glfwLoader?.Dispose();
+        alLoader?.Dispose();
+        libUILoader?.Dispose();
+
+        glLoader = null;
         glfwLoader = null;
+        alLoader = null;
+        libUILoader = null;
+
         GLVersionMajor = GLVersionMinor = 0;
         initialized = false;
         doNotUseGLFW = false;
-        nativeAPILoader = null;
     }
-
-    /// <summary>
-    /// Helper function to get a pointer to stack allocated span's data
-    /// </summary>
-    /// <param name="span">the span to convert</param>
-    /// <typeparam name="T">the type of the span</typeparam>
-    /// <returns>the pointer to the span's data</returns>
-    public static T* ToPtr<T>(Span<T> span) where T : unmanaged => (T*)Unsafe.AsPointer(ref span.GetPinnableReference());
-
-    /// <summary>
-    /// Helper function to get a pointer to stack allocated read only span's data<br/>
-    /// NOTE: Make sure the function accesing the returned pointer does not try to modify it
-    /// </summary>
-    /// <param name="span">the span to convert</param>
-    /// <typeparam name="T">the type of the span</typeparam>
-    /// <returns>the pointer to the span's data</returns>
-    public static T* ToPtr<T>(ReadOnlySpan<T> span) where T : unmanaged => (T*)Unsafe.AsPointer(ref Unsafe.AsRef(in span.GetPinnableReference()));
 }

@@ -26,7 +26,7 @@ using QuickGLNS.Internal;
 namespace QuickGLNS;
 
 /// <summary>
-/// Easy to use, optional, input wrapper for GLFW
+/// Easy to use input wrapper for GLFW
 /// </summary>
 public static unsafe class Input
 {

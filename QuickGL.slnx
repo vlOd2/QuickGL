@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="ExampleApp/ExampleApp.csproj" Id="65fc577d-e005-4b6d-be9a-73140bf7d164" />
   <Project Path="ExampleGame/ExampleGame.csproj" />
   <Project Path="QuickGL/QuickGL.csproj" />
 </Solution>

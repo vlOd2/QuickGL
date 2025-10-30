@@ -24,6 +24,7 @@ using System.Runtime.InteropServices;
 
 namespace QuickGLNS.Internal;
 
+// TODO: Merge all loaders into one common one
 internal class GLFWLoader
 {
     private const string WIN_LIB_NAME = "glfw3.dll";
