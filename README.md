@@ -1,10 +1,13 @@
 # QuickGL
-Straightforward GLFW, OpenGL, OpenAL and LibUI bindings for C# targeting .NET 8<br>
-The main goal is to keep the experience as similar to C/C++ as possible<br>
-This meant exporting the bindings with pointers, so **unsafe code is required**
+Straightforward GLFW, OpenGL and OpenAL bindings for C# targeting .NET 8<br>
 
-> [!WARNING]  
-> The LibUI bindings are currently experimental
+# Bindings
+The bindings are automatically generated based on the official GLFW, AL/ALC headers and OpenGL registry<br>
+You may generate your own custom bindings using `QGLBindingsGen` and replace the contents of the `Bindings` folder
+
+# State
+Bindings are currently exported with pointers, so **unsafe code is required**<br>
+In the future, the bindings will have no unsafe code
 
 # Example
 More information is available on the wiki, but you can get a GLFW window and OpenGL context with just 5 lines of code:
@@ -24,7 +27,3 @@ QuickGL includes some utilities to help you out with repetitive tasks:
 
 >[!NOTE]
 >All of these are optional and you can just use QuickGL for the bindings just fine without them
-
-# Bindings
-The bindings are automatically generated based on the official GLFW, AL/ALC, LibUI headers and OpenGL registry<br>
-You may generate your own custom bindings using `QGLBindingsGen` and replace the contents of the `Bindings` folder

@@ -13,7 +13,7 @@
 
     <ItemGroup>
 		<ProjectReference Include="..\QuickGL\QuickGL.csproj">
-			<Properties>QuickGLBundleGLLib=true;QuickGLBundleLUILib=false</Properties>
+			<Properties>QuickGLBundleLib=true</Properties>
 		</ProjectReference>
     </ItemGroup>
 

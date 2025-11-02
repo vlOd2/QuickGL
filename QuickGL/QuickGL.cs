@@ -31,7 +31,6 @@ public static unsafe partial class QuickGL
 {
     private static GLFWLoader glfwLoader;
     private static OpenALLoader alLoader;
-    private static LibUILoader libUILoader;
     internal static bool initialized;
     internal static bool doNotUseGLFW;
     internal static delegate* unmanaged<byte*, GLFWglproc> glLoader;
@@ -81,7 +80,7 @@ public static unsafe partial class QuickGL
     /// <summary>
     /// Initializes QuickGL for use without GLFW<br/>
     /// You may omit a loader if you do not want to use OpenGL<br/>
-    /// This function is useful when using other windowing libraries or if you want to only use LibUI
+    /// This function is useful when using other windowing libraries
     /// </summary>
     /// <param name="loader">the OpenGL function loader, or null</param>
     /// <param name="gles">is the current context for gles</param>
@@ -138,20 +137,6 @@ public static unsafe partial class QuickGL
         alLoader = new(winLibName, unixLibName);
         AL.Load();
         ALC.Load();
-    }
-
-    /// <summary>
-    /// Loads LibUI functions
-    /// </summary>
-    /// <param name="winLibName">the LibUI library name to use on Windows platforms, null for default</param>
-    /// <param name="unixLibName">the LibUI library name to use on Unix platforms, null for default</param>
-    /// <exception cref="GLException"></exception>
-    public static void LoadLibUI(string winLibName = null, string unixLibName = null)
-    {
-        if (!initialized)
-            throw new GLException("Not initialized");
-        libUILoader = new(winLibName, unixLibName);
-        LibUI.Load();
     }
 
     #region GL context helpers
@@ -272,17 +257,6 @@ public static unsafe partial class QuickGL
         }
         return handle;
     }
-
-    internal static nint GetLibUIProcAddress(string name)
-    {
-        nint handle = libUILoader.GetProcAddress(name);
-        if (handle == nint.Zero)
-        {
-            Console.Error.WriteLine($"[QuickGL] Could not find LibUI method: {name}");
-            return nint.Zero;
-        }
-        return handle;
-    }
     #endregion
 
     /// <summary>
@@ -294,16 +268,13 @@ public static unsafe partial class QuickGL
         GLFW.Unload();
         AL.Unload();
         ALC.Unload();
-        LibUI.Unload();
 
         glfwLoader?.Dispose();
         alLoader?.Dispose();
-        libUILoader?.Dispose();
 
         glLoader = null;
         glfwLoader = null;
         alLoader = null;
-        libUILoader = null;
 
         GLVersionMajor = GLVersionMinor = 0;
         initialized = false;

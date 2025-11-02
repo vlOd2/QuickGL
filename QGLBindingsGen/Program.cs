@@ -1,12 +1,14 @@
 ﻿#define SHOW_TASK_TIMINGS
+//#define ENABLE_LEGACY_LIB_UI
 
-#if SHOW_TASK_TIMINGS
-using System.Diagnostics;
-using System.Text.RegularExpressions;
-
-#endif
 using QGLBindingsGen.CParsing;
 using QGLBindingsGen.GLRegistry;
+#if SHOW_TASK_TIMINGS
+using System.Diagnostics;
+#endif
+#if ENABLE_LEGACY_LIB_UI
+using System.Text.RegularExpressions;
+#endif
 
 namespace QGLBindingsGen;
 
@@ -18,11 +20,15 @@ public static partial class Program
     private const string GL_REGISTRY_URL = "https://raw.githubusercontent.com/KhronosGroup/OpenGL-Registry/refs/heads/main/xml/gl.xml";
     private const string AL_HEADER_URL = "https://raw.githubusercontent.com/kcat/openal-soft/refs/heads/master/include/AL/al.h";
     private const string ALC_HEADER_URL = "https://raw.githubusercontent.com/kcat/openal-soft/refs/heads/master/include/AL/alc.h";
+#if ENABLE_LEGACY_LIB_UI
     private const string LIBUI_HEADER_URL = "https://raw.githubusercontent.com/andlabs/libui/refs/heads/master/ui.h";
+#endif
     private static readonly HttpClient httpClient = new();
 
+#if ENABLE_LEGACY_LIB_UI
     [GeneratedRegex(@"_UI_ENUM\((ui[a-zA-Z0-9_]+?)\) {((.|\s)+?)};")]
     private static partial Regex UIEnumPattern();
+#endif
 
     private static async Task<string[]> GetOrCacheFile(string fileName, string url)
     {
@@ -129,6 +135,7 @@ public static partial class Program
         return ctx;
     }
 
+#if ENABLE_LEGACY_LIB_UI
     private static async Task<CParserContext> ParseLibUIHeader()
     {
         string[] header = await TaskRunner.Run("Downloading LibUI header", GetOrCacheFile("ui.h", LIBUI_HEADER_URL));
@@ -148,6 +155,7 @@ public static partial class Program
         });
         return ctx;
     }
+#endif
 
     private static async Task GenerateHeader(string name, CParserContext ctx, string procAddr)
         => await File.WriteAllTextAsync(Path.Combine(OUT_DIR, $"{name}.cs"), Generator.Generate(ctx, name, BINDINGS_NAMESPACE, procAddr));
@@ -163,8 +171,10 @@ public static partial class Program
         await GenerateHeader("AL", await ParseALHeader(), "QuickGL.GetALProcAddress");
         await GenerateHeader("ALC", await ParseALCHeader(), "QuickGL.GetALProcAddress");
 
+#if ENABLE_LEGACY_LIB_UI
         Logger.Info("Generating bindings for LibUI");
         await GenerateHeader("LibUI", await ParseLibUIHeader(), "QuickGL.GetLibUIProcAddress");
+#endif
 
         Logger.Info("Generating bindings for OpenGL");
         List<GLFeature> features = await ParseGLRegistry(null, ["@/GL_ARB_.*", "@/GL_EXT_.*"]);

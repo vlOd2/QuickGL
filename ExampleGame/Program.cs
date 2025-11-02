@@ -237,7 +237,7 @@ public unsafe class Program
         glBindVertexArray(vao);
 
         glBindBuffer(GL_ARRAY_BUFFER, vbo);
-        glBufferData(GL_ARRAY_BUFFER, data.Length * sizeof(float), QuickGL.ToPtr(data), GL_STATIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, data.Length * sizeof(float), PtrHelper.ToPtr(data), GL_STATIC_DRAW);
         glVertexAttribPointer(0, 3, GL_FLOAT, false, 6 * sizeof(float), (void*)0);
         glEnableVertexAttribArray(0);
         glVertexAttribPointer(1, 3, GL_FLOAT, false, 6 * sizeof(float), (void*)(3 * sizeof(float)));
