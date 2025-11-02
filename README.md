@@ -12,11 +12,11 @@ In the future, the bindings will have no unsafe code
 # Example
 More information is available on the wiki, but you can get a GLFW window and OpenGL context with just 5 lines of code:
 ```
-QuickGL.Init();
+QGL.Init();
 glfwInit();
 nint window = glfwCreateWindow(640, 480, new QGLString("Game"), 0, 0);
 glfwMakeContextCurrent(window);
-QuickGL.LoadGL();
+QGL.LoadGL();
 ```
 
 # Utilities
