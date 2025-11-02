@@ -22,7 +22,7 @@
 
 using System.Runtime.InteropServices;
 
-namespace QuickGLNS.Internal;
+namespace QuickGL.Internal;
 
 // TODO: Merge all loaders into one common one
 internal class OpenALLoader

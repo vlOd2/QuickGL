@@ -21,10 +21,10 @@
 // SOFTWARE.
 
 using System.Collections.Concurrent;
-using QuickGLNS.Bindings;
-using static QuickGLNS.Bindings.GLFW;
+using QuickGL.Bindings;
+using static QuickGL.Bindings.GLFW;
 
-namespace QuickGLNS.Internal;
+namespace QuickGL.Internal;
 
 internal unsafe class Mouse : IMouse
 {

@@ -21,7 +21,7 @@
 // SOFTWARE.
 using System.Runtime.CompilerServices;
 
-namespace QuickGLNS;
+namespace QuickGL;
 
 /// <summary>
 /// Provides utility methods for working with pointers to data in stack-allocated spans

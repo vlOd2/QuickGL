@@ -1,21 +1,22 @@
 ﻿//#define USE_GLES
 
+using QuickGL;
 using System.Numerics;
-using QuickGLNS;
-using QuickGLNS.Bindings;
-using static QuickGLNS.Bindings.GLFW;
+using QuickGL.Bindings;
+using static QuickGL.Bindings.GLFW;
+
 #if USE_GLES
-using static QuickGLNS.Bindings.GLES20;
-using static QuickGLNS.Bindings.GLES30;
+using static QuickGL.Bindings.GLES20;
+using static QuickGL.Bindings.GLES30;
 #else
-using static QuickGLNS.Bindings.GL10;
-using static QuickGLNS.Bindings.GL11;
-using static QuickGLNS.Bindings.GL15;
-using static QuickGLNS.Bindings.GL20;
-using static QuickGLNS.Bindings.GL30;
+using static QuickGL.Bindings.GL10;
+using static QuickGL.Bindings.GL11;
+using static QuickGL.Bindings.GL15;
+using static QuickGL.Bindings.GL20;
+using static QuickGL.Bindings.GL30;
 #endif
 
-namespace ExampleGameNS;
+namespace ExampleGame;
 
 public unsafe class Program
 {
@@ -113,7 +114,7 @@ public unsafe class Program
 
     private void Init()
     {
-        QuickGL.Init();
+        QGL.Init();
         if (glfwInit() == GLFW_FALSE)
             throw new Exception("Failed to initialize GLFW");
 
@@ -136,7 +137,7 @@ public unsafe class Program
         str.Dispose();
 
         glfwMakeContextCurrent(window);
-        QuickGL.LoadGL();
+        QGL.LoadGL();
         Input.Create(window);
         Input.GetMouse(window).Captured = true;
         glfwSwapInterval(0);
@@ -150,9 +151,9 @@ public unsafe class Program
         str = new(glGetString(GL_RENDERER));
         Console.WriteLine($"Renderer: {str}");
         str.Dispose();
-        Console.WriteLine($"QGL parsed version: {QuickGL.GLVersionMajor}.{QuickGL.GLVersionMinor}");
+        Console.WriteLine($"QGL parsed version: {QGL.GLVersionMajor}.{QGL.GLVersionMinor}");
 
-        if (!QuickGL.IsGLVersionAvailable(3, 0))
+        if (!QGL.IsGLVersionAvailable(3, 0))
             throw new Exception("Required OpenGL version is not available");
     }
 
@@ -291,7 +292,7 @@ public unsafe class Program
         glfwDestroyWindow(window);
         glfwTerminate();
         sizeCallback = null;
-        QuickGL.Destroy();
+        QGL.Destroy();
     }
 
     public static void Main(string[] args) => new Program().Run();

@@ -20,14 +20,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+using QuickGL.Internal;
+using QuickGL.Bindings;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
-using QuickGLNS.Bindings;
-using QuickGLNS.Internal;
 
-namespace QuickGLNS;
+namespace QuickGL;
 
-public static unsafe partial class QuickGL
+public static unsafe partial class QGL
 {
     private static GLFWLoader glfwLoader;
     private static OpenALLoader alLoader;

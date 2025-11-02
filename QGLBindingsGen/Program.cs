@@ -15,7 +15,7 @@ namespace QGLBindingsGen;
 public static partial class Program
 {
     private const string OUT_DIR = "BindingsOutput";
-    private const string BINDINGS_NAMESPACE = "QuickGLNS.Bindings";
+    private const string BINDINGS_NAMESPACE = "QuickGL.Bindings";
     private const string GLFW_HEADER_URL = "https://raw.githubusercontent.com/glfw/glfw/refs/heads/master/include/GLFW/glfw3.h";
     private const string GL_REGISTRY_URL = "https://raw.githubusercontent.com/KhronosGroup/OpenGL-Registry/refs/heads/main/xml/gl.xml";
     private const string AL_HEADER_URL = "https://raw.githubusercontent.com/kcat/openal-soft/refs/heads/master/include/AL/al.h";
@@ -46,6 +46,10 @@ public static partial class Program
         return [.. lines];
     }
 
+    private static async Task GenerateHeader(string name, CParserContext ctx, string procAddr)
+        => await File.WriteAllTextAsync(Path.Combine(OUT_DIR, $"{name}.cs"), Generator.Generate(ctx, name, BINDINGS_NAMESPACE, procAddr));
+
+    #region Headers download
     private static async Task<CParserContext> ParseGLFWHeader()
     {
         string[] header = await TaskRunner.Run("Downloading GLFW header", GetOrCacheFile("glfw3.h", GLFW_HEADER_URL));
@@ -156,20 +160,18 @@ public static partial class Program
         return ctx;
     }
 #endif
-
-    private static async Task GenerateHeader(string name, CParserContext ctx, string procAddr)
-        => await File.WriteAllTextAsync(Path.Combine(OUT_DIR, $"{name}.cs"), Generator.Generate(ctx, name, BINDINGS_NAMESPACE, procAddr));
+    #endregion
 
     private static async Task MainAsync()
     {
         Directory.CreateDirectory(OUT_DIR);
 
         Logger.Info("Generating bindings for GLFW");
-        await GenerateHeader("GLFW", await ParseGLFWHeader(), "QuickGL.GetGLFWProcAddress");
+        await GenerateHeader("GLFW", await ParseGLFWHeader(), "QGL.GetGLFWProcAddress");
 
         Logger.Info("Generating bindings for OpenAL");
-        await GenerateHeader("AL", await ParseALHeader(), "QuickGL.GetALProcAddress");
-        await GenerateHeader("ALC", await ParseALCHeader(), "QuickGL.GetALProcAddress");
+        await GenerateHeader("AL", await ParseALHeader(), "QGL.GetALProcAddress");
+        await GenerateHeader("ALC", await ParseALCHeader(), "QGL.GetALProcAddress");
 
 #if ENABLE_LEGACY_LIB_UI
         Logger.Info("Generating bindings for LibUI");

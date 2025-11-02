@@ -23,7 +23,7 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace QuickGLNS;
+namespace QuickGL;
 
 /// <summary>
 /// Convenience class to allow for easy interop with native ASCII strings

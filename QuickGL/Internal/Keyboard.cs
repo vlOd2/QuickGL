@@ -20,13 +20,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-using QuickGLNS.Bindings;
 using System.Collections.Concurrent;
 using System.Runtime.InteropServices;
 using System.Text;
-using static QuickGLNS.Bindings.GLFW;
+using QuickGL.Bindings;
+using static QuickGL.Bindings.GLFW;
 
-namespace QuickGLNS.Internal;
+namespace QuickGL.Internal;
 
 internal unsafe class Keyboard : IKeyboard
 {

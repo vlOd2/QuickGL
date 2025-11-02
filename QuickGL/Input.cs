@@ -19,11 +19,10 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
+using QuickGL.Bindings;
+using QuickGL.Internal;
 
-using QuickGLNS.Bindings;
-using QuickGLNS.Internal;
-
-namespace QuickGLNS;
+namespace QuickGL;
 
 /// <summary>
 /// Easy to use input wrapper for GLFW
@@ -47,9 +46,9 @@ public static unsafe class Input
     /// <exception cref="ArgumentException">if an input system is already assigned</exception>
     public static void Create(GLFWwindow* window)
     {
-        if (!QuickGL.initialized)
+        if (!QGL.initialized)
             throw new GLException("QuickGL not initialized");
-        if (QuickGL.doNotUseGLFW)
+        if (QGL.doNotUseGLFW)
             throw new InvalidOperationException("QuickGL initialized without GLFW");
         if (mouse.ContainsKey((nint)window) && keyboard.ContainsKey((nint)window))
             throw new ArgumentException("Window already has an input system");

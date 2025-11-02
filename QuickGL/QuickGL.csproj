@@ -4,7 +4,6 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>disable</Nullable>
-        <RootNamespace>QuickGLNS</RootNamespace>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<PublishAot>true</PublishAot>
 		<IsAotCompatible>true</IsAotCompatible>
@@ -15,10 +14,6 @@
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 			<TargetPath>glfw3.dll</TargetPath>
 		</ContentWithTargetPath>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Bindings\" />
 	</ItemGroup>
 
 </Project>
