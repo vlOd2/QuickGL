@@ -27,4 +27,4 @@ QuickGL includes some utilities to help you out with repetitive tasks:
 
 # Bindings
 The bindings are automatically generated based on the official GLFW, AL/ALC, LibUI headers and OpenGL registry<br>
-You may generate your own custom bindings using [QGLBindingsGen](https://github.com/vlOd2/QGLBindingsGen)
+You may generate your own custom bindings using `QGLBindingsGen` and replace the contents of the `Bindings` folder
