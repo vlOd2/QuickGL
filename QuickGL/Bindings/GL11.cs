@@ -40,7 +40,7 @@ public static unsafe class GL11
     public const int GL_RGBA16 = 0x0000805B;
     public const int GL_CLIENT_PIXEL_STORE_BIT = 0x00000001;
     public const int GL_CLIENT_VERTEX_ARRAY_BIT = 0x00000002;
-    public const uint GL_CLIENT_ALL_ATTRIB_BITS = 0xFFFFFFFF;
+    public const uint GL_CLIENT_ALL_ATTRIB_BITS = 0xFFFFFFFFU;
     public const int GL_VERTEX_ARRAY_POINTER = 0x0000808E;
     public const int GL_NORMAL_ARRAY_POINTER = 0x0000808F;
     public const int GL_COLOR_ARRAY_POINTER = 0x00008090;

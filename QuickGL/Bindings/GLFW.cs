@@ -442,7 +442,7 @@ public static unsafe class GLFW
     public const int GLFW_ANGLE_PLATFORM_TYPE_METAL = 0x00037008;
     public const int GLFW_WAYLAND_PREFER_LIBDECOR = 0x00038001;
     public const int GLFW_WAYLAND_DISABLE_LIBDECOR = 0x00038002;
-    public const uint GLFW_ANY_POSITION = 0x80000000;
+    public const uint GLFW_ANY_POSITION = 0x80000000U;
     public const int GLFW_ARROW_CURSOR = 0x00036001;
     public const int GLFW_IBEAM_CURSOR = 0x00036002;
     public const int GLFW_CROSSHAIR_CURSOR = 0x00036003;

@@ -68,7 +68,7 @@ public static unsafe class GL31
     public const int GL_UNIFORM_BLOCK_REFERENCED_BY_VERTEX_SHADER = 0x00008A44;
     public const int GL_UNIFORM_BLOCK_REFERENCED_BY_GEOMETRY_SHADER = 0x00008A45;
     public const int GL_UNIFORM_BLOCK_REFERENCED_BY_FRAGMENT_SHADER = 0x00008A46;
-    public const uint GL_INVALID_INDEX = 0xFFFFFFFF;
+    public const uint GL_INVALID_INDEX = 0xFFFFFFFFU;
     #endregion
 
     #region Function pointers

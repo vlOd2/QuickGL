@@ -49,7 +49,7 @@ public static unsafe class GL32
     public const int GL_TIMEOUT_EXPIRED = 0x0000911B;
     public const int GL_CONDITION_SATISFIED = 0x0000911C;
     public const int GL_WAIT_FAILED = 0x0000911D;
-    public const ulong GL_TIMEOUT_IGNORED = 0xFFFFFFFFFFFFFFFF;
+    public const ulong GL_TIMEOUT_IGNORED = 0xFFFFFFFFFFFFFFFFUL;
     public const int GL_SYNC_FLUSH_COMMANDS_BIT = 0x00000001;
     public const int GL_SAMPLE_POSITION = 0x00008E50;
     public const int GL_SAMPLE_MASK = 0x00008E51;

@@ -62,7 +62,7 @@ public static unsafe class GLEXTshaderimageloadstore
     public const int GL_FRAMEBUFFER_BARRIER_BIT_EXT = 0x00000400;
     public const int GL_TRANSFORM_FEEDBACK_BARRIER_BIT_EXT = 0x00000800;
     public const int GL_ATOMIC_COUNTER_BARRIER_BIT_EXT = 0x00001000;
-    public const uint GL_ALL_BARRIER_BITS_EXT = 0xFFFFFFFF;
+    public const uint GL_ALL_BARRIER_BITS_EXT = 0xFFFFFFFFU;
     #endregion
 
     #region Function pointers

@@ -198,7 +198,7 @@ public static unsafe class GL10
     public const int GL_LIST_BIT = 0x00020000;
     public const int GL_TEXTURE_BIT = 0x00040000;
     public const int GL_SCISSOR_BIT = 0x00080000;
-    public const uint GL_ALL_ATTRIB_BITS = 0xFFFFFFFF;
+    public const uint GL_ALL_ATTRIB_BITS = 0xFFFFFFFFU;
     public const int GL_QUAD_STRIP = 0x00000008;
     public const int GL_POLYGON = 0x00000009;
     public const int GL_ACCUM = 0x00000100;

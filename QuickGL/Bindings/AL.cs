@@ -16,6 +16,15 @@ public unsafe delegate void LPALDISABLE(int capability);
 public unsafe delegate bool LPALISENABLED(int capability);
 
 [UnmanagedFunctionPointer(CallingConvention.Winapi)]
+public unsafe delegate void LPALDOPPLERFACTOR(float value);
+
+[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+public unsafe delegate void LPALDOPPLERVELOCITY(float value);
+
+[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+public unsafe delegate void LPALDISTANCEMODEL(int distanceModel);
+
+[UnmanagedFunctionPointer(CallingConvention.Winapi)]
 public unsafe delegate byte* LPALGETSTRING(int param);
 
 [UnmanagedFunctionPointer(CallingConvention.Winapi)]
@@ -136,18 +145,6 @@ public unsafe delegate void LPALGETSOURCE3I(uint source, int param, int* value1,
 public unsafe delegate void LPALGETSOURCEIV(uint source, int param, int* values);
 
 [UnmanagedFunctionPointer(CallingConvention.Winapi)]
-public unsafe delegate void LPALSOURCEPLAYV(int n, uint* sources);
-
-[UnmanagedFunctionPointer(CallingConvention.Winapi)]
-public unsafe delegate void LPALSOURCESTOPV(int n, uint* sources);
-
-[UnmanagedFunctionPointer(CallingConvention.Winapi)]
-public unsafe delegate void LPALSOURCEREWINDV(int n, uint* sources);
-
-[UnmanagedFunctionPointer(CallingConvention.Winapi)]
-public unsafe delegate void LPALSOURCEPAUSEV(int n, uint* sources);
-
-[UnmanagedFunctionPointer(CallingConvention.Winapi)]
 public unsafe delegate void LPALSOURCEPLAY(uint source);
 
 [UnmanagedFunctionPointer(CallingConvention.Winapi)]
@@ -158,6 +155,18 @@ public unsafe delegate void LPALSOURCEREWIND(uint source);
 
 [UnmanagedFunctionPointer(CallingConvention.Winapi)]
 public unsafe delegate void LPALSOURCEPAUSE(uint source);
+
+[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+public unsafe delegate void LPALSOURCEPLAYV(int n, uint* sources);
+
+[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+public unsafe delegate void LPALSOURCESTOPV(int n, uint* sources);
+
+[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+public unsafe delegate void LPALSOURCEREWINDV(int n, uint* sources);
+
+[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+public unsafe delegate void LPALSOURCEPAUSEV(int n, uint* sources);
 
 [UnmanagedFunctionPointer(CallingConvention.Winapi)]
 public unsafe delegate void LPALSOURCEQUEUEBUFFERS(uint source, int nb, uint* buffers);
@@ -214,25 +223,14 @@ public unsafe delegate void LPALGETBUFFER3I(uint buffer, int param, int* value1,
 public unsafe delegate void LPALGETBUFFERIV(uint buffer, int param, int* values);
 
 [UnmanagedFunctionPointer(CallingConvention.Winapi)]
-public unsafe delegate void LPALDOPPLERFACTOR(float value);
-
-[UnmanagedFunctionPointer(CallingConvention.Winapi)]
-public unsafe delegate void LPALDOPPLERVELOCITY(float value);
-
-[UnmanagedFunctionPointer(CallingConvention.Winapi)]
 public unsafe delegate void LPALSPEEDOFSOUND(float value);
-
-[UnmanagedFunctionPointer(CallingConvention.Winapi)]
-public unsafe delegate void LPALDISTANCEMODEL(int distanceModel);
 
 #endregion
 
 public static unsafe class AL
 {
     #region Constants
-    public const int AL_INVALID = -1;
-    public const uint AL_ILLEGAL_ENUM = AL_INVALID_ENUM;
-    public const uint AL_ILLEGAL_COMMAND = AL_INVALID_OPERATION;
+    public const int AL_VERSION_1_0 = 0x00000001;
     public const int AL_NONE = 0x00000000;
     public const int AL_FALSE = 0x00000000;
     public const int AL_TRUE = 0x00000001;
@@ -260,20 +258,11 @@ public static unsafe class AL
     public const int AL_ROLLOFF_FACTOR = 0x00001021;
     public const int AL_CONE_OUTER_GAIN = 0x00001022;
     public const int AL_MAX_DISTANCE = 0x00001023;
-    public const int AL_SEC_OFFSET = 0x00001024;
-    public const int AL_SAMPLE_OFFSET = 0x00001025;
-    public const int AL_BYTE_OFFSET = 0x00001026;
-    public const int AL_SOURCE_TYPE = 0x00001027;
-    public const int AL_STATIC = 0x00001028;
-    public const int AL_STREAMING = 0x00001029;
-    public const int AL_UNDETERMINED = 0x00001030;
     public const int AL_FORMAT_MONO8 = 0x00001100;
     public const int AL_FORMAT_MONO16 = 0x00001101;
     public const int AL_FORMAT_STEREO8 = 0x00001102;
     public const int AL_FORMAT_STEREO16 = 0x00001103;
     public const int AL_FREQUENCY = 0x00002001;
-    public const int AL_BITS = 0x00002002;
-    public const int AL_CHANNELS = 0x00002003;
     public const int AL_SIZE = 0x00002004;
     public const int AL_UNUSED = 0x00002010;
     public const int AL_PENDING = 0x00002011;
@@ -290,10 +279,23 @@ public static unsafe class AL
     public const int AL_EXTENSIONS = 0x0000B004;
     public const int AL_DOPPLER_FACTOR = 0x0000C000;
     public const int AL_DOPPLER_VELOCITY = 0x0000C001;
-    public const int AL_SPEED_OF_SOUND = 0x0000C003;
     public const int AL_DISTANCE_MODEL = 0x0000D000;
+    public const int AL_INVALID = -1;
+    public const uint AL_ILLEGAL_ENUM = AL_INVALID_ENUM;
+    public const uint AL_ILLEGAL_COMMAND = AL_INVALID_OPERATION;
     public const int AL_INVERSE_DISTANCE = 0x0000D001;
     public const int AL_INVERSE_DISTANCE_CLAMPED = 0x0000D002;
+    public const int AL_VERSION_1_1 = 0x00000001;
+    public const int AL_SEC_OFFSET = 0x00001024;
+    public const int AL_SAMPLE_OFFSET = 0x00001025;
+    public const int AL_BYTE_OFFSET = 0x00001026;
+    public const int AL_SOURCE_TYPE = 0x00001027;
+    public const int AL_STATIC = 0x00001028;
+    public const int AL_STREAMING = 0x00001029;
+    public const int AL_UNDETERMINED = 0x00001030;
+    public const int AL_BITS = 0x00002002;
+    public const int AL_CHANNELS = 0x00002003;
+    public const int AL_SPEED_OF_SOUND = 0x0000C003;
     public const int AL_LINEAR_DISTANCE = 0x0000D003;
     public const int AL_LINEAR_DISTANCE_CLAMPED = 0x0000D004;
     public const int AL_EXPONENT_DISTANCE = 0x0000D005;
@@ -306,7 +308,6 @@ public static unsafe class AL
     internal static delegate* unmanaged<int, bool> _alIsEnabled = null;
     internal static delegate* unmanaged<float, void> _alDopplerFactor = null;
     internal static delegate* unmanaged<float, void> _alDopplerVelocity = null;
-    internal static delegate* unmanaged<float, void> _alSpeedOfSound = null;
     internal static delegate* unmanaged<int, void> _alDistanceModel = null;
     internal static delegate* unmanaged<int, byte*> _alGetString = null;
     internal static delegate* unmanaged<int, bool*, void> _alGetBooleanv = null;
@@ -374,6 +375,7 @@ public static unsafe class AL
     internal static delegate* unmanaged<uint, int, int*, void> _alGetBufferi = null;
     internal static delegate* unmanaged<uint, int, int*, int*, int*, void> _alGetBuffer3i = null;
     internal static delegate* unmanaged<uint, int, int*, void> _alGetBufferiv = null;
+    internal static delegate* unmanaged<float, void> _alSpeedOfSound = null;
 
     internal static void Load()
     {
@@ -382,7 +384,6 @@ public static unsafe class AL
         _alIsEnabled = (delegate* unmanaged<int, bool>)QuickGL.GetALProcAddress("alIsEnabled");
         _alDopplerFactor = (delegate* unmanaged<float, void>)QuickGL.GetALProcAddress("alDopplerFactor");
         _alDopplerVelocity = (delegate* unmanaged<float, void>)QuickGL.GetALProcAddress("alDopplerVelocity");
-        _alSpeedOfSound = (delegate* unmanaged<float, void>)QuickGL.GetALProcAddress("alSpeedOfSound");
         _alDistanceModel = (delegate* unmanaged<int, void>)QuickGL.GetALProcAddress("alDistanceModel");
         _alGetString = (delegate* unmanaged<int, byte*>)QuickGL.GetALProcAddress("alGetString");
         _alGetBooleanv = (delegate* unmanaged<int, bool*, void>)QuickGL.GetALProcAddress("alGetBooleanv");
@@ -450,6 +451,7 @@ public static unsafe class AL
         _alGetBufferi = (delegate* unmanaged<uint, int, int*, void>)QuickGL.GetALProcAddress("alGetBufferi");
         _alGetBuffer3i = (delegate* unmanaged<uint, int, int*, int*, int*, void>)QuickGL.GetALProcAddress("alGetBuffer3i");
         _alGetBufferiv = (delegate* unmanaged<uint, int, int*, void>)QuickGL.GetALProcAddress("alGetBufferiv");
+        _alSpeedOfSound = (delegate* unmanaged<float, void>)QuickGL.GetALProcAddress("alSpeedOfSound");
     }
 
     internal static void Unload()
@@ -459,7 +461,6 @@ public static unsafe class AL
         _alIsEnabled = null;
         _alDopplerFactor = null;
         _alDopplerVelocity = null;
-        _alSpeedOfSound = null;
         _alDistanceModel = null;
         _alGetString = null;
         _alGetBooleanv = null;
@@ -527,6 +528,7 @@ public static unsafe class AL
         _alGetBufferi = null;
         _alGetBuffer3i = null;
         _alGetBufferiv = null;
+        _alSpeedOfSound = null;
     }
     #endregion
 
@@ -536,7 +538,6 @@ public static unsafe class AL
     public static bool alIsEnabled(int capability) { QGLFeature.VerifyFunc((nint)_alIsEnabled); return _alIsEnabled(capability); }
     public static void alDopplerFactor(float value) { QGLFeature.VerifyFunc((nint)_alDopplerFactor); _alDopplerFactor(value); }
     public static void alDopplerVelocity(float value) { QGLFeature.VerifyFunc((nint)_alDopplerVelocity); _alDopplerVelocity(value); }
-    public static void alSpeedOfSound(float value) { QGLFeature.VerifyFunc((nint)_alSpeedOfSound); _alSpeedOfSound(value); }
     public static void alDistanceModel(int distanceModel) { QGLFeature.VerifyFunc((nint)_alDistanceModel); _alDistanceModel(distanceModel); }
     public static byte* alGetString(int param) { QGLFeature.VerifyFunc((nint)_alGetString); return _alGetString(param); }
     public static void alGetBooleanv(int param, bool* values) { QGLFeature.VerifyFunc((nint)_alGetBooleanv); _alGetBooleanv(param, values); }
@@ -604,5 +605,6 @@ public static unsafe class AL
     public static void alGetBufferi(uint buffer, int param, int* value) { QGLFeature.VerifyFunc((nint)_alGetBufferi); _alGetBufferi(buffer, param, value); }
     public static void alGetBuffer3i(uint buffer, int param, int* value1, int* value2, int* value3) { QGLFeature.VerifyFunc((nint)_alGetBuffer3i); _alGetBuffer3i(buffer, param, value1, value2, value3); }
     public static void alGetBufferiv(uint buffer, int param, int* values) { QGLFeature.VerifyFunc((nint)_alGetBufferiv); _alGetBufferiv(buffer, param, values); }
+    public static void alSpeedOfSound(float value) { QGLFeature.VerifyFunc((nint)_alSpeedOfSound); _alSpeedOfSound(value); }
     #endregion
 }

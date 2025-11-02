@@ -66,7 +66,7 @@ public static unsafe class GLES31
     public const int GL_LOCATION = 0x0000930E;
     public const int GL_VERTEX_SHADER_BIT = 0x00000001;
     public const int GL_FRAGMENT_SHADER_BIT = 0x00000002;
-    public const uint GL_ALL_SHADER_BITS = 0xFFFFFFFF;
+    public const uint GL_ALL_SHADER_BITS = 0xFFFFFFFFU;
     public const int GL_PROGRAM_SEPARABLE = 0x00008258;
     public const int GL_ACTIVE_PROGRAM = 0x00008259;
     public const int GL_PROGRAM_PIPELINE_BINDING = 0x0000825A;
@@ -105,7 +105,7 @@ public static unsafe class GLES31
     public const int GL_FRAMEBUFFER_BARRIER_BIT = 0x00000400;
     public const int GL_TRANSFORM_FEEDBACK_BARRIER_BIT = 0x00000800;
     public const int GL_ATOMIC_COUNTER_BARRIER_BIT = 0x00001000;
-    public const uint GL_ALL_BARRIER_BITS = 0xFFFFFFFF;
+    public const uint GL_ALL_BARRIER_BITS = 0xFFFFFFFFU;
     public const int GL_IMAGE_2D = 0x0000904D;
     public const int GL_IMAGE_3D = 0x0000904E;
     public const int GL_IMAGE_CUBE = 0x00009050;

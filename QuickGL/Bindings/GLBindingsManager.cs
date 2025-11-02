@@ -280,6 +280,7 @@ public static unsafe class GLBindingsManager
         if (QuickGL.IsFeatureSupported(GLEXTmemoryobject.FeatureInfo)) GLEXTmemoryobject.Load();
         if (QuickGL.IsFeatureSupported(GLEXTmemoryobjectfd.FeatureInfo)) GLEXTmemoryobjectfd.Load();
         if (QuickGL.IsFeatureSupported(GLEXTmemoryobjectwin32.FeatureInfo)) GLEXTmemoryobjectwin32.Load();
+        if (QuickGL.IsFeatureSupported(GLEXTmeshshader.FeatureInfo)) GLEXTmeshshader.Load();
         if (QuickGL.IsFeatureSupported(GLEXTmiscattribute.FeatureInfo)) GLEXTmiscattribute.Load();
         if (QuickGL.IsFeatureSupported(GLEXTmultidrawarrays.FeatureInfo)) GLEXTmultidrawarrays.Load();
         if (QuickGL.IsFeatureSupported(GLEXTmultidrawindirect.FeatureInfo)) GLEXTmultidrawindirect.Load();
@@ -334,6 +335,7 @@ public static unsafe class GLBindingsManager
         if (QuickGL.IsFeatureSupported(GLEXTshaderpixellocalstorage2.FeatureInfo)) GLEXTshaderpixellocalstorage2.Load();
         if (QuickGL.IsFeatureSupported(GLEXTshadersamplesidentical.FeatureInfo)) GLEXTshadersamplesidentical.Load();
         if (QuickGL.IsFeatureSupported(GLEXTshadertexturelod.FeatureInfo)) GLEXTshadertexturelod.Load();
+        if (QuickGL.IsFeatureSupported(GLEXTshadertexturesamples.FeatureInfo)) GLEXTshadertexturesamples.Load();
         if (QuickGL.IsFeatureSupported(GLEXTshadowfuncs.FeatureInfo)) GLEXTshadowfuncs.Load();
         if (QuickGL.IsFeatureSupported(GLEXTshadowsamplers.FeatureInfo)) GLEXTshadowsamplers.Load();
         if (QuickGL.IsFeatureSupported(GLEXTsharedtexturepalette.FeatureInfo)) GLEXTsharedtexturepalette.Load();
@@ -673,6 +675,7 @@ public static unsafe class GLBindingsManager
         GLEXTmemoryobject.Unload();
         GLEXTmemoryobjectfd.Unload();
         GLEXTmemoryobjectwin32.Unload();
+        GLEXTmeshshader.Unload();
         GLEXTmiscattribute.Unload();
         GLEXTmultidrawarrays.Unload();
         GLEXTmultidrawindirect.Unload();
@@ -727,6 +730,7 @@ public static unsafe class GLBindingsManager
         GLEXTshaderpixellocalstorage2.Unload();
         GLEXTshadersamplesidentical.Unload();
         GLEXTshadertexturelod.Unload();
+        GLEXTshadertexturesamples.Unload();
         GLEXTshadowfuncs.Unload();
         GLEXTshadowsamplers.Unload();
         GLEXTsharedtexturepalette.Unload();

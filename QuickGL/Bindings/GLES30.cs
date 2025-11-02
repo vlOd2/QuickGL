@@ -277,7 +277,7 @@ public static unsafe class GLES30
     public const int GL_UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES = 0x00008A43;
     public const int GL_UNIFORM_BLOCK_REFERENCED_BY_VERTEX_SHADER = 0x00008A44;
     public const int GL_UNIFORM_BLOCK_REFERENCED_BY_FRAGMENT_SHADER = 0x00008A46;
-    public const uint GL_INVALID_INDEX = 0xFFFFFFFF;
+    public const uint GL_INVALID_INDEX = 0xFFFFFFFFU;
     public const int GL_MAX_VERTEX_OUTPUT_COMPONENTS = 0x00009122;
     public const int GL_MAX_FRAGMENT_INPUT_COMPONENTS = 0x00009125;
     public const int GL_MAX_SERVER_WAIT_TIMEOUT = 0x00009111;
@@ -294,7 +294,7 @@ public static unsafe class GLES30
     public const int GL_CONDITION_SATISFIED = 0x0000911C;
     public const int GL_WAIT_FAILED = 0x0000911D;
     public const int GL_SYNC_FLUSH_COMMANDS_BIT = 0x00000001;
-    public const ulong GL_TIMEOUT_IGNORED = 0xFFFFFFFFFFFFFFFF;
+    public const ulong GL_TIMEOUT_IGNORED = 0xFFFFFFFFFFFFFFFFUL;
     public const int GL_VERTEX_ATTRIB_ARRAY_DIVISOR = 0x000088FE;
     public const int GL_ANY_SAMPLES_PASSED = 0x00008C2F;
     public const int GL_ANY_SAMPLES_PASSED_CONSERVATIVE = 0x00008D6A;

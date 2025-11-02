@@ -116,18 +116,34 @@ internal static class Generator
         foreach (CConstant cconst in ctx.Constants)
         {
             string val = cconst.Value;
-            if (cconst.CType.PointerCount == 0)
+            bool isNumerical = char.IsAsciiDigit(val[0]) || (val[0] == '-' && val.Length > 1 && char.IsAsciiDigit(val[1]));
+            if (cconst.CType.PointerCount == 0 && isNumerical)
             {
                 if (cconst.CType.Name == "float" && !val.ToLower().EndsWith('f') && val.Contains('.'))
+                {
                     val += "F";
+                    Logger.Info($"Appended suffix to float constant {cconst.Name}: {val}");
+                }
                 else if (cconst.CType.Name == "double" && !val.ToLower().EndsWith('d') && val.Contains('.'))
+                {
                     val += "D";
+                    Logger.Info($"Appended suffix to double constant {cconst.Name}: {val}");
+                }
                 else if (cconst.CType.Name == "uint" && !val.ToLower().EndsWith('u'))
+                {
                     val += "U";
+                    Logger.Info($"Appended suffix to uint constant {cconst.Name}: {val}");
+                }
                 else if (cconst.CType.Name == "long" && !val.ToLower().EndsWith('l'))
+                {
                     val += "L";
+                    Logger.Info($"Appended suffix to long constant {cconst.Name}: {val}");
+                }
                 else if (cconst.CType.Name == "ulong" && !val.ToLower().EndsWith("ul"))
+                {
                     val += "UL";
+                    Logger.Info($"Appended suffix to ulong constant {cconst.Name}: {val}");
+                }
             }
             builder.AppendLine($"    public const {cconst.CType} {cconst.Name} = {val};");
         }

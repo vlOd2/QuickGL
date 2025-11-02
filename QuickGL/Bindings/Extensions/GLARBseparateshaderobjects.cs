@@ -13,7 +13,7 @@ public static unsafe class GLARBseparateshaderobjects
     public const int GL_GEOMETRY_SHADER_BIT = 0x00000004;
     public const int GL_TESS_CONTROL_SHADER_BIT = 0x00000008;
     public const int GL_TESS_EVALUATION_SHADER_BIT = 0x00000010;
-    public const uint GL_ALL_SHADER_BITS = 0xFFFFFFFF;
+    public const uint GL_ALL_SHADER_BITS = 0xFFFFFFFFU;
     public const int GL_PROGRAM_SEPARABLE = 0x00008258;
     public const int GL_ACTIVE_PROGRAM = 0x00008259;
     public const int GL_PROGRAM_PIPELINE_BINDING = 0x0000825A;

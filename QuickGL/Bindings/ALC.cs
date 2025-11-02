@@ -75,6 +75,7 @@ public unsafe delegate void LPALCCAPTURESAMPLES(ALCdevice* device, void* buffer,
 public static unsafe class ALC
 {
     #region Constants
+    public const int ALC_VERSION_1_0 = 0x00000001;
     public const int ALC_INVALID = 0x00000000;
     public const int ALC_VERSION_0_1 = 0x00000001;
     public const int ALC_FALSE = 0x00000000;
@@ -82,8 +83,6 @@ public static unsafe class ALC
     public const int ALC_FREQUENCY = 0x00001007;
     public const int ALC_REFRESH = 0x00001008;
     public const int ALC_SYNC = 0x00001009;
-    public const int ALC_MONO_SOURCES = 0x00001010;
-    public const int ALC_STEREO_SOURCES = 0x00001011;
     public const int ALC_NO_ERROR = 0x00000000;
     public const int ALC_INVALID_DEVICE = 0x0000A001;
     public const int ALC_INVALID_CONTEXT = 0x0000A002;
@@ -97,6 +96,9 @@ public static unsafe class ALC
     public const int ALC_DEFAULT_DEVICE_SPECIFIER = 0x00001004;
     public const int ALC_DEVICE_SPECIFIER = 0x00001005;
     public const int ALC_EXTENSIONS = 0x00001006;
+    public const int ALC_VERSION_1_1 = 0x00000001;
+    public const int ALC_MONO_SOURCES = 0x00001010;
+    public const int ALC_STEREO_SOURCES = 0x00001011;
     public const int ALC_EXT_CAPTURE = 0x00000001;
     public const int ALC_CAPTURE_DEVICE_SPECIFIER = 0x00000310;
     public const int ALC_CAPTURE_DEFAULT_DEVICE_SPECIFIER = 0x00000311;
@@ -113,10 +115,12 @@ public static unsafe class ALC
     internal static delegate* unmanaged<ALCcontext*, void> _alcSuspendContext = null;
     internal static delegate* unmanaged<ALCcontext*, void> _alcDestroyContext = null;
     internal static delegate* unmanaged<ALCcontext*> _alcGetCurrentContext = null;
+    internal static delegate* unmanaged<ALCcontext*, ALCdevice*> _alcGetContextsDevice = null;
     internal static delegate* unmanaged<byte*, ALCdevice*> _alcOpenDevice = null;
     internal static delegate* unmanaged<ALCdevice*, bool> _alcCloseDevice = null;
     internal static delegate* unmanaged<ALCdevice*, int> _alcGetError = null;
     internal static delegate* unmanaged<ALCdevice*, byte*, bool> _alcIsExtensionPresent = null;
+    internal static delegate* unmanaged<ALCdevice*, byte*, void*> _alcGetProcAddress = null;
     internal static delegate* unmanaged<ALCdevice*, byte*, int> _alcGetEnumValue = null;
     internal static delegate* unmanaged<ALCdevice*, int, byte*> _alcGetString = null;
     internal static delegate* unmanaged<ALCdevice*, int, int, int*, void> _alcGetIntegerv = null;
@@ -134,10 +138,12 @@ public static unsafe class ALC
         _alcSuspendContext = (delegate* unmanaged<ALCcontext*, void>)QuickGL.GetALProcAddress("alcSuspendContext");
         _alcDestroyContext = (delegate* unmanaged<ALCcontext*, void>)QuickGL.GetALProcAddress("alcDestroyContext");
         _alcGetCurrentContext = (delegate* unmanaged<ALCcontext*>)QuickGL.GetALProcAddress("alcGetCurrentContext");
+        _alcGetContextsDevice = (delegate* unmanaged<ALCcontext*, ALCdevice*>)QuickGL.GetALProcAddress("alcGetContextsDevice");
         _alcOpenDevice = (delegate* unmanaged<byte*, ALCdevice*>)QuickGL.GetALProcAddress("alcOpenDevice");
         _alcCloseDevice = (delegate* unmanaged<ALCdevice*, bool>)QuickGL.GetALProcAddress("alcCloseDevice");
         _alcGetError = (delegate* unmanaged<ALCdevice*, int>)QuickGL.GetALProcAddress("alcGetError");
         _alcIsExtensionPresent = (delegate* unmanaged<ALCdevice*, byte*, bool>)QuickGL.GetALProcAddress("alcIsExtensionPresent");
+        _alcGetProcAddress = (delegate* unmanaged<ALCdevice*, byte*, void*>)QuickGL.GetALProcAddress("alcGetProcAddress");
         _alcGetEnumValue = (delegate* unmanaged<ALCdevice*, byte*, int>)QuickGL.GetALProcAddress("alcGetEnumValue");
         _alcGetString = (delegate* unmanaged<ALCdevice*, int, byte*>)QuickGL.GetALProcAddress("alcGetString");
         _alcGetIntegerv = (delegate* unmanaged<ALCdevice*, int, int, int*, void>)QuickGL.GetALProcAddress("alcGetIntegerv");
@@ -156,10 +162,12 @@ public static unsafe class ALC
         _alcSuspendContext = null;
         _alcDestroyContext = null;
         _alcGetCurrentContext = null;
+        _alcGetContextsDevice = null;
         _alcOpenDevice = null;
         _alcCloseDevice = null;
         _alcGetError = null;
         _alcIsExtensionPresent = null;
+        _alcGetProcAddress = null;
         _alcGetEnumValue = null;
         _alcGetString = null;
         _alcGetIntegerv = null;
@@ -178,10 +186,12 @@ public static unsafe class ALC
     public static void alcSuspendContext(ALCcontext* context) { QGLFeature.VerifyFunc((nint)_alcSuspendContext); _alcSuspendContext(context); }
     public static void alcDestroyContext(ALCcontext* context) { QGLFeature.VerifyFunc((nint)_alcDestroyContext); _alcDestroyContext(context); }
     public static ALCcontext* alcGetCurrentContext() { QGLFeature.VerifyFunc((nint)_alcGetCurrentContext); return _alcGetCurrentContext(); }
+    public static ALCdevice* alcGetContextsDevice(ALCcontext* context) { QGLFeature.VerifyFunc((nint)_alcGetContextsDevice); return _alcGetContextsDevice(context); }
     public static ALCdevice* alcOpenDevice(byte* devicename) { QGLFeature.VerifyFunc((nint)_alcOpenDevice); return _alcOpenDevice(devicename); }
     public static bool alcCloseDevice(ALCdevice* device) { QGLFeature.VerifyFunc((nint)_alcCloseDevice); return _alcCloseDevice(device); }
     public static int alcGetError(ALCdevice* device) { QGLFeature.VerifyFunc((nint)_alcGetError); return _alcGetError(device); }
     public static bool alcIsExtensionPresent(ALCdevice* device, byte* extname) { QGLFeature.VerifyFunc((nint)_alcIsExtensionPresent); return _alcIsExtensionPresent(device, extname); }
+    public static void* alcGetProcAddress(ALCdevice* device, byte* funcname) { QGLFeature.VerifyFunc((nint)_alcGetProcAddress); return _alcGetProcAddress(device, funcname); }
     public static int alcGetEnumValue(ALCdevice* device, byte* enumname) { QGLFeature.VerifyFunc((nint)_alcGetEnumValue); return _alcGetEnumValue(device, enumname); }
     public static byte* alcGetString(ALCdevice* device, int param) { QGLFeature.VerifyFunc((nint)_alcGetString); return _alcGetString(device, param); }
     public static void alcGetIntegerv(ALCdevice* device, int param, int size, int* values) { QGLFeature.VerifyFunc((nint)_alcGetIntegerv); _alcGetIntegerv(device, param, size, values); }

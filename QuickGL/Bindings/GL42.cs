@@ -63,7 +63,7 @@ public static unsafe class GL42
     public const int GL_FRAMEBUFFER_BARRIER_BIT = 0x00000400;
     public const int GL_TRANSFORM_FEEDBACK_BARRIER_BIT = 0x00000800;
     public const int GL_ATOMIC_COUNTER_BARRIER_BIT = 0x00001000;
-    public const uint GL_ALL_BARRIER_BITS = 0xFFFFFFFF;
+    public const uint GL_ALL_BARRIER_BITS = 0xFFFFFFFFU;
     public const int GL_MAX_IMAGE_UNITS = 0x00008F38;
     public const int GL_MAX_COMBINED_IMAGE_UNITS_AND_FRAGMENT_OUTPUTS = 0x00008F39;
     public const int GL_IMAGE_BINDING_NAME = 0x00008F3A;

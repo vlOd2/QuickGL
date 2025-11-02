@@ -34,6 +34,7 @@ public static unsafe class GLEXTfragmentshadingrate
     public const int GL_FRAGMENT_SHADING_RATE_WITH_SAMPLE_MASK_SUPPORTED_EXT = 0x000096DE;
     public const int GL_FRAGMENT_SHADING_RATE_ATTACHMENT_WITH_DEFAULT_FRAMEBUFFER_SUPPORTED_EXT = 0x000096DF;
     public const int GL_FRAGMENT_SHADING_RATE_NON_TRIVIAL_COMBINERS_SUPPORTED_EXT = 0x00008F6F;
+    public const int GL_FRAGMENT_SHADING_RATE_PRIMITIVE_RATE_WITH_MULTI_VIEWPORT_SUPPORTED_EXT = 0x00009780;
     #endregion
 
     #region Function pointers
@@ -66,5 +67,5 @@ public static unsafe class GLEXTfragmentshadingrate
     public static void glFramebufferShadingRateEXT(uint target, uint attachment, uint texture, int baseLayer, int numLayers, int texelWidth, int texelHeight) { QGLFeature.VerifyFunc((nint)_glFramebufferShadingRateEXT); _glFramebufferShadingRateEXT(target, attachment, texture, baseLayer, numLayers, texelWidth, texelHeight); }
     #endregion
 
-    internal static QGLFeature FeatureInfo => new("GL_EXT_fragment_shading_rate", true, true);
+    internal static QGLFeature FeatureInfo => new("GL_EXT_fragment_shading_rate", true, false);
 }

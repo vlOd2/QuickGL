@@ -11,7 +11,7 @@ public static unsafe class GLEXTseparateshaderobjects
     public const int GL_ACTIVE_PROGRAM_EXT = 0x00008259;
     public const int GL_VERTEX_SHADER_BIT_EXT = 0x00000001;
     public const int GL_FRAGMENT_SHADER_BIT_EXT = 0x00000002;
-    public const uint GL_ALL_SHADER_BITS_EXT = 0xFFFFFFFF;
+    public const uint GL_ALL_SHADER_BITS_EXT = 0xFFFFFFFFU;
     public const int GL_PROGRAM_SEPARABLE_EXT = 0x00008258;
     public const int GL_PROGRAM_PIPELINE_BINDING_EXT = 0x0000825A;
     #endregion
