@@ -53,6 +53,14 @@ internal static class Generator
             $"{string.Join(", ", def.Callback.Args.Select(p => $"{p.Value} {p.Key}"))});");
     }
 
+    private static void AppendFuncImport(CFunction func, StringBuilder builder)
+    {
+        builder.AppendLine("    [LibraryImport()]");
+        builder.Append($"    public static extern {func.ReturnType} {func.Name}(");
+        builder.Append(string.Join(", ", func.Args.Select(p => $"{p.Value} {p.Key}")));
+        builder.AppendLine(");");
+    }
+
     private static void AppendFuncWrapper(CFunction func, StringBuilder builder)
     {
         builder.Append($"    public static {func.ReturnType} {func.Name}(");
