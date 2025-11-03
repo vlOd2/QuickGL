@@ -53,12 +53,18 @@ internal static class Generator
             $"{string.Join(", ", def.Callback.Args.Select(p => $"{p.Value} {p.Key}"))});");
     }
 
-    private static void AppendFuncImport(CFunction func, StringBuilder builder)
+    private static void AppendFuncImport(CFunction func, StringBuilder builder, string libName)
     {
-        builder.AppendLine("    [LibraryImport()]");
-        builder.Append($"    public static extern {func.ReturnType} {func.Name}(");
-        builder.Append(string.Join(", ", func.Args.Select(p => $"{p.Value} {p.Key}")));
-        builder.AppendLine(");");
+        builder.AppendLine($"    [LibraryImport(\"{libName}\")]");
+        if (func.Args.Count == 0)
+            builder.AppendLine($"    public static extern {func.ReturnType} {func.Name}();");
+        else
+        {
+            builder.AppendLine($"    public static extern {func.ReturnType} {func.Name}(");
+            builder.AppendLine($"        {string.Join(", ", func.Args.Select(p => $"{p.Value} {p.Key}"))}");
+            builder.AppendLine("    );");
+        }
+        builder.AppendLine();
     }
 
     private static void AppendFuncWrapper(CFunction func, StringBuilder builder)
@@ -189,6 +195,14 @@ internal static class Generator
             AppendFuncWrapper(func, builder);
         builder.AppendLine("    #endregion");
     }
+
+    private static void GenerateFunctionImports(CParserContext ctx, StringBuilder builder, string libName)
+    {
+        builder.AppendLine("    #region Function imports");
+        foreach (CFunction func in ctx.Functions)
+            AppendFuncImport(func, builder, libName);
+        builder.AppendLine("    #endregion");
+    }
     #endregion
 
     private static string GetFuncDelegatePtrType(CFunction func)
@@ -204,7 +218,7 @@ internal static class Generator
     public static string GetGLFeatureClassName(GLFeature feature)
         => feature.Name.Replace("GL_", "GL").Replace("VERSION_", "").Replace("_", "").Trim();
 
-    public static string Generate(CParserContext ctx, string name, string @namespace, string procAddrFunc)
+    public static string Generate(CParserContext ctx, string name, string @namespace, string libName)
     {
         StringBuilder builder = new();
 
@@ -220,9 +234,7 @@ internal static class Generator
         builder.AppendLine("{");
         GenerateConstants(ctx, builder);
         builder.AppendLine();
-        GenerateFunctionPtrs(ctx, builder, procAddrFunc);
-        builder.AppendLine();
-        GenerateFunctionWrappers(ctx, builder);
+        GenerateFunctionImports(ctx, builder, libName);
         builder.AppendLine("}");
 
         return builder.ToString();
