@@ -3,11 +3,8 @@ Straightforward GLFW, OpenGL and OpenAL bindings for C# targeting .NET 8<br>
 
 # Bindings
 The bindings are automatically generated based on the official GLFW, AL/ALC headers and OpenGL registry<br>
+Bindings are exported with pointers, so **unsafe code is required**<br>
 You may generate your own custom bindings using `QGLBindingsGen` and replace the contents of the `Bindings` folder
-
-# State
-Bindings are currently exported with pointers, so **unsafe code is required**<br>
-In the future, the bindings will have no unsafe code
 
 # Example
 More information is available on the wiki, but you can get a GLFW window and OpenGL context with just 5 lines of code:
@@ -20,10 +17,10 @@ QGL.LoadGL();
 ```
 
 # Utilities
-QuickGL includes some utilities to help you out with repetitive tasks:
+QuickGL includes some utilities to help you out with common tasks:
 - `QGLString`, to ease the interop between native strings (`byte*`) and managed strings
 - `PtrHelper`, to help you use the fast stack memory (`stackalloc`) with GLFW/GL functions
-- `Input`, an easy to use wrapper around GLFW for keyboard and mouse input
+- `Input`, an easy to use event polling oriented wrapper around GLFW for keyboard and mouse input
 
 >[!NOTE]
 >All of these are optional and you can just use QuickGL for the bindings just fine without them
