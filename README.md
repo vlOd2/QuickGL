@@ -1,3 +1,8 @@
+>[!WARNING]
+>I have stopped maintaining QuickGL to focus my attention on a pure C# windowing library<br/>
+>QuickGL should still work just fine for a long time, I will just not be improving the quality of the bindings<br/>
+>It can be used only for OpenGL bindings (without GLFW or AL), so it may be still useful to some people
+
 # QuickGL
 Straightforward GLFW, OpenGL and OpenAL bindings for C# targeting .NET 8<br>
 
