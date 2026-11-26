@@ -10,7 +10,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="$(SolutionDir)Bindgen\Bindings\**" />
+        <Compile Include="$(MSBuildProjectDirectory)\..\Bindgen\Bindings\**" />
     </ItemGroup>
 
 </Project>

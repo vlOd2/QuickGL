@@ -6,7 +6,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>annotations</Nullable>
 		<SatelliteResourceLanguages>en</SatelliteResourceLanguages>
-		<RunWorkingDirectory>$(SolutionDir)Bindgen</RunWorkingDirectory>
+		<RunWorkingDirectory>$(MSBuildProjectDirectory)\..\Bindgen</RunWorkingDirectory>
 	</PropertyGroup>
 
 </Project>
