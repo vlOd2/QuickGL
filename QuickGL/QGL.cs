@@ -1,6 +1,6 @@
 ﻿// MIT License
 // 
-// Copyright (c) 2025 vlOd
+// Copyright (c) 2026 vlOd
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -20,20 +20,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-using QuickGL.Internal;
 using QuickGL.Bindings;
-using System.Runtime.InteropServices;
+using QuickGL.Internal;
 using System.Text.RegularExpressions;
 
 namespace QuickGL;
 
 public static unsafe partial class QGL
 {
-    private static GLFWLoader glfwLoader;
     private static OpenALLoader alLoader;
     internal static bool initialized;
-    internal static bool doNotUseGLFW;
-    internal static delegate* unmanaged<byte*, GLFWglproc> glLoader;
+    internal static QGLGetProcAddress glLoader;
 
     #region Properties
     /// <summary>
@@ -62,34 +59,16 @@ public static unsafe partial class QGL
     private static partial Regex GLVersionRegex();
 
     /// <summary>
-    /// Initializes QuickGL and loads GLFW functions
-    /// </summary>
-    /// <param name="winLibName">the GLFW library name to use on Windows platforms, null for default</param>
-    /// <param name="unixLibName">the GLFW library name to use on Unix platforms, null for default</param>
-    /// <exception cref="GLException">if GLFW could not be loaded successfully</exception>
-    public static void Init(string winLibName = null, string unixLibName = null)
-    {
-        if (initialized)
-            throw new GLException("Already initialized");
-        glfwLoader = new(winLibName, unixLibName);
-        GLFW.Load();
-        initialized = true;
-        glLoader = GLFW._glfwGetProcAddress;
-    }
-
-    /// <summary>
-    /// Initializes QuickGL for use without GLFW<br/>
-    /// You may omit a loader if you do not want to use OpenGL<br/>
-    /// This function is useful when using other windowing libraries
+    /// Initializes QuickGL<br/>
+    /// You may omit a loader if you do not want to use OpenGL
     /// </summary>
     /// <param name="loader">the OpenGL function loader, or null</param>
     /// <param name="gles">is the current context for gles</param>
-    public static void InitRaw(delegate* unmanaged<byte*, GLFWglproc> loader, bool gles = false)
+    public static void InitRaw(QGLGetProcAddress loader, bool gles = false)
     {
         if (initialized)
             throw new GLException("Already initialized");
         initialized = true;
-        doNotUseGLFW = true;
         IsGLESContext = gles;
         glLoader = loader;
     }
@@ -98,8 +77,6 @@ public static unsafe partial class QGL
     {
         if (!initialized)
             throw new GLException("Not initialized");
-        if (!doNotUseGLFW && GLFW.glfwGetCurrentContext() == null)
-            throw new GLException("No OpenGL context found");
     }
 
     /// <summary>
@@ -112,15 +89,7 @@ public static unsafe partial class QGL
         PerformContextChecks();
         if (glLoader == null)
             throw new GLException("Invalid GL loader function");
-
         ParseGLVersion();
-        if (!doNotUseGLFW)
-        {
-            GLFWwindow* window = GLFW.glfwGetCurrentContext();
-            int api = GLFW.glfwGetWindowAttrib(window, GLFW.GLFW_CLIENT_API);
-            IsGLESContext = api == GLFW.GLFW_OPENGL_ES_API;
-        }
-
         GLBindingsManager.Load();
     }
 
@@ -227,23 +196,7 @@ public static unsafe partial class QGL
             throw new GLException("Invalid GL loader function");
         nint handle;
         using (QGLString str = new(name))
-        {
-            GLFWglproc proc = glLoader(str);
-            if (proc == null)
-                return 0;
-            handle = Marshal.GetFunctionPointerForDelegate(proc);
-        }
-        return handle;
-    }
-
-    internal static nint GetGLFWProcAddress(string name)
-    {
-        nint handle = glfwLoader.GetProcAddress(name);
-        if (handle == nint.Zero)
-        {
-            Console.Error.WriteLine($"[QuickGL] Could not find GLFW method: {name}");
-            return nint.Zero;
-        }
+            handle = glLoader(str);
         return handle;
     }
 
@@ -265,19 +218,14 @@ public static unsafe partial class QGL
     public static void Destroy()
     {
         GLBindingsManager.Unload();
-        GLFW.Unload();
         AL.Unload();
         ALC.Unload();
 
-        glfwLoader?.Dispose();
         alLoader?.Dispose();
-
         glLoader = null;
-        glfwLoader = null;
         alLoader = null;
 
         GLVersionMajor = GLVersionMinor = 0;
         initialized = false;
-        doNotUseGLFW = false;
     }
 }

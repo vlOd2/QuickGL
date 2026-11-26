@@ -1,5 +1,4 @@
 <Solution>
-  <Project Path="ExampleGame/ExampleGame.csproj" />
   <Project Path="QGLBindingsGen/QGLBindingsGen.csproj" />
   <Project Path="QuickGL/QuickGL.csproj" />
 </Solution>

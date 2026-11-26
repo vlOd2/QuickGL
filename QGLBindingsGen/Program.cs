@@ -1,48 +1,39 @@
 ﻿#define SHOW_TASK_TIMINGS
-//#define ENABLE_LEGACY_LIB_UI
 
 using QGLBindingsGen.CParsing;
 using QGLBindingsGen.GLRegistry;
 #if SHOW_TASK_TIMINGS
 using System.Diagnostics;
 #endif
-#if ENABLE_LEGACY_LIB_UI
-using System.Text.RegularExpressions;
-#endif
 
 namespace QGLBindingsGen;
 
 public static partial class Program
 {
-    private const string OUT_DIR = "BindingsOutput";
+    private const string OUT_DIR = "Bindings";
     private const string BINDINGS_NAMESPACE = "QuickGL.Bindings";
-    private const string GLFW_HEADER_URL = "https://raw.githubusercontent.com/glfw/glfw/refs/heads/master/include/GLFW/glfw3.h";
     private const string GL_REGISTRY_URL = "https://raw.githubusercontent.com/KhronosGroup/OpenGL-Registry/refs/heads/main/xml/gl.xml";
     private const string AL_HEADER_URL = "https://raw.githubusercontent.com/kcat/openal-soft/refs/heads/master/include/AL/al.h";
     private const string ALC_HEADER_URL = "https://raw.githubusercontent.com/kcat/openal-soft/refs/heads/master/include/AL/alc.h";
-#if ENABLE_LEGACY_LIB_UI
-    private const string LIBUI_HEADER_URL = "https://raw.githubusercontent.com/andlabs/libui/refs/heads/master/ui.h";
-#endif
     private static readonly HttpClient httpClient = new();
-
-#if ENABLE_LEGACY_LIB_UI
-    [GeneratedRegex(@"_UI_ENUM\((ui[a-zA-Z0-9_]+?)\) {((.|\s)+?)};")]
-    private static partial Regex UIEnumPattern();
-#endif
 
     private static async Task<string[]> GetOrCacheFile(string fileName, string url)
     {
         List<string> lines;
+
         if (!File.Exists(fileName))
         {
             StringReader reader = new(await httpClient.GetStringAsync(url));
             lines = [];
+
             while (await reader.ReadLineAsync() is string line)
                 lines.Add(line);
+
             await File.WriteAllLinesAsync(fileName, lines);
         }
         else
             lines = [.. await File.ReadAllLinesAsync(fileName)];
+
         return [.. lines];
     }
 
@@ -50,14 +41,6 @@ public static partial class Program
         => await File.WriteAllTextAsync(Path.Combine(OUT_DIR, $"{name}.cs"), Generator.Generate(ctx, name, BINDINGS_NAMESPACE, procAddr));
 
     #region Headers download
-    private static async Task<CParserContext> ParseGLFWHeader()
-    {
-        string[] header = await TaskRunner.Run("Downloading GLFW header", GetOrCacheFile("glfw3.h", GLFW_HEADER_URL));
-        CParserContext ctx = new(["GLFWAPI", "APIENTRY", "WINGDIAPI", "CALLBACK"]);
-        await CParser.ParseFile(header, ctx);
-        return ctx;
-    }
-
     private static async Task<List<GLFeature>> ParseGLRegistry(List<string> allowedFeatures, List<string> allowedExt)
     {
         string[] registry = await TaskRunner.Run("Downloading GL registry", GetOrCacheFile("gl.xml", GL_REGISTRY_URL));
@@ -166,28 +149,25 @@ public static partial class Program
     {
         Directory.CreateDirectory(OUT_DIR);
 
-        Logger.Info("Generating bindings for GLFW");
-        await GenerateHeader("GLFW", await ParseGLFWHeader(), "QGL.GetGLFWProcAddress");
-
         Logger.Info("Generating bindings for OpenAL");
         await GenerateHeader("AL", await ParseALHeader(), "QGL.GetALProcAddress");
         await GenerateHeader("ALC", await ParseALCHeader(), "QGL.GetALProcAddress");
 
-#if ENABLE_LEGACY_LIB_UI
-        Logger.Info("Generating bindings for LibUI");
-        await GenerateHeader("LibUI", await ParseLibUIHeader(), "QuickGL.GetLibUIProcAddress");
-#endif
-
         Logger.Info("Generating bindings for OpenGL");
-        List<GLFeature> features = await ParseGLRegistry(null, ["@/GL_ARB_.*", "@/GL_EXT_.*"]);
+        //List<GLFeature> features = await ParseGLRegistry(null, ["@/GL_ARB_.*", "@/GL_EXT_.*"]);
+        List<GLFeature> features = await ParseGLRegistry(null, []);
+
         if (features.Any(feature => feature.IsExtension))
             Directory.CreateDirectory(Path.Combine(OUT_DIR, "Extensions"));
+
         await Parallel.ForEachAsync(features, async (feature, token) =>
         {
             string classData = Generator.GenerateGLFeature(feature, feature.IsExtension ? $"{BINDINGS_NAMESPACE}.Extensions" : BINDINGS_NAMESPACE);
             string outDir = OUT_DIR;
+
             if (feature.IsExtension)
                 outDir = Path.Combine(OUT_DIR, "Extensions");
+
             await File.WriteAllTextAsync(Path.Combine(outDir, $"{Generator.GetGLFeatureClassName(feature)}.cs"), classData, token);
         });
 
@@ -205,13 +185,16 @@ public static partial class Program
 
 #if SHOW_TASK_TIMINGS
             Logger.Info("Task timings:");
+
             double totalTime = 0;
+
             foreach (KeyValuePair<string, (long, long)> timing in TaskRunner.TaskTimings)
             {
                 TimeSpan time = Stopwatch.GetElapsedTime(timing.Value.Item1, timing.Value.Item2);
                 totalTime += time.TotalMilliseconds;
                 Logger.Info($"- {timing.Key}: {time.TotalMilliseconds:F2} ms");
             }
+
             Logger.Info($"Total time: {totalTime:F2} ms");
 #endif
         }
