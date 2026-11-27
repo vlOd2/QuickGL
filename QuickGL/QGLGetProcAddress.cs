@@ -22,4 +22,4 @@
 
 namespace QuickGL;
 
-public unsafe delegate nint QGLGetProcAddress(byte* name);
+public unsafe delegate nint QGLGetProcAddress(string name);

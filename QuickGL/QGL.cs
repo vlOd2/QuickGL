@@ -64,7 +64,7 @@ public static unsafe partial class QGL
     /// </summary>
     /// <param name="loader">the OpenGL function loader, or null</param>
     /// <param name="gles">is the current context for gles</param>
-    public static void InitRaw(QGLGetProcAddress loader, bool gles = false)
+    public static void Init(QGLGetProcAddress loader, bool gles = false)
     {
         if (initialized)
             throw new GLException("Already initialized");
@@ -80,8 +80,7 @@ public static unsafe partial class QGL
     }
 
     /// <summary>
-    /// Loads OpenGL/GLES functions<br/>
-    /// NOTE: You must have an active OpenGL/GLES context, see <see cref="GLFW.glfwMakeContextCurrent"/>
+    /// Loads OpenGL/GLES functions
     /// </summary>
     /// <exception cref="GLException"></exception>
     public static void LoadGL()
@@ -194,10 +193,7 @@ public static unsafe partial class QGL
         PerformContextChecks();
         if (glLoader == null)
             throw new GLException("Invalid GL loader function");
-        nint handle;
-        using (QGLString str = new(name))
-            handle = glLoader(str);
-        return handle;
+        return glLoader(name);
     }
 
     internal static nint GetALProcAddress(string name)
